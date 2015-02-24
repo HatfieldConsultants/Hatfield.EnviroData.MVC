@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B578FE6D-B7B8-4324-BB91-F9A6D5C801E9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hatfield.EnviroData.Core</RootNamespace>
+    <AssemblyName>Hatfield.EnviroData.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>$(SolutionDir)\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>$(SolutionDir)\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Action.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActionAnnotation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActionBy.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActionDirective.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActionExtensionPropertyValue.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Affiliation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Annotation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorList.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CalibrationAction.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CalibrationReferenceEquipment.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CalibrationStandard.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CategoricalResult.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CategoricalResultValue.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CategoricalResultValueAnnotation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Citation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CitationExtensionPropertyValue.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CitationExternalIdentifier.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CVTerm.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataLoggerFile.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataloggerFileColumn.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataloggerProgramFile.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataQuality.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetCitation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetsResult.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DerivationEquation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Directive.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Equipment.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EquipmentAnnotation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EquipmentModel.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EquipmentUsed.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExtensionProperty.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalIdentifierSystem.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureAction.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IDbContext.cs" />
+    <Compile Include="InstrumentOutputVariable.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IOrganizationRepository.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="IVariableRepository.cs" />
+    <Compile Include="MaintenanceAction.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MeasurementResult.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MeasurementResultValue.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MeasurementResultValueAnnotation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Method.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MethodAnnotation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MethodCitation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MethodExtensionPropertyValue.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MethodExternalIdentifier.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelAffiliation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ODM2Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ODM2Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ODM2Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ODM2Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ODM2Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Organization.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Person.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonExternalIdentifier.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PointCoverageResult.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PointCoverageResultValue.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PointCoverageResultValueAnnotation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessingLevel.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileResult.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileResultValue.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileResultValueAnnotation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReferenceMaterial.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReferenceMaterialExternalIdentifier.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReferenceMaterialValue.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RelatedAction.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RelatedAnnotation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RelatedCitation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RelatedDataset.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RelatedEquipment.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RelatedFeature.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RelatedModel.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RelatedResult.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\OrganizationRepository.cs" />
+    <Compile Include="Repositories\VariableRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Result.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResultAnnotation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResultExtensionPropertyValue.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResultsDataQuality.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResultTypeCV.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SamplingFeature.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SamplingFeatureAnnotation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SamplingFeatureExtensionPropertyValue.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SamplingFeatureExternalIdentifier.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SectionResult.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SectionResultValue.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SectionResultValueAnnotation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Simulation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Site.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpatialOffset.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpatialReference.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpatialReferenceExternalIdentifier.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Specimen.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpecimenBatchPostion.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpecimenTaxonomicClassifier.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpectraResult.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpectraResultValue.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpectraResultValueAnnotation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaxonomicClassifier.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaxonomicClassifierExternalIdentifier.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TimeSeriesResult.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TimeSeriesResultValue.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TimeSeriesResultValueAnnotation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TrajectoryResult.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TrajectoryResultValue.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TrajectoryResultValueAnnotation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransectResult.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransectResultValue.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransectResultValueAnnotation.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Unit.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Variable.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VariableExtensionPropertyValue.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VariableExternalIdentifier.cs">
+      <DependentUpon>ODM2Model.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ODM2Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ODM2Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="ODM2Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ODM2Model.edmx</DependentUpon>
+      <LastGenOutput>ODM2Model.Context.cs</LastGenOutput>
+    </None>
+    <None Include="ODM2Model.edmx.diagram">
+      <DependentUpon>ODM2Model.edmx</DependentUpon>
+    </None>
+    <None Include="ODM2Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ODM2Model.edmx</DependentUpon>
+      <LastGenOutput>ODM2Model.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

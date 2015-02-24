@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Condition=" '$(BuildEnvironment)' == 'BuildServer' " Project="C:\Program Files (x86)\MSBuild\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
+  <Import Condition=" '$(BuildEnvironment)' != 'BuildServer' " Project="C:\Program Files\MSBuild\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
+  <Import Project="C:\Apps\OpenCover-4.0.804\MSBuild\OpenCover.targets"/>
+  <Import Project="C:\Apps\ReportGenerator-1.6.1.0\MSBuild\ReportGenerator.targets"/>
+  
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <WebPublishFolder>C:\inetpub\wwwroot\HatfieldEnviroData</WebPublishFolder>
+	  <SolutionPath>..\Hatfield.EnviroData.MVC.sln</SolutionPath>
+	  <WebProjectPath>..\Source\Hatfield.EnviroData.MVC\Hatfield.EnviroData.MVC.csproj</WebProjectPath>
+    <TestResultDirectory>..\TestResults</TestResultDirectory>
+    <OpenCoverMSBuildTasksPath>C:\Apps\OpenCover-4.0.804\MSBuild</OpenCoverMSBuildTasksPath>
+    <NUnitPath>C:\Apps\NUnit 2.6.1\bin</NUnitPath>
+    <DatabaseServer></DatabaseServer>
+    <DatabaseUser></DatabaseUser>
+    <DatabasePassword></DatabasePassword>
+    <DatabaseName></DatabaseName>
+    <TestDBSQLFile></TestDBSQLFile>
+    <SolutionDir>$([System.IO.Path]::GetFullPath('.\'))</SolutionDir>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PublishFilesToDelete Include="$(WebPublishFolder)\**\*" Exclude="$(WebPublishFolder)\App_Data\Logs\**\*"/>
+  </ItemGroup>
+  
+  <Target Name="Run">
+    <CallTarget Targets="Compile" ContinueOnError="false" />
+    <!--<CallTarget Targets="PublishWeb" ContinueOnError="false"  />-->    
+    <CallTarget Targets="MergeLog4NetConfig" ContinueOnError="true"  />
+  </Target>
+
+  <Target Name="TestAndCodeCoverage">    
+    <CallTarget Targets="CodeCoverageAnalysis" />
+    <CallTarget Targets="CreateCodeCoverageReports" />
+  </Target>
+
+  <Target Name="Compile">
+    <Message Text="Compiling code..." Importance="high" />
+    <MSBuild Projects="$(SolutionPath)" />
+  </Target>
+
+  <Target Name="PublishWeb">
+    <Message Text="Publishing Hatfield EnviroData Management system web project to IIS..." Importance="high" />
+    <Delete Files="@(PublishFilesToDelete)" />
+    <MSBuild Projects="$(WebProjectPath)"
+             Targets="ResolveReferences;_CopyWebApplication"
+             Properties="WebProjectOutputDir=$(WebPublishFolder);
+           OutDir=$(WebPublishFolder)\bin\" />
+  </Target>
+
+<!--  <Target Name="CopyNhibernateConfigurationFile">
+    <Message Text="Copy Nhibernate Configration file to bin folder..." Importance="high" />
+    <Copy SourceFiles="$(WebPublishFolder)\Hibernate.cfg.xml" DestinationFolder="$(WebPublishFolder)\bin" ContinueOnError="false" />
+  </Target>-->
+  
+  <Target Name="MergeLog4NetConfig">
+    <!--<Message Text="Updating log4net configuration..." Importance="high" />
+
+    <XmlMassUpdate
+      ContentFile="$(WebPublishFolder)\log4net.config"
+      SubstitutionsFile="SubstitutionsLog4Net.xml"
+      ContentRoot="/configuration"
+      SubstitutionsRoot="/configuration/substitutions/$(BuildEnvironment)"/>-->
+  </Target>
+
+
+  <Target Name="CodeCoverageAnalysis">
+    <RemoveDir Directories="$(TestResultDirectory)\NUnit" />
+    <MakeDir Directories="$(TestResultDirectory)\NUnit"/>
+    <RemoveDir Directories="$(TestResultDirectory)\Coverage" />
+    <MakeDir Directories="$(TestResultDirectory)\Coverage"/>
+    <!-- Run Unit tests -->
+    <ItemGroup>
+      <TestAssembly Include="..\Test\**\bin\$(Configuration)\*.Test.dll" />
+    </ItemGroup>
+    <OpenCover
+			Target="$(NUnitPath)\nunit-console.exe"
+			TargetArgs="$(SolutionPath) /noshadow /framework:net-4.0 /process:multiple /config:$(Configuration) &quot;%(TestAssembly.FullPath)&quot; /xml=$(TestResultDirectory)\NUnit\%(TestAssembly.FileName)_TestResult.xml"
+			Filter="filter:+[Hatfield.EnviroData*]* -[Hatfield.EnviroData*]*Test"
+			Output="$(TestResultDirectory)\Coverage\OpenCover_%(TestAssembly.FileName).xml"
+			ToolPath="C:\Apps\OpenCover-4.0.804\"
+			Register="true"
+		/>
+  </Target>
+
+  <Target Name="CreateCodeCoverageReports">
+    <RemoveDir Directories="$(TestResultDirectory)\CoverageReports" />
+    <MakeDir Directories="$(TestResultDirectory)\CoverageReports"/>
+    <ItemGroup>
+      <CoverageFiles Include="$(TestResultDirectory)\Coverage\*.xml" />
+      <SourceDirectories Include="$(TestResultDirectory)\Coverage" />
+    </ItemGroup>
+    <ReportGenerator ReportFiles="@(CoverageFiles)" TargetDirectory="$(TestResultDirectory)\CoverageReports" ReportTypes="Html" SourceDirectories="@(SourceDirectories)" Filters="" VerbosityLevel="Verbose" />
+  </Target>
+</Project>
