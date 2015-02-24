@@ -20,6 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E6DDF2
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{0180CCA8-7A1A-4A32-BFCF-8A261D83473B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HatfieldEnviroData.MVC.Test", "Test\HatfieldEnviroData.MVC.Test\HatfieldEnviroData.MVC.Test.csproj", "{DAA44CF0-D09D-4737-8A83-6EC4434071B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,8 +38,15 @@ Global
 		{B578FE6D-B7B8-4324-BB91-F9A6D5C801E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B578FE6D-B7B8-4324-BB91-F9A6D5C801E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B578FE6D-B7B8-4324-BB91-F9A6D5C801E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAA44CF0-D09D-4737-8A83-6EC4434071B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAA44CF0-D09D-4737-8A83-6EC4434071B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAA44CF0-D09D-4737-8A83-6EC4434071B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAA44CF0-D09D-4737-8A83-6EC4434071B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DAA44CF0-D09D-4737-8A83-6EC4434071B2} = {0180CCA8-7A1A-4A32-BFCF-8A261D83473B}
 	EndGlobalSection
 EndGlobal
