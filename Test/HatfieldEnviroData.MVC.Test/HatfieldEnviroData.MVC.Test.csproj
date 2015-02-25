@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Hatfield.EnviroData.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.Core\Hatfield.EnviroData.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Moq">
       <HintPath>$(SolutionDir)\packages\Moq.4.2.1502.0911\lib\net40\Moq.dll</HintPath>
     </Reference>
@@ -51,10 +55,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="$(SolutionDir)\Source\Hatfield.EnviroData.Core\Hatfield.EnviroData.Core.csproj">
-      <Project>{b578fe6d-b7b8-4324-bb91-f9a6d5c801e9}</Project>
-      <Name>Hatfield.EnviroData.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="$(SolutionDir)\Source\Hatfield.EnviroData.MVC\Hatfield.EnviroData.MVC.csproj">
       <Project>{f0372463-aac7-4b31-97a7-87b8dd50f887}</Project>
       <Name>Hatfield.EnviroData.MVC</Name>
