@@ -224,6 +224,7 @@
     <Compile Include="Helpers\ImportResultHelper.cs" />
     <Compile Include="Infrastructure\Dependency.cs" />
     <Compile Include="Infrastructure\DependencyConfigure.cs" />
+    <Compile Include="Models\FtpFileImportDataViewModel.cs" />
     <Compile Include="Models\HttpFileImportDataViewModel.cs" />
     <Compile Include="Models\ResultMessageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -314,6 +315,7 @@
     <Content Include="Scripts\knockout-3.3.0.debug.js" />
     <Content Include="Scripts\knockout-3.3.0.js" />
     <Content Include="Scripts\knockout.mapping-latest.js" />
+    <Content Include="Scripts\Knockout\FTPFileImport.js" />
     <Content Include="Scripts\Knockout\HttpFileImport.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config">

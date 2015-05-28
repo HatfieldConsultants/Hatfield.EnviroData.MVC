@@ -15,6 +15,7 @@ using Hatfield.EnviroData.DataAcquisition.ESDAT;
 using Hatfield.EnviroData.MVC.Helpers;
 using Hatfield.EnviroData.DataAcquisition;
 using Hatfield.EnviroData.DataAcquisition.ESDAT.Converters;
+using Hatfield.EnviroData.FileSystems.FTPFileSystem;
 
 namespace Hatfield.EnviroData.MVC.Controllers
 {
@@ -38,6 +39,26 @@ namespace Hatfield.EnviroData.MVC.Controllers
 
             var chemistryFileHttpFileSystem = new HttpFileSystem(data.ChemistryFileURL);
             var chemistryCSVFileToImport = new CSVDataToImport(chemistryFileHttpFileSystem.FetchData());
+
+            var esdatDataToImport = new ESDATDataToImport(headerFileXMLFileToImport, sampleFileCSVFileToImport, chemistryCSVFileToImport);
+            var importer = ESDATDataImportHelper.BuildESDATDataImporter();
+
+            var results = PersistESDATData(esdatDataToImport, importer);
+
+            return results;
+        }
+
+        [HttpPost]
+        public IEnumerable<ResultMessageViewModel> ImportFtpFiles(FtpFileImportDataViewModel data)
+        {
+            var headerFileFtpFileSystem = new FTPFileSystem(data.HeaderFileURL, data.UserName, data.Password);
+            var headerFileXMLFileToImport = new XMLDataToImport(headerFileFtpFileSystem.FetchData());
+
+            var sampleFileFtpFileSystem = new FTPFileSystem(data.SampleFileURL, data.UserName, data.Password);
+            var sampleFileCSVFileToImport = new CSVDataToImport(sampleFileFtpFileSystem.FetchData());
+
+            var chemistryFileFtpFileSystem = new FTPFileSystem(data.ChemistryFileURL, data.UserName, data.Password);
+            var chemistryCSVFileToImport = new CSVDataToImport(chemistryFileFtpFileSystem.FetchData());
 
             var esdatDataToImport = new ESDATDataToImport(headerFileXMLFileToImport, sampleFileCSVFileToImport, chemistryCSVFileToImport);
             var importer = ESDATDataImportHelper.BuildESDATDataImporter();
