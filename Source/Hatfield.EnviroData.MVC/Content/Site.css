@@ -98,7 +98,7 @@ h5, h6 {
     max-width: 960px;
 }
 
-#body {
+.contentDiv {
     background-color: #efeeef;
     clear: both;
     padding-bottom: 35px;

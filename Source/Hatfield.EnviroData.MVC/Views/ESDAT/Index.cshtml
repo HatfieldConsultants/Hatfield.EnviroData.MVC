@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Import ESDAT Data";
+}
+
+<div class="contentDiv">
+    <section class="content-wrapper main-content clear-fix">
+        <ol class="round">
+            <li class="one">
+                <div>
+                    <h5>Select File System</h5><br />
+                    <select>
+                        <option value="">Select File System...</option>
+                        <option value="LocalFileSystem">Local File System</option>
+                        <option value="HTTPFileSystem">HTTP File System</option>
+                        <option value="FTPFileSystem">FTP File System</option>
+                    </select>
+                </div>
+            </li>
+            <li class="two">
+                <div>
+                    <h5>Specify File Information</h5><br />
+
+                </div>
+            </li>
+            <li class="three">
+                <div>
+                    <h5>Import ESDAT Files</h5>
+                    <br />
+                    <button>Import</button>
+                </div>
+            </li>
+        </ol>
+
+    </section>
+</div>
+
+<div id="HttpFileImportDiv">
+    <section class="content-wrapper main-content clear-fix">
+        <h2>HTTP File System</h2>
+        <form>
+            <ol class="round">
+                <li class="one">
+                    <div>
+                        <h5>Specify File Information</h5><br />
+                        <span><b>Header File URL:</b> <input data-bind="value: HeaderFileURL" /></span><br />
+                        <span><b>Sample File URL:</b> <input data-bind="value: SampleFileURL" /></span><br />
+                        <span><b>Chemistry File URL:</b> <input data-bind="value: ChemistryFileURL" /></span>
+                    </div>
+                </li>
+                <li class="two">
+                    <div>
+                        <h5>Import ESDAT Files</h5>
+                        <br />
+                        <button data-bind="click: function(){$root.submitImportRequest(); return false;}">Import</button>
+                    </div>
+                </li>
+                <li class="three">
+                    <h5>Import Results</h5><br />
+                    <div id="httpImportResultDiv" data-bind="foreach: ImportResults">
+                        <span data-bind="html: Message"></span><br />
+                    </div>
+                </li>
+            </ol>
+        </form>
+    </section>
+</div>
+
+
+
+<script src="~/Scripts/Knockout/HttpFileImport.js"></script>
+
+<script>
+    $(document).ready(function () {
+        
+        var httpFileImportviewModel = new HttpFileImportModel();
+        
+        ko.applyBindings(httpFileImportviewModel, document.getElementById('HttpFileImportDiv'));
+    }); //end of document ready function
+
+</script>

@@ -4,20 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-using Hatfield.EnviroData.Core;
-
 namespace Hatfield.EnviroData.MVC.Controllers
 {
-    public class HomeController : Controller
+    public class ESDATController : Controller
     {
-        public HomeController()
-        {
-            
-        }
+        //
+        // GET: /ESDAT/
 
         public ActionResult Index()
-        {            
+        {
             return View();
         }
+
     }
 }

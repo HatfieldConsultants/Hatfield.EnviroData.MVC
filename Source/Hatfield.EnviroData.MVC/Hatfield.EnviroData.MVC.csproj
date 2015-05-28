@@ -50,6 +50,9 @@
     <Reference Include="Autofac.Integration.WebApi">
       <HintPath>$(SolutionDir)\packages\Autofac.WebApi.3.1.0\lib\net40\Autofac.Integration.WebApi.dll</HintPath>
     </Reference>
+    <Reference Include="CsvHelper">
+      <HintPath>..\..\packages\CsvHelper.2.13.0.0\lib\net40-client\CsvHelper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(SolutionDir)\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.dll</HintPath>
@@ -60,7 +63,34 @@
     </Reference>
     <Reference Include="Hatfield.EnviroData.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.Core\Hatfield.EnviroData.Core.dll</HintPath>
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Hatfield.EnviroData.DataAcquisition">
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.dll</HintPath>
+    </Reference>
+    <Reference Include="Hatfield.EnviroData.DataAcquisition.CSV">
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.CSV.dll</HintPath>
+    </Reference>
+    <Reference Include="Hatfield.EnviroData.DataAcquisition.ESDAT">
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.ESDAT.dll</HintPath>
+    </Reference>
+    <Reference Include="Hatfield.EnviroData.DataAcquisition.XML">
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.XML.dll</HintPath>
+    </Reference>
+    <Reference Include="Hatfield.EnviroData.FileSystems">
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.dll</HintPath>
+    </Reference>
+    <Reference Include="Hatfield.EnviroData.FileSystems.FTPFileSystem">
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.FTPFileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Hatfield.EnviroData.FileSystems.HttpFileSystem">
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.HttpFileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Hatfield.EnviroData.FileSystems.NetworkFileSystem">
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.NetworkFileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Hatfield.EnviroData.FileSystems.WindowsFileSystem">
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.WindowsFileSystem.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -184,13 +214,18 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\ESDATController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\API\ValuesController.cs" />
+    <Compile Include="Controllers\API\ESDATImportAPIController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ESDATDataImportHelper.cs" />
+    <Compile Include="Helpers\ImportResultHelper.cs" />
     <Compile Include="Infrastructure\Dependency.cs" />
     <Compile Include="Infrastructure\DependencyConfigure.cs" />
+    <Compile Include="Models\HttpFileImportDataViewModel.cs" />
+    <Compile Include="Models\ResultMessageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -263,8 +298,10 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.8.2.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
@@ -274,8 +311,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\knockout-2.2.0.debug.js" />
-    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\knockout-3.3.0.debug.js" />
+    <Content Include="Scripts\knockout-3.3.0.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
+    <Content Include="Scripts\Knockout\HttpFileImport.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -307,10 +346,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\ESDAT\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
