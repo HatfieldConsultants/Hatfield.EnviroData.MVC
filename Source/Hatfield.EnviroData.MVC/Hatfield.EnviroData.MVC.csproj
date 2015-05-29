@@ -214,6 +214,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\API\QueryDataAPIController.cs" />
     <Compile Include="Controllers\ESDATController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\API\ESDATImportAPIController.cs" />
@@ -227,6 +228,7 @@
     <Compile Include="Models\FtpFileImportDataViewModel.cs" />
     <Compile Include="Models\HttpFileImportDataViewModel.cs" />
     <Compile Include="Models\ResultMessageViewModel.cs" />
+    <Compile Include="Models\SampleListItemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -318,6 +320,7 @@
     <Content Include="Scripts\Knockout\FTPFileImport.js" />
     <Content Include="Scripts\Knockout\LocalFileImport.js" />
     <Content Include="Scripts\Knockout\HttpFileImport.js" />
+    <Content Include="Scripts\Knockout\SampleCollectionActionDisplay.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -350,6 +353,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\ESDAT\Index.cshtml" />
+    <Content Include="Views\ESDAT\ViewData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

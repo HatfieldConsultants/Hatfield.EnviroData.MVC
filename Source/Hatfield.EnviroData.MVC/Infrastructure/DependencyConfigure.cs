@@ -42,7 +42,7 @@ namespace Hatfield.EnviroData.MVC.Infrastructure
             builder.RegisterType<ODM2Entities>().As<IDbContext>().InstancePerDependency();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterType<VariableRepository>().As<IVariableRepository>();
-            //builder.RegisterType<CategoryService>().As<ICategoryService>();
+            builder.RegisterType<ActionRepository>().As<IActionRepository>();
 
 
             return builder.Build();

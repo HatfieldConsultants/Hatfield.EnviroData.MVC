@@ -16,5 +16,10 @@ namespace Hatfield.EnviroData.MVC.Controllers
             return View();
         }
 
+        public ActionResult ViewData()
+        {
+            return View();
+        }
+
     }
 }

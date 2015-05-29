@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "View Data";
+}
+
+<h2>View Data</h2>
+<div class="contentDiv">
+    <section class="content-wrapper main-content clear-fix">
+        <h2>View Data</h2>
+        <div class="row table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Sample Collection Action</th>
+                        <th>Action(s)</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: CollectionActions">
+                    <tr>
+                        <td data-bind="html: Name"></td>
+                        <td><a class="btn btn-warning" href="#" data-bind="click: function(){$root.FetchCollectionActionInESDAT($data.Id()); return false;}">View Data in ESDAT format</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </section>
+</div>
+
+<div class="ESDATDataDiv">
+    <div class="HeaderDataDiv">
+        <textarea disabled="disabled" data-bind="value: ESDATHeaderXMLContent"></textarea>
+    </div>
+</div>
+
+<script src="~/Scripts/Knockout/SampleCollectionActionDisplay.js"></script>
