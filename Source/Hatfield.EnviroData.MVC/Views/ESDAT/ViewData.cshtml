@@ -3,7 +3,7 @@
 }
 
 <h2>View Data</h2>
-<div class="contentDiv">
+<div class="contentDiv row">
     <section class="content-wrapper main-content clear-fix">
         <h2>View Data</h2>
         <div class="row table-responsive">
@@ -26,9 +26,102 @@
     </section>
 </div>
 
-<div class="ESDATDataDiv">
-    <div class="HeaderDataDiv">
+<div class="ESDATDataDiv container-fluid">
+    <div class="HeaderDataDiv row">
+        <h2>Header File</h2>
         <textarea disabled="disabled" data-bind="value: ESDATHeaderXMLContent"></textarea>
+    </div>
+    <div class="SampleDataDiv row">
+        <h2>Sample File</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>SampleCode</th>
+                    <th>Sampled_Date-Time</th>
+                    <th>Field_ID</th>
+                    <th>Blank1</th>
+                    <th>Sample_Depth</th>
+                    <th>Blank2</th>
+                    <th>Matrix_Type</th>
+                    <th>Sample_Type</th>
+                    <th>Parent_Sample</th>
+                    <th>Blank3</th>
+                    <th>SDG</th>
+                    <th>Lab_Name</th>
+                    <th>Lab_SampleID</th>
+                    <th>Comments</th>
+                    <th>Lab_Report_Number</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: SampleFileData">
+                <tr>
+                    <td data-bind="html: SampleCode"></td>
+                    <td data-bind="html: SampledDateTime"></td>
+                    <td data-bind="html: FieldID"></td>
+                    <td>1234</td>
+                    <td data-bind="html: SampleDepth"></td>
+                    <td></td>
+                    <td data-bind="html: MatrixType"></td>
+                    <td data-bind="html: SampleType"></td>
+                    <td data-bind="html: ParentSample"></td>
+                    <td></td>
+                    <td data-bind="html: SDG"></td>
+                    <td data-bind="html: LabName"></td>
+                    <td data-bind="html: LabSampleID"></td>
+                    <td data-bind="html: Comments"></td>
+                    <td data-bind="html: LabReportNumber"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="ChemistryDataDiv row">
+        <h2>Chemistry File</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>SampleCode</th>
+                    <th>ChemCode</th>
+                    <th>OriginalChemName</th>
+                    <th>Prefix</th>
+                    <th>Result</th>
+                    <th>Result_Unit</th>
+                    <th>Total_or_Filtered</th>
+                    <th>Result_Type</th>
+                    <th>Method_Type</th>
+                    <th>Method_Name</th>
+                    <th>Extraction_Date</th>
+                    <th>Analysed_Date</th>
+                    <th>EQL</th>
+                    <th>EQL_Units</th>
+                    <th>Comments</th>
+                    <th>QA</th>
+                    <th>UCL</th>
+                    <th>LCL</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: ChemistryData">
+                <tr>
+                    <td data-bind="html: SampleCode"></td>
+                    <td data-bind="html: ChemCode"></td>
+                    <td data-bind="html: OriginalChemName"></td>
+                    <td data-bind="html: Prefix"></td>
+                    <td data-bind="html: Result"></td>
+                    <td data-bind="html: ResultUnit"></td>
+                    <td data-bind="html: TotalOrFiltered"></td>
+                    <td data-bind="html: ResultType"></td>
+                    <td data-bind="html: MethodType"></td>
+                    <td data-bind="html: MethodName"></td>
+                    <td data-bind="html: ExtractionDate"></td>
+                    <td data-bind="html: AnalysedDate"></td>
+                    <td data-bind="html: EQL"></td>
+                    <td data-bind="html: EQLUnits"></td>
+                    <td data-bind="html: Comments"></td>
+                    <td data-bind="html: LabQualifier"></td>
+                    <td data-bind="html: UCL"></td>
+                    <td data-bind="html: LCL"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
