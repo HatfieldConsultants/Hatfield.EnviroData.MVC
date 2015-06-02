@@ -10,6 +10,12 @@ namespace Hatfield.EnviroData.MVC.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
+        //parameterless constructor for Automapper
+        public SampleListItemViewModel()
+        { 
+        
+        }
+
         public SampleListItemViewModel(int id, string name)
         {
             Id = id;

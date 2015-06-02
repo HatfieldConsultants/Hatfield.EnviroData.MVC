@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using System.Web;
-
-using Hatfield.EnviroData.Core;
-using Hatfield.EnviroData.MVC.Models;
-using Hatfield.EnviroData.FileSystems;
-using Hatfield.EnviroData.FileSystems.HttpFileSystem;
-using Hatfield.EnviroData.DataAcquisition.XML;
+﻿using Hatfield.EnviroData.Core;
+using Hatfield.EnviroData.DataAcquisition;
 using Hatfield.EnviroData.DataAcquisition.CSV;
 using Hatfield.EnviroData.DataAcquisition.ESDAT;
-using Hatfield.EnviroData.MVC.Helpers;
-using Hatfield.EnviroData.DataAcquisition;
 using Hatfield.EnviroData.DataAcquisition.ESDAT.Converters;
+using Hatfield.EnviroData.DataAcquisition.XML;
+using Hatfield.EnviroData.FileSystems;
 using Hatfield.EnviroData.FileSystems.FTPFileSystem;
+using Hatfield.EnviroData.FileSystems.HttpFileSystem;
+using Hatfield.EnviroData.MVC.Helpers;
+using Hatfield.EnviroData.MVC.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Http;
 
 namespace Hatfield.EnviroData.MVC.Controllers
 {
@@ -26,7 +22,7 @@ namespace Hatfield.EnviroData.MVC.Controllers
 
         public ESDATImportAPIController(IDbContext dbContext)
         {
-            _dbContext = dbContext;    
+            _dbContext = dbContext;
         }
 
         [HttpPost]
@@ -112,17 +108,36 @@ namespace Hatfield.EnviroData.MVC.Controllers
             }
             else
             {
-                var esdatConverter = new ESDATConverter(_dbContext);
-                var action = esdatConverter.ConvertToODMAction(extractedResults.ExtractedEntities.First());
+                var esdatModel = extractedResults.ExtractedEntities.First();
+                var esdatConverter = new ActionConverter(_dbContext);
+                var action = esdatConverter.Convert(esdatModel, 
+                                                    new ActionByConverter(_dbContext), 
+                                                    new FeatureActionConverter(_dbContext), 
+                                                    new MethodConverter(_dbContext), 
+                                                    new OrganizationConverter(_dbContext), 
+                                                    new AffiliationConverter(_dbContext), 
+                                                    new PersonConverter(_dbContext), 
+                                                    new RelatedActionConverter(_dbContext), 
+                                                    new SamplingFeatureConverter(_dbContext), 
+                                                    new ResultConverter(_dbContext), 
+                                                    new DataSetsResultConverter(_dbContext), 
+                                                    new DatasetConverter(_dbContext), 
+                                                    new ProcessingLevelConverter(_dbContext), 
+                                                    new UnitConverter(_dbContext), 
+                                                    new VariableConverter(_dbContext), 
+                                                    new MeasurementResultConverter(_dbContext), 
+                                                    new MeasurementResultValueConverter(_dbContext));
 
-                return new List<ResultMessageViewModel> { 
+                _dbContext.Add<Hatfield.EnviroData.Core.Action>(action);
+                _dbContext.SaveChanges();
+
+                return new List<ResultMessageViewModel> {
                     new ResultMessageViewModel{
                         Level = "Info",
                         Message = "Import success"
                     }
-                };                
+                };
             }
         }
-
     }
 }

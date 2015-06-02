@@ -7,6 +7,9 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
+using AutoMapper;
+
+using Hatfield.EnviroData.MVC.AutoMapper;
 using Hatfield.EnviroData.MVC.Infrastructure;
 
 namespace Hatfield.EnviroData.MVC
@@ -26,6 +29,10 @@ namespace Hatfield.EnviroData.MVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //Create auto mapper
+            AutoMapperConfiguration.Configure();
+            Mapper.AssertConfigurationIsValid();
         }
     }
 }
