@@ -4,7 +4,7 @@
     self.ImportResults = ko.observableArray();
 
     self.submitImportRequest = function () {
-        self.ImportResults(null);
+        //self.ImportResults();
 
         var formData = new FormData();
         // Main magic with files here
@@ -21,8 +21,10 @@
             contentType: false,
             cache: false,
             processData: false,
-            success: function (data) {                
-                self.ImportResults(data);
+            success: function (data) {
+                var parsedJson = JSON.parse(data);//parsed the string to json because the data type was set to form
+                self.ImportResults.removeAll();
+                ko.utils.arrayPushAll(self.ImportResults, parsedJson); //push the json array to the station list
                 
             },
             error: function (data) {
