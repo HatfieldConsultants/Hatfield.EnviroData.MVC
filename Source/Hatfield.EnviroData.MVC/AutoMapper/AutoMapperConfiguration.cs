@@ -6,6 +6,7 @@ using AutoMapper;
 using Hatfield.EnviroData.Core;
 using Hatfield.EnviroData.DataAcquisition.ESDAT;
 using Hatfield.EnviroData.MVC.Models;
+using Hatfield.EnviroData.WQDataProfile;
 
 namespace Hatfield.EnviroData.MVC.AutoMapper
 {
@@ -31,6 +32,8 @@ namespace Hatfield.EnviroData.MVC.AutoMapper
                 .ForMember(x => x.CopiesSentTo, l => l.Ignore())
                 .ForMember(x => x.SampleFileData, l => l.ResolveUsing<SampleFileDataResolver>().ConstructedBy(() => new SampleFileDataResolver()).FromMember(m => m.RelatedActions))
                 .ForMember(x => x.ChemistryData, l => l.ResolveUsing<ChemistryFileDataResolver>().ConstructedBy(() => new ChemistryFileDataResolver()).FromMember(m => m.RelatedActions));
+
+            Mapper.CreateMap<AdminDefaultValuesDataViewModel, WQDefaultValueModel>();
         }
     }
 }

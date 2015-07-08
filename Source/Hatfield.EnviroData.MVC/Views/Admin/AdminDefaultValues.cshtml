@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Admin Default Values";
+}
+@using Hatfield.EnviroData.MVC.Models
+@model Hatfield.EnviroData.MVC.Models.AdminDefaultValuesDataViewModel
+
+<h2>Admin Default Values</h2>
+
+@Html.Label("Provider Name:")
+@Html.LabelFor(x => x.Name, Model.Name)
+@using(Html.BeginForm())
+{
+    @Html.Label("Default Person Last Name:")
+    @Html.TextBoxFor(x => x.DefaultPersonLastName)
+    
+    <br />
+    @Html.Label("Default Person Middle Name:")
+    @Html.TextBoxFor(x => x.DefaultPersonMiddleName)
+
+    <br />
+    @Html.Label("Default Person First Name:")
+    @Html.TextBoxFor(x => x.DefaultPersonFirstName)
+
+    <br />
+    @Html.Label("Default Organization Type CV:")
+    @Html.TextBoxFor(x => x.DefaultOrganizationTypeCV)
+
+    <br />
+    @Html.Label("Default Organization Name:")
+    @Html.TextBoxFor(x => x.DefaultOrganizationName)
+
+    <br />
+    @Html.Label("Default Organization Code:")
+    @Html.TextBoxFor(x => x.DefaultOrganizationCode)
+
+    <br />
+    <input type="submit" value="Save"/>
+}

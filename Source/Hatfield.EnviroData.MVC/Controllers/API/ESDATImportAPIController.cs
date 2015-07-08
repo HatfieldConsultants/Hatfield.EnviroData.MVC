@@ -129,7 +129,7 @@ namespace Hatfield.EnviroData.MVC.Controllers
                                                     new MeasurementResultValueConverter(_dbContext));
 
                 _dbContext.Add<Hatfield.EnviroData.Core.Action>(action);
-                _dbContext.SaveChanges();
+                //_dbContext.SaveChanges();
 
                 return new List<ResultMessageViewModel> {
                     new ResultMessageViewModel{

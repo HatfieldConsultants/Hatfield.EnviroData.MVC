@@ -12,6 +12,8 @@ using Autofac.Integration.WebApi;
 
 using Hatfield.EnviroData.Core;
 using Hatfield.EnviroData.Core.Repositories;
+using Hatfield.EnviroData.WQDataProfile;
+using Hatfield.WQDefaultValueProvider.JSON;
 
 namespace Hatfield.EnviroData.MVC.Infrastructure
 {
@@ -43,6 +45,11 @@ namespace Hatfield.EnviroData.MVC.Infrastructure
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterType<VariableRepository>().As<IVariableRepository>();
             builder.RegisterType<ActionRepository>().As<IActionRepository>();
+            builder.RegisterType<JSONWQDefaultValueProvider>()
+                   .As<IWQDefaultValueProvider>()
+                   .WithParameter("jsonFilePath", System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/DefaultValues.json"))
+                   .WithParameter("createNewConfigFileIfNotExist", true)
+                   .InstancePerLifetimeScope();
 
 
             return builder.Build();

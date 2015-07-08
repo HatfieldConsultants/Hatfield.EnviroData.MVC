@@ -98,7 +98,17 @@
     <Reference Include="Hatfield.EnviroData.FileSystems.WindowsFileSystem">
       <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.WindowsFileSystem.dll</HintPath>
     </Reference>
+    <Reference Include="Hatfield.EnviroData.WQDataProfile">
+      <HintPath>..\..\packages\Hatfield.EnviroData.WQDataProfile.dll.1.0.0.0\lib\net40\Hatfield.EnviroData.WQDataProfile.dll</HintPath>
+    </Reference>
+    <Reference Include="Hatfield.WQDefaultValueProvider.JSON">
+      <HintPath>..\..\packages\Hatfield.WQDefaultValueProvider.JSON.1.0.0.0\lib\net40\Hatfield.WQDefaultValueProvider.JSON.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -121,9 +131,6 @@
     <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>$(SolutionDir)\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
       <Private>True</Private>
@@ -223,6 +230,7 @@
     <Compile Include="AutoMapper\AutoMapperConfiguration.cs" />
     <Compile Include="AutoMapper\ChemistryFileDataResolver.cs" />
     <Compile Include="AutoMapper\SampleFileDataResolver.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\API\QueryDataAPIController.cs" />
     <Compile Include="Controllers\ESDATController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -234,6 +242,7 @@
     <Compile Include="Helpers\ImportResultHelper.cs" />
     <Compile Include="Infrastructure\Dependency.cs" />
     <Compile Include="Infrastructure\DependencyConfigure.cs" />
+    <Compile Include="Models\AdminDefaultValuesDataViewModel.cs" />
     <Compile Include="Models\FtpFileImportDataViewModel.cs" />
     <Compile Include="Models\HttpFileImportDataViewModel.cs" />
     <Compile Include="Models\ResultMessageViewModel.cs" />
@@ -363,6 +372,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\ESDAT\Index.cshtml" />
     <Content Include="Views\ESDAT\ViewData.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\AdminDefaultValues.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
