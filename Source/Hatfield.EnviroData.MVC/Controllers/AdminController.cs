@@ -30,17 +30,7 @@ namespace Hatfield.EnviroData.MVC.Controllers
         [HttpGet]
         public ActionResult AdminDefaultValues()
         {
-            var viewModel = new AdminDefaultValuesDataViewModel();
-
-            viewModel.Name = _defaultValueProvider.Name;
-            viewModel.DefaultPersonFirstName = _defaultValueProvider.DefaultPersonFirstName;
-            viewModel.DefaultPersonMiddleName = _defaultValueProvider.DefaultPersonMiddleName;
-            viewModel.DefaultPersonLastName = _defaultValueProvider.DefaultPersonLastName;
-
-            viewModel.DefaultOrganizationTypeCV = _defaultValueProvider.DefaultOrganizationTypeCV;
-            viewModel.DefaultOrganizationName = _defaultValueProvider.DefaultOrganizationName;
-            viewModel.DefaultOrganizationCode = _defaultValueProvider.DefaultOrganizationCode;
-
+            var viewModel = Mapper.Map<IWQDefaultValueProvider, AdminDefaultValuesDataViewModel>(_defaultValueProvider);
             return View(viewModel);
         }
 

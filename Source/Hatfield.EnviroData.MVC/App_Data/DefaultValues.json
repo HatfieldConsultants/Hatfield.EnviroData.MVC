@@ -16,7 +16,7 @@
   "DefaultMethodLink": null,
   "DefaultMethodOrganizationID": null,
   "DefaultVariableTypeCV": null,
-  "DefaultVariableCode": null,
+  "DefaultVariableCode": "Unknown",
   "DefaultVariableNameCV": null,
   "DefaultVariableDefinition": null,
   "DefaultVariableSpeciationCV": null,
@@ -25,7 +25,7 @@
   "DefaultUnitsAbbreviation": null,
   "DefaultUnitsName": null,
   "DefaultUnitsLink": null,
-  "DefaultCVUnitsType": null,
+  "DefaultCVUnitsType": "Unknown",
   "DefaultCVTerm": null,
   "DefaultCVName": null,
   "WayToHandleNewData": 0
