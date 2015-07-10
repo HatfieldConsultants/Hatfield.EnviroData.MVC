@@ -1,8 +1,8 @@
 ﻿var HttpFileImportModel = function () {
     var self = this;
-    self.HeaderFileURL = ko.observable('header file URL');
-    self.SampleFileURL = ko.observable('sample file URL');
-    self.ChemistryFileURL = ko.observable('chemistry file URL');
+    self.HeaderFileURL = ko.observable('');
+    self.SampleFileURL = ko.observable('');
+    self.ChemistryFileURL = ko.observable('');
     
     self.ImportResults = ko.observableArray();
 

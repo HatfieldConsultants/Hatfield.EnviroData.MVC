@@ -1,9 +1,9 @@
 ﻿var FTPFileImportModel = function () {
     var self = this;
-    self.HeaderFileURL = ko.observable('header file FTP URL');
-    self.SampleFileURL = ko.observable('sample file FTP URL');
-    self.ChemistryFileURL = ko.observable('chemistry file FTP URL');
-    self.UserName = ko.observable('UserName');
+    self.HeaderFileURL = ko.observable('');
+    self.SampleFileURL = ko.observable('');
+    self.ChemistryFileURL = ko.observable('');
+    self.UserName = ko.observable('');
     self.Password = ko.observable('');
     
     self.ImportResults = ko.observableArray();
