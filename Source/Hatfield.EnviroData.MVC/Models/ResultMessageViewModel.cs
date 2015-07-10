@@ -7,7 +7,7 @@ namespace Hatfield.EnviroData.MVC.Models
 {
     public class ResultMessageViewModel
     {
-        public string Level { get; set; }
+        public string Level { get; set; }//DEBUG, INFO, WARN, ERROR, FATAL
         public string Message { get; set; }
     }
 }

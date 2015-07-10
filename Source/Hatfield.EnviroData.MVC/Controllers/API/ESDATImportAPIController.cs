@@ -1,4 +1,9 @@
-﻿using Hatfield.EnviroData.Core;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Http;
+
+using Hatfield.EnviroData.Core;
 using Hatfield.EnviroData.DataAcquisition;
 using Hatfield.EnviroData.DataAcquisition.CSV;
 using Hatfield.EnviroData.DataAcquisition.ESDAT;
@@ -9,20 +14,23 @@ using Hatfield.EnviroData.FileSystems.FTPFileSystem;
 using Hatfield.EnviroData.FileSystems.HttpFileSystem;
 using Hatfield.EnviroData.MVC.Helpers;
 using Hatfield.EnviroData.MVC.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
+using Hatfield.EnviroData.WQDataProfile;
 
 namespace Hatfield.EnviroData.MVC.Controllers
 {
     public class ESDATImportAPIController : ApiController
     {
-        private IDbContext _dbContext;
+        private static string HeaderFileInputElementName = "headerFileInput";
+        private static string SampleFileInputElementName = "sampleFileInput";
+        private static string ChemistryFileInputElementName = "chemistryFileInput";
 
-        public ESDATImportAPIController(IDbContext dbContext)
+        private IDbContext _dbContext;
+        private IWQDefaultValueProvider _wqDefaultValueProvider;
+
+        public ESDATImportAPIController(IDbContext dbContext, IWQDefaultValueProvider wqDefaultValueProvider)
         {
             _dbContext = dbContext;
+            _wqDefaultValueProvider = wqDefaultValueProvider;
         }
 
         [HttpPost]
@@ -30,12 +38,17 @@ namespace Hatfield.EnviroData.MVC.Controllers
         {
             var request = HttpContext.Current.Request;
 
-            var headerFile = request.Files[0];
-            var sampleFile = request.Files[1];
-            var chemistryFile = request.Files[2];
+            XMLDataToImport headerFileXMLFileToImport = null;
 
-            var headerFileData = new DataFromFileSystem(headerFile.FileName, headerFile.InputStream);
-            var headerFileXMLFileToImport = new XMLDataToImport(headerFileData);
+            if (request.Files.AllKeys.Contains(HeaderFileInputElementName))
+            {
+                var headerFile = request.Files[HeaderFileInputElementName];
+                var headerFileData = new DataFromFileSystem(headerFile.FileName, headerFile.InputStream);
+                headerFileXMLFileToImport = new XMLDataToImport(headerFileData);
+            }
+            
+            var sampleFile = request.Files[SampleFileInputElementName];
+            var chemistryFile = request.Files[ChemistryFileInputElementName];
 
             var sampleFileData = new DataFromFileSystem(sampleFile.FileName, sampleFile.InputStream);
             var sampleFileCSVFileToImport = new CSVDataToImport(sampleFileData);
@@ -44,7 +57,7 @@ namespace Hatfield.EnviroData.MVC.Controllers
             var chemistryCSVFileToImport = new CSVDataToImport(chemistryFileData);
 
             var esdatDataToImport = new ESDATDataToImport(headerFileXMLFileToImport, sampleFileCSVFileToImport, chemistryCSVFileToImport);
-            var importer = ESDATDataImportHelper.BuildESDATDataImporter();
+            var importer = ESDATDataImportHelper.BuildESDATDataImporter(_wqDefaultValueProvider);
 
             var results = PersistESDATData(esdatDataToImport, importer);
 
@@ -54,8 +67,14 @@ namespace Hatfield.EnviroData.MVC.Controllers
         [HttpPost]
         public IEnumerable<ResultMessageViewModel> ImportHttpFiles(HttpFileImportDataViewModel data)
         {
-            var headerFileHttpFileSystem = new HttpFileSystem(data.HeaderFileURL);
-            var headerFileXMLFileToImport = new XMLDataToImport(headerFileHttpFileSystem.FetchData());
+            XMLDataToImport headerFileXMLFileToImport = null;
+
+            if (!string.IsNullOrEmpty(data.HeaderFileURL))
+            {
+                var headerFileHttpFileSystem = new HttpFileSystem(data.HeaderFileURL);
+                headerFileXMLFileToImport = new XMLDataToImport(headerFileHttpFileSystem.FetchData());
+            }
+            
 
             var sampleFileHttpFileSystem = new HttpFileSystem(data.SampleFileURL);
             var sampleFileCSVFileToImport = new CSVDataToImport(sampleFileHttpFileSystem.FetchData());
@@ -64,7 +83,7 @@ namespace Hatfield.EnviroData.MVC.Controllers
             var chemistryCSVFileToImport = new CSVDataToImport(chemistryFileHttpFileSystem.FetchData());
 
             var esdatDataToImport = new ESDATDataToImport(headerFileXMLFileToImport, sampleFileCSVFileToImport, chemistryCSVFileToImport);
-            var importer = ESDATDataImportHelper.BuildESDATDataImporter();
+            var importer = ESDATDataImportHelper.BuildESDATDataImporter(_wqDefaultValueProvider);
 
             var results = PersistESDATData(esdatDataToImport, importer);
 
@@ -74,8 +93,13 @@ namespace Hatfield.EnviroData.MVC.Controllers
         [HttpPost]
         public IEnumerable<ResultMessageViewModel> ImportFtpFiles(FtpFileImportDataViewModel data)
         {
-            var headerFileFtpFileSystem = new FTPFileSystem(data.HeaderFileURL, data.UserName, data.Password);
-            var headerFileXMLFileToImport = new XMLDataToImport(headerFileFtpFileSystem.FetchData());
+            XMLDataToImport headerFileXMLFileToImport = null;
+
+            if (!string.IsNullOrEmpty(data.HeaderFileURL))
+            {
+                var headerFileHttpFileSystem = new FTPFileSystem(data.HeaderFileURL);
+                headerFileXMLFileToImport = new XMLDataToImport(headerFileHttpFileSystem.FetchData());
+            }
 
             var sampleFileFtpFileSystem = new FTPFileSystem(data.SampleFileURL, data.UserName, data.Password);
             var sampleFileCSVFileToImport = new CSVDataToImport(sampleFileFtpFileSystem.FetchData());
@@ -84,7 +108,7 @@ namespace Hatfield.EnviroData.MVC.Controllers
             var chemistryCSVFileToImport = new CSVDataToImport(chemistryFileFtpFileSystem.FetchData());
 
             var esdatDataToImport = new ESDATDataToImport(headerFileXMLFileToImport, sampleFileCSVFileToImport, chemistryCSVFileToImport);
-            var importer = ESDATDataImportHelper.BuildESDATDataImporter();
+            var importer = ESDATDataImportHelper.BuildESDATDataImporter(_wqDefaultValueProvider);
 
             var results = PersistESDATData(esdatDataToImport, importer);
 
@@ -109,24 +133,11 @@ namespace Hatfield.EnviroData.MVC.Controllers
             else
             {
                 var esdatModel = extractedResults.ExtractedEntities.First();
-                var esdatConverter = new ActionConverter(_dbContext);
-                var action = esdatConverter.Convert(esdatModel, 
-                                                    new ActionByConverter(_dbContext), 
-                                                    new FeatureActionConverter(_dbContext), 
-                                                    new MethodConverter(_dbContext), 
-                                                    new OrganizationConverter(_dbContext), 
-                                                    new AffiliationConverter(_dbContext), 
-                                                    new PersonConverter(_dbContext), 
-                                                    new RelatedActionConverter(_dbContext), 
-                                                    new SamplingFeatureConverter(_dbContext), 
-                                                    new ResultConverter(_dbContext), 
-                                                    new DataSetsResultConverter(_dbContext), 
-                                                    new DatasetConverter(_dbContext), 
-                                                    new ProcessingLevelConverter(_dbContext), 
-                                                    new UnitConverter(_dbContext), 
-                                                    new VariableConverter(_dbContext), 
-                                                    new MeasurementResultConverter(_dbContext), 
-                                                    new MeasurementResultValueConverter(_dbContext));
+
+                var parameters = new ESDATSampleCollectionParameters(_dbContext, esdatModel);
+
+                var esdatConverter = new ESDATConverter();
+                var action = esdatConverter.Convert(parameters);
 
                 _dbContext.Add<Hatfield.EnviroData.Core.Action>(action);
                 //_dbContext.SaveChanges();

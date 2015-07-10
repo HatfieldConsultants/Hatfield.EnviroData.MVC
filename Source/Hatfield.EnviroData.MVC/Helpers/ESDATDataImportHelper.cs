@@ -13,12 +13,13 @@ using Hatfield.EnviroData.FileSystems.WindowsFileSystem;
 using Hatfield.EnviroData.DataAcquisition.ESDAT.Importer;
 using Hatfield.EnviroData.DataAcquisition.XML;
 using Hatfield.EnviroData.DataAcquisition;
+using Hatfield.EnviroData.WQDataProfile;
 
 namespace Hatfield.EnviroData.MVC.Helpers
 {
     public class ESDATDataImportHelper
     {
-        public static IDataImporter BuildESDATDataImporter()
+        public static IDataImporter BuildESDATDataImporter(IWQDefaultValueProvider wqDefaultValueProvider)
         {
             var simpleValueAssginer = new SimpleValueAssigner();
 
@@ -28,7 +29,7 @@ namespace Hatfield.EnviroData.MVC.Helpers
             var chemistryDataImporter = BuildChemistryFileImporter();
             var chemistryFileChildObjectExtractConfiguration = new ChemistryFileChildObjectExtractConfiguration(chemistryDataImporter, "ChemistryData", simpleValueAssginer);
 
-            var ESDATDataImporter = new ESDATDataImporter(ResultLevel.ERROR);
+            var ESDATDataImporter = new ESDATDataImporter(ResultLevel.ERROR, wqDefaultValueProvider);
 
             AddXMLExtractConfigurationsToImporter(ESDATDataImporter);
             ESDATDataImporter.AddExtractConfiguration(sampleFileChildObjectExtractConfiguration);
