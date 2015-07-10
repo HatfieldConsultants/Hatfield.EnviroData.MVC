@@ -27,6 +27,8 @@ namespace Hatfield.EnviroData.MVC.Controllers
         private IDbContext _dbContext;
         private IWQDefaultValueProvider _wqDefaultValueProvider;
 
+        WayToHandleNewData wayToHandleNewData = WayToHandleNewData.CreateInstanceForNewData;
+
         public ESDATImportAPIController(IDbContext dbContext, IWQDefaultValueProvider wqDefaultValueProvider)
         {
             _dbContext = dbContext;
@@ -134,13 +136,20 @@ namespace Hatfield.EnviroData.MVC.Controllers
             {
                 var esdatModel = extractedResults.ExtractedEntities.First();
 
-                var parameters = new ESDATSampleCollectionParameters(_dbContext, esdatModel);
+                var duplicateChecker = new ESDATDuplicateChecker(_dbContext);
+                var sampleCollectionFactory = new ESDATSampleCollectionMapperFactory(duplicateChecker, _wqDefaultValueProvider, wayToHandleNewData);
 
-                var esdatConverter = new ESDATConverter();
-                var action = esdatConverter.Convert(parameters);
+
+                var chemistryFactory = new ESDATChemistryMapperFactory(duplicateChecker, _wqDefaultValueProvider, wayToHandleNewData);
+
+                var mapper = new SampleCollectionActionMapper(duplicateChecker, sampleCollectionFactory, _wqDefaultValueProvider, chemistryFactory, wayToHandleNewData);
+
+                var converter = new ESDATConverter(mapper);
+
+                var action = converter.Convert(esdatModel);
 
                 _dbContext.Add<Hatfield.EnviroData.Core.Action>(action);
-                //_dbContext.SaveChanges();
+                _dbContext.SaveChanges();
 
                 return new List<ResultMessageViewModel> {
                     new ResultMessageViewModel{
