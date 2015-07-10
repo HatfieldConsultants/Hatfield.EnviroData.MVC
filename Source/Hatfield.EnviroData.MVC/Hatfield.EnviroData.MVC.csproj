@@ -71,13 +71,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Hatfield.EnviroData.CVUpdater">
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.CVUpdater.dll</HintPath>
+    </Reference>
     <Reference Include="Hatfield.EnviroData.DataAcquisition">
       <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.DataAcquisition.CSV">
       <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.CSV.dll</HintPath>
     </Reference>
-    <Reference Include="Hatfield.EnviroData.DataAcquisition.ESDAT">
+    <Reference Include="Hatfield.EnviroData.DataAcquisition.ESDAT, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.ESDAT.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.DataAcquisition.XML">

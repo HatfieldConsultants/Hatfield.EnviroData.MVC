@@ -108,27 +108,15 @@ namespace Hatfield.EnviroData.MVC.Controllers
             }
             else
             {
-                var esdatModel = extractedResults.ExtractedEntities.First();
-                var esdatConverter = new ActionConverter(_dbContext);
-                var action = esdatConverter.Convert(esdatModel, 
-                                                    new ActionByConverter(_dbContext), 
-                                                    new FeatureActionConverter(_dbContext), 
-                                                    new MethodConverter(_dbContext), 
-                                                    new OrganizationConverter(_dbContext), 
-                                                    new AffiliationConverter(_dbContext), 
-                                                    new PersonConverter(_dbContext), 
-                                                    new RelatedActionConverter(_dbContext), 
-                                                    new SamplingFeatureConverter(_dbContext), 
-                                                    new ResultConverter(_dbContext), 
-                                                    new DataSetsResultConverter(_dbContext), 
-                                                    new DatasetConverter(_dbContext), 
-                                                    new ProcessingLevelConverter(_dbContext), 
-                                                    new UnitConverter(_dbContext), 
-                                                    new VariableConverter(_dbContext), 
-                                                    new MeasurementResultConverter(_dbContext), 
-                                                    new MeasurementResultValueConverter(_dbContext));
-
-                _dbContext.Add<Hatfield.EnviroData.Core.Action>(action);
+                
+                foreach (var entity in extractedResults.ExtractedEntities)
+                {
+                    var parameters = new ESDATSampleCollectionParameters(_dbContext, entity);
+                    var converter = new ESDATConverter();
+                    var action = converter.Convert(parameters);
+                    _dbContext.Add(action);
+                }
+                
                 //_dbContext.SaveChanges();
 
                 return new List<ResultMessageViewModel> {
