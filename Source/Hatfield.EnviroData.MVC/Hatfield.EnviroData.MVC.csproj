@@ -71,6 +71,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Hatfield.EnviroData.CVUpdater">
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.CVUpdater.dll</HintPath>
+    </Reference>
     <Reference Include="Hatfield.EnviroData.DataAcquisition">
       <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.dll</HintPath>
     </Reference>
@@ -103,6 +106,9 @@
     </Reference>
     <Reference Include="Hatfield.WQDefaultValueProvider.JSON">
       <HintPath>..\..\packages\Hatfield.WQDefaultValueProvider.JSON.1.0.0.0\lib\net40\Hatfield.WQDefaultValueProvider.JSON.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\..\packages\HtmlAgilityPack.1.4.9\lib\Net40\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
