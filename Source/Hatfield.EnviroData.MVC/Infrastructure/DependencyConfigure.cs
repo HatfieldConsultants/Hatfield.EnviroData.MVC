@@ -9,6 +9,7 @@ using Autofac;
 using Autofac.Core;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using log4net;
 
 using Hatfield.EnviroData.Core;
 using Hatfield.EnviroData.Core.Repositories;
@@ -19,6 +20,8 @@ namespace Hatfield.EnviroData.MVC.Infrastructure
 {
     internal class DependencyConfigure
     {
+        private static readonly ILog log = LogManager.GetLogger("Application");
+
         public static void Initialize()
         {
             var builder = new ContainerBuilder();
@@ -35,6 +38,9 @@ namespace Hatfield.EnviroData.MVC.Infrastructure
 
         private static IContainer RegisterServices(ContainerBuilder builder)
         {
+            var jsonConfigFilePath = System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/DefaultValues.json");
+
+            log.Debug("Fetch default value provider data from " + jsonConfigFilePath);
 
             builder.RegisterAssemblyTypes(
                 typeof(WebApiApplication).Assembly
@@ -47,7 +53,7 @@ namespace Hatfield.EnviroData.MVC.Infrastructure
             builder.RegisterType<ActionRepository>().As<IActionRepository>();
             builder.RegisterType<JSONWQDefaultValueProvider>()
                    .As<IWQDefaultValueProvider>()
-                   .WithParameter("jsonFilePath", System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/DefaultValues.json"))
+                   .WithParameter("jsonFilePath", jsonConfigFilePath)
                    .WithParameter("createNewConfigFileIfNotExist", true)
                    .InstancePerLifetimeScope();
 
