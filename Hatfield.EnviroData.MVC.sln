@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{02D738
 	ProjectSection(SolutionItems) = preProject
 		Deploy\Build.xml = Deploy\Build.xml
 		Deploy\schema.sql = Deploy\schema.sql
+		Deploy\seedData.sql = Deploy\seedData.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E6DDF227-63AA-4806-90E1-2946AADABFE7}"
