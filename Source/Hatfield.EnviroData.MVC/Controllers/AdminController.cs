@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 
 using AutoMapper;
 
 using Hatfield.EnviroData.WQDataProfile;
+using Hatfield.WQDefaultValueProvider.JSON;
 using Hatfield.EnviroData.MVC.Models;
+
 
 namespace Hatfield.EnviroData.MVC.Controllers
 {
@@ -19,7 +22,17 @@ namespace Hatfield.EnviroData.MVC.Controllers
         {
             _defaultValueProvider = defaultValueProvider;
         }
-        //
+        
+
+        //public AdminController()
+        //{
+        //    string startupPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+
+        //    var appDataFolder = Path.Combine(startupPath, "App_Data", "DefaultValues.json");
+
+        //    _defaultValueProvider = new JSONWQDefaultValueProvider(appDataFolder, true);
+        //}
+
         // GET: /Admin/
 
         public ActionResult Index()
