@@ -51,13 +51,13 @@
       <HintPath>$(SolutionDir)\packages\Autofac.WebApi.3.1.0\lib\net40\Autofac.Integration.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="AutoMapper">
-      <HintPath>..\..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="AutoMapper.Net4">
-      <HintPath>..\..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
     <Reference Include="CsvHelper">
-      <HintPath>..\..\packages\CsvHelper.2.13.0.0\lib\net40-client\CsvHelper.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\CsvHelper.2.13.0.0\lib\net40-client\CsvHelper.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -69,54 +69,54 @@
     </Reference>
     <Reference Include="Hatfield.EnviroData.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.Core.dll</HintPath>
+      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.Core.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.CVUpdater">
-      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.CVUpdater.dll</HintPath>
+      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.CVUpdater.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.DataAcquisition">
-      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.dll</HintPath>
+      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.DataAcquisition.CSV">
-      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.CSV.dll</HintPath>
+      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.CSV.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.DataAcquisition.ESDAT">
-      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.ESDAT.dll</HintPath>
+      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.ESDAT.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.DataAcquisition.XML">
-      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.XML.dll</HintPath>
+      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.XML.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.FileSystems">
-      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.dll</HintPath>
+      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.FileSystems.FTPFileSystem">
-      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.FTPFileSystem.dll</HintPath>
+      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.FTPFileSystem.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.FileSystems.HttpFileSystem">
-      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.HttpFileSystem.dll</HintPath>
+      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.HttpFileSystem.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.FileSystems.NetworkFileSystem">
-      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.NetworkFileSystem.dll</HintPath>
+      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.NetworkFileSystem.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.FileSystems.WindowsFileSystem">
-      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.WindowsFileSystem.dll</HintPath>
+      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.WindowsFileSystem.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.WQDataProfile">
-      <HintPath>..\..\packages\Hatfield.EnviroData.WQDataProfile.dll.1.0.0.0\lib\net40\Hatfield.EnviroData.WQDataProfile.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\Hatfield.EnviroData.WQDataProfile.dll.1.0.0.0\lib\net40\Hatfield.EnviroData.WQDataProfile.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.WQDefaultValueProvider.JSON">
-      <HintPath>..\..\packages\Hatfield.WQDefaultValueProvider.JSON.1.0.0.0\lib\net40\Hatfield.WQDefaultValueProvider.JSON.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\Hatfield.WQDefaultValueProvider.JSON.1.0.0.0\lib\net40\Hatfield.WQDefaultValueProvider.JSON.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack">
-      <HintPath>..\..\packages\HtmlAgilityPack.1.4.9\lib\Net40\HtmlAgilityPack.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\HtmlAgilityPack.1.4.9\lib\Net40\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
