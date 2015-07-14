@@ -27,7 +27,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <WebPublishFolder>C:\inetpub\wwwroot\HatfieldEnviroData</WebPublishFolder>
+    <WebPublishFolder>C:\inetpub\wwwroot\HatfieldEnviroData_MVC</WebPublishFolder>
 	  <SolutionPath>..\Hatfield.EnviroData.MVC.sln</SolutionPath>
 	  <WebProjectPath>..\Source\Hatfield.EnviroData.MVC\Hatfield.EnviroData.MVC.csproj</WebProjectPath>
     <TestResultDirectory>..\TestResults</TestResultDirectory>
