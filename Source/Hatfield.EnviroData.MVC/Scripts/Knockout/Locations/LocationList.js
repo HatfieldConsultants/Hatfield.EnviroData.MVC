@@ -6,7 +6,7 @@
 
 $(document).ready(function () {
     $.ajax({
-        url: Hatfield.RootURL + "../api/QueryDataAPI/GetSites", //Hatfield is a global variable define in the layout page
+        url: Hatfield.RootURL + "../api/StationQueryAPI/GetSites", //Hatfield is a global variable define in the layout page
         type: 'GET',
         dataType: 'json',
         async: false,

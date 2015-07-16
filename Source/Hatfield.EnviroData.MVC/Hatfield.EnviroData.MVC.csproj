@@ -241,6 +241,7 @@
     <Compile Include="AutoMapper\SampleFileDataResolver.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\API\QueryDataAPIController.cs" />
+    <Compile Include="Controllers\API\StationQueryAPIController.cs" />
     <Compile Include="Controllers\ESDATController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\API\ESDATImportAPIController.cs" />

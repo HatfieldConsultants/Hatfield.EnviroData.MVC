@@ -41,8 +41,8 @@ namespace Hatfield.EnviroData.MVC.AutoMapper
                 .ForMember(x => x.SampleFileData, l => l.ResolveUsing<SampleFileDataResolver>().ConstructedBy(() => new SampleFileDataResolver()).FromMember(m => m.RelatedActions))
                 .ForMember(x => x.ChemistryData, l => l.ResolveUsing<ChemistryFileDataResolver>().ConstructedBy(() => new ChemistryFileDataResolver()).FromMember(m => m.RelatedActions));
 
-            Mapper.CreateMap<IWQDefaultValueProvider, AdminDefaultValuesDataViewModel>();
-            Mapper.CreateMap<AdminDefaultValuesDataViewModel, WQDefaultValueModel>();
+            //Mapper.CreateMap<IWQDefaultValueProvider, AdminDefaultValuesDataViewModel>();
+            //Mapper.CreateMap<AdminDefaultValuesDataViewModel, WQDefaultValueModel>();
         }
     }
 }
