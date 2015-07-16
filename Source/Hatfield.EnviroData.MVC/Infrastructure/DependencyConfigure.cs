@@ -15,6 +15,7 @@ using Hatfield.EnviroData.Core;
 using Hatfield.EnviroData.Core.Repositories;
 using Hatfield.EnviroData.WQDataProfile;
 using Hatfield.WQDefaultValueProvider.JSON;
+using Hatfield.EnviroData.WQDataProfile.Repositories;
 
 namespace Hatfield.EnviroData.MVC.Infrastructure
 {

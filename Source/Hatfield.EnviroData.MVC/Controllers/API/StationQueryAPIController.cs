@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Hatfield.EnviroData.Core;
 using Hatfield.EnviroData.MVC.Models;
+using Hatfield.EnviroData.WQDataProfile;
 using System;
 using System.Collections.Generic;
 using System.Linq;

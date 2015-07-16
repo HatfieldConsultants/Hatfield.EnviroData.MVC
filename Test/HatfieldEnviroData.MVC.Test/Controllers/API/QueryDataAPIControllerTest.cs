@@ -12,6 +12,7 @@ using Hatfield.EnviroData.MVC.Models;
 using Hatfield.EnviroData.DataAcquisition.ESDAT;
 using Hatfield.EnviroData.MVC.Controllers.API;
 using Hatfield.EnviroData.MVC.AutoMapper;
+using Hatfield.EnviroData.WQDataProfile;
 
 namespace HatfieldEnviroData.MVC.Test.Controllers.API
 {
@@ -28,7 +29,6 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
         public void GetTest()
         {
             var mockRepository = new Mock<IActionRepository>();
-            var mockSiteRepository = new Mock<ISiteRepository>();
 
             mockRepository.Setup(x => x.GetAllSampleCollectionActions())
                           .Returns(() => new List<Hatfield.EnviroData.Core.Action> { 
@@ -41,7 +41,7 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
                                 BeginDateTime = new DateTime(2015, 2, 3)
                             }
                           });
-            var controller = new QueryDataAPIController(mockRepository.Object, mockSiteRepository.Object);
+            var controller = new QueryDataAPIController(mockRepository.Object);
 
             var viewModels = controller.Get();
                         
@@ -61,7 +61,6 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
         public void GetSampleCollectionActionInESDATTest()
         {
             var mockRepository = new Mock<IActionRepository>();
-            var mockSiteRepository = new Mock<ISiteRepository>();
 
             mockRepository.Setup(x => x.GetActionById(It.IsAny<int>()))
                           .Returns(() =>
@@ -99,7 +98,7 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
                             }
                           );
 
-            var controller = new QueryDataAPIController(mockRepository.Object, mockSiteRepository.Object);
+            var controller = new QueryDataAPIController(mockRepository.Object);
 
             var viewModel = controller.GetSampleCollectionActionInESDAT(1);
 

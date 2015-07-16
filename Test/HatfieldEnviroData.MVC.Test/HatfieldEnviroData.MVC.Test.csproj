@@ -51,6 +51,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.ESDAT.dll</HintPath>
     </Reference>
+    <Reference Include="Hatfield.EnviroData.WQDataProfile">
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.WQDataProfile.dll</HintPath>
+    </Reference>
     <Reference Include="Moq">
       <HintPath>$(SolutionDir)\packages\Moq.4.2.1502.0911\lib\net40\Moq.dll</HintPath>
     </Reference>
