@@ -41,7 +41,7 @@
     </Reference>
     <Reference Include="Hatfield.EnviroData.Core, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\EnviroData\Hatfield.EnviroData.MVC\ReferenceAssemblies\Hatfield.EnviroData.Core.dll</HintPath>
+      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.Core.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.DataAcquisition, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
