@@ -18,6 +18,14 @@ namespace Hatfield.EnviroData.MVC.AutoMapper
                 .ForMember(x => x.Id, l => l.MapFrom(m => m.ActionID))
                 .ForMember(x => x.Name, l => l.MapFrom(m => m.BeginDateTime.ToString("MMM-dd-yyyy")));
 
+            Mapper.CreateMap<Site, SiteViewModel>()
+                .ForMember(x => x.Latitude, l => l.MapFrom(m => m.Latitude))
+                .ForMember(x => x.Longitude, l => l.MapFrom(m => m.Longitude))
+                .ForMember(x => x.SamplingFeatureID, l => l.MapFrom(m => m.SamplingFeatureID))
+                .ForMember(x => x.SiteTypeCV, l => l.MapFrom(m => m.SiteTypeCV))
+                .ForMember(x => x.SpatialReferenceID, l => l.MapFrom(m => m.SpatialReferenceID))
+                ;
+
             Mapper.CreateMap<Action, ESDATModel>()
                 .ForMember(x => x.DateReported, l => l.MapFrom(m => m.BeginDateTime))
                 .ForMember(x => x.ProjectId, l => l.Ignore())

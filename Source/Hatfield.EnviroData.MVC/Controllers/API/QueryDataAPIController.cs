@@ -16,10 +16,12 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
     public class QueryDataAPIController : ApiController
     {
         private readonly IActionRepository _actionRepository;
+        private readonly ISiteRepository _siteRepository;
 
-        public QueryDataAPIController(IActionRepository actionRepository)
+        public QueryDataAPIController(IActionRepository actionRepository, ISiteRepository siteRepository)
         {
             _actionRepository = actionRepository;
+            _siteRepository = siteRepository;
         }
 
         [HttpGet]

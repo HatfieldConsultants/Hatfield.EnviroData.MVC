@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table id="locationListTable" class="table table-condensed table-bordered table-hover"
+       style="width: auto;">
+    <thead>
+        <tr>
+            <th>
+                Station Id
+            </th>
+            <th>
+                Station Latitude
+            </th>
+            <th>
+                Station Longitude
+            </th>
+            <th>
+                Station Type
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-bind="visible: Locations().length > 0">
+            <td colspan="3"><strong>Stations</strong></td>
+        </tr>
+        <!-- ko foreach: Locations -->
+        <tr>
+            <td>
+                <a href="#" data-bind='html: SamplingFeatureID'>
+                </a>
+            </td>
+            <td data-bind="html: Latitude"></td>
+            <td data-bind="html: Longitude"></td>
+            <td data-bind="html: SiteTypeCV"></td>
+        </tr>
+        <!-- /ko -->
+    </tbody>
+</table>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/Locations/LocationList.js")"></script>
