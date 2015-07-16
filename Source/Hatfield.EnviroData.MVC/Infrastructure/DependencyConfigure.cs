@@ -15,6 +15,7 @@ using Hatfield.EnviroData.Core;
 using Hatfield.EnviroData.Core.Repositories;
 using Hatfield.EnviroData.WQDataProfile;
 using Hatfield.WQDefaultValueProvider.JSON;
+using Hatfield.EnviroData.WQDataProfile.Repositories;
 
 namespace Hatfield.EnviroData.MVC.Infrastructure
 {
@@ -51,6 +52,7 @@ namespace Hatfield.EnviroData.MVC.Infrastructure
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterType<VariableRepository>().As<IVariableRepository>();
             builder.RegisterType<ActionRepository>().As<IActionRepository>();
+            builder.RegisterType<SiteRepository>().As<ISiteRepository>();
             builder.RegisterType<JSONWQDefaultValueProvider>()
                    .As<IWQDefaultValueProvider>()
                    .WithParameter("jsonFilePath", jsonConfigFilePath)

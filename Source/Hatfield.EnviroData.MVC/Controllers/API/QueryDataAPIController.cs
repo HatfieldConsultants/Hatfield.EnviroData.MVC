@@ -10,6 +10,7 @@ using AutoMapper;
 using Hatfield.EnviroData.Core;
 using Hatfield.EnviroData.MVC.Models;
 using Hatfield.EnviroData.DataAcquisition.ESDAT;
+using Hatfield.EnviroData.WQDataProfile;
 
 namespace Hatfield.EnviroData.MVC.Controllers.API
 {
