@@ -39,9 +39,9 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>$(SolutionDir)\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
-    <Reference Include="Hatfield.EnviroData.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Hatfield.EnviroData.Core, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.Core.dll</HintPath>
+      <HintPath>..\..\..\EnviroData\Hatfield.EnviroData.MVC\ReferenceAssemblies\Hatfield.EnviroData.Core.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.DataAcquisition, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -58,7 +58,6 @@
       <HintPath>$(SolutionDir)\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />

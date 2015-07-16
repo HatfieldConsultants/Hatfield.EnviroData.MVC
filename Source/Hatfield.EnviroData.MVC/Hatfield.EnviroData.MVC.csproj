@@ -67,9 +67,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(SolutionDir)\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Hatfield.EnviroData.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Hatfield.EnviroData.Core, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.Core.dll</HintPath>
+      <HintPath>..\..\..\EnviroData\Hatfield.EnviroData.MVC\ReferenceAssemblies\Hatfield.EnviroData.Core.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.CVUpdater">
       <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.CVUpdater.dll</HintPath>
@@ -244,6 +244,7 @@
     <Compile Include="Controllers\ESDATController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\API\ESDATImportAPIController.cs" />
+    <Compile Include="Controllers\StationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -256,6 +257,7 @@
     <Compile Include="Models\HttpFileImportDataViewModel.cs" />
     <Compile Include="Models\ResultMessageViewModel.cs" />
     <Compile Include="Models\SampleListItemViewModel.cs" />
+    <Compile Include="Models\SiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -348,6 +350,7 @@
     <Content Include="Scripts\Knockout\FTPFileImport.js" />
     <Content Include="Scripts\Knockout\LocalFileImport.js" />
     <Content Include="Scripts\Knockout\HttpFileImport.js" />
+    <Content Include="Scripts\Knockout\Locations\LocationList.js" />
     <Content Include="Scripts\Knockout\SampleCollectionActionDisplay.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config">
@@ -384,6 +387,7 @@
     <Content Include="Views\ESDAT\ViewData.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\AdminDefaultValues.cshtml" />
+    <Content Include="Views\Station\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
