@@ -101,9 +101,6 @@
     <Reference Include="Hatfield.EnviroData.FileSystems.WindowsFileSystem">
       <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.WindowsFileSystem.dll</HintPath>
     </Reference>
-    <Reference Include="Hatfield.EnviroData.WQDataProfile">
-      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.WQDataProfile.dll</HintPath>
-    </Reference>
     <Reference Include="Hatfield.WQDefaultValueProvider.JSON">
       <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.WQDefaultValueProvider.JSON.dll</HintPath>
     </Reference>
