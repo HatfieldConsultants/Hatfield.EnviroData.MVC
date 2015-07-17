@@ -38,6 +38,8 @@ namespace Hatfield.EnviroData.MVC.Controllers
         [HttpPost]
         public IEnumerable<ResultMessageViewModel> ImportLocalFiles()
         {
+            var results = new List<ResultMessageViewModel>();
+
             var request = HttpContext.Current.Request;
 
             XMLDataToImport headerFileXMLFileToImport = null;
@@ -47,6 +49,10 @@ namespace Hatfield.EnviroData.MVC.Controllers
                 var headerFile = request.Files[HeaderFileInputElementName];
                 var headerFileData = new DataFromFileSystem(headerFile.FileName, headerFile.InputStream);
                 headerFileXMLFileToImport = new XMLDataToImport(headerFileData);
+            }
+            else
+            {
+                results.Add(new ResultMessageViewModel(ResultMessageViewModel.RESULT_LEVEL_WARN, "Header file is not uploaded, use default value."));
             }
             
             var sampleFile = request.Files[SampleFileInputElementName];
@@ -61,7 +67,7 @@ namespace Hatfield.EnviroData.MVC.Controllers
             var esdatDataToImport = new ESDATDataToImport(headerFileXMLFileToImport, sampleFileCSVFileToImport, chemistryCSVFileToImport);
             var importer = ESDATDataImportHelper.BuildESDATDataImporter(_wqDefaultValueProvider);
 
-            var results = PersistESDATData(esdatDataToImport, importer);
+            results.AddRange(PersistESDATData(esdatDataToImport, importer));
 
             return results;
         }
@@ -125,10 +131,10 @@ namespace Hatfield.EnviroData.MVC.Controllers
             {
                 var failResults = from parsingResult in ImportResultHelper.FilterWarningAndErrorResult(extractedResults.AllParsingResults)
                                   select new ResultMessageViewModel
-                                  {
-                                      Level = parsingResult.Level.ToString(),
-                                      Message = parsingResult.Message
-                                  };
+                                  (
+                                      parsingResult.Level.ToString(),
+                                      parsingResult.Message
+                                  );
 
                 return failResults;
             }
@@ -152,10 +158,11 @@ namespace Hatfield.EnviroData.MVC.Controllers
                 _dbContext.SaveChanges();
 
                 return new List<ResultMessageViewModel> {
-                    new ResultMessageViewModel{
-                        Level = "Info",
-                        Message = "Import success"
-                    }
+                    new ResultMessageViewModel
+                    (
+                        ResultMessageViewModel.RESULT_LEVEL_INFO,
+                        "Import success"
+                    )
                 };
             }
         }
