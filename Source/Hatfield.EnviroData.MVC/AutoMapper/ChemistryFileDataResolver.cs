@@ -29,7 +29,11 @@ namespace Hatfield.EnviroData.MVC.AutoMapper
                                                  select new ChemistryFileData {
                                                      AnalysedDate = measurementResultValue.ValueDateTime,
                                                      ExtractionDate = measurementResultValue.ValueDateTime,
-                                                     Result = measurementResultValue.DataValue
+                                                     Result = measurementResultValue.DataValue,
+                                                     ResultUnit = measurementResultValue.MeasurementResult.Unit.UnitsName,
+                                                     OriginalChemName = result.Variable.VariableNameCV
+                                                     
+                                                     
                                                     
                                                  };
 
