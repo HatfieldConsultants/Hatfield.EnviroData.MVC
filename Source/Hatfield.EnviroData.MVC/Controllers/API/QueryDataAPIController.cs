@@ -39,37 +39,6 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
 
             var esdatModel = Mapper.Map<ESDATModel>(matchedAction);
             return esdatModel;
-            //var esdatModel = new ESDATModel(new DateTime(2014, 1, 1),
-            //                                1,
-            //                                "lab name",
-            //                                "lab signatory",
-            //                                new List<string>() { "associate file" },
-            //                                new List<string>() { "copy sent to" },
-            //                                2,
-            //                                3,
-            //                                4,
-            //                                5,
-            //                                (decimal)6.0,
-            //                                new List<SampleFileData> { 
-            //                                    new SampleFileData("test sample code",
-            //                                                        new DateTime(2015, 1, 5),
-            //                                                        "test field ID",
-            //                                                        1.0,
-            //                                                        "Water",
-            //                                                        "test sample type",
-            //                                                        "",
-            //                                                        "test SDG",
-            //                                                        "test lab Name",
-            //                                                        "test lab sample ID",
-            //                                                        "test comment",
-            //                                                        "test lab report number")
-            //                                },
-            //                                new List<ChemistryFileData> { 
-            //                                    new ChemistryFileData("test sample code", "test orginial chem name", "chem code", "<", 2.0,
-            //                                                         "%", "Total", "result type", "method type", "method name", new DateTime(2015, 1, 6),
-            //                                                         new DateTime(2015, 1, 6), 3.0, "test EQL units", "test comments", "Good", 4.0, 5.0)
-            //                                });
-
             
         }
     }
