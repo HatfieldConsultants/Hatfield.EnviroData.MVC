@@ -1,0 +1,257 @@
+﻿@{
+    ViewBag.Title = "Water Quality Graph";
+}
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Locations/LocationList.js")"></script>
+
+<div class="container">
+    <h1>Water Quality Graph</h1>
+    <div class="col-lg-4">
+        <div class="row">
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                                    Locations
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="accordion-body collapse in">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Site:</label>
+                                        <select data-bind="options: Locations" class="form-control" style="height:250px;" id="selectSite"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                                    Time Frame
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="accordion-body collapse in">
+                            <div class="panel-body">
+                                <div id="reportrange" class="pull-left" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                    <span></span> <b class="caret"></b>
+                                </div>
+                                <script type="text/javascript">
+                                    $(function () {
+
+                                        $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+
+                                        $('#reportrange').daterangepicker({
+                                            format: 'MM/DD/YYYY',
+                                            startDate: moment().subtract(29, 'days'),
+                                            endDate: moment(),
+                                            minDate: '01/01/2012',
+                                            maxDate: '12/31/2015',
+                                            dateLimit: { days: 60 },
+                                            showDropdowns: true,
+                                            showWeekNumbers: true,
+                                            timePicker: false,
+                                            timePickerIncrement: 1,
+                                            timePicker12Hour: true,
+                                            ranges: {
+                                                'Today': [moment(), moment()],
+                                                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                                                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                                                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                                                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                                                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                                            },
+                                            opens: 'right',
+                                            drops: 'down',
+                                            buttonClasses: ['btn', 'btn-sm'],
+                                            applyClass: 'btn-primary',
+                                            cancelClass: 'btn-default',
+                                            separator: ' to ',
+                                            locale: {
+                                                applyLabel: 'Submit',
+                                                cancelLabel: 'Cancel',
+                                                fromLabel: 'From',
+                                                toLabel: 'To',
+                                                customRangeLabel: 'Custom',
+                                                daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+                                                monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                                                firstDay: 1
+                                            }
+                                        }, function (start, end, label) {
+                                            console.log(start.toISOString(), end.toISOString(), label);
+                                            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                                        });
+
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                                    Anaylytes
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="accordion-body collapse in">
+                            <div class="panel-body">
+                                @*<div class="input-group">
+                                        <span class="input-group-addon">Filter</span>
+
+                                        <input id="filter" type="text" class="form-control" placeholder="Type here...">
+                                    </div>*@
+                                <table data-toggle="table" data-height="300" data-search="true" data-click-to-select="true">
+                                    <thead>
+                                        <tr>
+                                            <th data-field="state" data-checkbox="true"></th>
+                                            <th data-sortable="true">Name/Analyte</th>
+                                            <th data-sortable="true">Units</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="searchable">
+                                        <tr>
+                                            <td><input type="checkbox" /></td>
+                                            <td>Temperature</td>
+                                            <td>C</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" /></td>
+                                            <td>Water Level</td>
+                                            <td>m</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" /></td>
+                                            <td>Mercury</td>
+                                            <td>mg</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" /></td>
+                                            <td>Lead</td>
+                                            <td>mg</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" /></td>
+                                            <td>pH</td>
+                                            <td>pH units</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" /></td>
+                                            <td>Temperature</td>
+                                            <td>C</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" /></td>
+                                            <td>Water Level</td>
+                                            <td>m</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" /></td>
+                                            <td>Mercury</td>
+                                            <td>mg</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" /></td>
+                                            <td>Lead</td>
+                                            <td>mg</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" /></td>
+                                            <td>pH</td>
+                                            <td>pH units</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" /></td>
+                                            <td>Temperature</td>
+                                            <td>C</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" /></td>
+                                            <td>Water Level</td>
+                                            <td>m</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" /></td>
+                                            <td>Mercury</td>
+                                            <td>mg</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" /></td>
+                                            <td>Lead</td>
+                                            <td>mg</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" /></td>
+                                            <td>pH</td>
+                                            <td>pH units</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <script type="text/javascript">
+                                    $(document).ready(function () {
+
+                                        (function ($) {
+
+                                            $('#filter').keyup(function () {
+
+                                                var rex = new RegExp($(this).val(), 'i');
+                                                $('.searchable tr').hide();
+                                                $('.searchable tr').filter(function () {
+                                                    return rex.test($(this).text());
+                                                }).show();
+
+                                            })
+
+                                        }(jQuery));
+
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+                                        Guidelines
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFour" class="accordion-body collapse in">
+                                <div class="panel-body">
+                                    Chose a guideline: <select class="form-control"><option>Alberta</option><option>BC</option><option>Other</option></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="text-center" style="padding:5px" id="generate">
+                        <button type="button" class="btn btn-primary">Generate Report</button>
+                    </div>
+                    <div class="text-center" style="padding:5px">
+                        <button type="button" class="btn btn-success">Download as Excel File</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /container -->

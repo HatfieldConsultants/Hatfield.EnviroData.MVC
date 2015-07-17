@@ -259,6 +259,7 @@
     <Compile Include="Models\ResultMessageViewModel.cs" />
     <Compile Include="Models\SampleListItemViewModel.cs" />
     <Compile Include="Models\SiteViewModel.cs" />
+    <Compile Include="Models\VariableViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -348,9 +349,11 @@
     <Content Include="Scripts\knockout-3.3.0.debug.js" />
     <Content Include="Scripts\knockout-3.3.0.js" />
     <Content Include="Scripts\knockout.mapping-latest.js" />
+    <Content Include="Scripts\Knockout\AnalyteList.js" />
     <Content Include="Scripts\Knockout\FTPFileImport.js" />
     <Content Include="Scripts\Knockout\LocalFileImport.js" />
     <Content Include="Scripts\Knockout\HttpFileImport.js" />
+    <Content Include="Scripts\Knockout\Locations\LocationDetail.js" />
     <Content Include="Scripts\Knockout\Locations\LocationList.js" />
     <Content Include="Scripts\Knockout\SampleCollectionActionDisplay.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -389,6 +392,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\AdminDefaultValues.cshtml" />
     <Content Include="Views\Station\Index.cshtml" />
+    <Content Include="Views\Station\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
