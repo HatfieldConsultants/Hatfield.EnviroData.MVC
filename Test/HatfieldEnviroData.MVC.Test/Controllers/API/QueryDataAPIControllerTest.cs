@@ -81,12 +81,19 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
                                                                     new MeasurementResultValue{
                                                                         ValueDateTime = new DateTime(2015, 2, 4),
                                                                         DataValue = 2.0
+                                                                        
                                                                     },
                                                                     new MeasurementResultValue{
                                                                         ValueDateTime = new DateTime(2015, 2, 4),
                                                                         DataValue = 3.0
                                                                     }
+                                                                },
+                                                                Unit = new Unit{
+                                                                    UnitsName = "test unit name"
                                                                 }
+                                                            },
+                                                            Variable = new Variable{
+                                                                VariableNameCV = "test variable name cv"
                                                             }
                                                         }
                                                     }
@@ -118,11 +125,15 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
             Assert.AreEqual(new DateTime(2015, 2, 4), firstChemistryData.AnalysedDate);
             Assert.AreEqual(new DateTime(2015, 2, 4), firstChemistryData.ExtractionDate);
             Assert.AreEqual(2.0, firstChemistryData.Result);
+            Assert.AreEqual("test unit name", firstChemistryData.ResultUnit);
+            Assert.AreEqual("test variable name cv", firstChemistryData.OriginalChemName);
 
             var secondChemistryData = chemistryData.ElementAt(1);
             Assert.AreEqual(new DateTime(2015, 2, 4), secondChemistryData.AnalysedDate);
             Assert.AreEqual(new DateTime(2015, 2, 4), secondChemistryData.ExtractionDate);
             Assert.AreEqual(3.0, secondChemistryData.Result);
+            Assert.AreEqual("test unit name", secondChemistryData.ResultUnit);
+            Assert.AreEqual("test variable name cv", secondChemistryData.OriginalChemName);
 
         }
     }
