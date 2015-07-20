@@ -14,6 +14,7 @@ using Hatfield.EnviroData.DataAcquisition.ESDAT.Importer;
 using Hatfield.EnviroData.DataAcquisition.XML;
 using Hatfield.EnviroData.DataAcquisition;
 using Hatfield.EnviroData.WQDataProfile;
+using Hatfield.EnviroData.DataAcquisition.XML.ValidationRules;
 
 namespace Hatfield.EnviroData.MVC.Helpers
 {
@@ -236,6 +237,13 @@ namespace Hatfield.EnviroData.MVC.Helpers
         private static void AddXMLExtractConfigurationsToImporter(IDataImporter dataImporter)
         {
             var parserFactory = new DefaultXMLParserFactory();
+
+            var extensionValidationRule = new XMLFileNameExtensionMatchValidationRule(".xml", false);
+            dataImporter.AddValidationRule(extensionValidationRule);
+
+            var labNameValidationRule = new ElementValueMatchCriteriaValidationRule(new XMLDataSourceLocation("LabReport", "Lab_Name"), parserFactory, typeof(string), new RegexCriteria("^Lab1$"));
+            dataImporter.AddValidationRule(labNameValidationRule);
+
             var labNameFieldExtractConfiguration = new SimpleXMLExtractConfiguration("", "Lab_Name", parserFactory.GetElementParser(typeof(string)), new SimpleValueAssigner(), typeof(string), "LabName");
 
             var dateReportedFieldExtractConfiguration = new SimpleXMLExtractConfiguration("", "Date_Reported", parserFactory.GetElementParser(typeof(DateTime)), new SimpleValueAssigner(), typeof(DateTime), "DateReported");

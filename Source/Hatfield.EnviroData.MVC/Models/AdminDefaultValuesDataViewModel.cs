@@ -18,6 +18,11 @@ namespace Hatfield.EnviroData.MVC.Models
         public string DefaultPersonFirstName { get; set; }
         public string DefaultPersonLastName { get; set; }
         public string DefaultPersonMiddleName { get; set; }
+
+        public string DefaultOrganizationTypeCV { get; set; }
+        public string DefaultOrganizationName { get; set; }
+        public string DefaultOrganizationCode { get; set; }
+
         public string DefaultProcessingLevelCode { get; set; }
         public string DefaultSamplingFeatureCode { get; set; }
         public string DefaultSamplingFeatureTypeCVChemistry { get; set; }

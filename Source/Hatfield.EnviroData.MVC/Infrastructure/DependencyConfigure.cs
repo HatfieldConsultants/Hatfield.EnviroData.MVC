@@ -53,13 +53,16 @@ namespace Hatfield.EnviroData.MVC.Infrastructure
             builder.RegisterType<VariableRepository>().As<IVariableRepository>();
             builder.RegisterType<ActionRepository>().As<IActionRepository>();
             builder.RegisterType<SiteRepository>().As<ISiteRepository>();
-            builder.RegisterType<JSONWQDefaultValueProvider>()
-                   .As<IWQDefaultValueProvider>()
-                   .WithParameter("jsonFilePath", jsonConfigFilePath)
-                   .WithParameter("createNewConfigFileIfNotExist", true)
+            //builder.RegisterType<JSONWQDefaultValueProvider>()
+            //       .As<IWQDefaultValueProvider>()
+            //       .WithParameter("jsonFilePath", jsonConfigFilePath)
+            //       .WithParameter("createNewConfigFileIfNotExist", true)
+            //       .WithParameter("wayToLoadConfigFile", WayToLoadConfigFile.CreateNewConfigFileIfLoadFail)
+            //       .InstancePerLifetimeScope();
+
+            builder.RegisterType<StaticWQDefaultValueProvider>()
+                   .As<IWQDefaultValueProvider>()                   
                    .InstancePerLifetimeScope();
-
-
             return builder.Build();
         }
     }

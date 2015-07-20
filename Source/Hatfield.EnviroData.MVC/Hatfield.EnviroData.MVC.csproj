@@ -81,7 +81,7 @@
       <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.CSV.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.DataAcquisition.ESDAT">
-      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.ESDAT.dll</HintPath>
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.ESDAT.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.DataAcquisition.XML">
       <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.DataAcquisition.XML.dll</HintPath>

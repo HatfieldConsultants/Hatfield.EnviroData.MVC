@@ -157,8 +157,8 @@ namespace Hatfield.EnviroData.MVC.Controllers
 
                 var action = converter.Convert(esdatModel);
 
-                _dbContext.Add<Hatfield.EnviroData.Core.Action>(action);
-                _dbContext.SaveChanges();
+                //_dbContext.Add<Hatfield.EnviroData.Core.Action>(action);
+                //_dbContext.SaveChanges();
 
                 var resultList = allResults.ToList();
                 resultList.Add(

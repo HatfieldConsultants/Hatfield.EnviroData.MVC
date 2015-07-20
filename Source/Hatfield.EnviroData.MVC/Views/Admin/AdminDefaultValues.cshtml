@@ -35,48 +35,42 @@
 
     <br />
     @Html.Label("Default Processing Levels:")
-    @Html.TextBoxFor(x => x.DefaultProcessingLevels)
+    @Html.TextBoxFor(x => x.DefaultProcessingLevelCode)
 
     <br />
     @Html.Label("Default Sampling Feature UUID:")
     @Html.TextBoxFor(x => x.DefaultSamplingFeatureUUID)
 
     <br />
-    @Html.Label("Default Sampling Feature Type CV:")
-    @Html.TextBoxFor(x => x.DefaultSamplingFeatureTypeCV)
+    @Html.Label("Default Sampling Feature Type CV (Chemistry):")
+    @Html.TextBoxFor(x => x.DefaultSamplingFeatureTypeCVChemistry)
 
+    <br />
+    @Html.Label("Default Sampling Feature Type CV (Sample Collection):")
+    @Html.TextBoxFor(x => x.DefaultSamplingFeatureTypeCVSampleCollection)
+    
     <br />
     @Html.Label("Default Sampling Feature Code:")
     @Html.TextBoxFor(x => x.DefaultSamplingFeatureCode)
 
     <br />
-    @Html.Label("Default Method Type CV:")
-    @Html.TextBoxFor(x => x.DefaultMethodTypeCV)
+    @Html.Label("Default Method Type CV (Chemistry):")
+    @Html.TextBoxFor(x => x.DefaultMethodTypeCVChemistry)
 
     <br />
-    @Html.Label("Default Method Code:")
-    @Html.TextBoxFor(x => x.DefaultMethodCode)
+    @Html.Label("Default Method Type CV (Sample Collection):")
+    @Html.TextBoxFor(x => x.DefaultMethodTypeCVSampleCollection)
+
 
     <br />
-    @Html.Label("Default Method Name:")
-    @Html.TextBoxFor(x => x.DefaultMethodName)
+    @Html.Label("Default Variable Type CV (Sample Collection):")
+    @Html.TextBoxFor(x => x.DefaultVariableTypeCVSampleCollection)
+
 
     <br />
-    @Html.Label("Default Method Description:")
-    @Html.TextBoxFor(x => x.DefaultMethodDescription)
-
-    <br />
-    @Html.Label("Default Method Link:")
-    @Html.TextBoxFor(x => x.DefaultMethodLink)
-
-    <br />
-    @Html.Label("Default Method Organization ID:")
-    @Html.TextBoxFor(x => x.DefaultMethodOrganizationID)
-
-    <br />
-    @Html.Label("Default Variable Type CV:")
-    @Html.TextBoxFor(x => x.DefaultVariableTypeCV)
-
+    @Html.Label("Default Variable Type CV  (Chemistry):")
+    @Html.TextBoxFor(x => x.DefaultVariableTypeCVChemistry)
+    
     <br />
     @Html.Label("Default Variable Code:")
     @Html.TextBoxFor(x => x.DefaultVariableCode)
@@ -85,9 +79,6 @@
     @Html.Label("Default Variable Name CV:")
     @Html.TextBoxFor(x => x.DefaultVariableNameCV)
 
-    <br />
-    @Html.Label("Default Variable Definition:")
-    @Html.TextBoxFor(x => x.DefaultVariableDefinition)
 
     <br />
     @Html.Label("Default Variable Speciation CV:")
@@ -98,32 +89,14 @@
     @Html.TextBoxFor(x => x.DefaultVariableNoDataValue)
 
     <br />
-    @Html.Label("Default Units Type CV:")
-    @Html.TextBoxFor(x => x.DefaultUnitsTypeCV)
+    @Html.Label("Default Units Type CV (Sample Collectoin):")
+    @Html.TextBoxFor(x => x.DefaultUnitsTypeCVSampleCollection)
 
     <br />
-    @Html.Label("Default Units Abbreviation:")
-    @Html.TextBoxFor(x => x.DefaultUnitsAbbreviation)
+    @Html.Label("Default Units Type CV (Chemistry):")
+    @Html.TextBoxFor(x => x.DefaultUnitsTypeCVSampleCollection)
 
-    <br />
-    @Html.Label("Default Units Name:")
-    @Html.TextBoxFor(x => x.DefaultUnitsName)
 
-    <br />
-    @Html.Label("Default Units Link:")
-    @Html.TextBoxFor(x => x.DefaultUnitsLink)
-
-    <br />
-    @Html.Label("Default CV Units Type:")
-    @Html.TextBoxFor(x => x.DefaultCVUnitsType)
-
-    <br />
-    @Html.Label("Default CV Term:")
-    @Html.TextBoxFor(x => x.DefaultCVTerm)
-
-    <br />
-    @Html.Label("Default CV Name:")
-    @Html.TextBoxFor(x => x.DefaultCVName)
 
     <br />
     @Html.Label("Wat To Handle New Data:")
