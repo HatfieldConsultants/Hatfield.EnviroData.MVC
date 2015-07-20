@@ -142,6 +142,9 @@ namespace Hatfield.EnviroData.MVC.Controllers
             {
                 var esdatModel = extractedResults.ExtractedEntities.First();
 
+                var allResults = from parsingResult in extractedResults.AllParsingResults
+                                 select new ResultMessageViewModel(parsingResult.Level.ToString(), parsingResult.Message);
+
                 var duplicateChecker = new ESDATDuplicateChecker(_dbContext);
                 var sampleCollectionFactory = new ESDATSampleCollectionMapperFactory(duplicateChecker, _wqDefaultValueProvider, wayToHandleNewData);
 
@@ -157,13 +160,15 @@ namespace Hatfield.EnviroData.MVC.Controllers
                 _dbContext.Add<Hatfield.EnviroData.Core.Action>(action);
                 _dbContext.SaveChanges();
 
-                return new List<ResultMessageViewModel> {
+                var resultList = allResults.ToList();
+                resultList.Add(
                     new ResultMessageViewModel
                     (
                         ResultMessageViewModel.RESULT_LEVEL_INFO,
                         "Import success"
                     )
-                };
+                );
+                return resultList;
             }
         }
     }
