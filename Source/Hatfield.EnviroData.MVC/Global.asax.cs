@@ -26,6 +26,7 @@ namespace Hatfield.EnviroData.MVC
 
         protected void Application_Start()
         {
+            RouteTable.Routes.MapHubs();
             XmlConfigurator.ConfigureAndWatch(new FileInfo(Path.Combine(Server.MapPath("/"), "log4net.config")));
             log.Info("Application Started");
 
@@ -41,6 +42,7 @@ namespace Hatfield.EnviroData.MVC
             //Create auto mapper
             AutoMapperConfiguration.Configure();
             Mapper.AssertConfigurationIsValid();
+
         }
     }
 }
