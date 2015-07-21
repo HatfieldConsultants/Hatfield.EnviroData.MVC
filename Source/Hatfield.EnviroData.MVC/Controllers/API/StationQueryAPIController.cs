@@ -16,12 +16,18 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
         private readonly IActionRepository _actionRepository;
         private readonly ISiteRepository _siteRepository;
         private readonly IVariableRepository _variableRepository;
+        private readonly IResultRepository _resultRepository;
+        private readonly IMeasurementResultValueRepository _measurementResultValueRepository;
+        private readonly IUnitRepository _unitRepository;
 
-        public StationQueryAPIController(IActionRepository actionRepository, ISiteRepository siteRepository, IVariableRepository variableRepository)
+        public StationQueryAPIController(IActionRepository actionRepository, ISiteRepository siteRepository, IVariableRepository variableRepository, IResultRepository resultRepository, IMeasurementResultValueRepository measurementResultValueRepository, IUnitRepository unitRepository)
         {
             _actionRepository = actionRepository;
             _siteRepository = siteRepository;
             _variableRepository = variableRepository;
+            _resultRepository = resultRepository;
+            _measurementResultValueRepository = measurementResultValueRepository;
+            _unitRepository = unitRepository;
         }
 
         [HttpGet]
@@ -54,6 +60,18 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
         {
             var sites =_variableRepository.GetAll();
             var items = Mapper.Map<IEnumerable<VariableViewModel>>(sites);
+            return items;
+        }
+
+        [HttpGet]
+        public StationAnalyteQueryViewModel GetAnalyteResults (int stationId, int analyteId)
+        {
+            var result = _resultRepository.GetAll().Where(x => x.VariableID == analyteId && x.FeatureAction.SamplingFeatureID == stationId).FirstOrDefault();
+            var measurementResult = _measurementResultValueRepository.GetAll().Where(x => x.ResultID == result.ResultID).FirstOrDefault();
+            var unit = _unitRepository.GetAll().Where(x => x.UnitsID == result.UnitsID).FirstOrDefault();
+            //var a = Mapper.Map<IEnumerable<StationAnalyteQueryViewModel>>(result);
+            var items = new StationAnalyteQueryViewModel() {DataValue = measurementResult.DataValue, ResultDateTime = result.ResultDateTime, UnitsName = unit.UnitsName, UnitsTypeCV = unit.UnitsTypeCV, Variable = result.Variable.CV_VariableName.Name};
+
             return items;
         }
     }

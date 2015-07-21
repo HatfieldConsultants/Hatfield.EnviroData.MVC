@@ -1,10 +1,5 @@
-﻿<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+﻿<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Locations/LocationList.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/AnalyteList.js")"></script>
 
 <div class="container">
     <h1>Water Quality Graph</h1>
@@ -25,7 +20,9 @@
                                 <div class="row">
                                     <div id="sites" class="col-md-12">
                                         <label>Site:</label>
-                                        <select data-bind="options: Locations,  optionsText: 'SiteTypeCV', value: 'SamplingFeatureID'" class="form-control" id="selectSite"></select>
+                                        <select data-bind="options: Locations,  optionsText: function(item) {
+                       return 'Sampling Feature ID:'+item.SamplingFeatureID()+' ('+item.SiteTypeCV()+')'
+                   }, value: 'SamplingFeatureID'" class="form-control" id="selectSite"></select>
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +44,54 @@
                                     <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
                                     <span></span> <b class="caret"></b>
                                 </div>
-                                
+                                <script type="text/javascript">
+                                    $(function () {
+
+                                        $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+
+                                        $('#reportrange').daterangepicker({
+                                            format: 'MM/DD/YYYY',
+                                            startDate: moment().subtract(29, 'days'),
+                                            endDate: moment(),
+                                            minDate: '01/01/2012',
+                                            maxDate: '12/31/2015',
+                                            dateLimit: { days: 60 },
+                                            showDropdowns: true,
+                                            showWeekNumbers: true,
+                                            timePicker: false,
+                                            timePickerIncrement: 1,
+                                            timePicker12Hour: true,
+                                            ranges: {
+                                                'Today': [moment(), moment()],
+                                                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                                                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                                                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                                                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                                                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                                            },
+                                            opens: 'right',
+                                            drops: 'down',
+                                            buttonClasses: ['btn', 'btn-sm'],
+                                            applyClass: 'btn-primary',
+                                            cancelClass: 'btn-default',
+                                            separator: ' to ',
+                                            locale: {
+                                                applyLabel: 'Submit',
+                                                cancelLabel: 'Cancel',
+                                                fromLabel: 'From',
+                                                toLabel: 'To',
+                                                customRangeLabel: 'Custom',
+                                                daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+                                                monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                                                firstDay: 1
+                                            }
+                                        }, function (start, end, label) {
+                                            console.log(start.toISOString(), end.toISOString(), label);
+                                            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                                        });
+
+                                    });
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -103,7 +147,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-group">
+                    @*<div class="accordion-group">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
@@ -118,7 +162,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
@@ -126,10 +170,7 @@
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="text-center" style="padding:5px" id="generate">
-                        <button type="button" class="btn btn-primary">Generate Report</button>
-                    </div>
-                    <div class="text-center" style="padding:5px">
-                        <button type="button" class="btn btn-success">Download as Excel File</button>
+                        <button type="button" class="btn btn-primary">Display Data</button>
                     </div>
                 </div>
                 <script>
@@ -142,5 +183,3 @@
 </div>
 <!-- /container -->
 
-<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Locations/LocationList.js")"></script>
-<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/AnalyteList.js")"></script>

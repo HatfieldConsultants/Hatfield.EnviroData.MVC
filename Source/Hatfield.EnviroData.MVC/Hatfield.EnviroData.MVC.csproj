@@ -284,6 +284,7 @@
     <Compile Include="Models\ResultMessageViewModel.cs" />
     <Compile Include="Models\SampleListItemViewModel.cs" />
     <Compile Include="Models\SiteViewModel.cs" />
+    <Compile Include="Models\StationAnalyteQueryViewModel.cs" />
     <Compile Include="Models\VariableViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
