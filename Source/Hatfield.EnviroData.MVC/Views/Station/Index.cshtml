@@ -124,6 +124,7 @@
             </div>
         </div>
         <div class="row">
+
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="text-center" style="padding:5px" id="generate">
@@ -133,6 +134,39 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-4">
+        <div class="panel panel-default" id="results" style="display:none;">           
+                <div class="panel-heading">
+                    <h4 class="panel-title">                       
+                            Results
+                    </h4>
+                </div>
+            <div class="panel-body">
+                <table class="table table-bordered" id="queryResults">
+                    <thead>
+                        <tr id="headings">
+                            <th>Variable</th>
+                            <th>Result Date</th>
+                            <th>Value</th>
+                            <th>Units</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>   
+                        <!-- ko foreach: queryResults -->                    
+                        <tr>
+                            <td data-bind="html: Variable"></td>
+                            <td data-bind="html: ResultDateTime"></td>
+                            <td data-bind="html: DataValue"></td>
+                            <td data-bind="html: UnitsName"></td>
+                            <td data-bind="html: UnitsTypeCV"></td>
+                        </tr>
+                        <!-- /ko -->
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
 </div>
 <!-- /container -->
 

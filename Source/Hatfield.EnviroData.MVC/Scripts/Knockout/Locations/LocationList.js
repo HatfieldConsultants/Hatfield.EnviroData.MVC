@@ -3,8 +3,9 @@ var locationJson = null;
 var analyteJson =  null;
 
 var ParentViewModel = function (locationData, analyteData) {
-
+    
     var self = this;
+    self.queryResults = ko.observableArray();
     self.Analytes = ko.mapping.fromJS(analyteData);
     self.selectedChoices = ko.observableArray('');
     self.Locations = ko.mapping.fromJS(locationData);
@@ -37,6 +38,8 @@ var ParentViewModel = function (locationData, analyteData) {
             contentType: 'application/json',
             success: function (data) {
                 $('#divImage').hide(); //hide the mask
+                ko.mapping.fromJS(data, {}, self.queryResults);
+                DrawTable();
                 //create table
             },
             error: function (data) {
@@ -45,6 +48,16 @@ var ParentViewModel = function (locationData, analyteData) {
             }
         });//end of ajax
     };//end of GenerateWaterTable
+}
+
+function DrawTable(tableData)
+{
+    //$('#queryResults tr :not([id="headings"])').remove();
+    //$.each(tableData, function (index, value) {
+    //    var row = '<tr><td>' + value.Variable + '</td>' + '<td>' + value.ResultDateTime + '</td>' + '<td>' + value.DataValue + '</td>' + '<td>' + value.UnitsName + '</td>' + '<td>' + value.UnitsTypeCV + '</td>' + '</tr>';
+    //    $('#queryResults > tbody:last-child').append(row);
+    //});
+    $('#results').show();
 }
 
 var WaterQualityRequestViewModel = function (startDate, endDate, site, selectedVariables) {

@@ -69,13 +69,16 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
             var items = new List<StationAnalyteQueryViewModel>();
             foreach (var variable in queryViewModel.SelectedVariables)
             {
-                var result = _resultRepository.GetAll().Where(x => x.VariableID == variable && x.FeatureAction.SamplingFeatureID == queryViewModel.SelectedSiteID).FirstOrDefault();
-                if (result != null)
+                var results = _resultRepository.GetAll().Where(x => x.VariableID == variable && x.FeatureAction.SamplingFeatureID == queryViewModel.SelectedSiteID);
+                if (results != null)
                 {
-                    var measurementResult = _measurementResultValueRepository.GetAll().Where(x => x.ResultID == result.ResultID).FirstOrDefault();
-                    var unit = _unitRepository.GetAll().Where(x => x.UnitsID == result.UnitsID).FirstOrDefault();
-                    //var a = Mapper.Map<IEnumerable<StationAnalyteQueryViewModel>>(result);
-                    items.Add(new StationAnalyteQueryViewModel() { DataValue = measurementResult.DataValue, ResultDateTime = result.ResultDateTime, UnitsName = unit.UnitsName, UnitsTypeCV = unit.UnitsTypeCV, Variable = result.Variable.CV_VariableName.Name });
+                    foreach (var result in results)
+                    {
+                        if (result.MeasurementResult.MeasurementResultValues.First().ValueDateTime <= queryViewModel.EndDate && result.MeasurementResult.MeasurementResultValues.First().ValueDateTime >= queryViewModel.StartDate)
+                        {
+                            items.Add(new StationAnalyteQueryViewModel() { DataValue = result.MeasurementResult.MeasurementResultValues.First().DataValue, ResultDateTime = result.MeasurementResult.MeasurementResultValues.First().ValueDateTime, UnitsName = result.Unit.UnitsName, UnitsTypeCV = result.Unit.UnitsTypeCV, Variable = result.Variable.CV_VariableName.Name });
+                        }
+                    }
                 }
             }
 
