@@ -67,15 +67,20 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
                             new Hatfield.EnviroData.Core.Action
                             {
                                 ActionID = 2,
-                                BeginDateTime = new DateTime(2015, 2, 2),
+                                BeginDateTime = new DateTime(2015, 2, 2),                                
                                 RelatedActions = new List<RelatedAction> { 
                                     new RelatedAction{
                                         Action1 = new Hatfield.EnviroData.Core.Action{
                                             BeginDateTime = new DateTime(2015, 2, 3),
+                                            Method = new Method{
+                                                MethodDescription = "test description",
+                                                MethodName = "test method name"
+                                            },
                                             FeatureActions = new List<FeatureAction>{
                                                 new FeatureAction{
                                                     Results = new List<Result>{
                                                         new Result{
+                                                            ResultDateTime = new DateTime(2015, 2, 3),
                                                             MeasurementResult = new MeasurementResult{
                                                                 MeasurementResultValues = new List<MeasurementResultValue>{
                                                                     new MeasurementResultValue{
@@ -122,15 +127,15 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
             Assert.AreEqual(2, chemistryData.Count());
 
             var firstChemistryData = chemistryData.ElementAt(0);
-            Assert.AreEqual(new DateTime(2015, 2, 4), firstChemistryData.AnalysedDate);
-            Assert.AreEqual(new DateTime(2015, 2, 4), firstChemistryData.ExtractionDate);
+            Assert.AreEqual(DateTime.MinValue, firstChemistryData.AnalysedDate);
+            Assert.AreEqual(new DateTime(2015, 2, 3), firstChemistryData.ExtractionDate);
             Assert.AreEqual(2.0, firstChemistryData.Result);
             Assert.AreEqual("test unit name", firstChemistryData.ResultUnit);
             Assert.AreEqual("test variable name cv", firstChemistryData.OriginalChemName);
 
             var secondChemistryData = chemistryData.ElementAt(1);
-            Assert.AreEqual(new DateTime(2015, 2, 4), secondChemistryData.AnalysedDate);
-            Assert.AreEqual(new DateTime(2015, 2, 4), secondChemistryData.ExtractionDate);
+            Assert.AreEqual(DateTime.MinValue, secondChemistryData.AnalysedDate);
+            Assert.AreEqual(new DateTime(2015, 2, 3), secondChemistryData.ExtractionDate);
             Assert.AreEqual(3.0, secondChemistryData.Result);
             Assert.AreEqual("test unit name", secondChemistryData.ResultUnit);
             Assert.AreEqual("test variable name cv", secondChemistryData.OriginalChemName);

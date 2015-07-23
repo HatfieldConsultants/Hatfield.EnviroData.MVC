@@ -174,8 +174,8 @@ namespace Hatfield.EnviroData.MVC.Controllers
                 else
                 {
                     var action = (Action)((IParsingResult)convertParsingResult).Value;
-                    //_dbContext.Add<Hatfield.EnviroData.Core.Action>(action);
-                    //_dbContext.SaveChanges();
+                    _dbContext.Add<Hatfield.EnviroData.Core.Action>(action);
+                    _dbContext.SaveChanges();
                     allResults.Add(new ResultMessageViewModel
                     (
                         ResultMessageViewModel.RESULT_LEVEL_INFO,

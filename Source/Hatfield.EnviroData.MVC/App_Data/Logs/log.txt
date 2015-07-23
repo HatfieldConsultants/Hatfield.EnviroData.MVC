@@ -94,3 +94,35 @@
 2015-07-20 11:08:56,083 [1] INFO  Application - Application Started
 2015-07-20 11:08:56,579 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json
 2015-07-20 11:08:56,579 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json
+2015-07-20 11:13:26,234 [1] INFO  Application - Application Started
+2015-07-20 11:13:26,234 [1] INFO  Application - Application Started
+2015-07-20 11:13:26,682 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json
+2015-07-20 11:13:26,682 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json
+2015-07-20 11:33:02,702 [1] INFO  Application - Application Started
+2015-07-20 11:33:02,702 [1] INFO  Application - Application Started
+2015-07-20 11:33:02,857 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json
+2015-07-20 11:33:02,857 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json
+2015-07-20 11:51:48,486 [1] INFO  Application - Application Started
+2015-07-20 11:51:48,486 [1] INFO  Application - Application Started
+2015-07-20 11:51:49,209 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json
+2015-07-20 11:51:49,209 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json
+2015-07-22 13:54:59,858 [1] INFO  Application - Application Started
+2015-07-22 13:54:59,858 [1] INFO  Application - Application Started
+2015-07-22 13:55:00,298 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json
+2015-07-22 13:55:00,298 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json
+2015-07-22 14:24:22,198 [1] INFO  Application - Application Started
+2015-07-22 14:24:22,198 [1] INFO  Application - Application Started
+2015-07-22 14:24:22,691 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json
+2015-07-22 14:24:22,691 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json
+2015-07-23 10:41:18,978 [1] INFO  Application - Application Started
+2015-07-23 10:41:18,978 [1] INFO  Application - Application Started
+2015-07-23 10:41:19,462 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json
+2015-07-23 10:41:19,462 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json
+2015-07-23 10:47:10,639 [1] INFO  Application - Application Started
+2015-07-23 10:47:10,639 [1] INFO  Application - Application Started
+2015-07-23 10:47:11,057 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json
+2015-07-23 10:47:11,057 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json
+2015-07-23 10:49:53,343 [1] INFO  Application - Application Started
+2015-07-23 10:49:53,343 [1] INFO  Application - Application Started
+2015-07-23 10:49:53,500 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json
+2015-07-23 10:49:53,500 [1] DEBUG Application - Fetch default value provider data from E:\GitHub\Hatfield.EnviroData.MVC\Source\Hatfield.EnviroData.MVC\App_Data\DefaultValues.json

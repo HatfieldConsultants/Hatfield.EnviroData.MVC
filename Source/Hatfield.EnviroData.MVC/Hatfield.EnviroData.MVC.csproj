@@ -262,6 +262,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="AutoMapper\AutoMapperConfiguration.cs" />
     <Compile Include="AutoMapper\ChemistryFileDataResolver.cs" />
+    <Compile Include="AutoMapper\MappingHelper.cs" />
     <Compile Include="AutoMapper\SampleFileDataResolver.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\API\QueryDataAPIController.cs" />
