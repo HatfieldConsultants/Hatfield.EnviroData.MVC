@@ -7,6 +7,7 @@ using AutoMapper;
 
 using Hatfield.EnviroData.Core;
 using Hatfield.EnviroData.DataAcquisition.ESDAT;
+using Hatfield.EnviroData.DataAcquisition.ESDAT.Converters;
 
 namespace Hatfield.EnviroData.MVC.AutoMapper
 {
@@ -51,15 +52,33 @@ namespace Hatfield.EnviroData.MVC.AutoMapper
 
             var propertyValueDictionary = result.ResultExtensionPropertyValues.ToDictionary(x => x.ExtensionProperty.PropertyName, x => x.PropertyValue);
 
-            chemistryFileData.SampleCode = propertyValueDictionary.ContainsKey("SampleCode") ? propertyValueDictionary["SampleCode"] : string.Empty;
-            chemistryFileData.Prefix = propertyValueDictionary.ContainsKey("Prefix") ? propertyValueDictionary["Prefix"] : string.Empty;
-            chemistryFileData.TotalOrFiltered = propertyValueDictionary.ContainsKey("Total or Filtered") ? propertyValueDictionary["Total or Filtered"] : string.Empty;
-            chemistryFileData.ResultType = propertyValueDictionary.ContainsKey("Result Type") ? propertyValueDictionary["Result Type"] : string.Empty;
-            chemistryFileData.EQL = propertyValueDictionary.ContainsKey("EQL") ? MappingHelper.ToNullableDouble(propertyValueDictionary["EQL"]) : null;
-            chemistryFileData.EQLUnits = propertyValueDictionary.ContainsKey("EQL Units") ? propertyValueDictionary["EQL Units"] : string.Empty;
-            chemistryFileData.Comments = propertyValueDictionary.ContainsKey("Comments") ? propertyValueDictionary["Comments"] : string.Empty;
-            chemistryFileData.UCL = propertyValueDictionary.ContainsKey("UCL") ? MappingHelper.ToNullableDouble(propertyValueDictionary["UCL"]) : null;
-            chemistryFileData.LCL = propertyValueDictionary.ContainsKey("LCL") ? MappingHelper.ToNullableDouble(propertyValueDictionary["LCL"]) : null;
+            chemistryFileData.SampleCode = propertyValueDictionary.ContainsKey(ESDATChemistryConstants.ResultExtensionPropertyValueKeySampleCode) ? 
+                                            propertyValueDictionary[ESDATChemistryConstants.ResultExtensionPropertyValueKeySampleCode] : 
+                                            string.Empty;
+
+            chemistryFileData.Prefix = propertyValueDictionary.ContainsKey(ESDATChemistryConstants.ResultExtensionPropertyValueKeyPrefix) ?
+                                            propertyValueDictionary[ESDATChemistryConstants.ResultExtensionPropertyValueKeyPrefix] : 
+                                            string.Empty;
+
+            chemistryFileData.TotalOrFiltered = propertyValueDictionary.ContainsKey(ESDATChemistryConstants.ResultExtensionPropertyValueKeyTotalOrFiltered) ?
+                                                    propertyValueDictionary[ESDATChemistryConstants.ResultExtensionPropertyValueKeyTotalOrFiltered] : 
+                                                    string.Empty;
+
+            chemistryFileData.ResultType = propertyValueDictionary.ContainsKey(ESDATChemistryConstants.ResultExtensionPropertyValueKeyResultType) ?
+                                                propertyValueDictionary[ESDATChemistryConstants.ResultExtensionPropertyValueKeyResultType] : 
+                                                string.Empty;
+
+            chemistryFileData.EQL = propertyValueDictionary.ContainsKey(ESDATChemistryConstants.ResultExtensionPropertyValueKeyEQL) ? 
+                                        MappingHelper.ToNullableDouble(propertyValueDictionary[ESDATChemistryConstants.ResultExtensionPropertyValueKeyEQL]) : 
+                                        null;
+
+            chemistryFileData.EQLUnits = propertyValueDictionary.ContainsKey(ESDATChemistryConstants.ResultExtensionPropertyValueKeyEQLUnits) ? 
+                                            propertyValueDictionary[ESDATChemistryConstants.ResultExtensionPropertyValueKeyEQLUnits] : 
+                                            string.Empty;
+
+            chemistryFileData.Comments = propertyValueDictionary.ContainsKey(ESDATChemistryConstants.ResultExtensionPropertyValueKeyComments) ? propertyValueDictionary[ESDATChemistryConstants.ResultExtensionPropertyValueKeyComments] : string.Empty;
+            chemistryFileData.UCL = propertyValueDictionary.ContainsKey(ESDATChemistryConstants.ResultExtensionPropertyValueKeyUCL) ? MappingHelper.ToNullableDouble(propertyValueDictionary[ESDATChemistryConstants.ResultExtensionPropertyValueKeyUCL]) : null;
+            chemistryFileData.LCL = propertyValueDictionary.ContainsKey(ESDATChemistryConstants.ResultExtensionPropertyValueKeyLCL) ? MappingHelper.ToNullableDouble(propertyValueDictionary[ESDATChemistryConstants.ResultExtensionPropertyValueKeyLCL]) : null;
 
             return chemistryFileData;
         }

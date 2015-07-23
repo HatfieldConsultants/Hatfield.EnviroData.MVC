@@ -6,6 +6,7 @@ using AutoMapper;
 
 using Hatfield.EnviroData.Core;
 using Hatfield.EnviroData.DataAcquisition.ESDAT;
+using Hatfield.EnviroData.DataAcquisition.ESDAT.Converters;
 
 namespace Hatfield.EnviroData.MVC.AutoMapper
 {
@@ -71,16 +72,45 @@ namespace Hatfield.EnviroData.MVC.AutoMapper
         {
             var propertyValueDictionary = extensionPropertyValues.ToDictionary(x => x.ExtensionProperty.PropertyName, x => x.PropertyValue);
 
-            sampleFileData.SampleCode = propertyValueDictionary.ContainsKey("SampleCode") ? propertyValueDictionary["SampleCode"] : string.Empty;
-            sampleFileData.FieldID = propertyValueDictionary.ContainsKey("Field ID") ? propertyValueDictionary["Field ID"] : string.Empty;
-            sampleFileData.SampleDepth = propertyValueDictionary.ContainsKey("Sample Depth") ? MappingHelper.ToNullableDouble(propertyValueDictionary["Sample Depth"]) : null;
-            sampleFileData.MatrixType = propertyValueDictionary.ContainsKey("Matrix Type") ? propertyValueDictionary["Matrix Type"] : string.Empty;
-            sampleFileData.SampleType = propertyValueDictionary.ContainsKey("Sample Type") ? propertyValueDictionary["Sample Type"] : string.Empty;
-            sampleFileData.ParentSample = propertyValueDictionary.ContainsKey("Parent Sample") ? propertyValueDictionary["Parent Sample"] : string.Empty;
-            sampleFileData.SDG = propertyValueDictionary.ContainsKey("SDG") ? propertyValueDictionary["SDG"] : string.Empty;
-            sampleFileData.LabSampleID = propertyValueDictionary.ContainsKey("Lab SampleID") ? propertyValueDictionary["Lab SampleID"] : string.Empty;
-            sampleFileData.Comments = propertyValueDictionary.ContainsKey("Comments") ? propertyValueDictionary["Comments"] : string.Empty;
-            sampleFileData.LabReportNumber = propertyValueDictionary.ContainsKey("Lab Report Number") ? propertyValueDictionary["Lab Report Number"] : string.Empty;
+            sampleFileData.SampleCode = propertyValueDictionary.ContainsKey(ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeySampleCode) ?
+                                            propertyValueDictionary[ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeySampleCode] : 
+                                            string.Empty;
+
+            sampleFileData.FieldID = propertyValueDictionary.ContainsKey(ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeyFieldID) ?
+                                        propertyValueDictionary[ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeyFieldID] : 
+                                        string.Empty;
+
+            sampleFileData.SampleDepth = propertyValueDictionary.ContainsKey(ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeySampleDepth) ? 
+                                            MappingHelper.ToNullableDouble(propertyValueDictionary[ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeySampleDepth]) : 
+                                            null;
+
+            sampleFileData.MatrixType = propertyValueDictionary.ContainsKey(ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeyMatrixType) ? 
+                                            propertyValueDictionary[ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeyMatrixType] : 
+                                            string.Empty;
+
+            sampleFileData.SampleType = propertyValueDictionary.ContainsKey(ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeySampleType) ?
+                                            propertyValueDictionary[ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeySampleType] : 
+                                            string.Empty;
+
+            sampleFileData.ParentSample = propertyValueDictionary.ContainsKey(ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeyParentSample) ?
+                                            propertyValueDictionary[ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeyParentSample] : 
+                                            string.Empty;
+
+            sampleFileData.SDG = propertyValueDictionary.ContainsKey(ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeySDG) ? 
+                                            propertyValueDictionary[ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeySDG] : 
+                                            string.Empty;
+
+            sampleFileData.LabSampleID = propertyValueDictionary.ContainsKey(ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeyLabSampleID) ? 
+                                            propertyValueDictionary[ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeyLabSampleID] : 
+                                            string.Empty;
+
+            sampleFileData.Comments = propertyValueDictionary.ContainsKey(ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeyComments) ?
+                                            propertyValueDictionary[ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeyComments] : 
+                                            string.Empty;
+
+            sampleFileData.LabReportNumber = propertyValueDictionary.ContainsKey(ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeyLabReportNumber) ?
+                                                propertyValueDictionary[ESDATSampleCollectionConstants.ResultExtensionPropertyValueKeyLabReportNumber] : 
+                                                string.Empty;
 
             return sampleFileData;
         }
