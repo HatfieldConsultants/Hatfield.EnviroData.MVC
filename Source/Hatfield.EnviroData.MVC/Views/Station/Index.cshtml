@@ -1,8 +1,5 @@
-﻿<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Locations/LocationList.js")"></script>
-<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/AnalyteList.js")"></script>
-
-<div class="container">
-    <h1>Water Quality Graph</h1>
+﻿<div class="container">
+    <h1>Water Quality Query</h1>
     <div class="col-lg-4">
         <div class="row">
             <div class="accordion" id="accordion2">
@@ -21,8 +18,8 @@
                                     <div id="sites" class="col-md-12">
                                         <label>Site:</label>
                                         <select data-bind="options: Locations,  optionsText: function(item) {
-                       return 'Sampling Feature ID:'+item.SamplingFeatureID()+' ('+item.SiteTypeCV()+')'
-                   }, value: 'SamplingFeatureID'" class="form-control" id="selectSite"></select>
+                       return 'Sampling Feature ID:'+item.SamplingFeatureID()+' ('+item.SiteTypeCV()+')';
+                   }, optionsValue: 'SamplingFeatureID'" class="form-control" id="selectSite"></select>
                                     </div>
                                 </div>
                             </div>
@@ -40,58 +37,18 @@
                         </div>
                         <div id="collapseTwo" class="accordion-body collapse in">
                             <div class="panel-body">
-                                <div id="reportrange" class="pull-left" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                                    <span></span> <b class="caret"></b>
+                                <div class="row-fluid">
+                                    <div>
+                                        <h4>Time Frame</h4>
+                                    </div>
+                                    <div class="row">
+                                        <div id="reportrange" class="col-md-8" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; margin-left: 15px">
+                                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                            <span></span> <b class="caret"></b>
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <script type="text/javascript">
-                                    $(function () {
-
-                                        $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
-
-                                        $('#reportrange').daterangepicker({
-                                            format: 'MM/DD/YYYY',
-                                            startDate: moment().subtract(29, 'days'),
-                                            endDate: moment(),
-                                            minDate: '01/01/2012',
-                                            maxDate: '12/31/2015',
-                                            dateLimit: { days: 60 },
-                                            showDropdowns: true,
-                                            showWeekNumbers: true,
-                                            timePicker: false,
-                                            timePickerIncrement: 1,
-                                            timePicker12Hour: true,
-                                            ranges: {
-                                                'Today': [moment(), moment()],
-                                                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                                                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                                                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                                                'This Month': [moment().startOf('month'), moment().endOf('month')],
-                                                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                                            },
-                                            opens: 'right',
-                                            drops: 'down',
-                                            buttonClasses: ['btn', 'btn-sm'],
-                                            applyClass: 'btn-primary',
-                                            cancelClass: 'btn-default',
-                                            separator: ' to ',
-                                            locale: {
-                                                applyLabel: 'Submit',
-                                                cancelLabel: 'Cancel',
-                                                fromLabel: 'From',
-                                                toLabel: 'To',
-                                                customRangeLabel: 'Custom',
-                                                daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-                                                monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                                                firstDay: 1
-                                            }
-                                        }, function (start, end, label) {
-                                            console.log(start.toISOString(), end.toISOString(), label);
-                                            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-                                        });
-
-                                    });
-                                </script>
                             </div>
                         </div>
                     </div>
@@ -118,7 +75,7 @@
                                     <tbody class="searchable">
                                         <!-- ko foreach: Analytes -->
                                         <tr>
-                                            <td><input type="checkbox" /></td>
+                                            <td><input name="analyte" type="checkbox" data-bind="value: VariableID" /></td>
                                             <td data-bind="html: VariableNameCV"></td>
                                             <td data-bind="html: VariableTypeCV"></td>
                                         </tr>
@@ -170,16 +127,15 @@
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="text-center" style="padding:5px" id="generate">
-                        <button type="button" class="btn btn-primary">Display Data</button>
+                        <button type="button" class="btn btn-primary" data-bind="click: function(){$root.GenerateTableDisplay();}">Display Data</button>
                     </div>
                 </div>
-                <script>
-                    $(document).ready(function () {
-                    });
-                </script>
             </div>
         </div>
     </div>
 </div>
 <!-- /container -->
 
+<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Locations/LocationList.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Locations/LocationDetail.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/AnalyteList.js")"></script>

@@ -279,6 +279,7 @@
     <Compile Include="Infrastructure\Dependency.cs" />
     <Compile Include="Infrastructure\DependencyConfigure.cs" />
     <Compile Include="Models\AdminDefaultValuesDataViewModel.cs" />
+    <Compile Include="Models\FetchSiteAnalyteQueryViewModel.cs" />
     <Compile Include="Models\FtpFileImportDataViewModel.cs" />
     <Compile Include="Models\HttpFileImportDataViewModel.cs" />
     <Compile Include="Models\ResultMessageViewModel.cs" />
