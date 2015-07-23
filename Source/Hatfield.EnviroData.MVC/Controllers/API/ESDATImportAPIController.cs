@@ -142,33 +142,48 @@ namespace Hatfield.EnviroData.MVC.Controllers
             {
                 var esdatModel = extractedResults.ExtractedEntities.First();
 
-                var allResults = from parsingResult in extractedResults.AllParsingResults
-                                 select new ResultMessageViewModel(parsingResult.Level.ToString(), parsingResult.Message);
+                var allResults = (from parsingResult in extractedResults.AllParsingResults
+                                 select new ResultMessageViewModel(parsingResult.Level.ToString(), parsingResult.Message)).ToList();
 
                 var duplicateChecker = new ESDATDuplicateChecker(_dbContext);
-                var sampleCollectionFactory = new ESDATSampleCollectionMapperFactory(duplicateChecker, _wqDefaultValueProvider, wayToHandleNewData);
+
+                var convertResult = new List<IResult>();
+                var sampleCollectionFactory = new ESDATSampleCollectionMapperFactory(duplicateChecker, _wqDefaultValueProvider, wayToHandleNewData, convertResult);
 
 
-                var chemistryFactory = new ESDATChemistryMapperFactory(duplicateChecker, _wqDefaultValueProvider, wayToHandleNewData);
+                var chemistryFactory = new ESDATChemistryMapperFactory(duplicateChecker, _wqDefaultValueProvider, wayToHandleNewData, convertResult);
 
-                var mapper = new SampleCollectionActionMapper(duplicateChecker, sampleCollectionFactory, _wqDefaultValueProvider, chemistryFactory, wayToHandleNewData);
+                var mapper = new SampleCollectionActionMapper(duplicateChecker, sampleCollectionFactory, _wqDefaultValueProvider, chemistryFactory, wayToHandleNewData, convertResult);
 
                 var converter = new ESDATConverter(mapper);
 
-                var action = converter.Convert(esdatModel);
+                var convertResults = converter.Convert(esdatModel);
 
-                //_dbContext.Add<Hatfield.EnviroData.Core.Action>(action);
-                //_dbContext.SaveChanges();
+                var convertResultViewModels = from converResult in convertResults
+                                              select new ResultMessageViewModel(converResult.Level.ToString(), converResult.Message);
 
-                var resultList = allResults.ToList();
-                resultList.Add(
-                    new ResultMessageViewModel
+                allResults.AddRange(convertResultViewModels.ToList());
+
+                var convertParsingResult = convertResults.Where(x => x is IParsingResult).FirstOrDefault();
+
+                if (convertParsingResult == null)
+                {
+                    var failResult = new ResultMessageViewModel(ResultMessageViewModel.RESULT_LEVEL_ERROR, "System is not able to find the converted value from the converted results.");
+                    allResults.Add(failResult);
+                }
+                else
+                {
+                    var action = (Action)((IParsingResult)convertParsingResult).Value;
+                    //_dbContext.Add<Hatfield.EnviroData.Core.Action>(action);
+                    //_dbContext.SaveChanges();
+                    allResults.Add(new ResultMessageViewModel
                     (
                         ResultMessageViewModel.RESULT_LEVEL_INFO,
                         "Import success"
-                    )
-                );
-                return resultList;
+                    ));
+                }
+                
+                return allResults;
             }
         }
     }
