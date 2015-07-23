@@ -49,8 +49,14 @@ namespace Hatfield.EnviroData.MVC.AutoMapper
                 .ForMember(x => x.VariableNameCV, l => l.MapFrom(m => m.VariableNameCV))
                 .ForMember(x => x.VariableTypeCV, l => l.MapFrom(m => m.VariableTypeCV));
 
+            //Mapper.CreateMap<Result, StationAnalyteQueryViewModel>();
+            //Mapper.CreateMap<MeasurementResultValue, StationAnalyteQueryViewModel>();
+            //Mapper.CreateMap<Unit, StationAnalyteQueryViewModel>();
+
+
             Mapper.CreateMap<IWQDefaultValueProvider, AdminDefaultValuesDataViewModel>();
             Mapper.CreateMap<AdminDefaultValuesDataViewModel, WQDefaultValueModel>();
+
         }
     }
 }

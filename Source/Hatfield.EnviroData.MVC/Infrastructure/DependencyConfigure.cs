@@ -53,6 +53,9 @@ namespace Hatfield.EnviroData.MVC.Infrastructure
             builder.RegisterType<VariableRepository>().As<IVariableRepository>();
             builder.RegisterType<ActionRepository>().As<IActionRepository>();
             builder.RegisterType<SiteRepository>().As<ISiteRepository>();
+            builder.RegisterType<ResultRepository>().As<IResultRepository>();
+            builder.RegisterType<MeasurementResultValueRepository>().As<IMeasurementResultValueRepository>();
+            builder.RegisterType<UnitRepository>().As<IUnitRepository>();
             //builder.RegisterType<JSONWQDefaultValueProvider>()
             //       .As<IWQDefaultValueProvider>()
             //       .WithParameter("jsonFilePath", jsonConfigFilePath)
