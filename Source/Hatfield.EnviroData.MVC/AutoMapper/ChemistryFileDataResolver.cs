@@ -45,7 +45,7 @@ namespace Hatfield.EnviroData.MVC.AutoMapper
             chemistryFileData.AnalysedDate = action.EndDateTime.HasValue ? action.EndDateTime.Value : DateTime.MinValue;
             chemistryFileData.Result = measurementResultValue.DataValue;
             chemistryFileData.ResultUnit = result.MeasurementResult.Unit.UnitsName;
-            chemistryFileData.OriginalChemName = result.Variable.VariableNameCV;
+            chemistryFileData.OriginalChemName = result.Variable.VariableDefinition;
             chemistryFileData.ChemCode = result.Variable.VariableCode;
             chemistryFileData.MethodName = action.Method.MethodName;
             chemistryFileData.MethodType = action.Method.MethodDescription;

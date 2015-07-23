@@ -37,7 +37,7 @@ namespace Hatfield.EnviroData.MVC.AutoMapper
                 .ForMember(x => x.LabRequestVersion, l => l.Ignore())
                 .ForMember(x => x.AssociatedFiles, l => l.Ignore())
                 .ForMember(x => x.CopiesSentTo, l => l.Ignore())
-                .ForMember(x => x.SampleFileData, l => l.ResolveUsing<SampleFileDataResolver>().ConstructedBy(() => new SampleFileDataResolver()).FromMember(m => m.RelatedActions))
+                .ForMember(x => x.SampleFileData, l => l.ResolveUsing<SampleFileDataResolver>().ConstructedBy(() => new SampleFileDataResolver()).FromMember(m => m.FeatureActions))
                 .ForMember(x => x.ChemistryData, l => l.ResolveUsing<ChemistryFileDataResolver>().ConstructedBy(() => new ChemistryFileDataResolver()).FromMember(m => m.RelatedActions));
 
             Mapper.CreateMap<Variable, VariableViewModel>()

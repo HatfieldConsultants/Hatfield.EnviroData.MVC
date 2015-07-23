@@ -67,7 +67,16 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
                             new Hatfield.EnviroData.Core.Action
                             {
                                 ActionID = 2,
-                                BeginDateTime = new DateTime(2015, 2, 2),                                
+                                BeginDateTime = new DateTime(2015, 2, 2), 
+                                FeatureActions = new List<FeatureAction>{
+                                    new FeatureAction{
+                                                    Results = new List<Result>{
+                                                        new Result{
+                                                            ResultDateTime = new DateTime(2015, 2, 3),                                                            
+                                                        }
+                                                    }
+                                                }
+                                },
                                 RelatedActions = new List<RelatedAction> { 
                                     new RelatedAction{
                                         Action1 = new Hatfield.EnviroData.Core.Action{
@@ -98,7 +107,7 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
                                                                 }
                                                             },
                                                             Variable = new Variable{
-                                                                VariableNameCV = "test variable name cv"
+                                                                VariableDefinition = "test variable full name"
                                                             }
                                                         }
                                                     }
@@ -131,14 +140,14 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
             Assert.AreEqual(new DateTime(2015, 2, 3), firstChemistryData.ExtractionDate);
             Assert.AreEqual(2.0, firstChemistryData.Result);
             Assert.AreEqual("test unit name", firstChemistryData.ResultUnit);
-            Assert.AreEqual("test variable name cv", firstChemistryData.OriginalChemName);
+            Assert.AreEqual("test variable full name", firstChemistryData.OriginalChemName);
 
             var secondChemistryData = chemistryData.ElementAt(1);
             Assert.AreEqual(DateTime.MinValue, secondChemistryData.AnalysedDate);
             Assert.AreEqual(new DateTime(2015, 2, 3), secondChemistryData.ExtractionDate);
             Assert.AreEqual(3.0, secondChemistryData.Result);
             Assert.AreEqual("test unit name", secondChemistryData.ResultUnit);
-            Assert.AreEqual("test variable name cv", secondChemistryData.OriginalChemName);
+            Assert.AreEqual("test variable full name", secondChemistryData.OriginalChemName);
 
         }
     }

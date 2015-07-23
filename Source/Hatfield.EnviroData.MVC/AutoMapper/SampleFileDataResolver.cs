@@ -10,56 +10,56 @@ using Hatfield.EnviroData.DataAcquisition.ESDAT.Converters;
 
 namespace Hatfield.EnviroData.MVC.AutoMapper
 {
-    public class SampleFileDataResolver : ValueResolver<IEnumerable<RelatedAction>, IEnumerable<SampleFileData>>
+    public class SampleFileDataResolver : ValueResolver<IEnumerable<FeatureAction>, IEnumerable<SampleFileData>>
     {
-        protected override IEnumerable<SampleFileData> ResolveCore(IEnumerable<RelatedAction> source)
+        protected override IEnumerable<SampleFileData> ResolveCore(IEnumerable<FeatureAction> source)
         {
             var result = new List<SampleFileData>{};
 
-            foreach(var relationAction in source)
+            foreach(var featureAction in source)
             {
-                var samplingAction  = relationAction.Action1;
+                var samplingActionResults = featureAction.Results;
 
-                var sampleFileData = MapSampleFileDataFromAction(samplingAction);
-
-                if(sampleFileData != null)
+                if (samplingActionResults != null)
                 {
-                    result.Add(sampleFileData);
-                }                
+                    foreach (var samplingActionResult in samplingActionResults)
+                    {
+                        var sampleFileData = MapSampleFileData(featureAction.Action, samplingActionResult);
+
+                        if(sampleFileData != null)
+                        {
+                            result.Add(sampleFileData);
+                        }
+                    }
+                    
+                }
+                                
             }
             return result;
         }
 
-        private SampleFileData MapSampleFileDataFromAction(Hatfield.EnviroData.Core.Action actionData)
+        private SampleFileData MapSampleFileData(Hatfield.EnviroData.Core.Action actionData, Result sampleResultDomain)
         {
-            var sampleResultsDomain = actionData.FeatureActions.Select(x => x.Results).FirstOrDefault();
+            if (sampleResultDomain != null)
+            {               
 
-            if (sampleResultsDomain != null)
-            {
-                var sampleResultDomain = sampleResultsDomain.FirstOrDefault();
+                var sampleFileData = new SampleFileData();
+                sampleFileData.SampledDateTime = sampleResultDomain.ResultDateTime;
 
-                if(sampleResultDomain != null)
+                try
                 {
-                    var sampleFileData = new SampleFileData();
-                    sampleFileData.SampledDateTime = sampleResultDomain.ResultDateTime;
-
-                    try
-                    {
-                        sampleFileData.LabName = actionData.Method.Organization.OrganizationName;
-                    }
-                    catch(NullReferenceException)
-                    {
-                        sampleFileData.LabName = null;
-                    }
-                    
-                    //Map data from extension properties
-                    sampleFileData = MapFromExtensionProperties(sampleFileData, sampleResultDomain.ResultExtensionPropertyValues);
-
-                    return sampleFileData;
-                    
+                    sampleFileData.LabName = actionData.Method.Organization.OrganizationName;
                 }
+                catch(NullReferenceException)
+                {
+                    sampleFileData.LabName = null;
+                }
+                    
+                //Map data from extension properties
+                sampleFileData = MapFromExtensionProperties(sampleFileData, sampleResultDomain.ResultExtensionPropertyValues);
 
-                return null;
+                return sampleFileData;
+
                 
             }
             else
