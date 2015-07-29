@@ -50,7 +50,8 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
             }
             else
             {
-                resultMessages.Add(new ResultMessageViewModel(ResultMessageViewModel.RESULT_LEVEL_FATAL, ""));
+                resultMessages.Add(new ResultMessageViewModel(ResultMessageViewModel.RESULT_LEVEL_FATAL, 
+                                                              "QC request data is null. No QC process could be applied."));
             }
 
             return resultMessages;
