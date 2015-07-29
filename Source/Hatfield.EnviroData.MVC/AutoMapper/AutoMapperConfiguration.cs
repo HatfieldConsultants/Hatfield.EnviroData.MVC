@@ -7,6 +7,7 @@ using Hatfield.EnviroData.Core;
 using Hatfield.EnviroData.DataAcquisition.ESDAT;
 using Hatfield.EnviroData.MVC.Models;
 using Hatfield.EnviroData.WQDataProfile;
+using Hatfield.EnviroData.QualityAssurance;
 
 namespace Hatfield.EnviroData.MVC.AutoMapper
 {
@@ -56,6 +57,10 @@ namespace Hatfield.EnviroData.MVC.AutoMapper
 
             Mapper.CreateMap<IWQDefaultValueProvider, AdminDefaultValuesDataViewModel>();
             Mapper.CreateMap<AdminDefaultValuesDataViewModel, WQDefaultValueModel>();
+
+            Mapper.CreateMap<IQualityCheckingResult, ResultMessageViewModel>()
+                .ForMember(x => x.Level, l => l.MapFrom(m => m.Level.ToString()))
+                .ForMember(x => x.Message, l => l.MapFrom(m => m.Message));
 
         }
     }
