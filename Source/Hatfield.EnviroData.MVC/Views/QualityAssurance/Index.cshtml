@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Quality Assurance";
+}
+
+<h2>Quality Assurance</h2>
+
+<div class="container">
+    
+    <div class="input-group">
+        <span class="input-group-addon">Quality Checking Chain Name:</span>
+        <input type="text" class="form-control" placeholder="Name" aria-describedby="basic-addon1" data-bind="value: ChainName">
+    </div>
+    
+    
+    <div class="input-group">
+        <span class="input-group-addon">Data Fetching Criteria:</span>            
+        <select class="form-control" data-bind="value: DataFetchingCriteriaName">
+            <option value="">Please select a criteria</option>
+            <option value="FetchAllDataCriteria">Fetch All Data Criteria</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-addon">Need Correction:</span>
+        <select class="form-control" id="needCorrectionSelect" data-bind="value: NeedCorrection">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+    
+    <div class="row">
+        <label>Sample Matrix Type Checking Tool</label>
+        
+     </div>
+    <div class="row">
+        <label>Expected Value</label>
+        <input type="text" data-bind="value: SampleMatrixTypeCheckingToolExpectedValue" />
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon">Case sensitive:</span>
+        <select class="form-control" data-bind="value: SampleMatrixTypeCheckingToolCaseSensitive">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+
+    </div>
+    <div class="row">
+        <label>Correction Value</label>
+        <input type="text" data-bind="value: SampleMatrixTypeCheckingToolCorrectionValue" />
+    </div>
+
+    <div class="row">        
+        <button data-bind="click: function(){$root.Execute(); return false;}">Run Quality Checking Chain</button>
+    </div>
+        
+    <div class="row" data-bind="visible: QcResults().length > 0">
+
+        <ul data-bind="foreach: QcResults">
+            <li data-bind="html: Message"></li>
+        </ul>
+    </div>
+
+</div>
+
+
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/QualityAssuranceExecute.js")"></script>
