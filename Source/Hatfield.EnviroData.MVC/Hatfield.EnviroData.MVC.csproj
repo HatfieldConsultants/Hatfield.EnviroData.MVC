@@ -72,7 +72,7 @@
       <HintPath>..\..\packages\Hatfield.EnviroData.Core.1.0.0.3\lib\net40\Hatfield.EnviroData.Core.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.CVUpdater">
-      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.CVUpdater.dll</HintPath>
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.CVUpdater.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.DataAcquisition, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -95,24 +95,25 @@
       <HintPath>..\..\packages\Hatfield.EnviroData.FileSystems.WindowsFileSystem.1.0.0\lib\net40\Hatfield.EnviroData.FileSystems.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.FileSystems.FTPFileSystem">
-      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.FTPFileSystem.dll</HintPath>
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.FTPFileSystem.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.FileSystems.HttpFileSystem">
-      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.HttpFileSystem.dll</HintPath>
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.HttpFileSystem.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.FileSystems.NetworkFileSystem">
-      <HintPath>$(SolutionDir)\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.NetworkFileSystem.dll</HintPath>
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.NetworkFileSystem.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.FileSystems.WindowsFileSystem, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Hatfield.EnviroData.FileSystems.WindowsFileSystem.1.0.0\lib\net40\Hatfield.EnviroData.FileSystems.WindowsFileSystem.dll</HintPath>
     </Reference>
-    <Reference Include="Hatfield.EnviroData.QualityAssurance">
-      <HintPath>..\..\packages\Hatfield.EnviroData.QualityAssurance.1.0.0.0\lib\net40\Hatfield.EnviroData.QualityAssurance.dll</HintPath>
-    </Reference>
-    <Reference Include="Hatfield.EnviroData.WQDataProfile, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Hatfield.EnviroData.QualityAssurance, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.WQDataProfile.dll.1.0.0.4\lib\net40\Hatfield.EnviroData.WQDataProfile.dll</HintPath>
+      <HintPath>..\..\packages\Hatfield.EnviroData.QualityAssurance.1.0.0.1\lib\net40\Hatfield.EnviroData.QualityAssurance.dll</HintPath>
+    </Reference>
+    <Reference Include="Hatfield.EnviroData.WQDataProfile, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Hatfield.EnviroData.WQDataProfile.dll.1.0.0.5\lib\net40\Hatfield.EnviroData.WQDataProfile.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.WQDefaultValueProvider.JSON, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

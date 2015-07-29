@@ -13,6 +13,7 @@ using Hatfield.EnviroData.QualityAssurance;
 using Hatfield.EnviroData.WQDataProfile;
 using Hatfield.EnviroData.QualityAssurance.DataFetchCriterias;
 using Hatfield.EnviroData.QualityAssurance.DataQualityCheckingRules;
+using Hatfield.EnviroData.QualityAssurance.DataQualityCheckingTool;
 
 namespace Hatfield.EnviroData.MVC.Controllers.API
 {
@@ -64,7 +65,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
             chainConfiguration.DataFetchCriteria = new GetAllWaterQualitySampleDataCriteria(_wqDataRepository);
 
             var sampleMatrixCheckingRuleConfiguration = new DataQualityCheckingToolConfiguration();
-            sampleMatrixCheckingRuleConfiguration.DataQualityCheckingToolType = typeof(StringCompareCheckingRule);
+            sampleMatrixCheckingRuleConfiguration.DataQualityCheckingToolType = typeof(SampleMatrixTypeCheckingTool);
             sampleMatrixCheckingRuleConfiguration.DataQualityCheckingRule = new StringCompareCheckingRule(data.SampleMatrixTypeCheckingToolExpectedValue,
                                                                                              data.SampleMatrixTypeCheckingToolCaseSensitive,
                                                                                              data.SampleMatrixTypeCheckingToolCorrectionValue

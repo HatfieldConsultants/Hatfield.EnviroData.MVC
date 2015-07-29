@@ -29,7 +29,15 @@
                     alert('Execute quality checking chain fail.');
                 }
             });//end of ajax
-        };
+        };//end of Execute
+
+        self.FormatResultMessage = function (result) {
+            var messageString = result.Message();
+
+            var formatedString = messageString.replace(new RegExp('\n', 'g'), '<br/>');
+            return formatedString;
+        };//end of FormatResultMessage
+
     }; //end of QualityAssuranceExecuteViewModel
 
 
