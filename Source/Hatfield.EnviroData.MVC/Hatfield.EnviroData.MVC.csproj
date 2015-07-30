@@ -107,7 +107,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Hatfield.EnviroData.FileSystems.WindowsFileSystem.1.0.0\lib\net40\Hatfield.EnviroData.FileSystems.WindowsFileSystem.dll</HintPath>
     </Reference>
-    <Reference Include="Hatfield.EnviroData.QualityAssurance, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Hatfield.EnviroData.QualityAssurance, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Hatfield.EnviroData.QualityAssurance.1.0.0.2\lib\net40\Hatfield.EnviroData.QualityAssurance.dll</HintPath>
     </Reference>
