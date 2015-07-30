@@ -109,11 +109,11 @@
     </Reference>
     <Reference Include="Hatfield.EnviroData.QualityAssurance, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.QualityAssurance.1.0.0.1\lib\net40\Hatfield.EnviroData.QualityAssurance.dll</HintPath>
+      <HintPath>..\..\packages\Hatfield.EnviroData.QualityAssurance.1.0.0.2\lib\net40\Hatfield.EnviroData.QualityAssurance.dll</HintPath>
     </Reference>
-    <Reference Include="Hatfield.EnviroData.WQDataProfile, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Hatfield.EnviroData.WQDataProfile, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.WQDataProfile.dll.1.0.0.5\lib\net40\Hatfield.EnviroData.WQDataProfile.dll</HintPath>
+      <HintPath>..\..\packages\Hatfield.EnviroData.WQDataProfile.dll.1.0.0.6\lib\net40\Hatfield.EnviroData.WQDataProfile.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.WQDefaultValueProvider.JSON, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -288,6 +288,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ESDATDataImportHelper.cs" />
+    <Compile Include="Helpers\ESDATViewModelMappingHelper.cs" />
     <Compile Include="Helpers\ImportResultHelper.cs" />
     <Compile Include="Hubs\CVHub.cs" />
     <Compile Include="Infrastructure\Dependency.cs" />

@@ -6,6 +6,9 @@
     self.ChemistryData = ko.observableArray();
     self.ESDATHeaderXMLContent = ko.observable('');
 
+    self.SelectedVersion = 0;
+    self.SelectedActionId = 0;
+
     self.FetchCollectionAction = function () {
         $.ajax({
             url: '../api/QueryDataAPI/Get',
@@ -24,6 +27,7 @@
     };//end of FetchCollectionAction
 
     self.FetchCollectionActionInESDAT = function (id) {
+        self.SelectedActionId = id;
         $.ajax({
             url: '../api/QueryDataAPI/GetSampleCollectionActionInESDAT/' + id,
             type: 'GET',
@@ -42,6 +46,31 @@
             }
         });//end of ajax
     };//end of FetchCollectionActionInESDAT
+
+    self.FetchDataWithVersionData = function (versionIndex) {
+
+        var tempVersionIndex = self.SelectedVersion + parseInt(versionIndex);
+        $.ajax({
+            url: '../api/QueryDataAPI/GetSampleCollectionActionInESDAT/' + self.SelectedActionId + '?version=' + tempVersionIndex,
+            type: 'GET',
+            dataType: 'json',
+            async: false,
+            cache: false,
+            contentType: 'application/json',
+            success: function (data) {
+                ko.mapping.fromJS(data.SampleFileData, {}, self.SampleFileData);
+                ko.mapping.fromJS(data.ChemistryData, {}, self.ChemistryData);
+                self.ESDATHeaderXMLContent(GenerateHeaderFileXMLContent(data));
+
+                self.SelectedVersion = tempVersionIndex;
+
+            },
+            error: function (data) {
+                alert("Fetch sample collection data in ESDAT format fail, please try again");
+            }
+        });//end of ajax
+        
+    };//end of FetchDataWithVersionData
 
     function GenerateHeaderFileXMLContent(esdatModel) {
         var xmlContent = '<?xml version="1.0" encoding="utf-8"?>';

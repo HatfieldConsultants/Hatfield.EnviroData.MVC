@@ -21,11 +21,13 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
     {
         private IWQDataRepository _wqDataRepository;
         private IRepository<CV_RelationshipType> _relatedActionTypeRepository;
-
-        public QualityAssuranceAPIController(IWQDataRepository wqDataRepository, IRepository<CV_RelationshipType> relationTypeRepository)
+        private IWQDefaultValueProvider _wqDefaultValueProvider;
+        
+        public QualityAssuranceAPIController(IWQDataRepository wqDataRepository, IRepository<CV_RelationshipType> relationTypeRepository, IWQDefaultValueProvider wqDefaultValueProvider)
         {
             _wqDataRepository = wqDataRepository;
             _relatedActionTypeRepository = relationTypeRepository;
+            _wqDefaultValueProvider = wqDefaultValueProvider;
         }
 
         [HttpPost]
@@ -38,7 +40,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
             {
                 var qcChainConfiguration = MapTOChainConfiguration(data);
 
-                var versioningHelper = new DataVersioningHelper();
+                var versioningHelper = new DataVersioningHelper(_wqDefaultValueProvider);
                 var factory = new DataQualityCheckingToolFactory(versioningHelper, _relatedActionTypeRepository);
                 var qualiltyChecker = new WaterQualityDataQualityChecker(qcChainConfiguration, factory, _wqDataRepository);
 
