@@ -41,7 +41,9 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
                                 BeginDateTime = new DateTime(2015, 2, 3)
                             }
                           });
-            var controller = new QueryDataAPIController(mockRepository.Object);
+
+            var mockDefaultValueProvider = new Mock<IWQDefaultValueProvider>();
+            var controller = new QueryDataAPIController(mockRepository.Object, mockDefaultValueProvider.Object);
 
             var viewModels = controller.Get();
                         
@@ -67,7 +69,7 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
                             new Hatfield.EnviroData.Core.Action
                             {
                                 ActionID = 2,
-                                BeginDateTime = new DateTime(2015, 2, 2), 
+                                BeginDateTime = new DateTime(2015, 2, 2),                                
                                 FeatureActions = new List<FeatureAction>{
                                     new FeatureAction{
                                                     Results = new List<Result>{
@@ -79,6 +81,10 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
                                 },
                                 RelatedActions = new List<RelatedAction> { 
                                     new RelatedAction{
+                                        RelationshipTypeCV = "Is related to",
+                                        CV_RelationshipType = new CV_RelationshipType{
+                                            Name = "Is related to"
+                                        },
                                         Action1 = new Hatfield.EnviroData.Core.Action{
                                             BeginDateTime = new DateTime(2015, 2, 3),
                                             Method = new Method{
@@ -119,7 +125,8 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
                             }
                           );
 
-            var controller = new QueryDataAPIController(mockRepository.Object);
+            var mockDefaultValueProvider = new Mock<IWQDefaultValueProvider>();
+            var controller = new QueryDataAPIController(mockRepository.Object, mockDefaultValueProvider.Object);
 
             var viewModel = controller.GetSampleCollectionActionInESDAT(1);
 

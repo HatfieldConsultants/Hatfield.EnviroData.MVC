@@ -56,7 +56,7 @@
     <div class="row" data-bind="visible: QcResults().length > 0">
 
         <ul data-bind="foreach: QcResults">
-            <li data-bind="html: Message"></li>
+            <li data-bind="html: $root.FormatResultMessage($data)"></li>
         </ul>
     </div>
 

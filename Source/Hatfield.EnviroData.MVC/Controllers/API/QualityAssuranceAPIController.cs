@@ -13,6 +13,7 @@ using Hatfield.EnviroData.QualityAssurance;
 using Hatfield.EnviroData.WQDataProfile;
 using Hatfield.EnviroData.QualityAssurance.DataFetchCriterias;
 using Hatfield.EnviroData.QualityAssurance.DataQualityCheckingRules;
+using Hatfield.EnviroData.QualityAssurance.DataQualityCheckingTool;
 
 namespace Hatfield.EnviroData.MVC.Controllers.API
 {
@@ -20,11 +21,13 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
     {
         private IWQDataRepository _wqDataRepository;
         private IRepository<CV_RelationshipType> _relatedActionTypeRepository;
-
-        public QualityAssuranceAPIController(IWQDataRepository wqDataRepository, IRepository<CV_RelationshipType> relationTypeRepository)
+        private IWQDefaultValueProvider _wqDefaultValueProvider;
+        
+        public QualityAssuranceAPIController(IWQDataRepository wqDataRepository, IRepository<CV_RelationshipType> relationTypeRepository, IWQDefaultValueProvider wqDefaultValueProvider)
         {
             _wqDataRepository = wqDataRepository;
             _relatedActionTypeRepository = relationTypeRepository;
+            _wqDefaultValueProvider = wqDefaultValueProvider;
         }
 
         [HttpPost]
@@ -37,7 +40,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
             {
                 var qcChainConfiguration = MapTOChainConfiguration(data);
 
-                var versioningHelper = new DataVersioningHelper();
+                var versioningHelper = new DataVersioningHelper(_wqDefaultValueProvider);
                 var factory = new DataQualityCheckingToolFactory(versioningHelper, _relatedActionTypeRepository);
                 var qualiltyChecker = new WaterQualityDataQualityChecker(qcChainConfiguration, factory, _wqDataRepository);
 
@@ -49,7 +52,8 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
             }
             else
             {
-                resultMessages.Add(new ResultMessageViewModel(ResultMessageViewModel.RESULT_LEVEL_FATAL, ""));
+                resultMessages.Add(new ResultMessageViewModel(ResultMessageViewModel.RESULT_LEVEL_FATAL, 
+                                                              "QC request data is null. No QC process could be applied."));
             }
 
             return resultMessages;
@@ -64,7 +68,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
             chainConfiguration.DataFetchCriteria = new GetAllWaterQualitySampleDataCriteria(_wqDataRepository);
 
             var sampleMatrixCheckingRuleConfiguration = new DataQualityCheckingToolConfiguration();
-            sampleMatrixCheckingRuleConfiguration.DataQualityCheckingToolType = typeof(StringCompareCheckingRule);
+            sampleMatrixCheckingRuleConfiguration.DataQualityCheckingToolType = typeof(SampleMatrixTypeCheckingTool);
             sampleMatrixCheckingRuleConfiguration.DataQualityCheckingRule = new StringCompareCheckingRule(data.SampleMatrixTypeCheckingToolExpectedValue,
                                                                                              data.SampleMatrixTypeCheckingToolCaseSensitive,
                                                                                              data.SampleMatrixTypeCheckingToolCorrectionValue

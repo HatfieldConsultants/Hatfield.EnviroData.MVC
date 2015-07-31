@@ -15,9 +15,10 @@ namespace Hatfield.EnviroData.MVC.AutoMapper
     {
         protected override IEnumerable<ChemistryFileData> ResolveCore(IEnumerable<RelatedAction> source)
         {
+            var relatedChemistryAction = source.Where(x => x.CV_RelationshipType.Name == "Is related to");
             var results = new List<ChemistryFileData>();
 
-            foreach (var relationAction in source)
+            foreach (var relationAction in relatedChemistryAction)
             {
                 var featureActions = relationAction.Action1.FeatureActions;
 

@@ -33,6 +33,10 @@
     </div>
     <div class="SampleDataDiv row">
         <h2>Sample File</h2>
+        <div>
+            <a href="#" data-bind="click: function(){ $root.FetchDataWithVersionData(-1); return false;}">Previous Version</a>
+            <a href="#" data-bind="click: function(){ $root.FetchDataWithVersionData(1); return false;}">Next Version</a>
+        </div>
         <table class="table table-hover">
             <thead>
                 <tr>

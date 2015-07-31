@@ -12,6 +12,7 @@ namespace Hatfield.EnviroData.MVC.Models
         public string ActionRelationshipTypeCVSampleCollection { get; set; }
         public string ActionTypeCVChemistry { get; set; }
         public string ActionTypeCVSampleCollection { get; set; }
+        public string ActionRelationshipTypeSubVersion { get; set; }
         public string DefaultDatasetTypeCV { get; set; }
         public string DefaultMethodTypeCVChemistry { get; set; }
         public string DefaultMethodTypeCVSampleCollection { get; set; }

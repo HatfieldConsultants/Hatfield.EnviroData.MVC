@@ -5,18 +5,26 @@ using System.Linq;
 using AutoMapper;
 
 using Hatfield.EnviroData.Core;
+using Hatfield.EnviroData.WQDataProfile;
 using Hatfield.EnviroData.DataAcquisition.ESDAT;
 using Hatfield.EnviroData.DataAcquisition.ESDAT.Converters;
 
 namespace Hatfield.EnviroData.MVC.AutoMapper
 {
-    public class SampleFileDataResolver : ValueResolver<IEnumerable<FeatureAction>, IEnumerable<SampleFileData>>
+    public class SampleFileDataResolver : ValueResolver<Hatfield.EnviroData.Core.Action, IEnumerable<SampleFileData>>
     {
-        protected override IEnumerable<SampleFileData> ResolveCore(IEnumerable<FeatureAction> source)
+        protected override IEnumerable<SampleFileData> ResolveCore(Hatfield.EnviroData.Core.Action source)
         {
+            var defaultValueHelper = new StaticWQDefaultValueProvider();
+            defaultValueHelper.Init();
+            var versionHelper = new DataVersioningHelper(defaultValueHelper);
+
+            var latestVersion = versionHelper.GetLatestVersionActionData(source);
+            var featureActions = latestVersion.FeatureActions;
+
             var result = new List<SampleFileData>{};
 
-            foreach(var featureAction in source)
+            foreach (var featureAction in featureActions)
             {
                 var samplingActionResults = featureAction.Results;
 

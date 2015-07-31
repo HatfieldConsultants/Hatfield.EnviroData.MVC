@@ -48,7 +48,7 @@ namespace Hatfield.EnviroData.MVC.Infrastructure
                 ).PropertiesAutowired();
 
             //deal with your dependencies here
-            builder.RegisterType<ODM2Entities>().As<IDbContext>().InstancePerDependency();
+            builder.RegisterType<ODM2Entities>().As<IDbContext>().InstancePerLifetimeScope();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterType<Hatfield.EnviroData.WQDataProfile.Repositories.WQVariableRepository>().As<Hatfield.EnviroData.WQDataProfile.IWQVariableRepository>();
             builder.RegisterType<ActionRepository>().As<IActionRepository>();
