@@ -17,7 +17,7 @@
                                 <div class="row">
                                     <div id="sites" class="col-md-12">
                                         <label>Site:</label>
-                                        <select data-bind="options: Locations,  optionsText: function(item) {
+                                        <select data-bind="options: locations,  optionsText: function(item) {
                        return 'Sampling Feature ID:'+item.SamplingFeatureID()+' ('+item.SiteTypeCV()+')';
                    }, optionsValue: 'SamplingFeatureID'" class="form-control" id="selectSite"></select>
                                     </div>
@@ -67,16 +67,16 @@
                                 <table class= "table table-bordered" data-toggle="table" data-height="300" data-search="true" data-click-to-select="true">
                                     <thead>
                                         <tr>
-                                            <th data-field="state" data-checkbox="true"></th>
+                                            <th><input id="select-all" type="checkbox" /></th>                                
                                             <th data-sortable="true">Name/Analyte</th>
                                             <th data-sortable="true">Type</th>
                                         </tr>
                                     </thead>
                                     <tbody class="searchable">
-                                        <!-- ko foreach: Analytes -->
+                                        <!-- ko foreach: analytes -->
                                         <tr>
-                                            <td><input name="analyte" type="checkbox" data-bind="value: VariableID" /></td>
-                                            <td data-bind="html: VariableNameCV"></td>
+                                            <td><input class="analyte" type="checkbox" data-bind="attr: {value: VariableID, name: VariableDefinition}" /></td>
+                                            <td data-bind="html: VariableDefinition"></td>
                                             <td data-bind="html: VariableTypeCV"></td>
                                         </tr>
                                         <!-- /ko -->
@@ -128,13 +128,13 @@
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="text-center" style="padding:5px" id="generate">
-                        <button type="button" class="btn btn-primary" data-bind="click: function(){$root.GenerateTableDisplay();}">Display Data</button>
+                        <button type="button" class="btn btn-primary" data-bind="click: function(){$root.generateTableDisplay();}">Display Data</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-8">
         <div class="panel panel-default" id="results" style="display:none;">           
                 <div class="panel-heading">
                     <h4 class="panel-title">                       
@@ -143,26 +143,27 @@
                 </div>
             <div class="panel-body">
                 <table class="table table-bordered" id="queryResults">
-                    <thead>
-                        <tr id="headings">
-                            <th>Variable</th>
-                            <th>Result Date</th>
-                            <th>Value</th>
-                            <th>Units</th>
-                            <th>Type</th>
-                        </tr>
-                    </thead>
-                    <tbody>   
-                        <!-- ko foreach: queryResults -->                    
-                        <tr>
-                            <td data-bind="html: Variable"></td>
-                            <td data-bind="html: ResultDateTime"></td>
-                            <td data-bind="html: DataValue"></td>
-                            <td data-bind="html: UnitsName"></td>
-                            <td data-bind="html: UnitsTypeCV"></td>
-                        </tr>
-                        <!-- /ko -->
+                       <thead>
+                           <tr>
+                               <td>
+                               </td>
+                               <!-- ko foreach: selectedChoices -->
+                               <td data-bind="text: name"></td>
+                               <!-- /ko -->
+                           </tr>
+                       </thead>
+                        <tbody>
+                            
+                            <!-- ko foreach: queryResults -->
+                            <tr>                               
+                                <td data-bind="text: date"></td>
+                                <!-- ko foreach: items -->                           
+                                <td data-bind="text: DataValue() + ' '+ UnitsName()+ ' '+Variable()"></td>
+                                <!-- /ko -->
+                            </tr>
+                            <!-- /ko -->
                     </tbody>
+
                 </table>
             </div>
             </div>

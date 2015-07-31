@@ -11,11 +11,11 @@ using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using log4net;
 
-using Hatfield.EnviroData.Core;
 using Hatfield.EnviroData.Core.Repositories;
 using Hatfield.EnviroData.WQDataProfile;
 using Hatfield.WQDefaultValueProvider.JSON;
 using Hatfield.EnviroData.WQDataProfile.Repositories;
+using Hatfield.EnviroData.Core;
 
 namespace Hatfield.EnviroData.MVC.Infrastructure
 {
@@ -50,7 +50,7 @@ namespace Hatfield.EnviroData.MVC.Infrastructure
             //deal with your dependencies here
             builder.RegisterType<ODM2Entities>().As<IDbContext>().InstancePerLifetimeScope();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
-            builder.RegisterType<VariableRepository>().As<IVariableRepository>();
+            builder.RegisterType<Hatfield.EnviroData.WQDataProfile.Repositories.WQVariableRepository>().As<Hatfield.EnviroData.WQDataProfile.IWQVariableRepository>();
             builder.RegisterType<ActionRepository>().As<IActionRepository>();
             builder.RegisterType<SiteRepository>().As<ISiteRepository>();
             builder.RegisterType<ResultRepository>().As<IResultRepository>();
