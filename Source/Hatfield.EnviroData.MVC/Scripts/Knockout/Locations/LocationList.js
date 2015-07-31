@@ -6,11 +6,13 @@ var ParentViewModel = function (locationData, analyteData) {
     
     var self = this;
     self.queryResults = ko.observableArray();
-    self.Analytes = ko.mapping.fromJS(analyteData);
-    self.selectedChoices = ko.observableArray('');
-    self.Locations = ko.mapping.fromJS(locationData);
-    self.SelectedStation = ko.observable();
-    self.GenerateTableDisplay = function () {
+    self.analytes = ko.mapping.fromJS(analyteData);
+    self.selectedChoices = ko.observableArray();
+    self.locations = ko.mapping.fromJS(locationData);
+    self.selectedStation = ko.observable();
+
+
+    self.generateTableDisplay = function () {
         var startDate = selectedStartDate.format('MMM-DD-YYYY');
         var endDate = selectedEndDate.format('MMM-DD-YYYY');
         //The bootstrap table does not update the underly chekckbox automatically
@@ -21,9 +23,12 @@ var ParentViewModel = function (locationData, analyteData) {
         var e = document.getElementById("selectSite");
         var selectedSite = e.options[e.selectedIndex].value;
         var selectedAnalytes = [];
-        $('input[name=analyte]:checked').each(function () {
+        var selectedAnalytesNames = [];
+        $('input[class=analyte]:checked').each(function () {
             selectedAnalytes.push($(this).val());
+            selectedAnalytesNames.push({ name: $(this).attr('name') });
         });
+        ko.mapping.fromJS(selectedAnalytesNames, {}, self.selectedChoices);
         var requestViewModel = new WaterQualityRequestViewModel(startDate, endDate, selectedSite, selectedAnalytes);
 
         window.scrollTo(0, 0); //scroll to the top of the page
@@ -38,7 +43,9 @@ var ParentViewModel = function (locationData, analyteData) {
             contentType: 'application/json',
             success: function (data) {
                 $('#divImage').hide(); //hide the mask
-                ko.mapping.fromJS(data, {}, self.queryResults);
+
+                var sortedData = GetAnalytesAndValuesForDate(data);
+                ko.mapping.fromJS(sortedData, {}, self.queryResults);
                 DrawTable();
                 //create table
             },
@@ -50,13 +57,39 @@ var ParentViewModel = function (locationData, analyteData) {
     };//end of GenerateWaterTable
 }
 
+function GetAnalytesAndValuesForDate(data)
+{
+    var lookup = {};
+    var items = data;
+    var results = [];
+    var arrangedArray = [];
+
+    for (var item, i = 0; item = items[i++];) {
+        var date = item.ResultDateTime;
+
+        if (!(date in lookup)) {
+            lookup[date] = 1;
+            results.push(date);
+        }
+    }
+
+    for (var result, i = 0; result = results[i++];) {
+        var matchingValues = [];
+        for (var item, j = 0; item = items[j++];)
+        {            
+            if (item.ResultDateTime === result)
+            {
+                matchingValues.push(item);
+            }
+        }
+        arrangedArray.push({ date: result, items: matchingValues });
+    }
+
+    return arrangedArray;
+}
+
 function DrawTable(tableData)
 {
-    //$('#queryResults tr :not([id="headings"])').remove();
-    //$.each(tableData, function (index, value) {
-    //    var row = '<tr><td>' + value.Variable + '</td>' + '<td>' + value.ResultDateTime + '</td>' + '<td>' + value.DataValue + '</td>' + '<td>' + value.UnitsName + '</td>' + '<td>' + value.UnitsTypeCV + '</td>' + '</tr>';
-    //    $('#queryResults > tbody:last-child').append(row);
-    //});
     $('#results').show();
 }
 
@@ -101,6 +134,15 @@ $(document).ready(function () {
     });
     InitialDateRangeControl();
     ko.applyBindings(new ParentViewModel(locationJson, analyteJson));
+
+    $('#select-all').click(function(event) {   
+    if(this.checked) {
+        // Iterate each checkbox
+        $(':checkbox').each(function() {
+            this.checked = true;                        
+        });
+    }
+});
 });//end of document ready
 
 var selectedStartDate, selectedEndDate; //global variable inside the module to get the daterange picker value

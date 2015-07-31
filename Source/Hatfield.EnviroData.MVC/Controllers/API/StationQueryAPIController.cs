@@ -58,7 +58,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
         [HttpGet]
         public IEnumerable<VariableViewModel> GetAllAnalytes()
         {
-            var sites = _variableRepository.GetAllChemistryVariables();
+            var sites = _variableRepository.GetAllChemistryVariables().Where(x => x.VariableDefinition != null);
             var items = Mapper.Map<IEnumerable<VariableViewModel>>(sites);
             return items;
         }
