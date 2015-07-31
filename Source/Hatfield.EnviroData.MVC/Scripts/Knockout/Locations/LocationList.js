@@ -5,9 +5,11 @@ var analyteJson =  null;
 var ParentViewModel = function (locationData, analyteData) {
     
     var self = this;
-    self.queryResults = ko.observableArray();
+    self.queryResultsDateHeader = ko.observableArray();
+    self.queryResultsValues = ko.observableArray();
+    self.queryResults = ko.observable();
     self.analytes = ko.mapping.fromJS(analyteData);
-    self.selectedChoices = ko.observableArray();
+    self.selectedAnalytes = ko.observableArray();
     self.locations = ko.mapping.fromJS(locationData);
     self.selectedStation = ko.observable();
 
@@ -28,7 +30,7 @@ var ParentViewModel = function (locationData, analyteData) {
             selectedAnalytes.push($(this).val());
             selectedAnalytesNames.push({ name: $(this).attr('name') });
         });
-        ko.mapping.fromJS(selectedAnalytesNames, {}, self.selectedChoices);
+        ko.mapping.fromJS(selectedAnalytesNames, {}, self.selectedAnalytes);
         var requestViewModel = new WaterQualityRequestViewModel(startDate, endDate, selectedSite, selectedAnalytes);
 
         window.scrollTo(0, 0); //scroll to the top of the page
@@ -45,7 +47,8 @@ var ParentViewModel = function (locationData, analyteData) {
                 $('#divImage').hide(); //hide the mask
 
                 var sortedData = GetAnalytesAndValuesForDate(data);
-                ko.mapping.fromJS(sortedData, {}, self.queryResults);
+                ko.mapping.fromJS(sortedData.header, {}, self.queryResultsDateHeader);
+                ko.mapping.fromJS(sortedData.dataRows, {}, self.queryResultsValues);
                 DrawTable();
                 //create table
             },
@@ -55,13 +58,13 @@ var ParentViewModel = function (locationData, analyteData) {
             }
         });//end of ajax
     };//end of GenerateWaterTable
-}
+
 
 function GetAnalytesAndValuesForDate(data)
 {
     var lookup = {};
     var items = data;
-    var results = [];
+    var uniqueDates = [];
     var arrangedArray = [];
 
     for (var item, i = 0; item = items[i++];) {
@@ -69,11 +72,11 @@ function GetAnalytesAndValuesForDate(data)
 
         if (!(date in lookup)) {
             lookup[date] = 1;
-            results.push(date);
+            uniqueDates.push(date);
         }
     }
 
-    for (var result, i = 0; result = results[i++];) {
+    for (var result, i = 0; result = uniqueDates[i++];) {
         var matchingValues = [];
         for (var item, j = 0; item = items[j++];)
         {            
@@ -86,28 +89,32 @@ function GetAnalytesAndValuesForDate(data)
     }
 
     //structure the result table object
-    var rows = [][];
-    var tableObject = { header: results, dataRows: rows };
+    var rows = [];
+    
+    var tableObject = { header: uniqueDates, dataRows: rows };
 
-    for (var i = 0; i < self.selectedChoices().length; i++)
+    for (var i = 0; i < self.selectedAnalytes().length; i++)
     {
-        rows[i][0] = self.selectedChoices()[i];
+        var cells = [];
+        cells[0] = self.selectedAnalytes()[i].name();
         for(var j = 0; j < arrangedArray.length; j++)
         {
             var allValuesOfThisDay = arrangedArray[j].items;
-            var matchedAnaylteValue = findMatchedAnalyteValue(self.selectedChoices()[i], arrangedArray[j].items);
-            rows[i][j + 1] = matchedAnaylteValue == null ? '-' : matchedAnaylteValue;
+            var matchedAnaylteValue = findMatchedAnalyteValue(arrangedArray[j].items, self.selectedAnalytes()[i]);
+            cells[j + 1] = matchedAnaylteValue == null ? '-' : matchedAnaylteValue;
         }
+        rows.push(cells);
     }
 
     return tableObject;
 }//end of GetAnalytesAndValuesForDate
 
+
 function findMatchedAnalyteValue(itemsOfADay, analyteName)
 {    
     for(var i = 0; i < itemsOfADay.length; i++)
     {
-        if(itemsOfADay[i].Variable == analyteName)
+        if(itemsOfADay[i].Variable == analyteName.name())
         {
             return itemsOfADay[i].DataValue;
         }
@@ -115,6 +122,9 @@ function findMatchedAnalyteValue(itemsOfADay, analyteName)
 
     return null;
 }//end of findMatchedAnalyteValue
+
+}
+
 
 function DrawTable(tableData)
 {

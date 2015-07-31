@@ -64,10 +64,10 @@
                         </div>
                         <div id="collapseThree" class="accordion-body collapse in">
                             <div id="analytes" class="panel-body">
-                                <table class= "table table-bordered" data-toggle="table" data-height="300" data-search="true" data-click-to-select="true">
+                                <table class="table table-bordered" data-toggle="table" data-height="300" data-search="true" data-click-to-select="true">
                                     <thead>
                                         <tr>
-                                            <th><input id="select-all" type="checkbox" /></th>                                
+                                            <th><input id="select-all" type="checkbox" /></th>
                                             <th data-sortable="true">Name/Analyte</th>
                                             <th data-sortable="true">Type</th>
                                         </tr>
@@ -105,21 +105,21 @@
                         </div>
                     </div>
                     @*<div class="accordion-group">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
-                                        Guidelines
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseFour" class="accordion-body collapse in">
-                                <div class="panel-body">
-                                    Chose a guideline: <select class="form-control"><option>Alberta</option><option>BC</option><option>Other</option></select>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+                                            Guidelines
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour" class="accordion-body collapse in">
+                                    <div class="panel-body">
+                                        Chose a guideline: <select class="form-control"><option>Alberta</option><option>BC</option><option>Other</option></select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>*@
+                        </div>*@
                 </div>
             </div>
         </div>
@@ -135,39 +135,37 @@
         </div>
     </div>
     <div class="col-lg-8">
-        <div class="panel panel-default" id="results" style="display:none;">           
-                <div class="panel-heading">
-                    <h4 class="panel-title">                       
-                            Results
-                    </h4>
-                </div>
+        <div class="panel panel-default" id="results" style="display:none;">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    Results
+                </h4>
+            </div>
             <div class="panel-body">
                 <table class="table table-bordered" id="queryResults">
-                       <thead>
-                           <tr>
-                               <td>
-                               </td>
-                               <!-- ko foreach: selectedChoices -->
-                               <td data-bind="text: name"></td>
-                               <!-- /ko -->
-                           </tr>
-                       </thead>
-                        <tbody>
-                            
-                            <!-- ko foreach: queryResults -->
-                            <tr>                               
-                                <td data-bind="text: date"></td>
-                                <!-- ko foreach: items -->                           
-                                <td data-bind="text: DataValue() + ' '+ UnitsName()+ ' '+Variable()"></td>
-                                <!-- /ko -->
-                            </tr>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <!-- ko foreach: queryResultsDateHeader -->
+                            <th data-bind="text: $data"></th>
                             <!-- /ko -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- ko foreach: queryResultsValues -->
+                        <tr>
+                            <!-- ko foreach: $data -->
+
+                            <td data-bind="text: $data"></td>
+                            <!-- /ko -->
+                        </tr>
+                        <!-- /ko -->
                     </tbody>
 
                 </table>
             </div>
-            </div>
         </div>
+    </div>
 </div>
 <!-- /container -->
 
