@@ -489,7 +489,7 @@ CREATE TABLE ODM2.CV_TaxonomicClassifierType (
 CREATE TABLE ODM2.CV_UnitsType (
 	Term varchar (255)  NOT NULL,
 	Name varchar (255)  NOT NULL,
-	Definition varchar (1000)  NULL,
+	Definition varchar (5000)  NULL,
 	Category varchar (255)  NULL,
 	SourceVocabularyURI varchar (255)  NULL,
 	PRIMARY KEY (Name)
