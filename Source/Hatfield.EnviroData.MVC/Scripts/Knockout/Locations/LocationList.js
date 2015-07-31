@@ -85,8 +85,36 @@ function GetAnalytesAndValuesForDate(data)
         arrangedArray.push({ date: result, items: matchingValues });
     }
 
-    return arrangedArray;
-}
+    //structure the result table object
+    var rows = [][];
+    var tableObject = { header: results, dataRows: rows };
+
+    for (var i = 0; i < self.selectedChoices().length; i++)
+    {
+        rows[i][0] = self.selectedChoices()[i];
+        for(var j = 0; j < arrangedArray.length; j++)
+        {
+            var allValuesOfThisDay = arrangedArray[j].items;
+            var matchedAnaylteValue = findMatchedAnalyteValue(self.selectedChoices()[i], arrangedArray[j].items);
+            rows[i][j + 1] = matchedAnaylteValue == null ? '-' : matchedAnaylteValue;
+        }
+    }
+
+    return tableObject;
+}//end of GetAnalytesAndValuesForDate
+
+function findMatchedAnalyteValue(itemsOfADay, analyteName)
+{    
+    for(var i = 0; i < itemsOfADay.length; i++)
+    {
+        if(itemsOfADay[i].Variable == analyteName)
+        {
+            return itemsOfADay[i].DataValue;
+        }
+    }
+
+    return null;
+}//end of findMatchedAnalyteValue
 
 function DrawTable(tableData)
 {
