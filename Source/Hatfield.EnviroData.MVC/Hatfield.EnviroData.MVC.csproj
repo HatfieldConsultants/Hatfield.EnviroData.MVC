@@ -1176,6 +1176,7 @@
     <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\raphael\bower.json" />
     <Content Include="Views\Shared\_NavPartial.cshtml" />
     <Content Include="Views\ControlledVocabularies\Index.cshtml" />
+    <Content Include="Views\Shared\_TopRightNavPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
