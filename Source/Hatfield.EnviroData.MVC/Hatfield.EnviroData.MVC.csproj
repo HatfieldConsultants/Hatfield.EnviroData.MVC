@@ -396,13 +396,14 @@
     <Content Include="Scripts\knockout-3.3.0.js" />
     <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\Knockout\AnalyteList.js" />
+    <Content Include="Scripts\Knockout\ESDAT\EDATDataDetail.js" />
     <Content Include="Scripts\Knockout\FTPFileImport.js" />
     <Content Include="Scripts\Knockout\LocalFileImport.js" />
     <Content Include="Scripts\Knockout\HttpFileImport.js" />
     <Content Include="Scripts\Knockout\Locations\LocationDetail.js" />
     <Content Include="Scripts\Knockout\Locations\LocationList.js" />
     <Content Include="Scripts\Knockout\QualityAssuranceExecute.js" />
-    <Content Include="Scripts\Knockout\SampleCollectionActionDisplay.js" />
+    <Content Include="Scripts\Knockout\ESDAT\SampleCollectionActionDisplay.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap-social\.gitignore" />
     <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap-social\bootstrap-social.css" />
@@ -1177,6 +1178,7 @@
     <Content Include="Views\Shared\_NavPartial.cshtml" />
     <Content Include="Views\ControlledVocabularies\Index.cshtml" />
     <Content Include="Views\Shared\_TopRightNavPartial.cshtml" />
+    <Content Include="Views\ESDAT\ViewDataDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
