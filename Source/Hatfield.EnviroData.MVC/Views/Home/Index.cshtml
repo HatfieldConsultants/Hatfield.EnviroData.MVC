@@ -15,17 +15,17 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-comments fa-5x"></i>
+                            <i class="fa fa-cubes fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">26</div>
-                            <div>ESDAT data</div>
+                            <div class="huge">0</div>
+                            <div>Sample data in the database</div>
                         </div>
                     </div>
                 </div>
-                <a href="@Url.Action("ViewData", "ESDAT")">
+                <a href="@Url.Action("ViewImportedData", "ESDAT")">
                     <div class="panel-footer">
-                        <span class="pull-left">View imported ESDAT data</span>
+                        <span class="pull-left">Click to View Sample data</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
@@ -37,17 +37,17 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-tasks fa-5x"></i>
+                            <i class="fa fa-flask fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">12</div>
-                            <div>New Tasks!</div>
+                            <div class="huge">0</div>
+                            <div>Chemistry analyte results in the database</div>
                         </div>
                     </div>
                 </div>
                 <a href="@Url.Action("Index", "Station")">
                     <div class="panel-footer">
-                        <span class="pull-left">Query Data</span>
+                        <span class="pull-left">Click to Query Chemistry analyte data</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
@@ -60,14 +60,37 @@
 
     <div class="row">
         <div class="col-lg-6 col-md-6">
+            <div class="panel panel-red">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-upload fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge"></div>
+                            <div>ESDAT data</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="@Url.Action("Index", "ESDAT")">
+                    <div class="panel-footer">
+                        <span class="pull-left">Click here to import ESDAT data</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6">
             <div class="panel panel-yellow">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-shopping-cart fa-5x"></i>
+                            <i class="fa fa-flag-checkered fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">124</div>
+                            <div class="huge"></div>
                             <div>Quality Assurance!</div>
                         </div>
                     </div>
@@ -81,15 +104,41 @@
                 </a>
             </div>
         </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
         <div class="col-lg-6 col-md-6">
-            <div class="panel panel-red">
+            <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-support fa-5x"></i>
+                            <i class="fa fa-bar-chart-o fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">13</div>
+                            <div class="huge"></div>
+                            <div>Report</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="@Url.Action("Index", "Report")">
+                    <div class="panel-footer">
+                        <span class="pull-left">Click here to view report</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-wrench fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge"></div>
                             <div>Administration</div>
                         </div>
                     </div>
@@ -104,32 +153,6 @@
             </div>
         </div>
 
-    </div>
-    <!-- /.row -->
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i> Import ESDAT data                    
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <ol class="round">
-                        <li class="one">
-                            <h5>@Html.ActionLink("Import ESDAT data", "Index", "ESDAT")</h5>
-                            <br />
-                        </li>
-                        <li class="two">
-                            <h5>@Html.ActionLink("View ODM2 data in raw format", "ViewData", "ESDAT")</h5>
-                            <br />
-                        </li>
-                    </ol>
-                </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-            
-        </div>
     </div>
     <!-- /.row -->
 </div>

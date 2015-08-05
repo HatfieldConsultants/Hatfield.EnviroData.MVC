@@ -16,7 +16,22 @@ namespace Hatfield.EnviroData.MVC.Controllers
             return View();
         }
 
-        public ActionResult ViewData()
+        public ActionResult ImportFromLocal()
+        {
+            return View();
+        }
+
+        public ActionResult ImportFromHttp()
+        {
+            return View();
+        }
+
+        public ActionResult ImportFromFtp()
+        {
+            return View();
+        }
+
+        public ActionResult ViewImportedData()
         {
             return View();
         }

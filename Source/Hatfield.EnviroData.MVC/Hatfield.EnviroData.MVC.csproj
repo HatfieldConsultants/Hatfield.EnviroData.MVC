@@ -284,6 +284,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\API\ESDATImportAPIController.cs" />
     <Compile Include="Controllers\QualityAssuranceController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\StationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -870,7 +871,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\ESDAT\Index.cshtml" />
-    <Content Include="Views\ESDAT\ViewData.cshtml" />
+    <Content Include="Views\ESDAT\ViewImportedData.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Station\Index.cshtml" />
     <Content Include="Views\Station\Detail.cshtml" />
@@ -1181,6 +1182,10 @@
     <Content Include="Views\ESDAT\ViewDataDetail.cshtml" />
     <Content Include="Views\QualityAssurance\Detail.cshtml" />
     <Content Include="Views\Admin\AdminDefaultValues.cshtml" />
+    <Content Include="Views\ESDAT\ImportFromLocal.cshtml" />
+    <Content Include="Views\ESDAT\ImportFromHttp.cshtml" />
+    <Content Include="Views\ESDAT\ImportFromFtp.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -20,23 +20,39 @@
                 <li>
                     <a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
+                
                 <li>
-                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> ESDAT data<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-cubes fa-fw"></i> Sample data<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="@Url.Action("Index", "ESDAT")">Import ESDAT data</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("ViewData", "ESDAT")"> View imported ESDAT data</a>
+                            <a href="@Url.Action("ViewImportedData", "ESDAT")"> View imported ESDAT data</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
+                
                 <li>
-                    <a href="@Url.Action("Index", "Station")"><i class="fa fa-table fa-fw"></i> Query Data</a>
+                    <a href="@Url.Action("Index", "Station")"><i class="fa fa-flask fa-fw"></i> Query Chemistry Analyte Data</a>
                 </li>
+
                 <li>
-                    <a href="#"><i class="fa fa-sitemap fa-fw"></i> Quality Assurance<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-upload fa-fw"></i> Import ESDAT data<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="@Url.Action("ImportFromLocal", "ESDAT")">Import ESDAT data from local</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ImportFromHttp", "ESDAT")">Import ESDAT data from HTTP</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ImportFromFtp", "ESDAT")">Import ESDAT data from FTP</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-flag-checkered fa-fw"></i> Quality Assurance<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="@Url.Action("Index", "QualityAssurance")"> Manage Quality Assurance Chain</a>                            
@@ -45,7 +61,7 @@
                     <!-- /.nav-second-level -->
                 </li>                
                 <li>
-                    <a href="#"><i class="fa fa-wrench fa-fw"></i> Reports<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Reports<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="panels-wells.html">Graph report</a>
@@ -60,7 +76,7 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-sitemap fa-fw"></i> Admin<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-wrench fa-fw"></i> Admin<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="@Url.Action("Index", "ControlledVocabularies")"> Synchronize Controlled Vocubularies</a>
