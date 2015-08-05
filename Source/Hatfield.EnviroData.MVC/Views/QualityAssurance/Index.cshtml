@@ -2,66 +2,43 @@
     ViewBag.Title = "Quality Assurance";
 }
 
-<h2>Quality Assurance</h2>
 
-<div class="container">
-    
-    <div class="input-group">
-        <span class="input-group-addon">Quality Checking Chain Name:</span>
-        <input type="text" class="form-control" placeholder="Name" aria-describedby="basic-addon1" data-bind="value: ChainName">
-    </div>
-    
-    
-    <div class="input-group">
-        <span class="input-group-addon">Data Fetching Criteria:</span>            
-        <select class="form-control" data-bind="value: DataFetchingCriteriaName">
-            <option value="">Please select a criteria</option>
-            <option value="FetchAllDataCriteria">Fetch All Data Criteria</option>
-        </select>
-    </div>
-
-    <div class="input-group">
-        <span class="input-group-addon">Need Correction:</span>
-        <select class="form-control" id="needCorrectionSelect" data-bind="value: NeedCorrection">
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-        </select>
-    </div>
-    
+<div id="page-wrapper">
     <div class="row">
-        <label>Sample Matrix Type Checking Tool</label>
-        
-     </div>
-    <div class="row">
-        <label>Expected Value</label>
-        <input type="text" data-bind="value: SampleMatrixTypeCheckingToolExpectedValue" />
-    </div>
-    <div class="input-group">
-        <span class="input-group-addon">Case sensitive:</span>
-        <select class="form-control" data-bind="value: SampleMatrixTypeCheckingToolCaseSensitive">
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-        </select>
-
-    </div>
-    <div class="row">
-        <label>Correction Value</label>
-        <input type="text" data-bind="value: SampleMatrixTypeCheckingToolCorrectionValue" />
+        <div class="col-lg-12">
+            <h1 class="page-header"> List of Quality Assurance Chain</h1>
+        </div>
+        <!-- /.col-lg-12 -->
     </div>
 
-    <div class="row">        
-        <button data-bind="click: function(){$root.Execute(); return false;}">Run Quality Checking Chain</button>
-    </div>
-        
-    <div class="row" data-bind="visible: QcResults().length > 0">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                List of Quality Assurance Chain
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Action(s)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Test Chain</td>
+                                <td><a class="btn btn-warning" href="@Url.Action("Detail", new { Id = 1})">View Detail</a></td>
 
-        <ul data-bind="foreach: QcResults">
-            <li data-bind="html: $root.FormatResultMessage($data)"></li>
-        </ul>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
     </div>
-
 </div>
-
-
-
-<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/QualityAssuranceExecute.js")"></script>

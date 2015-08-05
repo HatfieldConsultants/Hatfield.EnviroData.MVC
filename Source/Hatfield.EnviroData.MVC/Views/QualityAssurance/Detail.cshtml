@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Detail";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header"> Quality Assurance Chain Detail</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Quality Assurance Chain Detail
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                
+                <div class="form-group">
+                    <label>Quality Checking Chain Name</label>
+                    <input type="text" class="form-control" placeholder="Name" aria-describedby="basic-addon1" data-bind="value: ChainName">
+                    <p class="help-block">Quality Checking Chain Name.</p>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Data Fetching Criteria</label>
+                    <select class="form-control" data-bind="value: DataFetchingCriteriaName">
+                        <option value="">Please select a criteria</option>
+                        <option value="FetchAllDataCriteria">Fetch All Data Criteria</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Need Correction:</label>
+                    <select class="form-control" id="needCorrectionSelect" data-bind="value: NeedCorrection">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Sample Matrix Type Checking Tool</label>
+                    
+                </div>
+                
+                <div class="form-group">
+                    <label>Expected Value</label>
+                    <input class="form-control" type="text" data-bind="value: SampleMatrixTypeCheckingToolExpectedValue" placeholder="Expected Value" />
+                </div>
+
+                <div class="form-group">
+                    <label>Case sensitive</label>
+                    <select class="form-control" data-bind="value: SampleMatrixTypeCheckingToolCaseSensitive">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Correction Value</label>
+                    <input class="form-control" type="text" data-bind="value: SampleMatrixTypeCheckingToolCorrectionValue" placeholder="Correction Value" />
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-info" data-bind="click: function(){$root.Execute(); return false;}">Run Quality Checking Chain</button> |
+                    <a href="@Url.Action("Index")" class="btn btn-warning">Cancel</a>
+                </div>
+
+                <div class="row" data-bind="visible: QcResults().length > 0">
+
+                    <ul data-bind="foreach: QcResults">
+                        <li data-bind="html: $root.FormatResultMessage($data)"></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/QualityAssuranceExecute.js")"></script>

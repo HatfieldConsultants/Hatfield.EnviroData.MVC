@@ -1179,6 +1179,7 @@
     <Content Include="Views\ControlledVocabularies\Index.cshtml" />
     <Content Include="Views\Shared\_TopRightNavPartial.cshtml" />
     <Content Include="Views\ESDAT\ViewDataDetail.cshtml" />
+    <Content Include="Views\QualityAssurance\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
