@@ -1180,6 +1180,7 @@
     <Content Include="Views\Shared\_TopRightNavPartial.cshtml" />
     <Content Include="Views\ESDAT\ViewDataDetail.cshtml" />
     <Content Include="Views\QualityAssurance\Detail.cshtml" />
+    <Content Include="Views\Admin\AdminDefaultValues.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

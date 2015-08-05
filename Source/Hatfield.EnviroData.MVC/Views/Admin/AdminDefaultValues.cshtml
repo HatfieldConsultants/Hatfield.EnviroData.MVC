@@ -1,107 +1,147 @@
 ﻿@{
-    ViewBag.Title = "Admin Default Values";
+    ViewBag.Title = "Manage Default Values";
 }
 @using Hatfield.EnviroData.MVC.Models
 @model Hatfield.EnviroData.MVC.Models.AdminDefaultValuesDataViewModel
 
-<h2>Admin Default Values</h2>
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Manage Default Values</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @Html.Label("Provider: " + Model.Name)  
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">               
+                
+                @using (Html.BeginForm())
+                {
+                    <div class="form-group">
+                        <label>Default Person Last Name</label>
+                        @Html.TextBoxFor(x => x.DefaultPersonLastName, new { @class = "form-control", placeholder = "Last Name"})
+                    </div>
 
-@Html.Label("Provider Name:")
-@Html.LabelFor(x => x.Name, Model.Name)
-@using(Html.BeginForm())
-{
-    @Html.Label("Default Person Last Name:")
-    @Html.TextBoxFor(x => x.DefaultPersonLastName)
-    
-    <br />
-    @Html.Label("Default Person Middle Name:")
-    @Html.TextBoxFor(x => x.DefaultPersonMiddleName)
+                    <div class="form-group">
+                        <label>Default Person Middle Name</label>
+                        @Html.TextBoxFor(x => x.DefaultPersonMiddleName, new { @class = "form-control", placeholder = "Middle Name" })
+                    </div>
 
-    <br />
-    @Html.Label("Default Person First Name:")
-    @Html.TextBoxFor(x => x.DefaultPersonFirstName)
+                    <div class="form-group">
+                        <label>Default Person First Name</label>
+                        @Html.TextBoxFor(x => x.DefaultPersonFirstName, new { @class = "form-control", placeholder = "First Name" })
+                    </div>
 
-    <br />
-    @Html.Label("Default Organization Type CV:")
-    @Html.TextBoxFor(x => x.DefaultOrganizationTypeCV)
+                    <div class="form-group">
+                        <label>Default Organization Type CV</label>
+                        @Html.TextBoxFor(x => x.DefaultOrganizationTypeCV, new { @class = "form-control", placeholder = "Organization Type CV" })
+                    </div>
 
-    <br />
-    @Html.Label("Default Organization Name:")
-    @Html.TextBoxFor(x => x.DefaultOrganizationName)
+                    <div class="form-group">
+                        <label>Default Organization Name</label>
+                        @Html.TextBoxFor(x => x.DefaultOrganizationName, new { @class = "form-control", placeholder = "Organization Name" })
+                    </div>
 
-    <br />
-    @Html.Label("Default Organization Code:")
-    @Html.TextBoxFor(x => x.DefaultOrganizationCode)
+                    <div class="form-group">
+                        <label>Default Organization Code</label>
+                        @Html.TextBoxFor(x => x.DefaultOrganizationCode, new { @class = "form-control", placeholder = "Organization Code" })
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Default Processing Levels</label>
+                        @Html.TextBoxFor(x => x.DefaultProcessingLevelCode, new { @class = "form-control", placeholder = "Processing Levels" })
+                    </div>
 
-    <br />
-    @Html.Label("Default Processing Levels:")
-    @Html.TextBoxFor(x => x.DefaultProcessingLevelCode)
+                    <div class="form-group">
+                        <label>Default Sampling Feature UUID</label>
+                        @Html.TextBoxFor(x => x.DefaultSamplingFeatureUUID, new { @class = "form-control", placeholder = "Sampling Feature UUID" })
+                    </div>
 
-    <br />
-    @Html.Label("Default Sampling Feature UUID:")
-    @Html.TextBoxFor(x => x.DefaultSamplingFeatureUUID)
+                    <div class="form-group">
+                        <label>Default Sampling Feature Type CV (Chemistry)</label>
+                        @Html.TextBoxFor(x => x.DefaultSamplingFeatureTypeCVChemistry, new { @class = "form-control", placeholder = "Sampling Feature Type CV (Chemistry)" })
+                    </div>
 
-    <br />
-    @Html.Label("Default Sampling Feature Type CV (Chemistry):")
-    @Html.TextBoxFor(x => x.DefaultSamplingFeatureTypeCVChemistry)
+                    <div class="form-group">
+                        <label>Default Sampling Feature Type CV (Sample Collection)</label>
+                        @Html.TextBoxFor(x => x.DefaultSamplingFeatureTypeCVSampleCollection, new { @class = "form-control", placeholder = "Sampling Feature Type CV (Sample Collection)" })
+                    </div>
 
-    <br />
-    @Html.Label("Default Sampling Feature Type CV (Sample Collection):")
-    @Html.TextBoxFor(x => x.DefaultSamplingFeatureTypeCVSampleCollection)
-    
-    <br />
-    @Html.Label("Default Sampling Feature Code:")
-    @Html.TextBoxFor(x => x.DefaultSamplingFeatureCode)
+                    <div class="form-group">
+                        <label>Default Sampling Feature Code</label>
+                        @Html.TextBoxFor(x => x.DefaultSamplingFeatureCode, new { @class = "form-control", placeholder = "Sampling Feature Code" })
+                    </div>
 
-    <br />
-    @Html.Label("Default Method Type CV (Chemistry):")
-    @Html.TextBoxFor(x => x.DefaultMethodTypeCVChemistry)
+                    <div class="form-group">
+                        <label>Default Method Type CV (Chemistry)</label>
+                        @Html.TextBoxFor(x => x.DefaultMethodTypeCVChemistry, new { @class = "form-control", placeholder = "Method Type CV (Chemistry)" })
+                    </div>
 
-    <br />
-    @Html.Label("Default Method Type CV (Sample Collection):")
-    @Html.TextBoxFor(x => x.DefaultMethodTypeCVSampleCollection)
+                    <div class="form-group">
+                        <label>Default Method Type CV (Sample Collection)</label>
+                        @Html.TextBoxFor(x => x.DefaultMethodTypeCVSampleCollection, new { @class = "form-control", placeholder = "Method Type CV (Sample Collection)" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Default Variable Type CV (Sample Collection)</label>
+                        @Html.TextBoxFor(x => x.DefaultVariableTypeCVSampleCollection, new { @class = "form-control", placeholder = "Variable Type CV (Sample Collection)" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Default Variable Type CV  (Chemistry)</label>
+                        @Html.TextBoxFor(x => x.DefaultVariableTypeCVChemistry, new { @class = "form-control", placeholder = "Variable Type CV  (Chemistry)" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Default Variable Code</label>
+                        @Html.TextBoxFor(x => x.DefaultVariableCode, new { @class = "form-control", placeholder = "Variable Code" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Default Variable Name CV</label>
+                        @Html.TextBoxFor(x => x.DefaultVariableNameCV, new { @class = "form-control", placeholder = "Variable Name CV" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Default Variable Speciation CV</label>
+                        @Html.TextBoxFor(x => x.DefaultVariableSpeciationCV, new { @class = "form-control", placeholder = "Variable Speciation CV" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Default Variable No Data Value</label>
+                        @Html.TextBoxFor(x => x.DefaultVariableNoDataValue, new { @class = "form-control", placeholder = "Variable No Data Value" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Default Units Type CV (Sample Collectoin)</label>
+                        @Html.TextBoxFor(x => x.DefaultUnitsTypeCVSampleCollection, new { @class = "form-control", placeholder = "Units Type CV (Sample Collectoin)" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Default Units Type CV (Chemistry)</label>
+                        @Html.TextBoxFor(x => x.DefaultUnitsTypeCVSampleCollection, new { @class = "form-control", placeholder = "Units Type CV (Chemistry)" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Wat To Handle New Data</label>
+                        @Html.TextBoxFor(x => x.WayToHandleNewData, new { @class = "form-control", placeholder = "Wat To Handle New Data" })
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Save" /> |
+                        <a class="btn btn-danger" href="@Url.Action("Index")">Cancel</a>
+                    </div>
 
 
-    <br />
-    @Html.Label("Default Variable Type CV (Sample Collection):")
-    @Html.TextBoxFor(x => x.DefaultVariableTypeCVSampleCollection)
+                }
 
-
-    <br />
-    @Html.Label("Default Variable Type CV  (Chemistry):")
-    @Html.TextBoxFor(x => x.DefaultVariableTypeCVChemistry)
-    
-    <br />
-    @Html.Label("Default Variable Code:")
-    @Html.TextBoxFor(x => x.DefaultVariableCode)
-
-    <br />
-    @Html.Label("Default Variable Name CV:")
-    @Html.TextBoxFor(x => x.DefaultVariableNameCV)
-
-
-    <br />
-    @Html.Label("Default Variable Speciation CV:")
-    @Html.TextBoxFor(x => x.DefaultVariableSpeciationCV)
-
-    <br />
-    @Html.Label("Default Variable No Data Value:")
-    @Html.TextBoxFor(x => x.DefaultVariableNoDataValue)
-
-    <br />
-    @Html.Label("Default Units Type CV (Sample Collectoin):")
-    @Html.TextBoxFor(x => x.DefaultUnitsTypeCVSampleCollection)
-
-    <br />
-    @Html.Label("Default Units Type CV (Chemistry):")
-    @Html.TextBoxFor(x => x.DefaultUnitsTypeCVSampleCollection)
-
-
-
-    <br />
-    @Html.Label("Wat To Handle New Data:")
-    @Html.TextBoxFor(x => x.WayToHandleNewData)
-
-    <br />
-    <input type="submit" value="Save"/>
-}
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+</div>
