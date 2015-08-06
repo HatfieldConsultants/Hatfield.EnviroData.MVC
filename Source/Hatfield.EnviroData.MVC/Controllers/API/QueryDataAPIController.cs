@@ -69,25 +69,27 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
         }
 
         [HttpGet]
-        public ESDATModel GetSampleCollectionActionInESDAT(int Id, int? version = null)
+        public ESDATDataDisplayViewModel GetSampleCollectionActionInESDAT(int Id, int? version = null)
         {
             var mappingHelper = new ESDATViewModelMappingHelper();
             var versionHelper = new DataVersioningHelper(_wqDefaultValueProvider);
 
             var matchedAction = _wqDataRepository.GetActionById(Id);
 
-            var esdatModel = Mapper.Map<ESDATModel>(matchedAction);
+            var esdatModel = Mapper.Map<ESDATDataDisplayViewModel>(matchedAction);
+            //no version function is applied to chemistry data yet
             esdatModel.ChemistryData = ESDATViewModelMappingHelper.MapActionToChemistryFileData(matchedAction);
-
+            
             if (version.HasValue)
             {
+                esdatModel.CurrentSampleDataVersion = version.Value;
                 if(version.Value == 0)
                 {
                     esdatModel.SampleFileData = ESDATViewModelMappingHelper.MapActionToSampleFileData(matchedAction);
                 }
-                else if(version.Value > 0)
+                else if(version.Value >= 1)
                 {
-                    while (version > 0)
+                    while (version >= 1)
                     {
                         var nextVersion = versionHelper.GetNextVersionActionData(matchedAction);
                         if (nextVersion == null)
@@ -107,12 +109,14 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
                 esdatModel.SampleFileData = ESDATViewModelMappingHelper.MapActionToSampleFileData(matchedAction);
             }
             else
-            {   
+            {
+                //show the latest version data by default
+                var numberOfSubversions = versionHelper.GetSubVersionCountOfAction(matchedAction);
+                matchedAction = versionHelper.GetLatestVersionActionData(matchedAction);
+                
+                esdatModel.CurrentSampleDataVersion = numberOfSubversions;
                 esdatModel.SampleFileData = ESDATViewModelMappingHelper.MapActionToSampleFileData(matchedAction);
             }
-            
-            
-
 
             return esdatModel;
             

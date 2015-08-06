@@ -23,7 +23,7 @@
                 ko.mapping.fromJS(data.SampleFileData, {}, self.SampleFileData);
                 ko.mapping.fromJS(data.ChemistryData, {}, self.ChemistryData);
                 self.ESDATHeaderXMLContent(GenerateHeaderFileXMLContent(data));
-
+                self.SelectedVersion = data.CurrentSampleDataVersion;
             },
             error: function (data) {
                 alert("Fetch sample collection data in ESDAT format fail, please try again");
@@ -46,7 +46,7 @@
                 ko.mapping.fromJS(data.ChemistryData, {}, self.ChemistryData);
                 self.ESDATHeaderXMLContent(GenerateHeaderFileXMLContent(data));
 
-                self.SelectedVersion = tempVersionIndex;
+                self.SelectedVersion = data.CurrentSampleDataVersion;
 
             },
             error: function (data) {
