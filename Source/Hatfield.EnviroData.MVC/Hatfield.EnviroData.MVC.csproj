@@ -113,7 +113,7 @@
     </Reference>
     <Reference Include="Hatfield.EnviroData.WQDataProfile, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.WQDataProfile.dll.1.0.0.6\lib\net40\Hatfield.EnviroData.WQDataProfile.dll</HintPath>
+      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.WQDataProfile.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.WQDefaultValueProvider.JSON, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

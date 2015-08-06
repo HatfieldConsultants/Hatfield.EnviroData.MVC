@@ -13,5 +13,6 @@ namespace Hatfield.EnviroData.MVC.Models
         public double DataValue { get; set; }
         public string UnitsName { get; set; }
         public string UnitsTypeCV { get; set; }
+        public double MethodDetectionLimit { get; set; }
     }
 }
