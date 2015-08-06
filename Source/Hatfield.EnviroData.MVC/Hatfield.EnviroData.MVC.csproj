@@ -111,8 +111,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Hatfield.EnviroData.QualityAssurance.1.0.0.2\lib\net40\Hatfield.EnviroData.QualityAssurance.dll</HintPath>
     </Reference>
-    <Reference Include="Hatfield.EnviroData.WQDataProfile">
-      <HintPath>..\..\packages\Hatfield.EnviroData.WQDataProfile.dll.1.0.0.7\lib\net40\Hatfield.EnviroData.WQDataProfile.dll</HintPath>
+    <Reference Include="Hatfield.EnviroData.WQDataProfile, Version=1.0.0.8, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Hatfield.EnviroData.WQDataProfile.dll.1.0.0.8\lib\net40\Hatfield.EnviroData.WQDataProfile.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.WQDefaultValueProvider.JSON, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
