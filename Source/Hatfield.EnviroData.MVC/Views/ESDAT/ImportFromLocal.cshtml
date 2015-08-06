@@ -3,35 +3,51 @@
 }
 
 <div id="page-wrapper">
-    <div id="LocalFileImportDiv" class="contentDiv">
-        <section class="content-wrapper main-content clear-fix">
-            <h2>Local File System</h2>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Import ESDAT Data</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
 
-            <ol class="round">
-                <li class="one">
-                    <div>
-                        <h5>Specify File Information</h5><br />
-                        <span><b>Header File: (Optional)</b> <input type="file" /></span><br />
-                        <span><b>Sample File:</b> <input type="file" /></span><br />
-                        <span><b>Chemistry File:</b> <input type="file" /></span>
-                    </div>
-                </li>
-                <li class="two">
-                    <div>
-                        <h5>Import ESDAT Files</h5>
-                        <br />
-                        <button data-bind="click: function(){$root.submitImportRequest(); return false;}">Import</button>
-                    </div>
-                </li>
-                <li class="three">
-                    <h5>Import Results</h5><br />
-                    <div id="localImportResultDiv" data-bind="foreach: ImportResults" style="overflow-y: scroll; height: 300px">
-                        <span data-bind="html: Message"></span><br />
-                    </div>
-                </li>
-            </ol>
+    <div class="row col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Import data from FTP File System
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body" id="FtpFileImportDiv">
+                <div class="form-group">
+                    <label> Header File</label>
+                    <input class="form-control" type="file" />
+                </div>
 
-        </section>
+                <div class="form-group">
+                    <label> Sample File</label>
+                    <input class="form-control" type="file" />
+                </div>
+
+                <div class="form-group">
+                    <label> Chemistry File</label>
+                    <input class="form-control" type="file" />
+                </div>
+
+
+                <div class="form-group">
+                    <button class="btn btn-primary" data-bind="click: function(){$root.submitImportRequest(); return false;}">Import</button> |
+                    <a class="btn btn-danger" href="@Url.Action("Index")">Cancel</a>
+                </div>
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+
+        <div class="row">
+            <div class="well" id="localImportResultDiv" data-bind="foreach: ImportResults">
+                <span data-bind="html: Message"></span><br />
+            </div>
+        </div>
     </div>
 </div>
 
