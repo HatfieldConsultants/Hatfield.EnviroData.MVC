@@ -17,22 +17,55 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
 {
     public class QueryDataAPIController : ApiController
     {
-        private readonly IActionRepository _actionRepository;
+        //private readonly IActionRepository _actionRepository;
         private readonly IWQDefaultValueProvider _wqDefaultValueProvider;
+        private readonly IWQDataRepository _wqDataRepository;
 
-        public QueryDataAPIController(IActionRepository actionRepository, IWQDefaultValueProvider wqDefaultValueProvider)
+        public QueryDataAPIController(IWQDataRepository wqDataRepository, IWQDefaultValueProvider wqDefaultValueProvider)
         {
-            _actionRepository = actionRepository;
+            _wqDataRepository = wqDataRepository;
             _wqDefaultValueProvider = wqDefaultValueProvider;
         }
 
         [HttpGet]
         public IEnumerable<SampleListItemViewModel> Get()
         {
-            var allSamplingCollectionActions = _actionRepository.GetAllSampleCollectionActions();
+            var allSamplingCollectionActions = _wqDataRepository.GetAllWQSampleDataActions();
 
             var items = Mapper.Map<IEnumerable<SampleListItemViewModel>>(allSamplingCollectionActions);
             return items.ToList();
+        }
+
+        [HttpGet]
+        [ActionName("GetTotalSampleCollectionCount")]
+        public int GetTotalSampleCollectionCount()
+        {
+            var allSamplingCollectionActions = _wqDataRepository.GetAllWQSampleDataActions();
+
+            if(allSamplingCollectionActions == null || !allSamplingCollectionActions.Any())
+            {
+                return 0;
+            }
+            else
+            {
+                return allSamplingCollectionActions.Count();
+            }
+        }
+
+        [HttpGet]
+        [ActionName("GetTotalChemistryAnalyteCount")]
+        public int GetTotalChemistryAnalyteCount()
+        {
+            var allSamplingCollectionActions = _wqDataRepository.GetAllWQAnalyteDataActions();
+
+            if (allSamplingCollectionActions == null || !allSamplingCollectionActions.Any())
+            {
+                return 0;
+            }
+            else
+            {
+                return allSamplingCollectionActions.Count();
+            }
         }
 
         [HttpGet]
@@ -41,7 +74,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
             var mappingHelper = new ESDATViewModelMappingHelper();
             var versionHelper = new DataVersioningHelper(_wqDefaultValueProvider);
 
-            var matchedAction = _actionRepository.GetActionById(Id);
+            var matchedAction = _wqDataRepository.GetActionById(Id);
 
             var esdatModel = Mapper.Map<ESDATModel>(matchedAction);
             esdatModel.ChemistryData = ESDATViewModelMappingHelper.MapActionToChemistryFileData(matchedAction);

@@ -29,6 +29,10 @@
     self.ViewESDATDataDetail = function (Id) {
         window.location = Hatfield.RootURL + "ESDAT/ViewDataDetail/" + Id;
     };//end of ViewESDATDataDetail
+
+    self.EditESDATData = function (Id) {
+        window.location = Hatfield.RootURL + "ESDAT/EditSampleData/" + Id;
+    };//end of EditESDATData
 };
 
 $(document).ready(function () {

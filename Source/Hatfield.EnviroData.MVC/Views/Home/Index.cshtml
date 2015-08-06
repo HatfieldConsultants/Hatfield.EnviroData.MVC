@@ -18,7 +18,7 @@
                             <i class="fa fa-cubes fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">0</div>
+                            <div class="huge" data-bind="html: SampleCollectionCount">0</div>
                             <div>Sample data in the database</div>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                             <i class="fa fa-flask fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">0</div>
+                            <div class="huge" data-bind="html: ChemistryAnalyteCount">0</div>
                             <div>Chemistry analyte results in the database</div>
                         </div>
                     </div>
@@ -156,3 +156,5 @@
     </div>
     <!-- /.row -->
 </div>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Home.js")"></script>
