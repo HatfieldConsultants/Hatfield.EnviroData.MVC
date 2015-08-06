@@ -14,15 +14,13 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
     public class StationQueryAPIController : ApiController
     {
         private readonly IWQDataRepository _wqDataRepository;
-        private readonly IActionRepository _actionRepository;
         private readonly ISiteRepository _siteRepository;
         private readonly IWQVariableRepository _variableRepository;
         private readonly IResultRepository _resultRepository;
 
-        public StationQueryAPIController(IActionRepository actionRepository, ISiteRepository siteRepository, IWQVariableRepository variableRepository, IResultRepository resultRepository, IWQDataRepository wqDataRepository)
+        public StationQueryAPIController(ISiteRepository siteRepository, IWQVariableRepository variableRepository, IResultRepository resultRepository, IWQDataRepository wqDataRepository)
         {
             _wqDataRepository = wqDataRepository;
-            _actionRepository = actionRepository;
             _siteRepository = siteRepository;
             _variableRepository = variableRepository;
             _resultRepository = resultRepository;
@@ -70,8 +68,18 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
                             var measurementValue = result.MeasurementResult.MeasurementResultValues.FirstOrDefault().DataValue;
                             var resultDateTime = action.BeginDateTime;
                             var unitsName = result.Unit.UnitsName;
+                            string prefix = null;
+                            if (result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Prefix").FirstOrDefault().PropertyValue != null)
+                            {
+                                prefix = result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Prefix").FirstOrDefault().PropertyValue;
+                            }
                             var variable = result.Variable.VariableDefinition;
-                            items.Add(new StationAnalyteQueryViewModel { DataValue = measurementValue, ResultDateTime = resultDateTime, UnitsName = unitsName, Variable = variable });
+                            double? detectionLimit = null;
+                            if (result.ResultsDataQualities.Count > 0)
+                            {
+                                detectionLimit = result.ResultsDataQualities.Where(x => x.DataQuality.DataQualityTypeCV == "methodDetectionLimit").FirstOrDefault().DataQuality.DataQualityValue;
+                            }
+                            items.Add(new StationAnalyteQueryViewModel { DataValue = measurementValue, ResultDateTime = resultDateTime.ToString("MMM-dd-yyyy, HH:mm tt"), UnitsName = unitsName, Variable = variable, MethodDetectionLimit = detectionLimit, Prefix = prefix });
                         }
                     }
                 }

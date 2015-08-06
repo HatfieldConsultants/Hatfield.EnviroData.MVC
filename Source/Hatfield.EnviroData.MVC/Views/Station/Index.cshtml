@@ -1,174 +1,195 @@
-﻿<div class="container">
-    <h1>Water Quality Query</h1>
-    <div class="col-lg-4">
-        <div class="row">
-            <div class="accordion" id="accordion2">
-                <div class="accordion-group">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                                    Locations
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseOne" class="accordion-body collapse in">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div id="sites" class="col-md-12">
-                                        <label>Site:</label>
-                                        <select data-bind="options: locations,  optionsText: function(item) {
-                       return 'Sampling Feature ID:'+item.SamplingFeatureID()+' ('+item.SiteTypeCV()+')';
-                   }, optionsValue: 'SamplingFeatureID'" class="form-control" id="selectSite"></select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-group">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                                    Time Frame
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseTwo" class="accordion-body collapse in">
-                            <div class="panel-body">
-                                <div class="row-fluid">
-                                    <div>
-                                        <h4>Time Frame</h4>
-                                    </div>
-                                    <div class="row">
-                                        <div id="reportrange" class="col-md-8" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; margin-left: 15px">
-                                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                                            <span></span> <b class="caret"></b>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-group">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                                    Analytes
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseThree" class="accordion-body collapse in">
-                            <div id="analytes" class="panel-body">
-                                <table class="table table-bordered" data-toggle="table" data-height="300" data-search="true" data-click-to-select="true">
-                                    <thead>
-                                        <tr>
-                                            <th><input id="select-all" type="checkbox" /></th>
-                                            <th data-sortable="true">Name/Analyte</th>
-                                            <th data-sortable="true">Type</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="searchable">
-                                        <!-- ko foreach: analytes -->
-                                        <tr>
-                                            <td><input class="analyte" type="checkbox" data-bind="attr: {value: VariableID, name: VariableDefinition}" /></td>
-                                            <td data-bind="html: VariableDefinition"></td>
-                                            <td data-bind="html: VariableTypeCV"></td>
-                                        </tr>
-                                        <!-- /ko -->
-                                    </tbody>
-                                </table>
-                                <script type="text/javascript">
-                                    $(document).ready(function () {
-
-                                        (function ($) {
-
-                                            $('#filter').keyup(function () {
-
-                                                var rex = new RegExp($(this).val(), 'i');
-                                                $('.searchable tr').hide();
-                                                $('.searchable tr').filter(function () {
-                                                    return rex.test($(this).text());
-                                                }).show();
-
-                                            })
-
-                                        }(jQuery));
-
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                    @*<div class="accordion-group">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
-                                            Guidelines
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseFour" class="accordion-body collapse in">
-                                    <div class="panel-body">
-                                        Chose a guideline: <select class="form-control"><option>Alberta</option><option>BC</option><option>Other</option></select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>*@
-                </div>
-            </div>
+﻿<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Water Quality Query</h1>
         </div>
-        <div class="row">
-
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <div class="text-center" style="padding:5px" id="generate">
-                        <button type="button" class="btn btn-primary" data-bind="click: function(){$root.generateTableDisplay();}">Display Data</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- /.col-lg-12 -->
     </div>
-    <div class="col-lg-8">
-        <div class="panel panel-default" id="results" style="display:none;">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
             <div class="panel-heading">
-                <h4 class="panel-title">
-                    Results
-                </h4>
+                Water Quality Data Query
             </div>
             <div class="panel-body">
-                <table class="table table-bordered" id="queryResults">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <!-- ko foreach: queryResultsDateHeader -->
-                            <th data-bind="text: $data"></th>
-                            <!-- /ko -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- ko foreach: queryResultsValues -->
-                        <tr>
-                            <!-- ko foreach: $data -->
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="accordion" id="accordion2">
+                            <div class="accordion-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                                                Locations
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="accordion-body collapse in">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div id="sites" class="col-md-12">
+                                                    <label>Site:</label>
+                                                    <select data-bind="options: locations,  optionsText: function(item) {
+                       return 'Sampling Feature ID:'+item.SamplingFeatureID()+' ('+item.SiteTypeCV()+')';
+                   }, optionsValue: 'SamplingFeatureID'" class="form-control" id="selectSite"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                                                Time Frame
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="accordion-body collapse in">
+                                        <div class="panel-body">
+                                            <div class="row-fluid">
+                                                <div>
+                                                    <h4>Time Frame</h4>
+                                                </div>
+                                                <div class="row">
+                                                    <div id="reportrange" class="col-md-8" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; margin-left: 15px">
+                                                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                                        <span></span> <b class="caret"></b>
+                                                    </div>
+                                                </div>
 
-                            <td data-bind="text: $data"></td>
-                            <!-- /ko -->
-                        </tr>
-                        <!-- /ko -->
-                    </tbody>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                                                Analytes
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThree" class="accordion-body collapse in">
+                                        <div id="analytes" class="panel-body">
+                                            <table class="table table-bordered" data-toggle="table" data-height="300" data-search="true" data-click-to-select="true">
+                                                <thead>
+                                                    <tr>
+                                                        <th><input id="select-all" type="checkbox" /></th>
+                                                        <th data-sortable="true">Name/Analyte</th>
+                                                        <th data-sortable="true">Type</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="searchable">
+                                                    <!-- ko foreach: analytes -->
+                                                    <tr>
+                                                        <td><input class="analyte" type="checkbox" data-bind="attr: {value: VariableID, name: VariableDefinition}" /></td>
+                                                        <td data-bind="html: VariableDefinition"></td>
+                                                        <td data-bind="html: VariableTypeCV"></td>
+                                                    </tr>
+                                                    <!-- /ko -->
+                                                </tbody>
+                                            </table>
+                                            <script type="text/javascript">
+                                                $(document).ready(function () {
 
-                </table>
+                                                    (function ($) {
+
+                                                        $('#filter').keyup(function () {
+
+                                                            var rex = new RegExp($(this).val(), 'i');
+                                                            $('.searchable tr').hide();
+                                                            $('.searchable tr').filter(function () {
+                                                                return rex.test($(this).text());
+                                                            }).show();
+
+                                                        })
+
+                                                    }(jQuery));
+
+                                                });
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<div class="accordion-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+                                                Guidelines
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseFour" class="accordion-body collapse in">
+                                        <div class="panel-body">
+                                            Chose a guideline: <select class="form-control"><option>Alberta</option><option>BC</option><option>Other</option></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="text-center" style="padding:5px" id="generate">
+                                    <button type="button" class="btn btn-primary" data-bind="click: function(){$root.generateTableDisplay();}">Display Data</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="panel panel-default" id="results" style="display:none;">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                Results
+                            </h4>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-bordered" id="queryResults">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <!-- ko foreach: queryResultsDateHeader -->
+                                        <th colspan="3" data-bind="text: $data"></th>
+                                        <!-- /ko -->
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <!-- ko foreach: queryResultsDateHeader -->
+                                        <th>Value</th>
+                                        <th>Prefix</th>
+                                        <th>Method Detection Limit</th>
+                                        <!-- /ko -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ko foreach: queryResultsValues -->
+                                    <tr>
+                                        <!-- ko foreach: $data -->
+                                        <td data-bind="text: $data"></td>
+                                        <!-- /ko -->
+                                    </tr>
+                                    <!-- /ko -->
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- /container -->
+    </div>
+    <!-- /container -->
 
-<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Locations/LocationList.js")"></script>
-<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Locations/LocationDetail.js")"></script>
-<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/AnalyteList.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Locations/LocationList.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Locations/LocationDetail.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/AnalyteList.js")"></script>
