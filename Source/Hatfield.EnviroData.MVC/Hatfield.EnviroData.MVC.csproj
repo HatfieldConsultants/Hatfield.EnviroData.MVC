@@ -276,6 +276,7 @@
     <Compile Include="AutoMapper\MappingHelper.cs" />
     <Compile Include="AutoMapper\SampleFileDataResolver.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\API\QAQCDataAPIController.cs" />
     <Compile Include="Controllers\API\QualityAssuranceAPIController.cs" />
     <Compile Include="Controllers\API\QueryDataAPIController.cs" />
     <Compile Include="Controllers\API\StationQueryAPIController.cs" />
@@ -297,6 +298,7 @@
     <Compile Include="Infrastructure\DependencyConfigure.cs" />
     <Compile Include="Models\AdminDefaultValuesDataViewModel.cs" />
     <Compile Include="Models\ChemistryDataEditViewModel.cs" />
+    <Compile Include="Models\ChemistryQAQCDataEditViewModel.cs" />
     <Compile Include="Models\ESDATDataDisplayViewModel.cs" />
     <Compile Include="Models\FetchSiteAnalyteQueryViewModel.cs" />
     <Compile Include="Models\FtpFileImportDataViewModel.cs" />

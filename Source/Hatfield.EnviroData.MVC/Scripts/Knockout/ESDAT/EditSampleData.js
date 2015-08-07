@@ -8,6 +8,7 @@
 
 var ESDATDataEditViewModel = function () {
     var self = this;
+    self.SelectedActionId = null;
     var editableGrid;
 
     self.ChemistryData = ko.observableArray();
@@ -31,9 +32,30 @@ var ESDATDataEditViewModel = function () {
         });//end of ajax
     };//end of FetchCollectionActionInESDAT
 
+    self.SaveQAQCData = function () {
+        $.ajax({
+            url: Hatfield.RootURL + 'api/QAQCDataAPI/QAQCChemistryData',
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: 'application/json',
+            data: ko.mapping.toJSON(self.QAQCData),
+            success: function (data) {                
+                window.location = Hatfield.RootURL + 'ESDAT/ViewDataDetail/' + self.SelectedActionId;
+            },
+            error: function (data) {
+                alert("Save QAQC data fail.");
+            }
+        });//end of ajax
+    };//end of SaveQAQCData
+
 
     self.CreateEditableTable = function () {       
-        editableGrid = new EditableGrid("AttachToHTMLTable", { sortIconUp: Hatfield.RootURL + "Scripts/EditableGrid/Images/up.png", sortIconDown: Hatfield.RootURL + "Scripts/EditableGrid/Images/down.png" });
+        editableGrid = new EditableGrid("AttachToHTMLTable",
+                                        {
+                                            sortIconUp: Hatfield.RootURL + "Scripts/EditableGrid/Images/up.png",
+                                            sortIconDown: Hatfield.RootURL + "Scripts/EditableGrid/Images/down.png"
+                                        });
 
         // we build and load the metadata in Javascript
         editableGrid.load({
@@ -80,14 +102,12 @@ var ESDATDataEditViewModel = function () {
     };//end of CreateEditableTable
 
     //The remove function is not finish yet
-    self.removeQAQCData = function (itemToRemove)
-    {
+    self.removeQAQCData = function (itemToRemove) {
         var matchChemistryData = ko.utils.arrayFilter(self.ChemistryData(), function (item) {
             return item.Id() == itemToRemove.ActionId();
         });
 
-        if (matchChemistryData != null)
-        {
+        if (matchChemistryData != null) {
             matchChemistryData[0].ChemistryDataValue.Result(itemToRemove.OldResultValue());
         }
 
@@ -95,15 +115,11 @@ var ESDATDataEditViewModel = function () {
 
         editableGrid.refreshGrid();
 
-    }//end of removeQAQCData
+    };//end of removeQAQCData
 
-    self.QAQCDataToString = function (item)
-    {
+    self.QAQCDataToString = function (item) {
         var message = 'Chemistry action ' + item.ActionId() + ' result value changes from ' + item.OldResultValue() + ' to ' + item.NewResultValue();
 
         return message;
-    }
-
-
-    
+    };//end of QAQCDataToString    
 };//end of ESDATDataEditViewModel

@@ -55,7 +55,7 @@
     <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                QA/QC Imported Chemistry Data
+                QA/QC Operation(s)
             </div>
             <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div data-bind="visible: QAQCData().length > 0">
-                        <button class="btn btn-primary">Save</button>
+                        <button class="btn btn-primary" data-bind="click: function(){$root.SaveQAQCData(); return false;}">Save</button>
                     </div>
                 </div>
             </div>
