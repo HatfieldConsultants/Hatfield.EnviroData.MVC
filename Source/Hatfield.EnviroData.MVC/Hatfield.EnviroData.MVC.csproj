@@ -296,6 +296,7 @@
     <Compile Include="Infrastructure\Dependency.cs" />
     <Compile Include="Infrastructure\DependencyConfigure.cs" />
     <Compile Include="Models\AdminDefaultValuesDataViewModel.cs" />
+    <Compile Include="Models\ChemistryDataEditViewModel.cs" />
     <Compile Include="Models\ESDATDataDisplayViewModel.cs" />
     <Compile Include="Models\FetchSiteAnalyteQueryViewModel.cs" />
     <Compile Include="Models\FtpFileImportDataViewModel.cs" />
@@ -380,6 +381,14 @@
     <Content Include="log4net.config" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\EditableGrid\editablegrid.css" />
+    <Content Include="Scripts\EditableGrid\editablegrid.js" />
+    <Content Include="Scripts\EditableGrid\editablegrid_charts.js" />
+    <Content Include="Scripts\EditableGrid\editablegrid_charts_ofc.js" />
+    <Content Include="Scripts\EditableGrid\editablegrid_editors.js" />
+    <Content Include="Scripts\EditableGrid\editablegrid_renderers.js" />
+    <Content Include="Scripts\EditableGrid\editablegrid_utils.js" />
+    <Content Include="Scripts\EditableGrid\editablegrid_validators.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
@@ -399,6 +408,7 @@
     <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\Knockout\AnalyteList.js" />
     <Content Include="Scripts\Knockout\ESDAT\EDATDataDetail.js" />
+    <Content Include="Scripts\Knockout\ESDAT\EditSampleData.js" />
     <Content Include="Scripts\Knockout\FTPFileImport.js" />
     <Content Include="Scripts\Knockout\Home.js" />
     <Content Include="Scripts\Knockout\LocalFileImport.js" />
