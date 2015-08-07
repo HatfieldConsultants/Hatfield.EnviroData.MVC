@@ -69,7 +69,6 @@ function GetAnalytesAndValuesForDate(data)
 
     for (var item, i = 0; item = items[i++];) {
         var date = item.ResultDateTime;
-
         if (!(date in lookup)) {
             lookup[date] = 1;
             uniqueDates.push(date);
@@ -100,10 +99,21 @@ function GetAnalytesAndValuesForDate(data)
         for(var j = 0; j < arrangedArray.length; j++)
         {
             var allValuesOfThisDay = arrangedArray[j].items;
-            var matchedAnaylteValue = findMatchedAnalyteValue(arrangedArray[j].items, self.selectedAnalytes()[i]);
-            cells[j + 1] = matchedAnaylteValue == null ? '-' : matchedAnaylteValue;
+            var matches = findMatchedAnalyteValue(arrangedArray[j].items, self.selectedAnalytes()[i]);
+            if (matches != null) {
+
+                cells[j*3 + 1] = (matches.dataValue == null ? '-' : matches.dataValue);
+                cells[j*3 + 2] = (matches.prefix == null ? '-' : matches.prefix);
+                cells[j*3 + 3] = (matches.methodDetectionLimit == null ? '-' : matches.methodDetectionLimit);
+            }
+            else
+            {
+                cells[j * 3 + 1] = '-';
+                cells[j * 3 + 2] = '-';
+                cells[j * 3 + 3] = '-';
+            }
         }
-        rows.push(cells);
+        rows.push(cells);1
     }
 
     return tableObject;
@@ -116,7 +126,7 @@ function findMatchedAnalyteValue(itemsOfADay, analyteName)
     {
         if(itemsOfADay[i].Variable == analyteName.name())
         {
-            return itemsOfADay[i].DataValue;
+            return {dataValue: itemsOfADay[i].DataValue, prefix:itemsOfADay[i].Prefix,  methodDetectionLimit: itemsOfADay[i].MethodDetectionLimit};
         }
     }
 

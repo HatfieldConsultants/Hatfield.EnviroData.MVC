@@ -13,21 +13,17 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
 {
     public class StationQueryAPIController : ApiController
     {
-        private readonly IActionRepository _actionRepository;
+        private readonly IWQDataRepository _wqDataRepository;
         private readonly ISiteRepository _siteRepository;
         private readonly IWQVariableRepository _variableRepository;
         private readonly IResultRepository _resultRepository;
-        private readonly IMeasurementResultValueRepository _measurementResultValueRepository;
-        private readonly IUnitRepository _unitRepository;
 
-        public StationQueryAPIController(IActionRepository actionRepository, ISiteRepository siteRepository, IWQVariableRepository variableRepository, IResultRepository resultRepository, IMeasurementResultValueRepository measurementResultValueRepository, IUnitRepository unitRepository)
+        public StationQueryAPIController(ISiteRepository siteRepository, IWQVariableRepository variableRepository, IResultRepository resultRepository, IWQDataRepository wqDataRepository)
         {
-            _actionRepository = actionRepository;
+            _wqDataRepository = wqDataRepository;
             _siteRepository = siteRepository;
             _variableRepository = variableRepository;
             _resultRepository = resultRepository;
-            _measurementResultValueRepository = measurementResultValueRepository;
-            _unitRepository = unitRepository;
         }
 
         [HttpGet]
@@ -46,15 +42,6 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
             return item;
         }
 
-        //[HttpGet]
-        //public IEnumerable<VariableViewModel> GetAllAnalytesForLocation(int locationId)
-        //{
-        //    var site = GetSingleSite(locationId);
-        //    var analytes = 
-        //    var items = Mapper.Map<IEnumerable<VariableViewModel>>(sites);
-        //    return items;
-        //}
-
         [HttpGet]
         public IEnumerable<VariableViewModel> GetAllAnalytes()
         {
@@ -67,22 +54,37 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
         public IEnumerable<StationAnalyteQueryViewModel> FetchStationData(FetchSiteAnalyteQueryViewModel queryViewModel)
         {
             var items = new List<StationAnalyteQueryViewModel>();
-            foreach (var variable in queryViewModel.SelectedVariables)
+            var actions = _wqDataRepository.GetAllWQAnalyteDataActions();
+
+            foreach (var action in actions)
             {
-                var results = _resultRepository.GetResultsBySiteAndAnalyte(queryViewModel.SelectedSiteID, variable);
-                if (results != null)
+                foreach (var analyte in queryViewModel.SelectedVariables)
                 {
-                    foreach (var result in results)
+                    var result = action.FeatureActions.Where(x => x.SamplingFeatureID == queryViewModel.SelectedSiteID).FirstOrDefault().Results.Where(x => x.VariableID == analyte).FirstOrDefault();
+                    if (result != null)
                     {
                         if (result.MeasurementResult != null && result.MeasurementResult.MeasurementResultValues.First().ValueDateTime <= queryViewModel.EndDate && result.MeasurementResult.MeasurementResultValues.First().ValueDateTime >= queryViewModel.StartDate)
                         {
-                            items.Add(new StationAnalyteQueryViewModel() { DataValue = result.MeasurementResult.MeasurementResultValues.First().DataValue, ResultDateTime = result.FeatureAction.Action.BeginDateTime, UnitsName = result.Unit.UnitsName, UnitsTypeCV = result.Unit.UnitsTypeCV, Variable = result.Variable.VariableDefinition });
+                            var measurementValue = result.MeasurementResult.MeasurementResultValues.FirstOrDefault().DataValue;
+                            var resultDateTime = action.BeginDateTime;
+                            var unitsName = result.Unit.UnitsName;
+                            string prefix = null;
+                            if (result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Prefix").FirstOrDefault().PropertyValue != null)
+                            {
+                                prefix = result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Prefix").FirstOrDefault().PropertyValue;
+                            }
+                            var variable = result.Variable.VariableDefinition;
+                            double? detectionLimit = null;
+                            if (result.ResultsDataQualities.Count > 0)
+                            {
+                                detectionLimit = result.ResultsDataQualities.Where(x => x.DataQuality.DataQualityTypeCV == "methodDetectionLimit").FirstOrDefault().DataQuality.DataQualityValue;
+                            }
+                            items.Add(new StationAnalyteQueryViewModel { DataValue = measurementValue, ResultDateTime = resultDateTime.ToString("MMM-dd-yyyy, HH:mm tt"), UnitsName = unitsName, Variable = variable, MethodDetectionLimit = detectionLimit, Prefix = prefix });
                         }
                     }
                 }
             }
-
             return items;
         }
-    }           
+    }
 }
