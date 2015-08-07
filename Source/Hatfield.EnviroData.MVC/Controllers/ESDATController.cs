@@ -42,5 +42,10 @@ namespace Hatfield.EnviroData.MVC.Controllers
             return View(Id);
         }
 
+        public ActionResult EditSampleData(int Id)
+        {
+            return View(Id);
+        }
+
     }
 }

@@ -28,9 +28,9 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
         [Test]
         public void GetTest()
         {
-            var mockRepository = new Mock<IActionRepository>();
+            var mockRepository = new Mock<IWQDataRepository>();
 
-            mockRepository.Setup(x => x.GetAllSampleCollectionActions())
+            mockRepository.Setup(x => x.GetAllWQSampleDataActions())
                           .Returns(() => new List<Hatfield.EnviroData.Core.Action> { 
                             new Hatfield.EnviroData.Core.Action{
                                 ActionID = 2,
@@ -62,7 +62,7 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
         [Test]
         public void GetSampleCollectionActionInESDATTest()
         {
-            var mockRepository = new Mock<IActionRepository>();
+            var mockRepository = new Mock<IWQDataRepository>();
 
             mockRepository.Setup(x => x.GetActionById(It.IsAny<int>()))
                           .Returns(() =>

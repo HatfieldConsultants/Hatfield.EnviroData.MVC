@@ -3,35 +3,50 @@
 }
 
 <div id="page-wrapper">
-    <div id="HttpFileImportDiv">
-        <section class="content-wrapper main-content clear-fix">
-            <h2>HTTP File System</h2>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Import ESDAT Data</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
 
-            <ol class="round">
-                <li class="one">
-                    <div>
-                        <h5>Specify File Information</h5><br />
-                        <span><b>Header File URL: (Optional)</b> <input data-bind="value: HeaderFileURL" placeholder="header file URL" /></span><br />
-                        <span><b>Sample File URL:</b> <input data-bind="value: SampleFileURL" placeholder="sample file URL" /></span><br />
-                        <span><b>Chemistry File URL:</b> <input data-bind="value: ChemistryFileURL" placeholder="chemistry file URL" /></span>
-                    </div>
-                </li>
-                <li class="two">
-                    <div>
-                        <h5>Import ESDAT Files</h5>
-                        <br />
-                        <button data-bind="click: function(){$root.submitImportRequest(); return false;}">Import</button>
-                    </div>
-                </li>
-                <li class="three">
-                    <h5>Import Results</h5><br />
-                    <div id="httpImportResultDiv" data-bind="foreach: ImportResults">
-                        <span data-bind="html: Message"></span><br />
-                    </div>
-                </li>
-            </ol>
-        </section>
-    </div>    
+    <div class="row col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Import data from HTTP File System
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body" id="HttpFileImportDiv">
+                <div class="form-group">
+                    <label> Header File URL: (Optional)</label>
+                    <input class="form-control" type="text" data-bind="value: HeaderFileURL" placeholder="Header File URL" />
+                </div>
+
+                <div class="form-group">
+                    <label> Sample File URL</label>
+                    <input class="form-control" type="text" data-bind="value: SampleFileURL" placeholder="Sample File URL" />
+                </div>
+
+                <div class="form-group">
+                    <label> Chemistry File URL</label>
+                    <input class="form-control" type="text" data-bind="value: ChemistryFileURL" placeholder="Chemistry File URL" />
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary" data-bind="click: function(){$root.submitImportRequest(); return false;}">Import</button> |
+                    <a class="btn btn-danger" href="@Url.Action("Index")">Cancel</a>                    
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+
+        <div class="row">
+            <div class="well" id="httpImportResultDiv" data-bind="foreach: ImportResults">
+                <span data-bind="html: Message"></span><br />
+            </div>
+        </div>    
+    </div>
 </div>
 
 <script src="~/Scripts/Knockout/HttpFileImport.js"></script>

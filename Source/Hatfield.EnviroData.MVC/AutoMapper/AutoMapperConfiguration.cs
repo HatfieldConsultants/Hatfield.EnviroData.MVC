@@ -43,6 +43,22 @@ namespace Hatfield.EnviroData.MVC.AutoMapper
                 //.ForMember(x => x.SampleFileData, l => l.ResolveUsing<SampleFileDataResolver>().ConstructedBy(() => new SampleFileDataResolver()).FromMember(m => m))
                 //.ForMember(x => x.ChemistryData, l => l.ResolveUsing<ChemistryFileDataResolver>().ConstructedBy(() => new ChemistryFileDataResolver()).FromMember(m => m.RelatedActions));
 
+            Mapper.CreateMap<Action, ESDATDataDisplayViewModel>()
+                .ForMember(x => x.DateReported, l => l.MapFrom(m => m.BeginDateTime))
+                .ForMember(x => x.ProjectId, l => l.Ignore())
+                .ForMember(x => x.LabName, l => l.Ignore())
+                .ForMember(x => x.LabSignatory, l => l.Ignore())
+                .ForMember(x => x.SDGID, l => l.Ignore())
+                .ForMember(x => x.COCNumber, l => l.Ignore())
+                .ForMember(x => x.LabRequestId, l => l.Ignore())
+                .ForMember(x => x.LabRequestNumber, l => l.Ignore())
+                .ForMember(x => x.LabRequestVersion, l => l.Ignore())
+                .ForMember(x => x.AssociatedFiles, l => l.Ignore())
+                .ForMember(x => x.CopiesSentTo, l => l.Ignore())
+                .ForMember(x => x.SampleFileData, l => l.Ignore())
+                .ForMember(x => x.ChemistryData, l => l.Ignore())
+                .ForMember(x => x.CurrentSampleDataVersion, l => l.Ignore());
+
             Mapper.CreateMap<Variable, VariableViewModel>()
                 .ForMember(x => x.NoDataValue, l => l.MapFrom(m => m.NoDataValue))
                 .ForMember(x => x.SpeciationCV, l => l.MapFrom(m => m.SpeciationCV))
