@@ -15,13 +15,13 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
 {
     public class QAQCDataAPIController : ApiController
     {
-        private IWQDataRepository _wqDataRepository;
+        private IActionRepository _actionRepository;
         private IRepository<CV_RelationshipType> _relatedActionTypeRepository;
         private IWQDefaultValueProvider _wqDefaultValueProvider;
 
-        public QAQCDataAPIController(IWQDataRepository wqDataRepository, IRepository<CV_RelationshipType> relationTypeRepository, IWQDefaultValueProvider wqDefaultValueProvider)
+        public QAQCDataAPIController(IActionRepository actionRepository, IRepository<CV_RelationshipType> relationTypeRepository, IWQDefaultValueProvider wqDefaultValueProvider)
         {
-            _wqDataRepository = wqDataRepository;
+            _actionRepository = actionRepository;
             _relatedActionTypeRepository = relationTypeRepository;
             _wqDefaultValueProvider = wqDefaultValueProvider;
         }
@@ -30,6 +30,26 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
         [ActionName("QAQCChemistryData")]
         public ResultMessageViewModel QAQCChemistryData(IEnumerable<ChemistryQAQCDataEditViewModel> data)
         {
+            var versioningHelper = new DataVersioningHelper(_wqDefaultValueProvider);
+                        
+            var items = from qaqcData in data
+                        select new ChemistryValueCheckingRuleItem { 
+                            ActionId = qaqcData.ActionId,
+                            CorrectionValue = qaqcData.NewResultValue
+                        };
+            var rule = new ChemistryValueCheckingRule { 
+                Items = items.ToList()
+            };
+
+            var dataFetchCriteria = new GetActionDataByIdsCriteria(_actionRepository, rule);
+
+            var chemistryQAQCTool = new ChemistryValueCheckingTool(versioningHelper, _relatedActionTypeRepository);
+
+            //Check
+            var qaqcResult = chemistryQAQCTool.Check(dataFetchCriteria.FetchData(), rule);
+
+            //Correct
+            //var correctionResult = chemistryQAQCTool.Correct(dataFetchCriteria.FetchData(), rule);
             return new ResultMessageViewModel(ResultMessageViewModel.RESULT_LEVEL_INFO, "QAQC data is saved.");
         }
 
