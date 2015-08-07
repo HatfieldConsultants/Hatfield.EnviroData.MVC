@@ -121,5 +121,24 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
             return esdatModel;
             
         }
+
+        [HttpGet]
+        public IEnumerable<ChemistryDataEditViewModel> GetChemistryAnalyteDataBySampleActionId(int Id)
+        {
+            var mappingHelper = new ESDATViewModelMappingHelper();
+            var versionHelper = new DataVersioningHelper(_wqDefaultValueProvider);
+
+            var matchedAction = _wqDataRepository.GetActionById(Id);
+
+            if (matchedAction != null)
+            {
+                var viewModels = ESDATViewModelMappingHelper.MapActionToChemistryFileEditViewModel(matchedAction, versionHelper);
+                return viewModels;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

@@ -8,6 +8,7 @@ using Hatfield.EnviroData.WQDataProfile;
 using Hatfield.EnviroData.DataAcquisition.ESDAT;
 using Hatfield.EnviroData.DataAcquisition.ESDAT.Converters;
 using Hatfield.EnviroData.MVC.AutoMapper;
+using Hatfield.EnviroData.MVC.Models;
 
 namespace Hatfield.EnviroData.MVC.Helpers
 {
@@ -55,6 +56,39 @@ namespace Hatfield.EnviroData.MVC.Helpers
                         var measurementResults = from result in featureAction.Results
                                                  from measurementResultValue in result.MeasurementResult.MeasurementResultValues
                                                  select MapChemistryFileData(relationAction.Action1, result, measurementResultValue);
+
+                        results.AddRange(measurementResults);
+                    }
+                }
+            }
+
+            return results;
+        }
+
+        public static IEnumerable<ChemistryDataEditViewModel> MapActionToChemistryFileEditViewModel(Hatfield.EnviroData.Core.Action source, IDataVersioningHelper versioningHelper)
+        {
+            var relatedChemistryAction = source.RelatedActions.Where(x => x.CV_RelationshipType.Name == "Is related to");
+            var results = new List<ChemistryDataEditViewModel>();
+
+            if (relatedChemistryAction == null || !relatedChemistryAction.Any())
+            {
+                return null;
+            }
+
+            foreach (var relationAction in relatedChemistryAction)
+            {
+                var latestRelationAction = versioningHelper.GetLatestVersionActionData(relationAction.Action1);
+                var featureActions = latestRelationAction.FeatureActions;
+
+                if (featureActions != null)
+                {
+                    foreach (var featureAction in featureActions)
+                    {
+                        var measurementResults = from result in featureAction.Results
+                                                 from measurementResultValue in result.MeasurementResult.MeasurementResultValues
+                                                 select new ChemistryDataEditViewModel { Id = relationAction.Action1.ActionID, 
+                                                                                         ChemistryDataValue = MapChemistryFileData(relationAction.Action1, result, measurementResultValue)
+                                                                                       };
 
                         results.AddRange(measurementResults);
                     }

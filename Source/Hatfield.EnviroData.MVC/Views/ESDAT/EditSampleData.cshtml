@@ -19,11 +19,12 @@
                 QA/QC Imported Chemistry Data
             </div>
             <!-- /.panel-heading -->
-            <div class="panel-body ESDATDataDiv" id="ESDATDataDiv">               
+            <div class="panel-body">               
                 <div class="ChemistryDataDiv row table-responsive">
                     <table id="chemistryDataTable" class="table table-hover">
                         <thead>
                             <tr>
+                                <th>Action Id</th>
                                 <th>SampleCode</th>
                                 <th>ChemCode</th>
                                 <th>OriginalChemName</th>
@@ -34,12 +35,13 @@
                         </thead>
                         <tbody data-bind="foreach: ChemistryData">
                             <tr data-bind="attr: {'id': 'R' + $index()}">
-                                <td data-bind="html: SampleCode"></td>
-                                <td data-bind="html: ChemCode"></td>
-                                <td data-bind="html: OriginalChemName"></td>
-                                <td data-bind="html: Prefix"></td>
-                                <td data-bind="html: Result"></td>
-                                <td data-bind="html: ResultUnit"></td>
+                                <td data-bind="html: Id"></td>
+                                <td data-bind="html: ChemistryDataValue.SampleCode"></td>
+                                <td data-bind="html: ChemistryDataValue.ChemCode"></td>
+                                <td data-bind="html: ChemistryDataValue.OriginalChemName"></td>
+                                <td data-bind="html: ChemistryDataValue.Prefix"></td>
+                                <td data-bind="html: ChemistryDataValue.Result"></td>
+                                <td data-bind="html: ChemistryDataValue.ResultUnit"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -48,7 +50,32 @@
             <!-- /.panel-body -->
         </div>
         <!-- /.panel -->
+        
     </div>
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                QA/QC Imported Chemistry Data
+            </div>
+            <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="list-group" data-bind="foreach: QAQCData">
+                        <div class="list-group-item-warning">
+                            <span data-bind="html: $root.QAQCDataToString($data)"></span>
+                            @*<button title="Click to revert" type="button" class="btn btn-danger btn-circle small" data-bind="click: function(){$root.removeQAQCData($data); return false;}">
+                                <i class="fa fa-times"></i>
+                            </button>*@
+                        </div>
+                    </div>
+                    <div data-bind="visible: QAQCData().length > 0">
+                        <button class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+     </div>
+        <!-- /.panel -->
+    
 </div>
 
 <script src="~/Scripts/EditableGrid/editablegrid.js"></script>
@@ -66,7 +93,7 @@
         var viewModel = new ESDATDataEditViewModel();
         viewModel.FetchCollectionActionInESDAT(@Model);
 
-        ko.applyBindings(viewModel, document.getElementById("ESDATDataDiv"));
+        ko.applyBindings(viewModel, document.getElementById("page-wrapper"));
         viewModel.CreateEditableTable();
                
     }); //end of document ready function

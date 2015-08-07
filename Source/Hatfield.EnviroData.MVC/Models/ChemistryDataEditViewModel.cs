@@ -10,6 +10,6 @@ namespace Hatfield.EnviroData.MVC.Models
     public class ChemistryDataEditViewModel
     {
         public int Id { get; set; }
-        public ChemistryFileData Values { get; set; }
+        public ChemistryFileData ChemistryDataValue { get; set; }
     }
 }
