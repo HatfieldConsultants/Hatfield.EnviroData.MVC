@@ -1,11 +1,7 @@
-﻿@{
-    ViewBag.Title = "Import ESDAT Data";
-}
-
-<div id="page-wrapper">
+﻿<div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Import ESDAT Data</h1>
+            <h1 class="page-header">@ViewBag.Title</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -14,27 +10,27 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-cloud-upload fa-fw"></i> Import ESDAT data
+                    <i class="fa fa-cloud-upload fa-fw"></i> Data Acquisition
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <ol class="round">
                         <li class="one">
-                            <h5>@Html.ActionLink("Import ESDAT data from local file system", "ImportFromLocal", "ESDAT")</h5>
+                            <h5>@Html.ActionLink("Upload lab EDD file", "ImportFromLocal", "ESDAT")</h5>
                             <br />
                         </li>
                         <li class="two">
-                            <h5>@Html.ActionLink("Import ESDAT data from HTTP file system", "ImportFromHttp", "ESDAT")</h5>
+                            <h5>@Html.ActionLink("Import lab EDD file from Web Service", "ImportFromHttp", "ESDAT")</h5>
                             <br />
                         </li>
                         <li class="three">
-                            <h5>@Html.ActionLink("Import ESDAT data from FTP file system", "ImportFromFtp", "ESDAT")</h5>
+                            <h5>@Html.ActionLink("Import lab EDD file from FTP site", "ImportFromFtp", "ESDAT")</h5>
                             <br />
                         </li>
-                        <li class="four">
+                        @*<li class="four">
                             <h5>@Html.ActionLink("View ODM2 data in raw format", "ViewImportedData", "ESDAT")</h5>
                             <br />
-                        </li>
+                        </li>*@
                     </ol>
                 </div>
                 <!-- /.panel-body -->

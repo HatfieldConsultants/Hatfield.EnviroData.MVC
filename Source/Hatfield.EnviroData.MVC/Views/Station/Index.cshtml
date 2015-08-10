@@ -1,14 +1,14 @@
 ﻿<div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Water Quality Query</h1>
+            <h1 class="page-header">Query Water Quality data</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Water Quality Data Query
+                Query Water Quality data
             </div>
             <div class="panel-body">
                 <div class="col-lg-4">
@@ -26,8 +26,7 @@
                                     <div id="collapseOne" class="accordion-body collapse in">
                                         <div class="panel-body">
                                             <div class="row">
-                                                <div id="sites" class="col-md-12">
-                                                    <label>Site:</label>
+                                                <div id="sites" class="col-md-12">                                                    
                                                     <select data-bind="options: locations,  optionsText: function(item) {
                        return 'Sampling Feature ID:'+item.SamplingFeatureID()+' ('+item.SiteTypeCV()+')';
                    }, optionsValue: 'SamplingFeatureID'" class="form-control" id="selectSite"></select>
@@ -49,9 +48,6 @@
                                     <div id="collapseTwo" class="accordion-body collapse in">
                                         <div class="panel-body">
                                             <div class="row-fluid">
-                                                <div>
-                                                    <h4>Time Frame</h4>
-                                                </div>
                                                 <div class="row">
                                                     <div id="reportrange" class="col-md-8" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; margin-left: 15px">
                                                         <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>

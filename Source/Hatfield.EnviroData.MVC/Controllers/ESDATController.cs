@@ -13,21 +13,25 @@ namespace Hatfield.EnviroData.MVC.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Title = "Data Acquisition";
             return View();
         }
 
         public ActionResult ImportFromLocal()
         {
+            ViewBag.Title = "Data Acquisition";
             return View();
         }
 
         public ActionResult ImportFromHttp()
         {
+            ViewBag.Title = "Data Acquisition";
             return View();
         }
 
         public ActionResult ImportFromFtp()
         {
+            ViewBag.Title = "Data Acquisition";
             return View();
         }
 

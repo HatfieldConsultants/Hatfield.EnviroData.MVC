@@ -21,31 +21,18 @@
                     <a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
                 
-                <li>
-                    <a href="#"><i class="fa fa-cubes fa-fw"></i> Sample data<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="@Url.Action("ViewImportedData", "ESDAT")"> View imported ESDAT data</a>
-                        </li>
-                    </ul>
-                    <!-- /.nav-second-level -->
-                </li>
-                
-                <li>
-                    <a href="@Url.Action("Index", "Station")"><i class="fa fa-flask fa-fw"></i> Query Chemistry Analyte Data</a>
-                </li>
 
                 <li>
-                    <a href="#"><i class="fa fa-upload fa-fw"></i> Import ESDAT data<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-upload fa-fw"></i> Data Acquisition<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="@Url.Action("ImportFromLocal", "ESDAT")">Import ESDAT data from local</a>
+                            <a href="@Url.Action("ImportFromLocal", "ESDAT")"> Upload lab EDD file</a>
                         </li>
                         <li>
-                            <a href="@Url.Action("ImportFromHttp", "ESDAT")">Import ESDAT data from HTTP</a>
+                            <a href="@Url.Action("ImportFromHttp", "ESDAT")"> Import lab EDD file from Web Service</a>
                         </li>
                         <li>
-                            <a href="@Url.Action("ImportFromFtp", "ESDAT")">Import ESDAT data from FTP</a>
+                            <a href="@Url.Action("ImportFromFtp", "ESDAT")"> Import lab EDD file from FTP site</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
@@ -63,6 +50,12 @@
                 <li>
                     <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Reports<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
+                        <li>
+                            <a href="@Url.Action("ViewImportedData", "ESDAT")"> View imported ESDAT data</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Station")"> Query Water Quality data</a>
+                        </li>
                         <li>
                             <a href="panels-wells.html">Graph report</a>
                         </li>
