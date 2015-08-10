@@ -50,10 +50,15 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
             try
             { 
                 //Check
-                var qaqcResult = chemistryQAQCTool.Check(dataFetchCriteria.FetchData(), rule);
+                //var qaqcResult = chemistryQAQCTool.Check(dataFetchCriteria.FetchData(), rule);
 
                 //Correct
-                //var correctionResult = chemistryQAQCTool.Correct(dataFetchCriteria.FetchData(), rule);
+                var qaqcResult = chemistryQAQCTool.Correct(dataFetchCriteria.FetchData(), rule);
+
+                if(qaqcResult.NeedCorrection)
+                {
+                    var numberOfActionSaved = _actionRepository.SaveChanges();
+                }
 
                 if (qaqcResult.Level == QualityCheckingResultLevel.Info)
                 {
