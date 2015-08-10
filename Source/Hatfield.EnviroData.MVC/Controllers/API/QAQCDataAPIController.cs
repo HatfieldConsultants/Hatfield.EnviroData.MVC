@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Text;
 
 using Hatfield.EnviroData.Core;
 using Hatfield.EnviroData.MVC.Models;
@@ -45,12 +47,42 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
 
             var chemistryQAQCTool = new ChemistryValueCheckingTool(versioningHelper, _relatedActionTypeRepository);
 
-            //Check
-            var qaqcResult = chemistryQAQCTool.Check(dataFetchCriteria.FetchData(), rule);
+            try
+            { 
+                //Check
+                var qaqcResult = chemistryQAQCTool.Check(dataFetchCriteria.FetchData(), rule);
 
-            //Correct
-            //var correctionResult = chemistryQAQCTool.Correct(dataFetchCriteria.FetchData(), rule);
-            return new ResultMessageViewModel(ResultMessageViewModel.RESULT_LEVEL_INFO, "QAQC data is saved.");
+                //Correct
+                //var correctionResult = chemistryQAQCTool.Correct(dataFetchCriteria.FetchData(), rule);
+
+                if (qaqcResult.Level == QualityCheckingResultLevel.Info)
+                {
+                    var message = ConstructResultMessage(qaqcResult, "QA/QC data is saved.");
+                    return new ResultMessageViewModel(ResultMessageViewModel.RESULT_LEVEL_INFO, message);
+                }
+                else
+                {
+                    var message = ConstructResultMessage(qaqcResult, "QA/QC data does not saved. Please check the result message for more detail.");
+                    return new ResultMessageViewModel(ResultMessageViewModel.RESULT_LEVEL_FATAL, message);
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                var message = "QA/QC data fail due to " + ex.StackTrace;
+                return new ResultMessageViewModel(ResultMessageViewModel.RESULT_LEVEL_FATAL, message);
+            }
+            
+        }
+
+        private string ConstructResultMessage(IQualityCheckingResult result, string additionalMessage)
+        {
+            var messageBuilder = new StringBuilder();
+            messageBuilder.Append(result.Message);
+            messageBuilder.Append("<br/>");
+            messageBuilder.Append(additionalMessage);
+
+            return messageBuilder.ToString();
         }
 
     }

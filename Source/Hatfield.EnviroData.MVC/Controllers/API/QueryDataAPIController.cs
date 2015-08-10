@@ -78,7 +78,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
 
             var esdatModel = Mapper.Map<ESDATDataDisplayViewModel>(matchedAction);
             //no version function is applied to chemistry data yet
-            esdatModel.ChemistryData = ESDATViewModelMappingHelper.MapActionToChemistryFileData(matchedAction);
+            esdatModel.ChemistryData = ESDATViewModelMappingHelper.MapActionToChemistryFileData(matchedAction, versionHelper);
             
             if (version.HasValue)
             {

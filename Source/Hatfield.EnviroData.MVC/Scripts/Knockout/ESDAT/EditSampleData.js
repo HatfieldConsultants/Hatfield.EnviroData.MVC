@@ -13,6 +13,8 @@ var ESDATDataEditViewModel = function () {
 
     self.ChemistryData = ko.observableArray();
     self.QAQCData = ko.observableArray();
+    self.qaqcResultMessage = ko.observable('');
+    self.qaqcResultClass = ko.observable('alert');
 
     self.FetchCollectionActionInESDAT = function (id) {
         self.SelectedActionId = id;
@@ -41,7 +43,10 @@ var ESDATDataEditViewModel = function () {
             contentType: 'application/json',
             data: ko.mapping.toJSON(self.QAQCData),
             success: function (data) {                
-                window.location = Hatfield.RootURL + 'ESDAT/ViewDataDetail/' + self.SelectedActionId;
+                var nextStepLink = Hatfield.RootURL + 'ESDAT/ViewDataDetail/' + self.SelectedActionId;
+                var clickHtml = '<br/>Click <a href="' + nextStepLink + '"><b>here</b></a> to view the QA/QC data.';
+                self.qaqcResultMessage(data.Message + clickHtml);
+                self.qaqcResultClass(ComputeAlertClass(data.Level));
             },
             error: function (data) {
                 alert("Save QAQC data fail.");
@@ -121,5 +126,16 @@ var ESDATDataEditViewModel = function () {
         var message = 'Chemistry action ' + item.ActionId() + ' result value changes from ' + item.OldResultValue() + ' to ' + item.NewResultValue();
 
         return message;
-    };//end of QAQCDataToString    
+    };//end of QAQCDataToString
+
+    function ComputeAlertClass(resultLevel){
+        if(resultLevel == 'INFO')
+        {
+            return 'alert alert-success';
+        }
+        else
+        {
+            return 'alert alert-danger';
+        }
+    };
 };//end of ESDATDataEditViewModel

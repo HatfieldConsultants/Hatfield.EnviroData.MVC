@@ -40,14 +40,20 @@ namespace Hatfield.EnviroData.MVC.Helpers
             return result;
         }
 
-        public static IEnumerable<ChemistryFileData> MapActionToChemistryFileData(Hatfield.EnviroData.Core.Action source)
+        public static IEnumerable<ChemistryFileData> MapActionToChemistryFileData(Hatfield.EnviroData.Core.Action source, IDataVersioningHelper versioningHelper)
         {
             var relatedChemistryAction = source.RelatedActions.Where(x => x.CV_RelationshipType.Name == "Is related to");
             var results = new List<ChemistryFileData>();
 
+            if (relatedChemistryAction == null || !relatedChemistryAction.Any())
+            {
+                return null;
+            }
+
             foreach (var relationAction in relatedChemistryAction)
             {
-                var featureActions = relationAction.Action1.FeatureActions;
+                var latestRelationAction = versioningHelper.GetLatestVersionActionData(relationAction.Action1);
+                var featureActions = latestRelationAction.FeatureActions;
 
                 if (featureActions != null)
                 {
