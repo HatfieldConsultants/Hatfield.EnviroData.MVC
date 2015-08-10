@@ -13,17 +13,17 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
 {
     public class StationQueryAPIController : ApiController
     {
+        private readonly IWQDefaultValueProvider _wqDefaultValueProvider;
         private readonly IWQDataRepository _wqDataRepository;
         private readonly ISiteRepository _siteRepository;
         private readonly IWQVariableRepository _variableRepository;
-        private readonly IResultRepository _resultRepository;
 
-        public StationQueryAPIController(ISiteRepository siteRepository, IWQVariableRepository variableRepository, IResultRepository resultRepository, IWQDataRepository wqDataRepository)
+        public StationQueryAPIController(IWQDefaultValueProvider wqDefaultValueProvider, ISiteRepository siteRepository, IWQVariableRepository variableRepository, IWQDataRepository wqDataRepository)
         {
+            _wqDefaultValueProvider = wqDefaultValueProvider;
             _wqDataRepository = wqDataRepository;
             _siteRepository = siteRepository;
             _variableRepository = variableRepository;
-            _resultRepository = resultRepository;
         }
 
         [HttpGet]
@@ -55,18 +55,24 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
         {
             var items = new List<StationAnalyteQueryViewModel>();
             var actions = _wqDataRepository.GetAllWQAnalyteDataActions();
+            var versionHelper = new DataVersioningHelper(_wqDefaultValueProvider);
 
             foreach (var action in actions)
             {
                 foreach (var analyte in queryViewModel.SelectedVariables)
                 {
-                    var result = action.FeatureActions.Where(x => x.SamplingFeatureID == queryViewModel.SelectedSiteID).FirstOrDefault().Results.Where(x => x.VariableID == analyte).FirstOrDefault();
+                    var latestAction = versionHelper.GetLatestVersionActionData(action);
+                    var result = latestAction.FeatureActions.Where(x => x.SamplingFeatureID == queryViewModel.SelectedSiteID).FirstOrDefault().Results.Where(x => x.VariableID == analyte).FirstOrDefault();
+
+                    
+                    
+
                     if (result != null)
                     {
                         if (result.MeasurementResult != null && result.MeasurementResult.MeasurementResultValues.First().ValueDateTime <= queryViewModel.EndDate && result.MeasurementResult.MeasurementResultValues.First().ValueDateTime >= queryViewModel.StartDate)
                         {
                             var measurementValue = result.MeasurementResult.MeasurementResultValues.FirstOrDefault().DataValue;
-                            var resultDateTime = action.BeginDateTime;
+                            var resultDateTime = latestAction.BeginDateTime;
                             var unitsName = result.Unit.UnitsName;
                             string prefix = null;
                             if (result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Prefix").FirstOrDefault().PropertyValue != null)
