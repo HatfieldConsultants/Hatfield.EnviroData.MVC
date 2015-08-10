@@ -30,6 +30,7 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
         {
             var mockRepository = new Mock<IWQDataRepository>();
 
+
             mockRepository.Setup(x => x.GetAllWQSampleDataActions())
                           .Returns(() => new List<Hatfield.EnviroData.Core.Action> { 
                             new Hatfield.EnviroData.Core.Action{

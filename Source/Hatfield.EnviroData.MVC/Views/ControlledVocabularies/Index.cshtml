@@ -20,11 +20,15 @@
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                    <h5><a id="updatecv" href="#">Load Controlled Vocabularies</a></h5>
+                    <h5><button class=" btn btn-info"  id="updatecv">Load Controlled Vocabularies</button></h5>
                     <br />
-                    <div id="cvstatus">
-
+                    <div class="progress" style="display: none;">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                        </div>
                     </div>
+                    <div id="cvstatus">                       
+                    </div>
+
                 </div>
                 <!-- /.panel-body -->
             </div>
@@ -45,8 +49,21 @@
             // Add the message to the page.
             $('#cvstatus').text(htmlEncode(message));
         };
+
+        cvStatus.client.updateProgress = function(percentage)
+        {
+            $(".progress-bar").css('width', percentage + '%');
+            $(".progress-bar").text(percentage + '%');
+            if (percentage == 100) {
+                $(".progress-bar").text("Done!");
+                $('.progress-bar').removeClass('active');
+
+            }
+        }
+
         $.connection.hub.start().done(function () {
             $('#updatecv').click(function () {
+                $(".progress").show()
                 // Call the Send method on the hub.
                 cvStatus.server.send();
                 // Clear text box and reset focus for next comment.
