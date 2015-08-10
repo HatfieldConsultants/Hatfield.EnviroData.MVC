@@ -67,9 +67,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Hatfield.EnviroData.Core, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Hatfield.EnviroData.Core, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.Core.1.0.0.3\lib\net40\Hatfield.EnviroData.Core.dll</HintPath>
+      <HintPath>..\..\packages\Hatfield.EnviroData.Core.1.0.0.4\lib\net40\Hatfield.EnviroData.Core.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.CVUpdater">
       <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.CVUpdater.dll</HintPath>
