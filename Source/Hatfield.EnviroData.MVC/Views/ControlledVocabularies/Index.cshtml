@@ -53,7 +53,9 @@
         cvStatus.client.updateProgress = function(percentage)
         {
             $(".progress-bar").css('width', percentage + '%');
+            $(".progress-bar").text(percentage + '%');
             if (percentage == 100) {
+                $(".progress-bar").text("Done!");
                 $('.progress-bar').removeClass('active');
 
             }
