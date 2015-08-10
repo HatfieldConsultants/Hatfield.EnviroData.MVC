@@ -70,7 +70,7 @@ var ESDATDataEditViewModel = function () {
                 { name: "chemcode", datatype: "string", editable: false },
                 { name: "originalchemname", datatype: "html", editable: false },
                 { name: "prefix", datatype: "html", editable: false },
-                { name: "result", datatype: "double", editable: true },
+                { name: "result", datatype: "float", editable: true },
                 { name: "result_unit", datatype: "string", editable: false },
             ]
         });
@@ -112,13 +112,16 @@ var ESDATDataEditViewModel = function () {
             return item.Id() == itemToRemove.ActionId();
         });
 
+
         if (matchChemistryData != null) {
             matchChemistryData[0].ChemistryDataValue.Result(itemToRemove.OldResultValue());
         }
 
+        var index = self.ChemistryData.indexOf(matchChemistryData[0]);        
+
         self.QAQCData.remove(itemToRemove);
 
-        editableGrid.refreshGrid();
+        editableGrid.setValueAt(index, 5, itemToRemove.OldResultValue());
 
     };//end of removeQAQCData
 

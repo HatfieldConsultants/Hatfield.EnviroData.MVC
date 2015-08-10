@@ -381,6 +381,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="log4net.config" />
+    <None Include="Properties\PublishProfiles\Hatfield.EnviroData Build Server Deploy Profile.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\EditableGrid\editablegrid.css" />

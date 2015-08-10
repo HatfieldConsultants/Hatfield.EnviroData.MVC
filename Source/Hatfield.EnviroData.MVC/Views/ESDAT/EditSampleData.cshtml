@@ -62,9 +62,9 @@
                     <div class="list-group" data-bind="foreach: QAQCData">
                         <div class="list-group-item-warning">
                             <span data-bind="html: $root.QAQCDataToString($data)"></span>
-                            @*<button title="Click to revert" type="button" class="btn btn-danger btn-circle small" data-bind="click: function(){$root.removeQAQCData($data); return false;}">
+                            <button title="Click to revert" type="button" class="btn btn-danger btn-circle small" data-bind="click: function(){$root.removeQAQCData($data); return false;}">
                                 <i class="fa fa-times"></i>
-                            </button>*@
+                            </button>
                         </div>
                     </div>
                     <div data-bind="visible: QAQCData().length > 0">
