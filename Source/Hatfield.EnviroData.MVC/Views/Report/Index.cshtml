@@ -5,8 +5,35 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Report</h1>
+            <h1 class="page-header">Reports</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> Reports
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <ol class="round">
+                        <li class="one">
+                            <h5>@Html.ActionLink("View sampling data", "ViewImportedData", "ESDAT")</h5>
+                            <br />
+                        </li>
+                        <li class="two">
+                            <h5>@Html.ActionLink("Query Water Quality data", "Index", "Station")</h5>
+                            <br />
+                        </li>                        
+                    </ol>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+
+        </div>
+    </div>
+
 </div>
