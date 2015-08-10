@@ -2,12 +2,13 @@
     ViewBag.Title = "Edit Imported Data";
 }
 
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/Scripts/EditableGrid/editablegrid.css")" />
 
 <div id="page-wrapper">
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Edit Imported Data</h1>
+            <h1 class="page-header">QA/QC Imported Data</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -15,140 +16,88 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Edit Imported Data
+                QA/QC Imported Chemistry Data
             </div>
             <!-- /.panel-heading -->
-            <div class="panel-body ESDATDataDiv" id="ESDATDataDiv">
-                <div class="HeaderDataDiv row well">
-                    <h4>Header File</h4>
-                    <pre data-bind="text: ESDATHeaderXMLContent"></pre>
-
-                </div>
-
-                <div class="SampleDataDiv row">
-                    <h2>Sample File</h2>
-                    <div>
-                        <a href="#" data-bind="click: function(){ $root.FetchDataWithVersionData(-1); return false;}">Previous Version</a>
-                        <a href="#" data-bind="click: function(){ $root.FetchDataWithVersionData(1); return false;}">Next Version</a>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>SampleCode</th>
-                                    <th>Sampled_Date-Time</th>
-                                    <th>Field_ID</th>
-                                    <th>Blank1</th>
-                                    <th>Sample_Depth</th>
-                                    <th>Blank2</th>
-                                    <th>Matrix_Type</th>
-                                    <th>Sample_Type</th>
-                                    <th>Parent_Sample</th>
-                                    <th>Blank3</th>
-                                    <th>SDG</th>
-                                    <th>Lab_Name</th>
-                                    <th>Lab_SampleID</th>
-                                    <th>Comments</th>
-                                    <th>Lab_Report_Number</th>
-                                </tr>
-                            </thead>
-                            <tbody data-bind="foreach: SampleFileData">
-                                <tr>
-                                    <td data-bind="html: SampleCode"></td>
-                                    <td data-bind="html: SampledDateTime"></td>
-                                    <td data-bind="html: FieldID"></td>
-                                    <td></td>
-                                    <td data-bind="html: SampleDepth"></td>
-                                    <td></td>
-                                    <td data-bind="html: MatrixType"></td>
-                                    <td data-bind="html: SampleType"></td>
-                                    <td data-bind="html: ParentSample"></td>
-                                    <td></td>
-                                    <td data-bind="html: SDG"></td>
-                                    <td data-bind="html: LabName"></td>
-                                    <td data-bind="html: LabSampleID"></td>
-                                    <td data-bind="html: Comments"></td>
-                                    <td data-bind="html: LabReportNumber"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-
-                <!-- /.table-responsive -->
+            <div class="panel-body">               
                 <div class="ChemistryDataDiv row table-responsive">
-
-                    <table class="table table-hover">
+                    <table id="chemistryDataTable" class="table table-hover">
                         <thead>
                             <tr>
+                                <th>Action Id</th>
                                 <th>SampleCode</th>
                                 <th>ChemCode</th>
                                 <th>OriginalChemName</th>
                                 <th>Prefix</th>
                                 <th>Result</th>
                                 <th>Result_Unit</th>
-                                <th>Total_or_Filtered</th>
-                                <th>Result_Type</th>
-                                <th>Method_Type</th>
-                                <th>Method_Name</th>
-                                <th>Extraction_Date</th>
-                                <th>Analysed_Date</th>
-                                <th>EQL</th>
-                                <th>EQL_Units</th>
-                                <th>Comments</th>
-                                <th>QA</th>
-                                <th>UCL</th>
-                                <th>LCL</th>
                             </tr>
                         </thead>
                         <tbody data-bind="foreach: ChemistryData">
-                            <tr>
-                                <td data-bind="html: SampleCode"></td>
-                                <td data-bind="html: ChemCode"></td>
-                                <td data-bind="html: OriginalChemName"></td>
-                                <td data-bind="html: Prefix"></td>
-                                <td data-bind="html: Result"></td>
-                                <td data-bind="html: ResultUnit"></td>
-                                <td data-bind="html: TotalOrFiltered"></td>
-                                <td data-bind="html: ResultType"></td>
-                                <td data-bind="html: MethodType"></td>
-                                <td data-bind="html: MethodName"></td>
-                                <td data-bind="html: ExtractionDate"></td>
-                                <td data-bind="html: AnalysedDate"></td>
-                                <td data-bind="html: EQL"></td>
-                                <td data-bind="html: EQLUnits"></td>
-                                <td data-bind="html: Comments"></td>
-                                <td data-bind="html: LabQualifier"></td>
-                                <td data-bind="html: UCL"></td>
-                                <td data-bind="html: LCL"></td>
+                            <tr data-bind="attr: {'id': 'R' + $index()}">
+                                <td data-bind="html: Id"></td>
+                                <td data-bind="html: ChemistryDataValue.SampleCode"></td>
+                                <td data-bind="html: ChemistryDataValue.ChemCode"></td>
+                                <td data-bind="html: ChemistryDataValue.OriginalChemName"></td>
+                                <td data-bind="html: ChemistryDataValue.Prefix"></td>
+                                <td data-bind="html: ChemistryDataValue.Result"></td>
+                                <td data-bind="html: ChemistryDataValue.ResultUnit"></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-
-
             <!-- /.panel-body -->
         </div>
         <!-- /.panel -->
+        
     </div>
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                QA/QC Operation(s)
+            </div>
+            <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="list-group" data-bind="foreach: QAQCData">
+                        <div class="list-group-item-warning">
+                            <span data-bind="html: $root.QAQCDataToString($data)"></span>
+                            @*<button title="Click to revert" type="button" class="btn btn-danger btn-circle small" data-bind="click: function(){$root.removeQAQCData($data); return false;}">
+                                <i class="fa fa-times"></i>
+                            </button>*@
+                        </div>
+                    </div>
+                    <div data-bind="visible: QAQCData().length > 0">
+                        <button class="btn btn-primary" data-bind="click: function(){$root.SaveQAQCData(); return false;}">Save</button>
+                    </div>
+                    <div data-bind="html: qaqcResultMessage, css: qaqcResultClass">
 
-
+                    </div>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+     </div>
+        <!-- /.panel -->
+    
 </div>
 
+<script src="~/Scripts/EditableGrid/editablegrid.js"></script>
+<script src="~/Scripts/EditableGrid/editablegrid_renderers.js"></script>
+<script src="~/Scripts/EditableGrid/editablegrid_editors.js"></script>
+<script src="~/Scripts/EditableGrid/editablegrid_validators.js"></script>
+<script src="~/Scripts/EditableGrid/editablegrid_utils.js"></script>
+<script src="~/Scripts/EditableGrid/editablegrid_charts.js"></script>
 
-
-
-
-<script src="~/Scripts/Knockout/ESDAT/EDATDataDetail.js"></script>
+<script src="~/Scripts/Knockout/ESDAT/EditSampleData.js"></script>
 <script>
 
 
     $(document).ready(function () {
-        var viewModel = new ESDATDataDetailViewModel();
+        var viewModel = new ESDATDataEditViewModel();
         viewModel.FetchCollectionActionInESDAT(@Model);
 
-        ko.applyBindings(viewModel, document.getElementById("ESDATDataDiv"));
+        ko.applyBindings(viewModel, document.getElementById("page-wrapper"));
+        viewModel.CreateEditableTable();
+               
     }); //end of document ready function
 </script>

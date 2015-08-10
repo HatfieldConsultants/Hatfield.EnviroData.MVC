@@ -78,7 +78,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
 
             var esdatModel = Mapper.Map<ESDATDataDisplayViewModel>(matchedAction);
             //no version function is applied to chemistry data yet
-            esdatModel.ChemistryData = ESDATViewModelMappingHelper.MapActionToChemistryFileData(matchedAction);
+            esdatModel.ChemistryData = ESDATViewModelMappingHelper.MapActionToChemistryFileData(matchedAction, versionHelper);
             
             if (version.HasValue)
             {
@@ -120,6 +120,25 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
 
             return esdatModel;
             
+        }
+
+        [HttpGet]
+        public IEnumerable<ChemistryDataEditViewModel> GetChemistryAnalyteDataBySampleActionId(int Id)
+        {
+            var mappingHelper = new ESDATViewModelMappingHelper();
+            var versionHelper = new DataVersioningHelper(_wqDefaultValueProvider);
+
+            var matchedAction = _wqDataRepository.GetActionById(Id);
+
+            if (matchedAction != null)
+            {
+                var viewModels = ESDATViewModelMappingHelper.MapActionToChemistryFileEditViewModel(matchedAction, versionHelper);
+                return viewModels;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
