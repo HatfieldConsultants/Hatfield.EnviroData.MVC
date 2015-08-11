@@ -12,11 +12,11 @@ namespace Hatfield.EnviroData.MVC.Hubs
 {
     public class CVHub: Hub
     {
-        private string ApiUrl = ConfigurationManager.AppSettings["ApiUrl"];
-        private string VocabSiteUrl = ConfigurationManager.AppSettings["VocabTermsUrl"];
+        private string ApiUrl = ConfigurationManager.AppSettings["CVSync.ListEndpointsUrl"];
 
         public void Send()
-        {         
+        {
+            var VocabSiteUrl = ApiUrl.Replace("api/v1/", "");
             CVTermAPILayer parser = new CVTermAPILayer();
             CVTermBusinessLayer biz = new CVTermBusinessLayer(new ODM2Entities());
 
