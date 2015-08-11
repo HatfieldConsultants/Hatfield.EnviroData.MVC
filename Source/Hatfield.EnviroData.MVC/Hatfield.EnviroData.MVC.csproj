@@ -416,7 +416,6 @@
     <Content Include="Scripts\Knockout\Home.js" />
     <Content Include="Scripts\Knockout\LocalFileImport.js" />
     <Content Include="Scripts\Knockout\HttpFileImport.js" />
-    <Content Include="Scripts\Knockout\Locations\LocationDetail.js" />
     <Content Include="Scripts\Knockout\Locations\LocationList.js" />
     <Content Include="Scripts\Knockout\QualityAssuranceExecute.js" />
     <Content Include="Scripts\Knockout\ESDAT\SampleCollectionActionDisplay.js" />
@@ -889,7 +888,6 @@
     <Content Include="Views\ESDAT\ViewImportedData.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Station\Index.cshtml" />
-    <Content Include="Views\Station\Detail.cshtml" />
     <Content Include="Views\QualityAssurance\Index.cshtml" />
     <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap-social\.bower.json" />
     <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap-social\.editorconfig" />

@@ -12,6 +12,7 @@ namespace Hatfield.EnviroData.MVC.Models
         public double Longitude { get; set; }
         public int SamplingFeatureID { get; set; }
         public string SiteTypeCV { get; set; }
+        public string SamplingFeatureName { get; set; }
         public int SpatialReferenceID { get; set; }
     }
 }
