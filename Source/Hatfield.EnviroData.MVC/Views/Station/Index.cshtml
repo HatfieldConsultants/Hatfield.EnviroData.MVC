@@ -1,7 +1,7 @@
 ﻿<div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Query Water Quality data</h1>
+            <h1 class="page-header">@ViewBag.Title</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -27,8 +27,8 @@
                                         <div class="panel-body">
                                             <div class="row">
                                                 <div id="sites" class="col-md-12">                                                    
-                                                    <select data-bind="options: locations,  optionsText: function(item) {
-                       return 'Sampling Feature ID:'+item.SamplingFeatureID()+' ('+item.SiteTypeCV()+')';
+                                                    <select data-bind="options: locations, optionsCaption: 'Select a Location',  optionsText: function(item) {
+                       return item.SamplingFeatureName()+' ('+item.SiteTypeCV()+')';
                    }, optionsValue: 'SamplingFeatureID'" class="form-control" id="selectSite"></select>
                                                 </div>
                                             </div>
@@ -76,7 +76,7 @@
                                                     <tr>
                                                         <th><input id="select-all" type="checkbox" /></th>
                                                         <th data-sortable="true">Name/Analyte</th>
-                                                        <th data-sortable="true">Type</th>
+                                                        <th data-sortable="true">Analyte Category</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="searchable">

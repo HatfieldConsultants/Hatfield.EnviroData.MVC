@@ -24,6 +24,7 @@ namespace Hatfield.EnviroData.MVC.AutoMapper
                 .ForMember(x => x.Longitude, l => l.MapFrom(m => m.Longitude))
                 .ForMember(x => x.SamplingFeatureID, l => l.MapFrom(m => m.SamplingFeatureID))
                 .ForMember(x => x.SiteTypeCV, l => l.MapFrom(m => m.SiteTypeCV))
+                .ForMember(x => x.SamplingFeatureName, l => l.MapFrom(m => m.SamplingFeature.SamplingFeatureName))
                 .ForMember(x => x.SpatialReferenceID, l => l.MapFrom(m => m.SpatialReferenceID));
 
             Mapper.CreateMap<Action, ESDATModel>()
