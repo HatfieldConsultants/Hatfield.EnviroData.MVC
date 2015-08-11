@@ -67,6 +67,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\..\packages\EPPlus.4.0.4\lib\net20\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Hatfield.EnviroData.Core, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Hatfield.EnviroData.Core.1.0.0.4\lib\net40\Hatfield.EnviroData.Core.dll</HintPath>
@@ -293,6 +296,7 @@
     <Compile Include="Helpers\ESDATDataImportHelper.cs" />
     <Compile Include="Helpers\ESDATViewModelMappingHelper.cs" />
     <Compile Include="Helpers\ImportResultHelper.cs" />
+    <Compile Include="Helpers\SpreadsheetHelper.cs" />
     <Compile Include="Hubs\CVHub.cs" />
     <Compile Include="Infrastructure\Dependency.cs" />
     <Compile Include="Infrastructure\DependencyConfigure.cs" />
