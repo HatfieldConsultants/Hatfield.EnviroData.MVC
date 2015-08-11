@@ -7,36 +7,71 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
+        <div class="col-lg-4 col-md-4">
+            <div class="panel panel-green">
                 <div class="panel-heading">
-                    <i class="fa fa-cloud-upload fa-fw"></i> Data Acquisition
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-upload fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge" data-bind="html: SampleCollectionCount">0</div>
+                            <div>Data Acquisition</div>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <ol class="round">
-                        <li class="one">
-                            <h5>@Html.ActionLink("Upload lab EDD file", "ImportFromLocal", "ESDAT")</h5>
-                            <br />
-                        </li>
-                        <li class="two">
-                            <h5>@Html.ActionLink("Import lab EDD file from Web Service", "ImportFromHttp", "ESDAT")</h5>
-                            <br />
-                        </li>
-                        <li class="three">
-                            <h5>@Html.ActionLink("Import lab EDD file from FTP site", "ImportFromFtp", "ESDAT")</h5>
-                            <br />
-                        </li>
-                        @*<li class="four">
-                            <h5>@Html.ActionLink("View ODM2 data in raw format", "ViewImportedData", "ESDAT")</h5>
-                            <br />
-                        </li>*@
-                    </ol>
-                </div>
-                <!-- /.panel-body -->
+                <a href="@Url.Action("ImportFromLocal", "ESDAT")">
+                    <div class="panel-footer">
+                        <span class="pull-left">Upload lab EDD file</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
             </div>
-            <!-- /.panel -->
-
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-download fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge" data-bind="html: SampleCollectionCount">0</div>
+                            <div>Data Acquisition</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="@Url.Action("ImportFromHttp", "ESDAT")">
+                    <div class="panel-footer">
+                        <span class="pull-left">Import lab EDD file from Web Service</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-download fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge" data-bind="html: SampleCollectionCount">0</div>
+                            <div>Data Acquisitions</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="@Url.Action("ImportFromFtp", "ESDAT")">
+                    <div class="panel-footer">
+                        <span class="pull-left">Import lab EDD file from FTP site</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 </div>

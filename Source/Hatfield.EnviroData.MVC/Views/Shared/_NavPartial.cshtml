@@ -23,7 +23,7 @@
                 
 
                 <li>
-                    <a href="#"><i class="fa fa-upload fa-fw"></i> Data Acquisition<span class="fa arrow"></span></a>
+                    <a href="@Url.Action("Index", "ESDAT")"><i class="fa fa-upload fa-fw"></i> Data Acquisition<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="@Url.Action("ImportFromLocal", "ESDAT")"> Upload lab EDD file</a>
@@ -48,7 +48,7 @@
                     <!-- /.nav-second-level -->
                 </li>                
                 <li>
-                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Reports<span class="fa arrow"></span></a>
+                    <a href="@Url.Action("Index", "Report")"><i class="fa fa-bar-chart-o fa-fw"></i> Reports<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="@Url.Action("ViewImportedData", "ESDAT")"> View imported ESDAT data</a>
@@ -69,7 +69,7 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-wrench fa-fw"></i> Admin<span class="fa arrow"></span></a>
+                    <a href="@Url.Action("Index", "Admin")"><i class="fa fa-wrench fa-fw"></i> Admin<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="@Url.Action("Index", "ControlledVocabularies")"> Synchronize Controlled Vocubularies</a>
