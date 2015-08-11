@@ -37,6 +37,7 @@ namespace Hatfield.EnviroData.MVC.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Title = "Admin Dashboard";
             return View();
         }
 

@@ -13,6 +13,7 @@ namespace Hatfield.EnviroData.MVC.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Title = "Query Water Quality Data";
             return View();
         }
 

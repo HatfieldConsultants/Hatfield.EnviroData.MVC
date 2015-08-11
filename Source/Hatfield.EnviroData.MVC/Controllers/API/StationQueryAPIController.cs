@@ -62,10 +62,8 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
                 foreach (var analyte in queryViewModel.SelectedVariables)
                 {
                     var latestAction = versionHelper.GetLatestVersionActionData(action);
-                    var result = latestAction.FeatureActions.Where(x => x.SamplingFeatureID == queryViewModel.SelectedSiteID).FirstOrDefault().Results.Where(x => x.VariableID == analyte).FirstOrDefault();
 
-                    
-                    
+                    var result = latestAction.FeatureActions.Where(x => x.SamplingFeatureID == queryViewModel.SelectedSiteID).FirstOrDefault().Results.Where(x => x.VariableID == analyte).FirstOrDefault();                   
 
                     if (result != null)
                     {
