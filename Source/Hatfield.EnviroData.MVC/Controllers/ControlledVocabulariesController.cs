@@ -13,6 +13,7 @@ namespace Hatfield.EnviroData.MVC.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Title = "Controlled Vocabularies";
             return View();
         }
 
