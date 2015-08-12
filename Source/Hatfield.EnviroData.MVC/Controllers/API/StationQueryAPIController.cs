@@ -1,13 +1,20 @@
-﻿using AutoMapper;
-using Hatfield.EnviroData.Core;
-using Hatfield.EnviroData.MVC.Models;
-using Hatfield.EnviroData.WQDataProfile;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web;
+
+using AutoMapper;
+using NPOI.XSSF.UserModel;
+using NPOI.SS.UserModel;
+
+using Hatfield.EnviroData.MVC.Helpers;
+using Hatfield.EnviroData.MVC.Models;
+using Hatfield.EnviroData.Core;
+using Hatfield.EnviroData.WQDataProfile;
+using System.IO;
 
 namespace Hatfield.EnviroData.MVC.Controllers.API
 {
@@ -89,6 +96,30 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
                 }
             }
             return items;
+        }
+
+        [HttpPost]
+        public string DownloadQueryData(FetchSiteAnalyteQueryViewModel queryViewModel)
+        {
+            var matchedSite = _siteRepository.GetAll().Where(x => x.SamplingFeatureID == queryViewModel.SelectedSiteID).FirstOrDefault();
+            var siteName = (matchedSite == null || matchedSite.SamplingFeature == null || string.IsNullOrEmpty(matchedSite.SamplingFeature.SamplingFeatureName)) ? 
+                            "Unknown" : 
+                            matchedSite.SamplingFeature.SamplingFeatureName;
+
+            var fileName = string.Format("{0}_Data_From_{1}_To_{2}.xlsx", siteName, queryViewModel.StartDate.ToString("MMM-dd-yyyy"), queryViewModel.EndDate.ToString("MMM-dd-yyyy"));
+
+            var relativePathPart = Path.Combine("App_Data", "Query_Data", fileName);
+            var fileFullPath = HttpContext.Current.Server.MapPath("~/" + relativePathPart);
+
+            var viewModel = FetchStationData(queryViewModel);
+            var spreadSheet = SpreadsheetHelper.GenerateQueryDataResultSpreadshet("Results", viewModel);
+
+            using(var fileStream = System.IO.File.Create(fileFullPath))
+            {                
+                spreadSheet.Write(fileStream);
+            }
+            return fileName;
+
         }
     }
 }

@@ -135,7 +135,8 @@
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <div class="text-center" style="padding:5px" id="generate">
-                                    <button type="button" class="btn btn-primary" data-bind="click: function(){$root.generateTableDisplay();}">Display Data</button>
+                                    <button type="button" class="btn btn-primary" data-bind="click: function(){$root.generateTableDisplay();}"><i class="fa fa-table"></i> Display Data</button> |
+                                    <button type="button" class="btn btn-info" data-bind="click: function(){$root.DownloadQueryData();}"><i class="fa fa-file-excel-o"></i> Download Data</button>
                                 </div>
                             </div>
                         </div>
@@ -186,6 +187,6 @@
     </div>
     <!-- /container -->
 
-    <script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Locations/LocationList.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Locations/LocationDetail.js")"></script>
+<iframe style="display:none" id="fileDownloadFrame"></iframe>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Locations/LocationList.js")"></script>    
     <script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/AnalyteList.js")"></script>
