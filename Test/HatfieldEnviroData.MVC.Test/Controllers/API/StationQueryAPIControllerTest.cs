@@ -58,15 +58,17 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
                                 VariableTypeCV = "Chemistry",
                                 VariableCode = "108-88-3",
                                 VariableNameCV = "1,1,1-Trichloroethane",
+                                VariableDefinition = "",
                                 NoDataValue = -9999,
                             },
                             new Hatfield.EnviroData.Core.Variable{
-                                            VariableTypeCV = "Chemistry",
+                                VariableTypeCV = "Chemistry",
                                 VariableCode = "528-78-3",
                                 VariableNameCV = "1,1,1-Trichloroethane",
+                                VariableDefinition = "",
                                 NoDataValue = -9999,
                             }};
-            mockVariableRepository.Setup(x => x.GetAll())
+            mockVariableRepository.Setup(x => x.GetAllChemistryVariables())
                           .Returns(variables.AsQueryable());
 
             var mockDefaultValueProvider = new Mock<IWQDefaultValueProvider>();
@@ -92,7 +94,6 @@ namespace HatfieldEnviroData.MVC.Test.Controllers.API
         [Test]
         public void GetAnalytesTest()
         {
-
             var analytes = controller.GetAllAnalytes();
             Assert.NotNull(analytes);
              Assert.AreEqual(2, analytes.Count());
