@@ -15,6 +15,7 @@ namespace Hatfield.EnviroData.MVC.Helpers
     public class SpreadsheetHelper
     {
         private static int DateRowIndex = 0;
+        private static int DataRowIndex = 2;
         private static string ValueHeader = "Value";
         private static string PrefixHeader = "Prefix";
         private static string DlHeader = "Method Detection Limit";
@@ -29,7 +30,7 @@ namespace Hatfield.EnviroData.MVC.Helpers
             var distinctDates = viewModel.Select(x => x.ResultDateTime).Distinct();
             OutputDateRow(sheet, distinctDates, DateRowIndex);
 
-            OutputDataRow(sheet, distinctDates, 2, viewModel, analytes);
+            OutputDataRow(sheet, distinctDates, DataRowIndex, viewModel, analytes);
 
             return workbook;
         }

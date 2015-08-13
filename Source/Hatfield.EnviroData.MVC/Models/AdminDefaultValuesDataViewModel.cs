@@ -25,13 +25,20 @@ namespace Hatfield.EnviroData.MVC.Models
         public string DefaultOrganizationCode { get; set; }
 
         public string DefaultProcessingLevelCode { get; set; }
-        public string DefaultSamplingFeatureCode { get; set; }
-        public string DefaultSamplingFeatureName { get; set; }
-        public string SamplingFeatureName { get; set; }
+
+
+        // Sampling Feature Default Values
+        public string DefaultSamplingFeatureTypeCVSampleCollection { get; set; }
+        public string DefaultSamplingFeatureNameSampleCollection { get; set; }
+        public string DefaultSamplingFeatureCodeSampleCollection { get; set; }
+        public Guid DefaultSamplingFeatureUUIDSampleCollection { get; set; }
 
         public string DefaultSamplingFeatureTypeCVChemistry { get; set; }
-        public string DefaultSamplingFeatureTypeCVSampleCollection { get; set; }
-        public Guid DefaultSamplingFeatureUUID { get; set; }
+        public string DefaultSamplingFeatureNameChemistry { get; set; }
+        public string DefaultSamplingFeatureCodeChemistry { get; set; }
+        public Guid DefaultSamplingFeatureUUIDChemistry { get; set; }
+
+
         public string DefaultSRSCode { get; set; }
         public string DefaultSRSDescription { get; set; }
         public string DefaultSRSLink { get; set; }
