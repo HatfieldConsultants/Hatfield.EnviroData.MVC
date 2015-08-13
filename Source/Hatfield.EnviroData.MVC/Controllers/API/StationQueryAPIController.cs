@@ -37,7 +37,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
         public IEnumerable<SiteViewModel> GetSites()
         {
             var sites = _siteRepository.GetAll();
-            var items = Mapper.Map<IEnumerable<SiteViewModel>>(sites).OrderBy(x => x.SamplingFeatureName);
+            var items = Mapper.Map<IEnumerable<SiteViewModel>>(sites);
             return items;
         }
 
@@ -66,38 +66,46 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
 
             if (queryViewModel.SelectedVariables != null && queryViewModel.SelectedSiteID != null)
             {
-                foreach (var action in actions)
+            foreach (var action in actions)
+            {
+                foreach (var analyte in queryViewModel.SelectedVariables)
                 {
-                    foreach (var analyte in queryViewModel.SelectedVariables)
+                    var latestAction = versionHelper.GetLatestVersionActionData(action);
+
+                    var analyteResultViewModel = from featureAction in latestAction.FeatureActions
+                                 from analyteResult in featureAction.Results
+                                 where featureAction.SamplingFeatureID == queryViewModel.SelectedSiteID
+                                 where analyteResult.VariableID == analyte
+                                 select analyteResult;
+
+                    var result = analyteResultViewModel.FirstOrDefault();
+
+                    //var result = latestAction.FeatureActions.Where(x => x.SamplingFeatureID == queryViewModel.SelectedSiteID).FirstOrDefault().Results.Where(x => x.VariableID == analyte).FirstOrDefault();
+
+
+                    if (result != null && result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Result Type").FirstOrDefault().PropertyValue == "REG")
                     {
-                        var latestAction = versionHelper.GetLatestVersionActionData(action);
-
-                        var result = latestAction.FeatureActions.Where(x => x.SamplingFeatureID == queryViewModel.SelectedSiteID).FirstOrDefault().Results.Where(x => x.VariableID == analyte).FirstOrDefault();
-
-
-                        if (result != null && result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Result Type").FirstOrDefault().PropertyValue == "REG")
+                        if (result.MeasurementResult != null && result.MeasurementResult.MeasurementResultValues.First().ValueDateTime <= queryViewModel.EndDate && result.MeasurementResult.MeasurementResultValues.First().ValueDateTime >= queryViewModel.StartDate)
                         {
-                            if (result.MeasurementResult != null && result.MeasurementResult.MeasurementResultValues.First().ValueDateTime <= queryViewModel.EndDate && result.MeasurementResult.MeasurementResultValues.First().ValueDateTime >= queryViewModel.StartDate)
+                            var measurementValue = result.MeasurementResult.MeasurementResultValues.FirstOrDefault().DataValue;
+                            var resultDateTime = latestAction.BeginDateTime;
+                            var unitsName = result.Unit.UnitsName;
+                            string prefix = null;
+                            if (result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Prefix").FirstOrDefault().PropertyValue != null)
                             {
-                                var measurementValue = result.MeasurementResult.MeasurementResultValues.FirstOrDefault().DataValue;
-                                var resultDateTime = latestAction.BeginDateTime;
-                                var unitsName = result.Unit.UnitsName;
-                                string prefix = null;
-                                if (result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Prefix").FirstOrDefault().PropertyValue != null)
-                                {
-                                    prefix = result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Prefix").FirstOrDefault().PropertyValue;
-                                }
-                                var variable = result.Variable.VariableDefinition;
-                                double? detectionLimit = null;
-                                if (result.ResultsDataQualities.Count > 0)
-                                {
-                                    detectionLimit = result.ResultsDataQualities.Where(x => x.DataQuality.DataQualityTypeCV == "methodDetectionLimit").FirstOrDefault().DataQuality.DataQualityValue;
-                                }
-                                items.Add(new StationAnalyteQueryViewModel { DataValue = measurementValue, ResultDateTime = resultDateTime.ToString("MMM-dd-yyyy, HH:mm tt"), UnitsName = unitsName, Variable = variable, MethodDetectionLimit = detectionLimit, Prefix = prefix });
+                                prefix = result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Prefix").FirstOrDefault().PropertyValue;
                             }
+                            var variable = result.Variable.VariableDefinition;
+                            double? detectionLimit = null;
+                            if (result.ResultsDataQualities.Count > 0)
+                            {
+                                detectionLimit = result.ResultsDataQualities.Where(x => x.DataQuality.DataQualityTypeCV == "methodDetectionLimit").FirstOrDefault().DataQuality.DataQualityValue;
+                            }
+                            items.Add(new StationAnalyteQueryViewModel { DataValue = measurementValue, ResultDateTime = resultDateTime.ToString("MMM-dd-yyyy, HH:mm tt"), UnitsName = unitsName, Variable = variable, MethodDetectionLimit = detectionLimit, Prefix = prefix });
                         }
                     }
                 }
+            }
             }
             return items;
         }

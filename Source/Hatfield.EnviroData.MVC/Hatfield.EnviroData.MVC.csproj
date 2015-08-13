@@ -74,21 +74,21 @@
     <Reference Include="Hatfield.EnviroData.CVUpdater">
       <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.CVUpdater.dll</HintPath>
     </Reference>
-    <Reference Include="Hatfield.EnviroData.DataAcquisition, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Hatfield.EnviroData.DataAcquisition, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.1.0.0.1\lib\net40\Hatfield.EnviroData.DataAcquisition.dll</HintPath>
+      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.1.0.0.2\lib\net40\Hatfield.EnviroData.DataAcquisition.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.DataAcquisition.CSV, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.ESDAT.1.0.0.2\lib\net40\Hatfield.EnviroData.DataAcquisition.CSV.dll</HintPath>
+      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.ESDAT.1.0.0.3\lib\net40\Hatfield.EnviroData.DataAcquisition.CSV.dll</HintPath>
     </Reference>
-    <Reference Include="Hatfield.EnviroData.DataAcquisition.ESDAT, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Hatfield.EnviroData.DataAcquisition.ESDAT, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.ESDAT.1.0.0.2\lib\net40\Hatfield.EnviroData.DataAcquisition.ESDAT.dll</HintPath>
+      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.ESDAT.1.0.0.3\lib\net40\Hatfield.EnviroData.DataAcquisition.ESDAT.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.DataAcquisition.XML, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.ESDAT.1.0.0.2\lib\net40\Hatfield.EnviroData.DataAcquisition.XML.dll</HintPath>
+      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.ESDAT.1.0.0.3\lib\net40\Hatfield.EnviroData.DataAcquisition.XML.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.FileSystems, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
