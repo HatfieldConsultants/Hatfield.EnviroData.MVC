@@ -36,8 +36,8 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
         [HttpGet]
         public IEnumerable<SiteViewModel> GetSites()
         {
-            var sites = _siteRepository.GetAll().Where(x => x.SamplingFeature.SamplingFeatureTypeCV == "Site");
-            var items = Mapper.Map<IEnumerable<SiteViewModel>>(sites);
+            var sites = _siteRepository.GetAll();
+            var items = Mapper.Map<IEnumerable<SiteViewModel>>(sites).OrderBy(x => x.SamplingFeatureName);
             return items;
         }
 
@@ -52,7 +52,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
         [HttpGet]
         public IEnumerable<VariableViewModel> GetAllAnalytes()
         {
-            var sites = _variableRepository.GetAllChemistryVariables().Where(x => x.VariableDefinition != null);
+            var sites = _variableRepository.GetAllChemistryVariables().Where(x => x.VariableDefinition != null).OrderBy(x => x.VariableDefinition);
             var items = Mapper.Map<IEnumerable<VariableViewModel>>(sites);
             return items;
         }
