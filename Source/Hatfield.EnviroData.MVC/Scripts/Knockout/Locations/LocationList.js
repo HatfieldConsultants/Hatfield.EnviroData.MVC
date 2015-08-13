@@ -59,6 +59,44 @@ var ParentViewModel = function (locationData, analyteData) {
         });//end of ajax
     };//end of GenerateWaterTable
 
+    self.DownloadQueryData = function () {
+        var startDate = selectedStartDate.format('MMM-DD-YYYY');
+        var endDate = selectedEndDate.format('MMM-DD-YYYY');
+        //The bootstrap table does not update the underly chekckbox automatically
+        //so the knockout binding does not work here
+        //need to filter the selected analytes manually
+        //all selected analyte
+
+        var e = document.getElementById("selectSite");
+        var selectedSite = e.options[e.selectedIndex].value;
+        var selectedAnalytes = [];
+        var selectedAnalytesNames = [];
+        $('input[class=analyte]:checked').each(function () {
+            selectedAnalytes.push($(this).val());
+            selectedAnalytesNames.push({ name: $(this).attr('name') });
+        });
+        ko.mapping.fromJS(selectedAnalytesNames, {}, self.selectedAnalytes);
+        var requestViewModel = new WaterQualityRequestViewModel(startDate, endDate, selectedSite, selectedAnalytes);
+
+        $.ajax({
+            url: Hatfield.RootURL + 'api/StationQueryAPI/DownloadQueryData',
+            type: 'POST',
+            dataType: 'json',
+            async: true,
+            data: ko.mapping.toJSON(requestViewModel),
+            contentType: 'application/json',
+            success: function (data) {
+                $('#divImage').hide(); //hide the mask
+                var fileDownloadURL = Hatfield.RootURL + 'FileDownload/DownloadQueryData?fileName=' + data;
+                document.getElementById('fileDownloadFrame').src = fileDownloadURL;
+            },
+            error: function (data) {
+                $('#divImage').hide(); //hide the mask
+                alert('Data download fail');
+            }
+        });//end of ajax
+    };//end of DownloadQueryData
+
 
 function GetAnalytesAndValuesForDate(data)
 {

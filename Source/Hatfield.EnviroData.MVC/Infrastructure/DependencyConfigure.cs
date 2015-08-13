@@ -57,16 +57,16 @@ namespace Hatfield.EnviroData.MVC.Infrastructure
             builder.RegisterType<MeasurementResultValueRepository>().As<IMeasurementResultValueRepository>();
             builder.RegisterType<UnitRepository>().As<IUnitRepository>();
             builder.RegisterType<WQDataRepository>().As<IWQDataRepository>();
-            //builder.RegisterType<JSONWQDefaultValueProvider>()
-            //       .As<IWQDefaultValueProvider>()
-            //       .WithParameter("jsonFilePath", jsonConfigFilePath)
-            //       .WithParameter("createNewConfigFileIfNotExist", true)
-            //       .WithParameter("wayToLoadConfigFile", WayToLoadConfigFile.CreateNewConfigFileIfLoadFail)
-            //       .InstancePerLifetimeScope();
+            builder.RegisterType<JSONWQDefaultValueProvider>()
+                   .As<IWQDefaultValueProvider>()
+                   .WithParameter("jsonFilePath", jsonConfigFilePath)
+                   .WithParameter("createNewConfigFileIfNotExist", true)
+                   .WithParameter("wayToLoadConfigFile", WayToLoadConfigFile.CreateNewConfigFileIfLoadFail)
+                   .SingleInstance();
 
-            builder.RegisterType<StaticWQDefaultValueProvider>()
-                   .As<IWQDefaultValueProvider>()                   
-                   .InstancePerLifetimeScope();
+            //builder.RegisterType<StaticWQDefaultValueProvider>()
+            //       .As<IWQDefaultValueProvider>()                   
+            //       .InstancePerLifetimeScope();
             return builder.Build();
         }
     }

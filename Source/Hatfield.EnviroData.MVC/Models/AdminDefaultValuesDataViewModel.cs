@@ -26,6 +26,9 @@ namespace Hatfield.EnviroData.MVC.Models
 
         public string DefaultProcessingLevelCode { get; set; }
         public string DefaultSamplingFeatureCode { get; set; }
+        public string DefaultSamplingFeatureName { get; set; }
+        public string SamplingFeatureName { get; set; }
+
         public string DefaultSamplingFeatureTypeCVChemistry { get; set; }
         public string DefaultSamplingFeatureTypeCVSampleCollection { get; set; }
         public Guid DefaultSamplingFeatureUUID { get; set; }

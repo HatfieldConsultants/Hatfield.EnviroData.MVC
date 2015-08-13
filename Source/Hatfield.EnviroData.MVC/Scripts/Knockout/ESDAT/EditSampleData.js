@@ -125,6 +125,15 @@ var ESDATDataEditViewModel = function () {
 
     };//end of removeQAQCData
 
+    self.RevertAll = function () {
+        self.CopyQAQC = ko.observableArray();
+        self.CopyQAQC(self.QAQCData.slice(0));
+        ko.utils.arrayForEach(self.CopyQAQC(), function (qaqcData) {            
+            self.removeQAQCData(qaqcData);
+        });
+
+    };//end of RevertAll
+
     self.QAQCDataToString = function (item) {
         var message = 'Chemistry action ' + item.ActionId() + ' result value changes from ' + item.OldResultValue() + ' to ' + item.NewResultValue();
 

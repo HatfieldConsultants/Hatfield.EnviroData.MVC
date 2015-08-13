@@ -77,6 +77,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Default Sampling Feature Name</label>
+                        @Html.TextBoxFor(x => x.DefaultSamplingFeatureName, new { @class = "form-control", placeholder = "Sampling Feature Name" })
+                    </div>
+
+                    <div class="form-group">
                         <label>Default Method Type CV (Chemistry)</label>
                         @Html.TextBoxFor(x => x.DefaultMethodTypeCVChemistry, new { @class = "form-control", placeholder = "Method Type CV (Chemistry)" })
                     </div>
