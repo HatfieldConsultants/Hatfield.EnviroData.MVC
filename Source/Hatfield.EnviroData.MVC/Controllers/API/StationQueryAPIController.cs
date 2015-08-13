@@ -37,7 +37,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
         public IEnumerable<SiteViewModel> GetSites()
         {
             var sites = _siteRepository.GetAll();
-            var items = Mapper.Map<IEnumerable<SiteViewModel>>(sites);
+            var items = Mapper.Map<IEnumerable<SiteViewModel>>(sites).OrderBy(x => x.SamplingFeatureName);
             return items;
         }
 
@@ -52,7 +52,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
         [HttpGet]
         public IEnumerable<VariableViewModel> GetAllAnalytes()
         {
-            var sites = _variableRepository.GetAllChemistryVariables().Where(x => x.VariableDefinition != null);
+            var sites = _variableRepository.GetAllChemistryVariables().Where(x => x.VariableDefinition != null).OrderBy(x => x.VariableDefinition);
             var items = Mapper.Map<IEnumerable<VariableViewModel>>(sites);
             return items;
         }
@@ -64,34 +64,37 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
             var actions = _wqDataRepository.GetAllWQAnalyteDataActions();
             var versionHelper = new DataVersioningHelper(_wqDefaultValueProvider);
 
-            foreach (var action in actions)
+            if (queryViewModel.SelectedVariables != null && queryViewModel.SelectedSiteID != null)
             {
-                foreach (var analyte in queryViewModel.SelectedVariables)
+                foreach (var action in actions)
                 {
-                    var latestAction = versionHelper.GetLatestVersionActionData(action);
-
-                    var result = latestAction.FeatureActions.Where(x => x.SamplingFeatureID == queryViewModel.SelectedSiteID).FirstOrDefault().Results.Where(x => x.VariableID == analyte).FirstOrDefault();
-
-
-                    if (result != null && result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Result Type").FirstOrDefault().PropertyValue == "REG")
+                    foreach (var analyte in queryViewModel.SelectedVariables)
                     {
-                        if (result.MeasurementResult != null && result.MeasurementResult.MeasurementResultValues.First().ValueDateTime <= queryViewModel.EndDate && result.MeasurementResult.MeasurementResultValues.First().ValueDateTime >= queryViewModel.StartDate)
+                        var latestAction = versionHelper.GetLatestVersionActionData(action);
+
+                        var result = latestAction.FeatureActions.Where(x => x.SamplingFeatureID == queryViewModel.SelectedSiteID).FirstOrDefault().Results.Where(x => x.VariableID == analyte).FirstOrDefault();
+
+
+                        if (result != null && result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Result Type").FirstOrDefault().PropertyValue == "REG")
                         {
-                            var measurementValue = result.MeasurementResult.MeasurementResultValues.FirstOrDefault().DataValue;
-                            var resultDateTime = latestAction.BeginDateTime;
-                            var unitsName = result.Unit.UnitsName;
-                            string prefix = null;
-                            if (result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Prefix").FirstOrDefault().PropertyValue != null)
+                            if (result.MeasurementResult != null && result.MeasurementResult.MeasurementResultValues.First().ValueDateTime <= queryViewModel.EndDate && result.MeasurementResult.MeasurementResultValues.First().ValueDateTime >= queryViewModel.StartDate)
                             {
-                                prefix = result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Prefix").FirstOrDefault().PropertyValue;
+                                var measurementValue = result.MeasurementResult.MeasurementResultValues.FirstOrDefault().DataValue;
+                                var resultDateTime = latestAction.BeginDateTime;
+                                var unitsName = result.Unit.UnitsName;
+                                string prefix = null;
+                                if (result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Prefix").FirstOrDefault().PropertyValue != null)
+                                {
+                                    prefix = result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Prefix").FirstOrDefault().PropertyValue;
+                                }
+                                var variable = result.Variable.VariableDefinition;
+                                double? detectionLimit = null;
+                                if (result.ResultsDataQualities.Count > 0)
+                                {
+                                    detectionLimit = result.ResultsDataQualities.Where(x => x.DataQuality.DataQualityTypeCV == "methodDetectionLimit").FirstOrDefault().DataQuality.DataQualityValue;
+                                }
+                                items.Add(new StationAnalyteQueryViewModel { DataValue = measurementValue, ResultDateTime = resultDateTime.ToString("MMM-dd-yyyy, HH:mm tt"), UnitsName = unitsName, Variable = variable, MethodDetectionLimit = detectionLimit, Prefix = prefix });
                             }
-                            var variable = result.Variable.VariableDefinition;
-                            double? detectionLimit = null;
-                            if (result.ResultsDataQualities.Count > 0)
-                            {
-                                detectionLimit = result.ResultsDataQualities.Where(x => x.DataQuality.DataQualityTypeCV == "methodDetectionLimit").FirstOrDefault().DataQuality.DataQualityValue;
-                            }
-                            items.Add(new StationAnalyteQueryViewModel { DataValue = measurementValue, ResultDateTime = resultDateTime.ToString("MMM-dd-yyyy, HH:mm tt"), UnitsName = unitsName, Variable = variable, MethodDetectionLimit = detectionLimit, Prefix = prefix });
                         }
                     }
                 }
