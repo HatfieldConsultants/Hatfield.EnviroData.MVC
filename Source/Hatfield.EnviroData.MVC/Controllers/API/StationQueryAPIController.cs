@@ -36,7 +36,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
         [HttpGet]
         public IEnumerable<SiteViewModel> GetSites()
         {
-            var sites = _siteRepository.GetAll().Where(x => x.SamplingFeature.SamplingFeatureTypeCV == "Site");
+            var sites = _siteRepository.GetAll();
             var items = Mapper.Map<IEnumerable<SiteViewModel>>(sites);
             return items;
         }
@@ -52,7 +52,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
         [HttpGet]
         public IEnumerable<VariableViewModel> GetAllAnalytes()
         {
-            var sites = _variableRepository.GetAllChemistryVariables().Where(x => x.VariableDefinition != null);
+            var sites = _variableRepository.GetAllChemistryVariables().Where(x => x.VariableDefinition != null).OrderBy(x => x.VariableDefinition);
             var items = Mapper.Map<IEnumerable<VariableViewModel>>(sites);
             return items;
         }
@@ -64,6 +64,8 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
             var actions = _wqDataRepository.GetAllWQAnalyteDataActions();
             var versionHelper = new DataVersioningHelper(_wqDefaultValueProvider);
 
+            if (queryViewModel.SelectedVariables != null && queryViewModel.SelectedSiteID != null)
+            {
             foreach (var action in actions)
             {
                 foreach (var analyte in queryViewModel.SelectedVariables)
@@ -103,6 +105,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
                         }
                     }
                 }
+            }
             }
             return items;
         }
