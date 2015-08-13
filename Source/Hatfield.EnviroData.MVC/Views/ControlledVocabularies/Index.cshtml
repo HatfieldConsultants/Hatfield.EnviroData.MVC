@@ -17,7 +17,22 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <h5><button class=" btn btn-info"  id="updatecv">Update Controlled Vocabularies from Web Service</button></h5>
-                    <h1>Last updated: </h1>
+                    
+                        <p>
+                            Last updated: <div id="dateUpdated">
+    @if (ViewBag.LastRunTime != null)
+    {
+        @ViewBag.LastRunTime
+    }
+    else
+    {
+        @Html.Raw("The Updater has not been run yet")
+
+    }
+</div>
+</p>
+                    
+
                     <p>Click this button in order to periodically synchronize the Controlled Vocabularies maintained by ODM2 administrators with the database</p>
                     <br />
                     <div class="progress" style="display: none;">
@@ -48,6 +63,10 @@
             $('#cvstatus').text(htmlEncode(message));
         };
 
+        cvStatus.client.updateDateTime = function(dateTime)
+        {
+            $("#dateUpdated").text(dateTime);
+        }
         cvStatus.client.updateProgress = function(percentage)
         {
             $(".progress-bar").css('width', percentage + '%');

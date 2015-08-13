@@ -1,9 +1,11 @@
 ﻿using Hatfield.EnviroData.Core;
 using Hatfield.EnviroData.CVUpdater;
 using Microsoft.AspNet.SignalR;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Xml.Linq;
@@ -43,6 +45,16 @@ namespace Hatfield.EnviroData.MVC.Hubs
             CVTermAPILayer parser = new CVTermAPILayer();
             var percentage = (iterator + 1) * 100 / endpointsCount;
             Clients.All.updateProgress(percentage);
+            if (percentage == 100)
+            {
+                 var dateFile = "\\date.json";
+            var baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            string filePath = baseDir + dateFile;
+            //Debugger.Launch();
+                var newDate = DateTime.Now;
+                System.IO.File.WriteAllText(filePath, JsonConvert.SerializeObject(newDate));
+                Clients.All.updateDateTime(newDate.ToString("MMM-dd-yyyy, HH:mm tt"));
+            }
         }
 
     }
