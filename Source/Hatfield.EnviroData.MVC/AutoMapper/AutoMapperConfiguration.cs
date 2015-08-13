@@ -74,7 +74,9 @@ namespace Hatfield.EnviroData.MVC.AutoMapper
             //Mapper.CreateMap<Unit, StationAnalyteQueryViewModel>();
 
 
-            Mapper.CreateMap<IWQDefaultValueProvider, AdminDefaultValuesDataViewModel>();
+            Mapper.CreateMap<IWQDefaultValueProvider, AdminDefaultValuesDataViewModel>()
+                .ForMember(x => x.SamplingFeatureName, l => l.Ignore());
+
             Mapper.CreateMap<AdminDefaultValuesDataViewModel, WQDefaultValueModel>();
 
             Mapper.CreateMap<IQualityCheckingResult, ResultMessageViewModel>()
