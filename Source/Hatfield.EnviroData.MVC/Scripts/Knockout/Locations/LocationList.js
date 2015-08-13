@@ -176,7 +176,7 @@ function findMatchedAnalyteValue(itemsOfADay, analyteName)
 
 function DrawTable(tableData)
 {
-    $('#results').show();
+    $('#queryResults').show();
 }
 
 var WaterQualityRequestViewModel = function (startDate, endDate, site, selectedVariables) {

@@ -70,9 +70,10 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
                 {
                     var latestAction = versionHelper.GetLatestVersionActionData(action);
 
-                    var result = latestAction.FeatureActions.Where(x => x.SamplingFeatureID == queryViewModel.SelectedSiteID).FirstOrDefault().Results.Where(x => x.VariableID == analyte).FirstOrDefault();                   
+                    var result = latestAction.FeatureActions.Where(x => x.SamplingFeatureID == queryViewModel.SelectedSiteID).FirstOrDefault().Results.Where(x => x.VariableID == analyte).FirstOrDefault();
 
-                    if (result != null)
+
+                    if (result != null && result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Result Type").FirstOrDefault().PropertyValue == "REG")
                     {
                         if (result.MeasurementResult != null && result.MeasurementResult.MeasurementResultValues.First().ValueDateTime <= queryViewModel.EndDate && result.MeasurementResult.MeasurementResultValues.First().ValueDateTime >= queryViewModel.StartDate)
                         {
