@@ -23,7 +23,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
         private readonly IWQDefaultValueProvider _wqDefaultValueProvider;
         private readonly IWQDataRepository _wqDataRepository;
         private readonly ISiteRepository _siteRepository;
-        private readonly IWQVariableRepository _variableRepository;
+        private readonly IWQVariableRepository _variableRepository;        
 
         public StationQueryAPIController(IWQDefaultValueProvider wqDefaultValueProvider, ISiteRepository siteRepository, IWQVariableRepository variableRepository, IWQDataRepository wqDataRepository)
         {
@@ -102,6 +102,10 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
         [HttpPost]
         public string DownloadQueryData(FetchSiteAnalyteQueryViewModel queryViewModel)
         {
+            var selectedAnalytes = _variableRepository.GetAllChemistryVariables()
+                                              .Where(x => queryViewModel.SelectedVariables.Contains(x.VariableID))
+                                              .AsEnumerable(); 
+
             var matchedSite = _siteRepository.GetAll().Where(x => x.SamplingFeatureID == queryViewModel.SelectedSiteID).FirstOrDefault();
             var siteName = (matchedSite == null || matchedSite.SamplingFeature == null || string.IsNullOrEmpty(matchedSite.SamplingFeature.SamplingFeatureName)) ? 
                             "Unknown" : 
@@ -112,8 +116,8 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
             var relativePathPart = Path.Combine("App_Data", "Query_Data", fileName);
             var fileFullPath = HttpContext.Current.Server.MapPath("~/" + relativePathPart);
 
-            var viewModel = FetchStationData(queryViewModel);
-            var spreadSheet = SpreadsheetHelper.GenerateQueryDataResultSpreadshet("Results", viewModel);
+            var dataViewModel = FetchStationData(queryViewModel);
+            var spreadSheet = SpreadsheetHelper.GenerateQueryDataResultSpreadshet("Results", dataViewModel, selectedAnalytes);
 
             using(var fileStream = System.IO.File.Create(fileFullPath))
             {                

@@ -185,3 +185,4 @@ $RECYCLE.BIN/
 **/*.sln.ide
 Source/Hatfield.EnviroData.MVC/App_Data/Logs/log.txt
 Source/Hatfield.EnviroData.MVC/App_Data/Logs/log.txt
+Source/Hatfield.EnviroData.MVC/App_Data/Query_Data/*

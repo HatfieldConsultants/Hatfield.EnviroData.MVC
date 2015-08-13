@@ -145,7 +145,7 @@ namespace Hatfield.EnviroData.MVC.Controllers
                 var allResults = (from parsingResult in extractedResults.AllParsingResults
                                  select new ResultMessageViewModel(parsingResult.Level.ToString(), parsingResult.Message)).ToList();
 
-                var duplicateChecker = new ESDATDuplicateChecker(_dbContext);
+                var duplicateChecker = new ODM2DuplicateChecker(_dbContext);
 
                 var convertResult = new List<IResult>();
                 var sampleCollectionFactory = new ESDATSampleCollectionMapperFactory(duplicateChecker, _wqDefaultValueProvider, wayToHandleNewData, convertResult);
