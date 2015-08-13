@@ -7,6 +7,7 @@ using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.SS.Util;
 
+using Hatfield.EnviroData.Core;
 using Hatfield.EnviroData.MVC.Models;
 
 namespace Hatfield.EnviroData.MVC.Helpers
@@ -14,13 +15,14 @@ namespace Hatfield.EnviroData.MVC.Helpers
     public class SpreadsheetHelper
     {
         private static int DateRowIndex = 0;
+        private static int DataRowIndex = 2;
         private static string ValueHeader = "Value";
         private static string PrefixHeader = "Prefix";
         private static string DlHeader = "Method Detection Limit";
         private static string NoValueContent = "-";
 
 
-        public static IWorkbook GenerateQueryDataResultSpreadshet(string sheetName, IEnumerable<StationAnalyteQueryViewModel> viewModel)
+        public static IWorkbook GenerateQueryDataResultSpreadshet(string sheetName, IEnumerable<StationAnalyteQueryViewModel> viewModel, IEnumerable<Variable> analytes)
         {
             IWorkbook workbook = new XSSFWorkbook();
             var sheet = workbook.CreateSheet(sheetName);
@@ -28,7 +30,7 @@ namespace Hatfield.EnviroData.MVC.Helpers
             var distinctDates = viewModel.Select(x => x.ResultDateTime).Distinct();
             OutputDateRow(sheet, distinctDates, DateRowIndex);
 
-            OutputDataRow(sheet, distinctDates, 2, viewModel);
+            OutputDataRow(sheet, distinctDates, DataRowIndex, viewModel, analytes);
 
             return workbook;
         }
@@ -59,9 +61,27 @@ namespace Hatfield.EnviroData.MVC.Helpers
 
         }
 
-        private static void OutputDataRow(ISheet sheet, IEnumerable<string> distinctDates, int rowIndex, IEnumerable<StationAnalyteQueryViewModel> dataViewModels)
+        private static void OutputDataRow(ISheet sheet, 
+                                          IEnumerable<string> distinctDates, 
+                                          int rowIndex, 
+                                          IEnumerable<StationAnalyteQueryViewModel> dataViewModels, 
+                                          IEnumerable<Variable> analytes)
         {
-            var analyteDataGroup = dataViewModels.GroupBy(x => x.Variable).OrderBy(x => x.Key);
+
+            var dataViewModelsList = dataViewModels.ToList();
+
+            //add selected analytes that does not have data
+            foreach(var analyte in analytes)
+            {
+                if(dataViewModelsList.Where(x => x.Variable == analyte.VariableDefinition).FirstOrDefault() == null)
+                {
+                    dataViewModelsList.Add(new StationAnalyteQueryViewModel { 
+                        Variable = analyte.VariableDefinition
+                    });
+                }
+            }
+
+            var analyteDataGroup = dataViewModelsList.GroupBy(x => x.Variable).OrderBy(x => x.Key);
             int columnIndex = 1;
 
             foreach(var analyteGroup in analyteDataGroup)

@@ -57,8 +57,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Default Sampling Feature UUID</label>
-                        @Html.TextBoxFor(x => x.DefaultSamplingFeatureUUID, new { @class = "form-control", placeholder = "Sampling Feature UUID" })
+                        <label>Default Sampling Feature UUID (Sample Collection)</label>
+                        @Html.TextBoxFor(x => x.DefaultSamplingFeatureUUIDSampleCollection, new { @class = "form-control", placeholder = "Sampling Feature UUID" })
                     </div>
 
                     <div class="form-group">
@@ -72,13 +72,23 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Default Sampling Feature Code</label>
-                        @Html.TextBoxFor(x => x.DefaultSamplingFeatureCode, new { @class = "form-control", placeholder = "Sampling Feature Code" })
+                        <label>Default Sampling Feature Code (Sample Collection)</label>
+                        @Html.TextBoxFor(x => x.DefaultSamplingFeatureCodeSampleCollection, new { @class = "form-control", placeholder = "Sampling Feature Code" })
                     </div>
 
                     <div class="form-group">
-                        <label>Default Sampling Feature Name</label>
-                        @Html.TextBoxFor(x => x.DefaultSamplingFeatureName, new { @class = "form-control", placeholder = "Sampling Feature Name" })
+                        <label>Default Sampling Feature Code (Chemistry)</label>
+                        @Html.TextBoxFor(x => x.DefaultSamplingFeatureCodeChemistry, new { @class = "form-control", placeholder = "Sampling Feature Code" })
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Default Sampling Feature Name(Sample Collection)</label>
+                        @Html.TextBoxFor(x => x.DefaultSamplingFeatureNameSampleCollection, new { @class = "form-control", placeholder = "Sampling Feature Name" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Default Sampling Feature Name(Chemistry)</label>
+                        @Html.TextBoxFor(x => x.DefaultSamplingFeatureNameChemistry, new { @class = "form-control", placeholder = "Sampling Feature Name" })
                     </div>
 
                     <div class="form-group">
@@ -128,7 +138,7 @@
 
                     <div class="form-group">
                         <label>Default Units Type CV (Chemistry)</label>
-                        @Html.TextBoxFor(x => x.DefaultUnitsTypeCVSampleCollection, new { @class = "form-control", placeholder = "Units Type CV (Chemistry)" })
+                        @Html.TextBoxFor(x => x.DefaultUnitsTypeCVChemistry, new { @class = "form-control", placeholder = "Units Type CV (Chemistry)" })
                     </div>
 
                     <div class="form-group">

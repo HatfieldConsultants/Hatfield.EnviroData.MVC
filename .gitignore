@@ -183,5 +183,6 @@ $RECYCLE.BIN/
 
 # Visual Studio 2014 CTP
 **/*.sln.ide
-Source/Hatfield.EnviroData.MVC/App_Data/Logs/*
+Source/Hatfield.EnviroData.MVC/App_Data/Logs/log.txt
+Source/Hatfield.EnviroData.MVC/App_Data/Logs/log.txt
 Source/Hatfield.EnviroData.MVC/App_Data/Query_Data/*

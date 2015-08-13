@@ -55,14 +55,17 @@
     <Reference Include="Hatfield.EnviroData.DataAcquisition">
       <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.1.0.0.1\lib\net40\Hatfield.EnviroData.DataAcquisition.dll</HintPath>
     </Reference>
-    <Reference Include="Hatfield.EnviroData.DataAcquisition.CSV">
-      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.ESDAT.1.0.0.1\lib\net40\Hatfield.EnviroData.DataAcquisition.CSV.dll</HintPath>
+    <Reference Include="Hatfield.EnviroData.DataAcquisition.CSV, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.ESDAT.1.0.0.2\lib\net40\Hatfield.EnviroData.DataAcquisition.CSV.dll</HintPath>
     </Reference>
-    <Reference Include="Hatfield.EnviroData.DataAcquisition.ESDAT">
-      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.ESDAT.1.0.0.1\lib\net40\Hatfield.EnviroData.DataAcquisition.ESDAT.dll</HintPath>
+    <Reference Include="Hatfield.EnviroData.DataAcquisition.ESDAT, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.ESDAT.1.0.0.2\lib\net40\Hatfield.EnviroData.DataAcquisition.ESDAT.dll</HintPath>
     </Reference>
-    <Reference Include="Hatfield.EnviroData.DataAcquisition.XML">
-      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.ESDAT.1.0.0.1\lib\net40\Hatfield.EnviroData.DataAcquisition.XML.dll</HintPath>
+    <Reference Include="Hatfield.EnviroData.DataAcquisition.XML, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.ESDAT.1.0.0.2\lib\net40\Hatfield.EnviroData.DataAcquisition.XML.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.EnviroData.FileSystems">
       <HintPath>..\..\packages\Hatfield.EnviroData.FileSystems.WindowsFileSystem.1.0.0\lib\net40\Hatfield.EnviroData.FileSystems.dll</HintPath>
@@ -72,11 +75,11 @@
     </Reference>
     <Reference Include="Hatfield.EnviroData.WQDataProfile, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.WQDataProfile.dll.1.0.0.9\lib\net40\Hatfield.EnviroData.WQDataProfile.dll</HintPath>
+      <HintPath>..\..\packages\Hatfield.EnviroData.WQDataProfile.dll.1.0.0.10\lib\net40\Hatfield.EnviroData.WQDataProfile.dll</HintPath>
     </Reference>
     <Reference Include="Hatfield.WQDefaultValueProvider.JSON, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.WQDefaultValueProvider.JSON.1.0.0.9\lib\net40\Hatfield.WQDefaultValueProvider.JSON.dll</HintPath>
+      <HintPath>..\..\packages\Hatfield.WQDefaultValueProvider.JSON.1.0.0.10\lib\net40\Hatfield.WQDefaultValueProvider.JSON.dll</HintPath>
     </Reference>
     <Reference Include="Moq">
       <HintPath>$(SolutionDir)\packages\Moq.4.2.1502.0911\lib\net40\Moq.dll</HintPath>
