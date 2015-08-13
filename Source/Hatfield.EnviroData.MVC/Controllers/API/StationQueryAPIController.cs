@@ -36,7 +36,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
         [HttpGet]
         public IEnumerable<SiteViewModel> GetSites()
         {
-            var sites = _siteRepository.GetAll();
+            var sites = _siteRepository.GetAll().Where(x => x.SamplingFeature.SamplingFeatureTypeCV == "Site");
             var items = Mapper.Map<IEnumerable<SiteViewModel>>(sites);
             return items;
         }
@@ -70,7 +70,15 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
                 {
                     var latestAction = versionHelper.GetLatestVersionActionData(action);
 
-                    var result = latestAction.FeatureActions.Where(x => x.SamplingFeatureID == queryViewModel.SelectedSiteID).FirstOrDefault().Results.Where(x => x.VariableID == analyte).FirstOrDefault();
+                    var analyteResultViewModel = from featureAction in latestAction.FeatureActions
+                                 from analyteResult in featureAction.Results
+                                 where featureAction.SamplingFeatureID == queryViewModel.SelectedSiteID
+                                 where analyteResult.VariableID == analyte
+                                 select analyteResult;
+
+                    var result = analyteResultViewModel.FirstOrDefault();
+
+                    //var result = latestAction.FeatureActions.Where(x => x.SamplingFeatureID == queryViewModel.SelectedSiteID).FirstOrDefault().Results.Where(x => x.VariableID == analyte).FirstOrDefault();
 
 
                     if (result != null && result.ResultExtensionPropertyValues.Where(x => x.ExtensionProperty.PropertyName == "Result Type").FirstOrDefault().PropertyValue == "REG")
