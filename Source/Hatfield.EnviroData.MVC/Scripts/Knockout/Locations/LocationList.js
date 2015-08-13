@@ -49,12 +49,11 @@ var ParentViewModel = function (locationData, analyteData) {
                 var sortedData = GetAnalytesAndValuesForDate(data);
                 ko.mapping.fromJS(sortedData.header, {}, self.queryResultsDateHeader);
                 ko.mapping.fromJS(sortedData.dataRows, {}, self.queryResultsValues);
-                DrawTable();
+                DrawTable(data);
                 //create table
             },
             error: function (data) {
                 $('#divImage').hide(); //hide the mask
-                CommonUtil.showMessageByGritter('Fetch data fail', 'Fetch data to generate graph fail, please try again', null);
             }
         });//end of ajax
     };//end of GenerateWaterTable
@@ -176,7 +175,15 @@ function findMatchedAnalyteValue(itemsOfADay, analyteName)
 
 function DrawTable(tableData)
 {
-    $('#queryResults').show();
+    if (tableData.length > 0) {
+
+        $("#warning").hide();
+        $('#queryResults').show();
+    }
+    else
+    {
+        $('#fail').show();
+    }
 }
 
 var WaterQualityRequestViewModel = function (startDate, endDate, site, selectedVariables) {
