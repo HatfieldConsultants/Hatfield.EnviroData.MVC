@@ -79,8 +79,21 @@
                         </li>                        
                     </ul>
                     <!-- /.nav-second-level -->
-                </li>                
-            </ul>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Manage")"><i class="fa fa-tasks fa-fw"></i> Manage Data<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="@Url.Action("Sites", "Manage")">Manage Sampling Sites</a></li>
+                        <li><a href="@Url.Action("Projects", "Manage")">Manage Projects</a></li>
+                        <li><a href="@Url.Action("OrganizationsAndPeople", "Manage")">Manage Organizations and People</a></li>
+                        <li><a href="@Url.Action("Equipment", "Manage")">Manage Equipment</a></li>
+                        <li><a href="@Url.Action("Simulations", "Manage")">Manage Simulations</a></li>
+                        <li><a href="@Url.Action("ReferenceMaterialsAndCitations", "Manage")">Manage Reference Material and Citations</a></li>
+                        <li><a href="@Url.Action("CVs", "Manage")">View Controlled Vocabularies</a></li>
+                        <li><a href="http://odmprototype.azurewebsites.net/GuidelineBooks">Manage Environmental Quality Guidelines</a></li>
+                    </ul>
+                </li>  
+                </ul>
         </div>
         <!-- /.sidebar-collapse -->
     </div>

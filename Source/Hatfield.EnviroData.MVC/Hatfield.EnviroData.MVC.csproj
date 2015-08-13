@@ -284,6 +284,7 @@
     <Compile Include="Controllers\ESDATController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\API\ESDATImportAPIController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QualityAssuranceController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\StationController.cs" />
@@ -409,7 +410,6 @@
     <Content Include="Scripts\knockout-3.3.0.debug.js" />
     <Content Include="Scripts\knockout-3.3.0.js" />
     <Content Include="Scripts\knockout.mapping-latest.js" />
-    <Content Include="Scripts\Knockout\AnalyteList.js" />
     <Content Include="Scripts\Knockout\ESDAT\EDATDataDetail.js" />
     <Content Include="Scripts\Knockout\ESDAT\EditSampleData.js" />
     <Content Include="Scripts\Knockout\FTPFileImport.js" />
@@ -1200,6 +1200,14 @@
     <Content Include="Views\ESDAT\ImportFromFtp.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
     <Content Include="Views\ESDAT\EditSampleData.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\Sites.cshtml" />
+    <Content Include="Views\Manage\Projects.cshtml" />
+    <Content Include="Views\Manage\OrganizationsAndPeople.cshtml" />
+    <Content Include="Views\Manage\Equipment.cshtml" />
+    <Content Include="Views\Manage\Simulations.cshtml" />
+    <Content Include="Views\Manage\ReferenceMaterialsAndCitations.cshtml" />
+    <Content Include="Views\Manage\CVs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,15 +1,13 @@
 ﻿
 <div id="page-wrapper">
-    <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">@ViewBag.Title</h1>
         </div>
         <!-- /.col-lg-12 -->
-    </div>
 
     <!-- /.row -->
     <div class="row">
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-4 col-md-4">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="row">
@@ -17,21 +15,21 @@
                             <i class="fa fa-cubes fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge" data-bind="html: SampleCollectionCount">0</div>
-                            <div>Sampling data in the database</div>
+                          
+                            <div>Equipment</div>
                         </div>
                     </div>
                 </div>
-                <a href="@Url.Action("ViewImportedData", "ESDAT")">
+                <a href="@Url.Action("Equipment", "Manage")">
                     <div class="panel-footer">
-                        <span class="pull-left">View sampling data</span>
+                        <span class="pull-left">Manage Equipment</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
                 </a>
             </div>
         </div>
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-4 col-md-4">
             <div class="panel panel-green">
                 <div class="panel-heading">
                     <div class="row">
@@ -39,26 +37,22 @@
                             <i class="fa fa-flask fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge" data-bind="html: ChemistryAnalyteCount">0</div>
-                            <div>Chemistry analyte results in the database</div>
+                           
+                            <div>Organizations and People</div>
                         </div>
                     </div>
                 </div>
-                <a href="@Url.Action("Index", "Station")">
+                <a href="@Url.Action("OrganizationsAndPeople", "Manage")">
                     <div class="panel-footer">
-                        <span class="pull-left">Query Water Quality data</span>
+                        <span class="pull-left">Manage Organizations and People</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
                 </a>
             </div>
         </div>
-        
-    </div>
-    <!-- /.row -->
 
-    <div class="row">
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-4 col-md-4">
             <div class="panel panel-red">
                 <div class="panel-heading">
                     <div class="row">
@@ -67,21 +61,22 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge"></div>
-                            <div>Data Acquisition</div>
+                            <div>Projects</div>
                         </div>
                     </div>
                 </div>
-                <a href="@Url.Action("Index", "ESDAT")">
+                <a href="@Url.Action("Projects", "Manage")">
                     <div class="panel-footer">
-                        <span class="pull-left">Import Data</span>
+                        <span class="pull-left">Manage Projects</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
                 </a>
             </div>
         </div>
-
-        <div class="col-lg-6 col-md-6">
+        </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-4">
             <div class="panel panel-yellow">
                 <div class="panel-heading">
                     <div class="row">
@@ -90,24 +85,21 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge"></div>
-                            <div>Quality Assurance!</div>
+                            <div>Reference</div>
                         </div>
                     </div>
                 </div>
-                <a href="@Url.Action("Index", "QualityAssurance")">
+                <a href="@Url.Action("ReferenceMaterialsAndCitations", "Manage")">
                     <div class="panel-footer">
-                        <span class="pull-left">Run Quality Assurance Chain</span>
+                        <span class="pull-left">Manage Reference Materials and Citations</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
                 </a>
             </div>
         </div>
-    </div>
-    <!-- /.row -->
 
-    <div class="row">
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-4 col-md-4">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="row">
@@ -116,20 +108,20 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge"></div>
-                            <div>Report</div>
+                            <div>Simulations</div>
                         </div>
                     </div>
                 </div>
-                <a href="@Url.Action("Index", "Report")">
+                <a href="@Url.Action("Simulations", "Manage")">
                     <div class="panel-footer">
-                        <span class="pull-left">Click here to view report</span>
+                        <span class="pull-left">Manage Simulations</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
                 </a>
             </div>
         </div>
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-4 col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
@@ -138,20 +130,22 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge"></div>
-                            <div>Administration</div>
+                            <div>Sites</div>
                         </div>
                     </div>
                 </div>
-                <a href="@Url.Action("Index", "Admin")">
+                <a href="@Url.Action("Sites", "Manage")">
                     <div class="panel-footer">
-                        <span class="pull-left">Admin</span>
+                        <span class="pull-left">Manage Sites</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
                 </a>
             </div>
         </div>
-        <div class="col-lg-6 col-md-6">
+        </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-4">
             <div class="panel panel-warning">
                 <div class="panel-heading">
                     <div class="row">
@@ -159,23 +153,19 @@
                             <i class="fa fa-cogs fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge" data-bind="html: SampleCollectionCount">0</div>
-                            <div>Management tools</div>
+                            
+                            <div>Controlled Vocabularies</div>
                         </div>
                     </div>
                 </div>
-                <a href="@Url.Action("Index", "Manage")">
+                <a href="@Url.Action("CVs", "Manage")">
                     <div class="panel-footer">
-                        <span class="pull-left">Manage data</span>
+                        <span class="pull-left">Manage Controlled Vocabularies</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
                 </a>
             </div>
         </div>
-
-    </div>
-    <!-- /.row -->
 </div>
-
-<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Home.js")"></script>
+    </div>

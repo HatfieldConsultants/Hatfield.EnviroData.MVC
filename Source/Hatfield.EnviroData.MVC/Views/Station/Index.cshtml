@@ -142,14 +142,23 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <div class="panel panel-default" id="results" style="display:none;">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 Results
                             </h4>
                         </div>
                         <div class="panel-body">
-                            <table class="table table-bordered" id="queryResults">
+                            <div id="warning">
+                                <div class="alert alert-warning alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    <h4>
+                                        <strong><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></strong> Please select options from the left side to generate the results.
+                                        <span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>
+                                    </h4>
+                                </div>
+                            </div>
+                            <table class="table table-bordered" id="queryResults" style="display: none;">
                                 <thead>
                                     <tr>
                                         <th></th>
@@ -187,5 +196,4 @@
     <!-- /container -->
 
     <script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Locations/LocationList.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Locations/LocationDetail.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/AnalyteList.js")"></script>
+
