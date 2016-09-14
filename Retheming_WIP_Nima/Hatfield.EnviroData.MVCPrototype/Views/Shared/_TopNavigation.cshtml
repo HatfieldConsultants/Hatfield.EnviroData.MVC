@@ -1,0 +1,227 @@
+﻿@{
+    string controllerName = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+
+    string homeClass = "";
+    string addDataClass = "";
+    string projectsClass = "";
+    string accessDataClass = "";
+    string manageDataClass = "";
+    string qcClass = "";
+    string adminClass = "";
+    
+    switch(controllerName)
+    {
+        case "Home":
+            homeClass = "active";
+            break;
+        case "AddData":
+            addDataClass = "active";
+            break;
+        case "Projects":
+            projectsClass = "active";
+            break;
+        case "CoreData":
+            manageDataClass = "active";
+            break;
+        case "QC":
+            qcClass = "active";
+            break;
+        case "WQ":
+            accessDataClass = "active";
+            break;
+        case "Admin":
+            adminClass = "active";
+            break;
+    }
+    
+    
+    
+}  
+<!-- top navbar -->
+<nav class="navbar yamm navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="@homeClass"><a href="@Url.Action("Index", "Home")"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+                <li class="@addDataClass"><a href="@Url.Action("Index", "AddData")"><i class="glyphicon glyphicon-plus"></i> Add Data</a></li>                
+                <li class="@projectsClass dropdown yamm-fw">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-th"></i> Projects <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><div class="yamm-content">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Favourite Projects:</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li><a href="@Url.Action("Project_Details", "CoreData")">Favourite Project 1</a></li>
+                                                <li><a href="@Url.Action("Project_Details", "CoreData")">Favourite Project 2</a></li>
+                                                <li><a href="@Url.Action("Project_Details", "CoreData")">Favourite Project 3</a></li>
+                                                <li><a href="@Url.Action("Project_Details", "CoreData")">Favourite Project 4</a></li>
+                                                <li><a href="@Url.Action("Project_Details", "CoreData")">Favourite Project 5</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-4">
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Most Recent Projects:</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li><a href="@Url.Action("Project_Details", "CoreData")">Recent Project A</a></li>
+                                                <li><a href="@Url.Action("Project_Details", "CoreData")">Recent Project B</a></li>
+                                                <li><a href="@Url.Action("Project_Details", "CoreData")">Recent Project C</a></li>
+                                                <li><a href="@Url.Action("Project_Details", "CoreData")">Recent Project D</a></li>
+                                                <li><a href="@Url.Action("Project_Details", "CoreData")">Recent Project E</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>                                                                        
+                                </div>
+                                <div class="col-md-4">                                    
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Project Tools:</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li><a href="@Url.Action("Projects_List", "CoreData")">View all projects</a></li>
+                                            </ul>
+                                        </div>
+                                    </div> 
+
+                                    
+                                </div>
+                            </div>
+                            </div></li>
+
+                    </ul>
+                </li>
+
+                <li class="@accessDataClass dropdown yamm-fw">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Access Data <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="yamm-content">
+                                
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">Water Quality Sampling Data</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <ul>
+                                                    <li><a href="@Url.Action("Query","WQ")"><i class="glyphicon glyphicon-stats"></i> Query, Graph and Visualize Data</a></li>
+                                                    <li><a href="@Url.Action("DataFiles_List","WQ")">View all added data files</a></li>
+                                                    <li><a href="@Url.Action("Samples_List", "WQ")">Water Quality Samples</a></li>
+                                                    <li><a href="@Url.Action("MonitoringSites_Map", "CoreData")">Water Quality Monitoring Locations</a></li>
+                                                    <li><a href="@Url.Action("CustomReport","WQ")"><i class="glyphicon glyphicon-play"></i> Create a custom report</a></li>
+
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <li class="@manageDataClass dropdown yamm-fw">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Data <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="yamm-content">
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">Manage Core Data</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <ul>
+                                                    <li><a href="@Url.Action("MonitoringSites_List", "CoreData")"><i class="glyphicon glyphicon-map-marker"></i> Monitoring Sites</a></li>                                                    
+                                                    <li><a href="@Url.Action("OrgsPeople", "CoreData")"><i class="glyphicon glyphicon-user"></i> Labs, Organizations and People</a></li>
+                                                    <li><a href="@Url.Action("Guidelines", "CoreData")"><i class="glyphicon glyphicon-flag"></i> Environmental Quality Guidelines</a></li>
+                                                    <li><a href="@Url.Action("Analytes_List","CoreData")">Analytes</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+
+                <li class="@qcClass dropdown yamm-fw">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-check"></i> Quality Checking <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="yamm-content">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">Quality Checking Tools</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <ul>
+                                                    <li><a href="@Url.Action("Index","QC")">Provisional datasets that need review</a></li>
+                                                    <li><a href="@Url.Action("List","QC")"><i class="glyphicon glyphicon-list"></i> List Quality Checking Processes</a></li>
+                                                    <li><a href="@Url.Action("Run","QC")"><i class="glyphicon glyphicon-play"></i> Run a quality checking process</a></li>
+                                                    <li><a href="@Url.Action("Add","QC")"><i class="glyphicon glyphicon-plus-sign"></i> Add a new quality checking process</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <li class=""><a href="@Url.Action("Index","QC")"></a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="@adminClass" ><a href="@Url.Action("Index","Admin")">Administration <i class="glyphicon glyphicon-tree-deciduous"></i></a></li>
+                <li><a href="@Url.Action("logout", "Home")">logout <i class="glyphicon glyphicon-log-out"></i></a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>

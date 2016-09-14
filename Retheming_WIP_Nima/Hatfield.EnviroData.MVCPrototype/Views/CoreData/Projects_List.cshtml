@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "All Projects";
+}
+@section PageTitleH1
+{
+    <h1><i class="glyphicon glyphicon-bookmark"></i> @ViewBag.Title</h1>
+}
+@section Breadcumb
+{
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")">Home</a></li>
+        <li><a href="@Url.Action("Index","ManageData")">Manage Data</a></li>
+        <li class="active">List All Projects</li>
+    </ol>
+}
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Manage Projects</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="@Url.Action("Projects")"><i class="glyphicon glyphicon-list"></i> List All Projects</a></li>
+                    <li><a href="@Url.Action("Projects_WithMissingInfo")"><i class="glyphicon glyphicon-exclamation-sign red"></i> Projects with missing information</a></li>
+                </ul>
+            </div>            
+        </div>
+    </div>
+    <div class="col-md-9">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>All|None</th>
+                    <th>Project Name</th>
+                    <th>Programme</th>
+                    <th>Description</th>                    
+                    <th>Component Datasets</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td><a href="@Url.Action("Project_Details")">AEM7250-NV</a></td>
+                    <td>AEMERA JOSM/RAMP</td>
+                    <td>2015 JOSM monitoring</td>
+                    <td>Water Quality, [list]</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            Things to add on this page:
+            <ul>
+                <li>Show 'favourite' projects first</li>
+                <li>List most recently used projects second</li>
+            </ul>
+        </p>
+    </div>
+</div> <!-- // row -->

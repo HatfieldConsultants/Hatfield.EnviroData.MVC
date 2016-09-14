@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Provisional datasets that need review";
+}
+@section PageTitleH1
+{
+    <h1><i class="glyphicon glyphicon-check"></i> @ViewBag.Title</h1>
+}
+@section Breadcumb
+{
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")">Home</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+}
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Data Quality Checking Tools</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="@Url.Action("Index","QC")">Provisional datasets that need review</a></li>
+                    <li><a href="@Url.Action("List","QC")"><i class="glyphicon glyphicon-list"></i> List Quality Checking Processes</a></li>
+                    <li><a href="@Url.Action("Run","QC")"><i class="glyphicon glyphicon-play"></i> Run a quality checking process</a></li>
+                    <li><a href="@Url.Action("Add","QC")"><i class="glyphicon glyphicon-plus-sign"></i> Add a new quality checking process</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        QC processes:
+        <ul>
+            <li>Can be defined to run automatically when new data are submitted for a particular project. The same automatically run processes can be run manually again at any point against any dataset.</li>
+            <li>Is a linear chain the best option? Allowing users to skip an optional tool is a good idea. </li>
+            <li>All results of a QC process run should always be available online. The same results could optionally be emailed as well (optional for online submitted, required for email/auto submissions).</li>
+            <li>People shouldn't have to necessarily wait for a long-running check to run. They could decide at any time to stop waiting and get notified when the process result is available online.</li>
+            <li>QC checking workflows should be standardized for each project and component dataset.</li>
+        </ul>
+
+        <div class="panel panel-info">
+            <div class="panel-heading"><h3 class="panel-title">Provisional datasets that need review:</h3></div>
+
+            <table class="table table-bordered">
+                <tr>
+                    <td>abc</td>
+                    <td>abc</td>
+                    <td>
+                        <!-- Single button -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Action <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Quality Assure this dataset</a></li>
+                                <li><a href="#">View this dataset</a></li>
+                                <li><a href="#">Report on this dataset</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>abc</td>
+                    <td>abc</td>
+                    <td>
+                        <!-- Single button -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Action <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Quality Assure this dataset</a></li>
+                                <li><a href="#">View this dataset</a></li>
+                                <li><a href="#">Report on this dataset</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div> <!-- // panel -->
+
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>All|None</th>
+                    <th>Process Name</th>
+                    <th>Description</th>
+                    <th>Component Dataset</th>
+                    <th>Process Type (ie run automatically for a trigger, such as projects X,Y or Z)</th>                                                            
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+    </div>
+</div> <!-- // row -->

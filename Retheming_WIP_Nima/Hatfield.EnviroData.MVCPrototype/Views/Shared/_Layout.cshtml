@@ -1,0 +1,137 @@
+﻿@{     
+     string prototypeVersion = new FileInfo(System.Reflection.Assembly.GetAssembly(typeof(Hatfield.EnviroData.MVCPrototype.Controllers.HomeController)).Location).LastWriteTime.ToString("MMM-d-yyyy");
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <title>EnviroData - @ViewBag.Title</title>
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="@Url.Content("~/css/yamm/yamm.css")" />
+        <!-- Custom styles for this template -->
+        <link href="@Url.Content("~/css/site.css")" rel="stylesheet">
+
+    </head>
+    <body>
+        <div class="main-holder">
+            <div class="container-fluid logo-text" style="padding: 20px;"><img src="@Url.Content("~/images/logo.png")"> EnviroData<div class="pull-right" style="font-size: 12pt;">Prototype Version  @prototypeVersion</div></div>
+            <div class="container-fluid" style="z-index: 2;">
+            @Html.Partial("_TopNavigation")    
+            <div class="content-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="page-header">
+                                @RenderSection("PageTitleH1")                                
+                            </div>
+                        </div>
+                    </div>
+                    @if (IsSectionDefined("Breadcumb"))
+                    { 
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                                @RenderSection("Breadcumb", false)
+                            
+                        </div>
+                    </div>
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <ol class="breadcrumb">
+                                    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                                    <li class="active">@ViewBag.Title</li>
+                                </ol>
+
+                            </div>
+                        </div>
+                    }
+                    
+                        <!-- Start Page Contents -->
+                        
+                @RenderBody()
+
+                        <!-- End Page Contents -->
+                    
+
+                </div> <!-- // content-container -->
+
+            </div> <!-- /container -->
+        </div> <!-- // main-holder -->
+        <footer id="footer" class="region region-footer">
+            <div class="sky">
+                <main>
+                    <div class="col-8 logos" style="margin-left: 160px; color: black;">
+                        <a href="#"><img src="@Url.Content("~/images/logo.png")"> EnviroData </a>  - &copy; @DateTime.UtcNow.Year Hatfield Consultants
+                    </div>
+
+                </main>
+            </div>
+            <div class="sea">
+                <aside>
+                    <div class="share-links">
+
+                    </div>
+                </aside>
+            </div>
+            <div id="animate-bg" class="animate-bg">
+                <div class="sky-bg"></div>
+                <div class="sea-bg" data-anchor-target="#footer" data-bottom-top="transform:translate(0px, 100px); " data-end="transform:translate(0px, 0px);">
+                    <div class="sea-wave"></div>
+                </div>
+                <div class="hills" style="position: absolute; top: -110px; z-index: 4; width: 100%; height: 100%; overflow: hidden;">
+                    <div class="hills-left" data-anchor-target="#footer" data-bottom-top="transform:translate(0px, 100px); " data--50-bottom="transform:translate(0px, 0px);" data-end="transform:transform:translate(0px, 0px);"></div>
+                    <div class="hills-right" data-anchor-target="#footer" data-bottom-top="transform:translate(0px, 200px); " data--50-bottom="transform:translate(0px, 0px);" data-end="transform:transform:translate(0px, 0px);">
+
+                    </div>
+                </div>
+                <div class="cloud-top" data-anchor-target="#footer" data-bottom-top="transform:translate(0px, 200px);" data--200-bottom="transform:translate(0px, 0px); " data-end="transform:transform:translate(0px, 0px);"></div>
+                <div class="clouds" style="position: absolute; top:0; left:0; overflow:hidden; width: 100%; height: 100%;">
+
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script>
+	$(document).ready(function(){
+		$('input[type=checkbox]').click(function(){
+				$(".panel-body").each(function(){
+					$("<div>Loading...<img src='http://www.ramp-alberta.org/data/images/ajaxLoading.gif' /></div>").css({
+						position: "absolute",
+						width: "100%",
+						height: "100%",
+						top: 0,
+						left: 0
+					}).appendTo($(this).css("position", "relative"));
+				});
+		});
+
+
+	});
+        </script>
+
+
+        
+
+
+
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

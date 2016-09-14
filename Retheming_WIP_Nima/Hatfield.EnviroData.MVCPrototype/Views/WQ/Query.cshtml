@@ -1,0 +1,652 @@
+﻿@{
+    ViewBag.Title = "Query, Graph and Visualize Water Quality Data";
+}
+@section PageTitleH1
+{
+    <h1><i class="glyphicon glyphicon-stats"></i> @ViewBag.Title</h1>
+}
+@section Breadcumb
+{
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")">Home</a></li>
+        <li><a href="@Url.Action("Index","Analysis")">Analysis and Reporting</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+}
+<div class="row">
+    <div class="col-md-5">
+        <div class="row-fluid">
+            <div class="col-md-12">
+                Add Project select to this screen
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4>Stations <input class="right pull-right" placeholder="Search" /></h4>
+
+                    </div>
+                    <div class="panel-body panel-body-scroll">
+                        <table class="dataSetTable table table-hover">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Station Name</th>
+                                    <th>Station Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>WQ9</td>
+                                    <td>Surface Water</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>WQ1</td>
+                                    <td>Surface Water</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>WQ8</td>
+                                    <td>Surface Water</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>WQ2</td>
+                                    <td>Surface Water</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>WQ11</td>
+                                    <td>Surface Water</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>10</td>
+                                    <td>Ground Water</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>20</td>
+                                    <td>Ground Water</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>76</td>
+                                    <td>Ground Water</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>43</td>
+                                    <td>Ground Water</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>15-02S</td>
+                                    <td>Ground Water</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>15-02D</td>
+                                    <td>Ground Water</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4>Parameters <input class="right pull-right" placeholder="Search" /></h4>
+
+                    </div>
+                    <div class="panel-body  panel-body-scroll">
+                        <table class="table table-striped">
+                            <tbody data-bind="foreach: $root.requestData.Categories">
+                                <tr class="warning">
+                                    <td colspan="2" data-bind="html: Category">Anions and Nutrients</td>
+                                </tr>
+                                <!-- ko foreach: Analytes -->
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Alkalinity, Total (as CaCO3)</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Orthophosphate-Dissolved (as P)</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Cation - Anion Balance</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Anion Sum</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Cation Sum</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Chloride (Cl)</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Fluoride (F)</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Nitrate (as N)</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Nitrite (as N)</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Sulfate (SO4)</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Phosphorus (P)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Ammonia, Total (as N)</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Total Nitrogen</td>
+                                </tr>
+                                <!-- /ko -->
+                                <tr class="warning">
+                                    <td colspan="2" data-bind="html: Category">Dissolved Metals</td>
+                                </tr>
+                                <!-- ko foreach: Analytes -->
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Beryllium (Be)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Mercury (Hg)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Aluminum (Al)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Antimony (Sb)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Arsenic (As)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Barium (Ba)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Bismuth (Bi)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Boron (B)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Cadmium (Cd)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Chromium (Cr)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Cobalt (Co)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Copper (Cu)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Lead (Pb)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Lithium (Li)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Manganese (Mn)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Molybdenum (Mo)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Nickel (Ni)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Selenium (Se)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Silver (Ag)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Sodium (Na)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Strontium (Sr)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Thallium (Tl)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Tin (Sn)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Titanium (Ti)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Uranium (U)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Vanadium (V)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Zinc (Zn)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Zirconium (Zr)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Calcium (Ca)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Iron (Fe)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Magnesium (Mg)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Phosphorus (P)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Potassium (K)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Silicon (Si)-Dissolved</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Sulfur (S)-Dissolved</td>
+                                </tr>
+                                <!-- /ko -->
+                                <tr class="warning">
+                                    <td colspan="2" data-bind="html: Category">Organic / Inorganic Carbon</td>
+                                </tr>
+                                <!-- ko foreach: Analytes -->
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Dissolved Organic Carbon</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Total Organic Carbon</td>
+                                </tr>
+                                <!-- /ko -->
+                                <tr class="warning">
+                                    <td colspan="2" data-bind="html: Category">Physical Tests</td>
+                                </tr>
+                                <!-- ko foreach: Analytes -->
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Hardness (as CaCO3)</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">pH</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Total Dissolved Solids</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Total Suspended Solids</td>
+                                </tr>
+                                <!-- /ko -->
+                                <tr class="warning">
+                                    <td colspan="2" data-bind="html: Category">Total Metals</td>
+                                </tr>
+                                <!-- ko foreach: Analytes -->
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Beryllium (Be)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Mercury (Hg)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Aluminum (Al)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Antimony (Sb)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Arsenic (As)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Barium (Ba)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Bismuth (Bi)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Boron (B)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Cadmium (Cd)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Chromium (Cr)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Cobalt (Co)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Copper (Cu)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Lead (Pb)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Lithium (Li)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Manganese (Mn)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Molybdenum (Mo)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Nickel (Ni)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Selenium (Se)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Silver (Ag)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Sodium (Na)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Strontium (Sr)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Thallium (Tl)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Tin (Sn)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Titanium (Ti)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Uranium (U)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Vanadium (V)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Zinc (Zn)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Zirconium (Zr)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Calcium (Ca)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Iron (Fe)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Magnesium (Mg)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Potassium (K)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Silicon (Si)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Sulfur (S)-Total</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" data-bind="checked: IsChecked"></td>
+                                    <td data-bind="html: Name">Phosphorus (P)-Total</td>
+                                </tr>
+                                <!-- /ko -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="panel panel-info ">
+                    <div class="panel-heading">
+                        <h4>Guidelines</h4>
+                    </div>
+                    <div class="panel-body  panel-body-scroll">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr class="warning">
+                                    <td></td>
+                                    <td>Minimum BC WQG</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>BC_AWQG_STMAX</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>BC_AWQG_LTAVE</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>BC_WWS_ST</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>BC_WWS_LT</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>BC_WWQG_LTAVE</td>
+                                </tr>
+                                <tr class="warning">
+                                    <td></td>
+                                    <td>Minimum CCME</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>CCME_FRESH_ST</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>CCME_FRESH_LT</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>CCME_FRESH</td>
+                                </tr>
+                                <tr class="warning">
+                                    <td></td>
+                                    <td>Site Performance Objective</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>SB_ENVBM</td>
+                                </tr>
+                                <tr class="warning">
+                                    <td></td>
+                                    <td>Minimum CSR Standard</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>BC_CSR</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="col-md-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4>Time Range</h4>
+                    </div>
+                    <div class="panel-body">
+                        <img class="img-responsive" src="https://i-msdn.sec.s-msft.com/dynimg/IC286653.jpeg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="col-md-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4>Run Data Tools</h4>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="btn-group">
+                            <button type="submit" id="btnSubmit" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <i class=" icon-picture icon-white"></i>Show as graph: <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#" data-bind="click: function(){$root.GenerateGraph(); return false;}">
+                                        Show values as a single chart
+                                    </a>
+                                </li>
+                                <a href="#" data-bind="click: function(){$root.GenerateGraph(); return false;}">
+                                </a>
+                                <li>
+                                    <a href="#" data-bind="click: function(){$root.GenerateGraph(); return false;}">
+                                    </a><a href="#" id="multipleChartBtn" data-bind="click: function(){$root.GenerateGraph('Multiple'); return false;}">
+                                        Display values in separate charts
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <p>
+                            <div class="btn-group">
+                                <button type="submit" id="btnSubmit" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                    <i class=" icon-download-alt icon-white"></i>View online as: <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">a simple Table</a></li>
+                                    <li><a href="#">Interactive Pivot Table</a></li>
+                                    <li><a href="#">Data availability visualization (see http://www.nytimes.com/interactive/2013/04/25/sports/football/picking-the-best-in-the-nfl-draft.html?_r=0)</a></li>
+
+                                </ul>
+                            </div>
+                        </p>
+                        <p>
+                            <div class="btn-group">
+                                <button type="submit" id="btnSubmit" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                    <i class=" icon-download-alt icon-white"></i>Download excel report: <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Raw data</a></li>
+                                    <li><a href="#">Daily data</a></li>
+                                    <li><a href="#">One worksheet per-station</a></li>
+                                    <li><a href="#">One worksheet  with all stations</a></li>
+                                    <li><a href="#">One worksheet per-station type</a></li>
+
+                                </ul>
+                            </div>
+                        </p>
+                        <div class="btn-group">
+                            <button type="submit" id="btnSubmit" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <i class=" icon-download-alt icon-white"></i>Quality Assurance: <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="@Url.Action("Run","QC")">Run a quality assurance procedure...</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <br><img class="img-responsive" src="@Url.Content("~/images/mockup/twographs.png")">
+
+
+    </div>
+</div>
+
+
+

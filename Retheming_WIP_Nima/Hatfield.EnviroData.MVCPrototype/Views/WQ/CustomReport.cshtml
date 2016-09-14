@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Create a custom water quality report";
+}
+@section PageTitleH1
+{
+    <h1><i class="glyphicon glyphicon-play"></i> @ViewBag.Title</h1>
+}
+@section Breadcumb
+{
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")">Home</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+}
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Water Quality Analysis and Reporting</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="@Url.Action("Index")"><i class="glyphicon glyphicon-th-large"></i> Dashboard</a></li>
+                    <li><a href="@Url.Action("Query")"><i class="glyphicon glyphicon-stats"></i> Query, Graph and Visualize Water Quality Data</a></li>
+                    <li class="active"><a href="@Url.Action("Report")"><i class="glyphicon glyphicon-play"></i> Create a custom report</a></li>                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <p>Things to add/make-note of:
+        <ul>
+            <li>Should be able to configure the units and significant digits to output per-parameter for reports (configured per-report? per-project defaults?). parameter|units|significant digits</li>
+            <li>Configure the mapping of guideline to use</li>
+        </ul>
+        </p>
+    </div>
+</div> <!-- // row -->

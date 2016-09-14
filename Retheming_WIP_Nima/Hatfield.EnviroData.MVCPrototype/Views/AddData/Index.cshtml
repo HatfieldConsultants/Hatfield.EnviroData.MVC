@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Add a data file";
+}
+@section PageTitleH1
+{
+    <h1><i class="glyphicon glyphicon-upload"></i> @ViewBag.Title</h1>
+}
+@section Breadcumb
+{
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")">Home</a></li>        
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+}
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Add a Data file</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li class="active"><a href="@Url.Action("Index")">Add a data file</a></li>
+                    <li><a href="@Url.Action("Add_WQ")">Upload a Water Quality EDD file</a></li>
+                    <li><a href="@Url.Action("DataFiles_List","WQ")">View all added data files</a></li>
+                </ul>
+            </div>            
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            
+                <div class="col-md-3">
+                    <a href="@Url.Action("Add_WQ")">
+                        <div style="border: 1px solid #2e6da4; background-color: #CCC; padding: 5px;">
+                            <center>
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive img-circle" alt="Generic placeholder thumbnail">
+                                <h4>Upload Water Quality EDD File</h4>
+                            </center>
+                        </div>
+                    </a>
+</div>
+            
+        </div>
+        <p>
+            Things to add to this page:
+            <ul>
+                <li>Instructions to give to labs or consultants if they want to give us data.</li>
+            </ul>
+        </p>
+    </div>
+</div> <!-- // row -->

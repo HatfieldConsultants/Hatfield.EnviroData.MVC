@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Upload a Water Quality Lab EDD File";
+}
+@section PageTitleH1
+{
+    <h1><i class="glyphicon glyphicon-upload"></i> @ViewBag.Title</h1>
+}
+@section Breadcumb
+{
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")">Home</a></li>
+        <li><a href="@Url.Action("Index","AddData")">Add Data</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+}
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Water Quality Sampling Data</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li><a href="@Url.Action("Index")">Add a data file</a></li>
+                    <li class="active"><a href="@Url.Action("Add_WQ")">Upload a Water Quality EDD file</a></li>
+                    <li><a href="@Url.Action("DataFiles_List","WQ")">View all added data files</a></li>
+                </ul>
+            </div>            
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span class="label label-info">INFO</span> Lab EDD files can also be submitted for automatic processing by emailing them to <a href="mailto:autodata-upload-envirodata@hatfieldgroup.com">autodata-upload-envirodata@hatfieldgroup.com</a>
+        </div>
+        <div id="plupload-upload-ui" class="hide-if-no-js drag-drop">
+            <div id="drag-drop-area" style="position: relative;">
+                <div class="drag-drop-inside">
+                    <p class="drag-drop-info">Drop files here</p>
+                    <p>or</p>
+                    <p class="drag-drop-buttons"><input id="plupload-browse-button" type="button" value="Select Files" class="btn btn-primary" style="position: relative; z-index: 1;"></p>
+                </div>
+            </div>
+            <p class="upload-flash-bypass">
+                You are using the multi-file uploader. Problems? Try the <a href="@Url.Action("Upload_NoJavascript")" target="_blank">browser uploader</a> instead.
+            </p>
+            <p class="upload-flash-bypass">
+        
+            </p>
+            
+        </div>
+        <p>
+            Maximum upload file size: 64 MB.
+        </p>
+        <p>
+            Things to add to this page:
+            <ul>
+                <li>Instructions to give to labs or consultants if they want to give us data.</li>
+            </ul>
+        </p>
+    </div>
+</div> <!-- // row -->

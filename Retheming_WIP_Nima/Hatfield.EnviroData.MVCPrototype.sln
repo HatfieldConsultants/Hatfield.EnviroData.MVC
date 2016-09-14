@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hatfield.EnviroData.MVCPrototype", "Hatfield.EnviroData.MVCPrototype\Hatfield.EnviroData.MVCPrototype.csproj", "{8E6BF051-2A33-4FFF-8E65-B9C5D45EC3B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hatfield.EnviroData.MVCPrototype.Tests", "Hatfield.EnviroData.MVCPrototype.Tests\Hatfield.EnviroData.MVCPrototype.Tests.csproj", "{D84A1A97-214E-4BD4-8DBD-6CF6EA8AF913}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E6BF051-2A33-4FFF-8E65-B9C5D45EC3B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E6BF051-2A33-4FFF-8E65-B9C5D45EC3B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E6BF051-2A33-4FFF-8E65-B9C5D45EC3B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E6BF051-2A33-4FFF-8E65-B9C5D45EC3B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D84A1A97-214E-4BD4-8DBD-6CF6EA8AF913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D84A1A97-214E-4BD4-8DBD-6CF6EA8AF913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D84A1A97-214E-4BD4-8DBD-6CF6EA8AF913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D84A1A97-214E-4BD4-8DBD-6CF6EA8AF913}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
