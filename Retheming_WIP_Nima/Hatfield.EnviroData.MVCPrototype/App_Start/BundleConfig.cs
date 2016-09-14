@@ -31,6 +31,9 @@ namespace Hatfield.EnviroData.MVCPrototype
 
             bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
                 "~/Scripts/knockout*"));
+        
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                "~/Scripts/jquery*"));
 
             BundleTable.EnableOptimizations = false;
             bundles.UseCdn = true;
