@@ -28,6 +28,13 @@ namespace Hatfield.EnviroData.MVCPrototype
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
              */
+
+            bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
+                "~/Scripts/knockout*"));
+
+            BundleTable.EnableOptimizations = false;
+            bundles.UseCdn = true;
+
         }
     }
 }
