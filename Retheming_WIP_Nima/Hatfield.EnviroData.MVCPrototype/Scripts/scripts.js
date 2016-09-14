@@ -4,15 +4,6 @@
     var self = this;
     self.responseMessage = ko.observable("");
 
-    //The Object which stored data entered in the observables
-    var responseObject = {
-        responseMessage: self.responseMessage,
-    };
-
-    //Declare an ObservableArray for Storing the JSON Response
-    self.messages = ko.observableArray([]);
-
-
     function GetQueryForm() {
         //Ajax Call Get All Employee Records
         $.ajax({
@@ -21,7 +12,7 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
-                self.messages(data); //Put the response in ObservableArray
+                self.responseMessage(data); //Put the response in ObservableArray
             },
             error: function (error) {
                 alert(error.status + "<--and--> " + error.statusText);
@@ -30,6 +21,13 @@
         //Ends Here
     }
 
+    GetQueryForm();
 }
 
+var myViewModel = {
+    personName: 'Bob',
+    personAge: 123
+};
+
 alert("hello");
+ko.applyBindings(WQViewModel);

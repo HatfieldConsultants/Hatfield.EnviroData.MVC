@@ -14,8 +14,8 @@
     </ol>
 }
 
-<p data-bind="text: responseMessage"></p>
-
+<p data-bind="text: responseMessage, afterRender: GetQueryForm">
+</p>
 <div class="row">
     <div class="col-md-5">
         <div class="row-fluid">
@@ -104,7 +104,7 @@
                     </div>
                     <div class="panel-body  panel-body-scroll">
                         <table class="table table-striped">
-                            <tbody data-bind="foreach: $root.requestData.Categories">
+                            <tbody not-data-bind="foreach: $root.requestData.Categories">
                                 <tr class="warning">
                                     <td colspan="2" data-bind="html: Category">Anions and Nutrients</td>
                                 </tr>
@@ -645,6 +645,3 @@
         </div>
     </div>
 </div>
-
-
-
