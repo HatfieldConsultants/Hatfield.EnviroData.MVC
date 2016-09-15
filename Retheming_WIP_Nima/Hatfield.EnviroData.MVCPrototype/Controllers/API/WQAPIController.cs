@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web;
+using Newtonsoft.Json;
+
 
 namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
 {
@@ -17,6 +19,7 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
         {
             String path = HttpContext.Current.Server.MapPath("~/assets/station.json");
             string text = System.IO.File.ReadAllText(path);
+            var jsonStation = JsonConvert.DeserializeObject(text);
             return text;
         }
 
