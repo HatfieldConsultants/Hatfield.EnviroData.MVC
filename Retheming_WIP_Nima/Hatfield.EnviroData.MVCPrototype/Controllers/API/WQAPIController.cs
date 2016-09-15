@@ -16,7 +16,7 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
         {
             //var result = new List<String>();
             //result.Add("Hello");
-            return "Hello World!";
+            return "Suh dude!";
         }
 
     }
