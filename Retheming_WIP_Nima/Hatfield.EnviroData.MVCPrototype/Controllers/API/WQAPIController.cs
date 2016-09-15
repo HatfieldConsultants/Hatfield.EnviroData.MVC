@@ -14,8 +14,7 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
         [HttpGet]
         public String Get()
         {
-            //var result = new List<String>();
-            //result.Add("Hello");
+           
             return "Suh dude!";
         }
 
