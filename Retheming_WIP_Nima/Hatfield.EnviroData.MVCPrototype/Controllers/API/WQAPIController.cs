@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web;
 
 namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
 {
@@ -12,11 +13,11 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
 
         [Route("WQ/QueryData")]
         [HttpGet]
-        public String Get()
+        public string Get()
         {
-            //var result = new List<String>();
-            //result.Add("Hello");
-            return "Suh dude!";
+            String path = HttpContext.Current.Server.MapPath("~/assets/station.json");
+            string text = System.IO.File.ReadAllText(path);
+            return text;
         }
 
     }
