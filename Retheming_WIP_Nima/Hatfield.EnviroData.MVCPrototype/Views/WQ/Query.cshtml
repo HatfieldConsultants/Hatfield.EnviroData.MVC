@@ -76,62 +76,16 @@
                     </div>
                     <div class="panel-body  panel-body-scroll">
                         <table class="table table-hover">
-                            <tbody>
-                                <tr class="warning">
-                                    <td></td>
-                                    <td>Minimum BC WQG</td>
-                                </tr>
+                            <thead>
                                 <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>BC_AWQG_STMAX</td>
+                                    <th></th>
+                                    <th>Minimum BC WQG</th>
                                 </tr>
+                            </thead>
+                            <tbody data-bind="foreach: guidelines">
                                 <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>BC_AWQG_LTAVE</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>BC_WWS_ST</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>BC_WWS_LT</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>BC_WWQG_LTAVE</td>
-                                </tr>
-                                <tr class="warning">
-                                    <td></td>
-                                    <td>Minimum CCME</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>CCME_FRESH_ST</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>CCME_FRESH_LT</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>CCME_FRESH</td>
-                                </tr>
-                                <tr class="warning">
-                                    <td></td>
-                                    <td>Site Performance Objective</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>SB_ENVBM</td>
-                                </tr>
-                                <tr class="warning">
-                                    <td></td>
-                                    <td>Minimum CSR Standard</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>BC_CSR</td>
+                                    <td><input type="checkbox"/></td>
+                                    <td data-bind="text:GuidelineName"></td>
                                 </tr>
                             </tbody>
                         </table>

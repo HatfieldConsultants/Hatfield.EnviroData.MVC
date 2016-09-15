@@ -123,6 +123,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AddDataController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\API\HomeAPIController.cs" />
     <Compile Include="Controllers\API\WQAPIController.cs" />
     <Compile Include="Controllers\CoreDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -146,6 +147,8 @@
     <Content Include="assets\station.json" />
     <Content Include="assets\siteType.json" />
     <Content Include="assets\analyte.json" />
+    <Content Include="assets\guideline.json" />
+    <Content Include="assets\sampleDatasets.json" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />
