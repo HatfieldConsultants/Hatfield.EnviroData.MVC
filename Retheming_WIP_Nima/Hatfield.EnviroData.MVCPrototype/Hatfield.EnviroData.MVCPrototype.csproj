@@ -145,6 +145,7 @@
     <Content Include="images\theme\waves.png" />
     <Content Include="assets\station.json" />
     <Content Include="assets\siteType.json" />
+    <Content Include="assets\analyte.json" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />

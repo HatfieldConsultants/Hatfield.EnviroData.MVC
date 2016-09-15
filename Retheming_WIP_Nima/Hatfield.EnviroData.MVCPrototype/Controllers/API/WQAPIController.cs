@@ -18,11 +18,12 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
         public HttpResponseMessage Get()
         {
             var response = new HttpResponseMessage();
-            String path = HttpContext.Current.Server.MapPath("~/assets/station.json");
-            string text = System.IO.File.ReadAllText(path);
-            //JObject stations = JObject.Parse(text);
-            //string responseText = (string)stations[0];
-            response.Content = new StringContent(text);
+            String stationPath = HttpContext.Current.Server.MapPath("~/assets/station.json");
+            string stationText = System.IO.File.ReadAllText(stationPath);
+            String analytePath = HttpContext.Current.Server.MapPath("~/assets/analyte.json");
+            string analyteText = System.IO.File.ReadAllText(analytePath);
+            string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(new { stations = stationText, analytes = analyteText });
+            response.Content = new StringContent(jsonResponse);
             return response;
         }
 
