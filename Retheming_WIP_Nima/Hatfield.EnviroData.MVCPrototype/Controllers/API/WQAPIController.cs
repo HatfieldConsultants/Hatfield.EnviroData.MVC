@@ -14,7 +14,6 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
         [HttpGet]
         public String Get()
         {
-           
             return "Suh dude!";
         }
 

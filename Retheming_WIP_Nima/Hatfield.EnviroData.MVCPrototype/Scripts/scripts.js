@@ -24,4 +24,10 @@
     GetQueryForm();
 }
 
+var myViewModel = {
+    personName: 'Bob',
+    personAge: 123
+};
+
+alert("hello");
 ko.applyBindings(WQViewModel);
