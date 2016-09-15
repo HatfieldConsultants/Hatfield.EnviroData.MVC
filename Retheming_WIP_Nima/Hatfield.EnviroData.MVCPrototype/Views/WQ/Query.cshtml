@@ -14,8 +14,6 @@
     </ol>
 }
 
-<p data-bind="text: responseMessage, afterRender: GetQueryForm">
-</p>
 <div class="row">
     <div class="col-md-5">
         <div class="row-fluid">
@@ -27,69 +25,19 @@
 
                     </div>
                     <div class="panel-body panel-body-scroll">
-                        <table class="dataSetTable table table-hover">
+                        <table class=" datasettable table table-hover">
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Station Name</th>
-                                    <th>Station Type</th>
+                                    <th>Station ID</th>
+                                    <th>Station Description</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody data-bind="foreach: responseMessage">
                                 <tr>
                                     <td><input type="checkbox" /></td>
-                                    <td>WQ9</td>
-                                    <td>Surface Water</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>WQ1</td>
-                                    <td>Surface Water</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>WQ8</td>
-                                    <td>Surface Water</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>WQ2</td>
-                                    <td>Surface Water</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>WQ11</td>
-                                    <td>Surface Water</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>10</td>
-                                    <td>Ground Water</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>20</td>
-                                    <td>Ground Water</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>76</td>
-                                    <td>Ground Water</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>43</td>
-                                    <td>Ground Water</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>15-02S</td>
-                                    <td>Ground Water</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td>15-02D</td>
-                                    <td>Ground Water</td>
+                                    <td data-bind="text: StationId"></td>
+                                    <td data-bind="text: Description"></td>
                                 </tr>
                             </tbody>
                         </table>
