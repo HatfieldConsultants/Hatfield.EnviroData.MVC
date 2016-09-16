@@ -147,10 +147,11 @@
     <Content Include="images\theme\land_footer_r_v2.png" />
     <Content Include="images\theme\waves.png" />
     <Content Include="assets\station.json" />
-    <Content Include="assets\siteType.json" />
+    <Content Include="assets\site.json" />
     <Content Include="assets\analyte.json" />
     <Content Include="assets\guideline.json" />
     <Content Include="assets\sampleDatasets.json" />
+    <Content Include="assets\sampleData.json" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />

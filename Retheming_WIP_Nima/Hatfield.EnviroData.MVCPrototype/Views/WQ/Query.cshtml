@@ -25,7 +25,7 @@
 
                     </div>
                     <div class="panel-body panel-body-scroll">
-                        You have selected <span data-bind="text: selectedStations().length"></span> things! <!-- this is to test POSTing the form automatically -->
+                        You have selected <span data-bind="text: selectedSites().length"></span> things! <!-- this is to test POSTing the form automatically -->
                         <table class=" datasettable table table-hover">
                             <thead>
                                 <tr>
@@ -35,11 +35,11 @@
                                 </tr>
                             </thead>
 
-                            <tbody data-bind="foreach: stations">
+                            <tbody data-bind="foreach: sites">
                                 <tr>
-                                    <td><input type="checkbox" data-bind="checked: selectedStations, attr: {value: StationId}" /></td>
-                                    <td data-bind="text: StationId"></td>
-                                    <td data-bind="text: Description"></td>
+                                    <td><input type="checkbox" data-bind="checked: selectedSites, attr: {value: SiteId}" /></td>
+                                    <td data-bind="text: SiteId"></td>
+                                    <td data-bind="text: SiteType"></td>
                                 </tr>
                             </tbody>
                         </table>
