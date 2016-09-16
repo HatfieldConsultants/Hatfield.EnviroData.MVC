@@ -10,33 +10,14 @@ var WQViewModel = function () {
     self.sites = ko.observable("");
     self.analytes = ko.observable("");
     self.guidelines = ko.observable("");
-
+    self.saved;
     self.responseMessage = ko.observable(""); //temp
 
     self.selectedSites = ko.observableArray([]);
 
     this.selectedSites.subscribe(function (updatedArray) {
-        GetResponse(); //this will instead trigger repackaging the form and submitting it, and receiving the new values, and the form will then refresh.
+        GetQueryForm(); //this will instead trigger repackaging the form and submitting it, and receiving the new values, and the form will then refresh.
     });
-
-    function GetResponse() { //temp
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:51683/WQ/FilterQueryForm",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                alert(data.sites);
-                self.sites(JSON.parse(data.sites));
-                self.analytes(JSON.parse(data.analytes));
-                self.guidelines(JSON.parse(data.guidelines));
-            },
-            error: function (error) {
-                alert(error.status + "<--and--> " + error.statusText);
-            }
-        });
-        //Ends Here
-    }
 
     function GetQueryForm() {
         $.ajax({
@@ -45,9 +26,9 @@ var WQViewModel = function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
-                self.sites(JSON.parse(data.sites));
-                self.analytes(JSON.parse(data.analytes));
-                self.guidelines(JSON.parse(data.guidelines));
+                self.sites(data.sites);
+                self.analytes(data.analytes);
+                self.guidelines(data.guidelines);
 
             },
             error: function (error) {
@@ -97,7 +78,7 @@ var WQViewModel = function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
-                self.sites(JSON.parse(data.sites));
+                //self.sites(JSON.parse(data.sites));
 
             },
             error: function (error) {
