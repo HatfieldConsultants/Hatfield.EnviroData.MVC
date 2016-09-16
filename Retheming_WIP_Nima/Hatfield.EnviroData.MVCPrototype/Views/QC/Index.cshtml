@@ -42,44 +42,27 @@
             <div class="panel-heading"><h3 class="panel-title">Provisional datasets that need review:</h3></div>
 
             <table class="table table-bordered">
-                <tr>
-                    <td>abc</td>
-                    <td>abc</td>
-                    <td>
-                        <!-- Single button -->
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Quality Assure this dataset</a></li>
-                                <li><a href="#">View this dataset</a></li>
-                                <li><a href="#">Report on this dataset</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>abc</td>
-                    <td>abc</td>
-                    <td>
-                        <!-- Single button -->
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Quality Assure this dataset</a></li>
-                                <li><a href="#">View this dataset</a></li>
-                                <li><a href="#">Report on this dataset</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
+                <tbody data-bind="foreach: provisionalDatasets">
+                    <tr>
+                        <td data-bind="text: Name"></td>
+                        <td data-bind="text: Description"></td>
+                        <td>
+                            <!-- Single button -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Action <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Quality Assure this dataset</a></li>
+                                    <li><a href="#">View this dataset</a></li>
+                                    <li><a href="#">Report on this dataset</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div> <!-- // panel -->
 
