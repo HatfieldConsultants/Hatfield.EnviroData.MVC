@@ -15,17 +15,15 @@
 }
 
 <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-12">
         <div class="row-fluid">
-            <div class="col-md-12">
-                Add Project select to this screen
+            <div class="col-md-4">
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h4>Stations <input class="right pull-right" placeholder="Search" /></h4>
 
                     </div>
                     <div class="panel-body panel-body-scroll">
-                        You have selected <span data-bind="text: selectedSites().length"></span> things! <!-- this is to test POSTing the form automatically -->
                         <table class=" datasettable table table-hover">
                             <thead>
                                 <tr>
@@ -46,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h4>Parameters <input class="right pull-right" placeholder="Search" /></h4>
@@ -63,7 +61,7 @@
 
                             <tbody data-bind="foreach: analytes">
                                 <tr>
-                                    <td><input type="checkbox"></td>
+                                    <td><input type="checkbox" data-bind="checked: selectedAnalytes, attr: {value: Id}"></td>
                                     <td data-bind="text: AnalyteName"></td>
                                 </tr>
                             </tbody>
@@ -71,7 +69,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <div class="panel panel-info ">
                     <div class="panel-heading">
                         <h4>Guidelines</h4>
@@ -86,7 +84,7 @@
                             </thead>
                             <tbody data-bind="foreach: guidelines">
                                 <tr>
-                                    <td><input type="checkbox"/></td>
+                                    <td><input type="checkbox" data-bind="checked: selectedGuidelines, attr: {value: Id}" /></td>
                                     <td data-bind="text:GuidelineName"></td>
                                 </tr>
                             </tbody>
