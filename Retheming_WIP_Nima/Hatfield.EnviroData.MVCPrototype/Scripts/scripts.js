@@ -7,18 +7,16 @@ var WQViewModel = function () {
     self.provisionalDatasets = ko.observable("");
     self.recentDatasets = ko.observable("");
 
-    self.sites = ko.observable("");
-    self.analytes = ko.observable("");
-    self.guidelines = ko.observable("");
-    self.saved;
+    self.sites = ko.observableArray([]);
+    self.analytes = ko.observableArray([]);
+    self.guidelines = ko.observableArray([]);
 
     self.selectedSites = ko.observableArray([]);
     self.selectedAnalytes = ko.observableArray([]);
     self.selectedGuidelines = ko.observableArray([]);
     self.visibleSites;
 
-    self.packagedMessage = { testMessage: "hello" };
-
+    self.savedMessage = ko.observable();
 
     this.selectedSites.subscribe(function (updatedArray) {
         FilterQueryForm("sites");
@@ -36,9 +34,18 @@ var WQViewModel = function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
-                self.sites(JSON.parse(data.sites));
-                self.analytes(JSON.parse(data.analytes));
-                self.guidelines(JSON.parse(data.guidelines));
+                data.sites.forEach(function (value, i) {
+                    value = ({ info: value, selectStatus: 0 });
+                    self.sites.push(value);
+                });
+                data.analytes.forEach(function (value, i) {
+                    value = ({ info: value, selectStatus: 0 });
+                    self.analytes.push(value);
+                });
+                data.guidelines.forEach(function (value, i) {
+                    value = ({ info: value, selectStatus: 0 });
+                    self.guidelines.push(value);
+                });
 
             },
             error: function (error) {
@@ -52,13 +59,22 @@ var WQViewModel = function () {
         $.ajax({
             type: "POST",
             url: "http://localhost:51683/WQ/QueryData",
-            data: { modifiedFormId: modifiedFormId, selectedSites: selectedSites, selectedAnalytes: selectedAnalytes, selectedGuidelines: selectedGuidelines },
+            data: { modifiedFormId: modifiedFormId, formSites: sites, formAnalytes: analytes, formGuidelines: guidelines },
             success: function (data) {
-                var temp = JSON.parse(data);
-                self.sites(temp.sites);
-                self.analytes(temp.analytes);
-                self.guidelines(temp.guidelines);
-                alert(temp.message);
+                data = JSON.parse(data);
+                savedMessage(data);
+                data.sites.forEach(function (value, i) {
+                    value = ({ info: value, selectStatus: 0 });
+                    self.sites.push(value);
+                });
+                data.analytes.forEach(function (value, i) {
+                    value = ({ info: value, selectStatus: 0 });
+                    self.analytes.push(value);
+                });
+                data.guidelines.forEach(function (value, i) {
+                    value = ({ info: value, selectStatus: 0 });
+                    self.guidelines.push(value);
+                });
             },
             error: function (error) {
                 alert(error.status + "<--and--> " + error.statusText);

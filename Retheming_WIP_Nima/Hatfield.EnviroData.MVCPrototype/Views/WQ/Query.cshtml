@@ -35,9 +35,9 @@
 
                             <tbody data-bind="foreach: sites">
                                 <tr>
-                                    <td><input type="checkbox" data-bind="checked: selectedSites, attr: {value: SiteId}" /></td>
-                                    <td data-bind="text: SiteId"></td>
-                                    <td data-bind="text: SiteType"></td>
+                                    <td><input type="checkbox" data-bind="checked: selectedSites, attr: {value: info.SiteId}" /></td>
+                                    <td data-bind="text: info.SiteId"></td>
+                                    <td data-bind="text: info.SiteType"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -61,8 +61,8 @@
 
                             <tbody data-bind="foreach: analytes">
                                 <tr>
-                                    <td><input type="checkbox" data-bind="checked: selectedAnalytes, attr: {value: Id}"></td>
-                                    <td data-bind="text: AnalyteName"></td>
+                                    <td><input type="checkbox" data-bind="checked: selectedAnalytes, attr: {value: info.Id}"></td>
+                                    <td data-bind="text: info.AnalyteName"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -84,8 +84,8 @@
                             </thead>
                             <tbody data-bind="foreach: guidelines">
                                 <tr>
-                                    <td><input type="checkbox" data-bind="checked: selectedGuidelines, attr: {value: Id}" /></td>
-                                    <td data-bind="text:GuidelineName"></td>
+                                    <td><input type="checkbox" data-bind="checked: selectedGuidelines, attr: {value: info.GuidelineName}" /></td>
+                                    <td data-bind="text:info.GuidelineName"></td>
                                 </tr>
                             </tbody>
                         </table>
