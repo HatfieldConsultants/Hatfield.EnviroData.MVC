@@ -11,22 +11,10 @@ var WQViewModel = function () {
     self.analytes = ko.observableArray([]);
     self.guidelines = ko.observableArray([]);
 
-    self.selectedSites = ko.observableArray([]);
-    self.selectedAnalytes = ko.observableArray([]);
-    self.selectedGuidelines = ko.observableArray([]);
-    self.visibleSites;
+    self.selections = ko.observableArray([]);
 
     self.savedMessage = ko.observable();
 
-    this.selectedSites.subscribe(function (updatedArray) {
-        FilterQueryForm("sites");
-    });
-    this.selectedAnalytes.subscribe(function (updatedArray) {
-        FilterQueryForm("analytes");
-    });
-    this.selectedGuidelines.subscribe(function (updatedArray) {
-        FilterQueryForm("guidelines");
-    });
     function GetInitialQueryForm() {
         $.ajax({
             type: "GET",
@@ -35,15 +23,15 @@ var WQViewModel = function () {
             dataType: "json",
             success: function (data) {
                 data.sites.forEach(function (value, i) {
-                    value = ({ info: value, selectStatus: 0 });
+                    value = ({ info: value, selected: 0, visible: true });
                     self.sites.push(value);
                 });
                 data.analytes.forEach(function (value, i) {
-                    value = ({ info: value, selectStatus: 0 });
+                    value = ({ info: value, selected: 0, visible: true });
                     self.analytes.push(value);
                 });
                 data.guidelines.forEach(function (value, i) {
-                    value = ({ info: value, selectStatus: 0 });
+                    value = ({ info: value, selected: 0, visible: true });
                     self.guidelines.push(value);
                 });
 
@@ -67,16 +55,13 @@ var WQViewModel = function () {
                 self.analytes([]);
                 self.guidelines([]);
 
-                data.sites.forEach(function (value, i) {
-                    value = ({ info: value, selectStatus: 0 });
+                data.formSites.forEach(function (value, i) {
                     self.sites.push(value);
                 });
-                data.analytes.forEach(function (value, i) {
-                    value = ({ info: value, selectStatus: 0 });
+                data.formAnalytes.forEach(function (value, i) {
                     self.analytes.push(value);
                 });
-                data.guidelines.forEach(function (value, i) {
-                    value = ({ info: value, selectStatus: 0 });
+                data.formGuidelines.forEach(function (value, i) {
                     self.guidelines.push(value);
                 });
             },

@@ -13,7 +13,6 @@
         <li class="active">@ViewBag.Title</li>
     </ol>
 }
-
 <div class="row">
     <div class="col-md-12">
         <div class="row-fluid">
@@ -35,7 +34,7 @@
 
                             <tbody data-bind="foreach: sites">
                                 <tr>
-                                    <td><input type="checkbox" data-bind="checked: selectedSites, attr: {value: info.SiteId}" /></td>
+                                    <td><input type="checkbox" data-bind="checked: selected, attr: {value: info.SiteId}" /></td>
                                     <td data-bind="text: info.SiteId"></td>
                                     <td data-bind="text: info.SiteType"></td>
                                 </tr>
@@ -61,7 +60,7 @@
 
                             <tbody data-bind="foreach: analytes">
                                 <tr>
-                                    <td><input type="checkbox" data-bind="checked: selectedAnalytes, attr: {value: info.Id}"></td>
+                                    <td><input type="checkbox" data-bind="checked: selected, attr: {value: info.Id}"></td>
                                     <td data-bind="text: info.AnalyteName"></td>
                                 </tr>
                             </tbody>
@@ -84,7 +83,7 @@
                             </thead>
                             <tbody data-bind="foreach: guidelines">
                                 <tr>
-                                    <td><input type="checkbox" data-bind="checked: selectedGuidelines, attr: {value: info.GuidelineName}" /></td>
+                                    <td><input type="checkbox" data-bind="visible: visible, checked: selected, attr: {value: info.GuidelineName}" /></td>
                                     <td data-bind="text:info.GuidelineName"></td>
                                 </tr>
                             </tbody>

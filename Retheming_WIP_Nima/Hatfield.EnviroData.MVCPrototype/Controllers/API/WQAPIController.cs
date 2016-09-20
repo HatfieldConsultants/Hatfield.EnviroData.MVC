@@ -22,6 +22,8 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
         public float Latitude { get; set; }
         public float Longitude { get; set; }
         public string SiteType { get; set; }
+        public bool selected { get; set; }
+        public bool visible { get; set; }
     }
 
     public class Analyte
@@ -33,6 +35,8 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
         public int CategoryId { get; set; }
         public double DetectionLimit { get; set; }
         public string Unit { get; set; }
+        public bool selected { get; set; }
+        public bool visible { get; set; }
     }
 
     public class Guideline
@@ -40,6 +44,8 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
         public int Id { get; set; }
         public string GuidelineName { get; set; }
         public string GuidelineLongName { get; set; }
+        public bool selected { get; set; }
+        public bool visible { get; set; }
     }
 
     public class DataCollection
@@ -83,7 +89,7 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
 
     public class WQAPIController : ApiController
     {
-
+        //An old and ugly version of the filtering mechanic. Incomplete.
         /*[Route("WQ/QudasderyData")]
         [HttpPost]
         public HttpResponseMessage PostOld([FromBody] QueryForm queryParams)
@@ -181,15 +187,22 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
             var response = new HttpResponseMessage();
 
             //Load all data which will then be queried
+            //In the real version, this function will instead make SQL queries to the database.
+            //But for now I need the data somewhere.
             string sitePath = HttpContext.Current.Server.MapPath("~/assets/site.json");
             var siteText = JsonConvert.DeserializeObject(System.IO.File.ReadAllText(sitePath));
             string analytePath = HttpContext.Current.Server.MapPath("~/assets/analyte.json");
             var analyteText = JsonConvert.DeserializeObject(System.IO.File.ReadAllText(analytePath));
             string guidelinePath = HttpContext.Current.Server.MapPath("~/assets/guideline.json");
             var guidelineText = JsonConvert.DeserializeObject(System.IO.File.ReadAllText(guidelinePath));
+            string dataPath = HttpContext.Current.Server.MapPath("~/assets/sampleData.json");
+            string dataText = System.IO.File.ReadAllText(dataPath);
+            var dataCollection = JsonConvert.DeserializeObject<List<DataCollection>>(dataText);
+            string standardPath = HttpContext.Current.Server.MapPath("~/assets/standard.json");
+            string standardText = System.IO.File.ReadAllText(standardPath);
+            var standards = JsonConvert.DeserializeObject<List<Standard>>(standardText);
 
-
-            string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(new { sites = siteText, analytes = analyteText, guidelines = guidelineText });
+            string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(queryParams);
             response.Content = new StringContent(jsonResponse);
             return response;
         }
