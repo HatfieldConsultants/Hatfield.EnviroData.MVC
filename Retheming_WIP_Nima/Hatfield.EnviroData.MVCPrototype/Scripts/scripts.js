@@ -63,6 +63,10 @@ var WQViewModel = function () {
             success: function (data) {
                 data = JSON.parse(data);
                 savedMessage(data);
+                self.sites([]);
+                self.analytes([]);
+                self.guidelines([]);
+
                 data.sites.forEach(function (value, i) {
                     value = ({ info: value, selectStatus: 0 });
                     self.sites.push(value);
