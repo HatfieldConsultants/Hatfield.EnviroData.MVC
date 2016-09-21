@@ -33,10 +33,10 @@
                             </thead>
 
                             <tbody data-bind="foreach: sites">
-                                <tr>
-                                    <td><input type="checkbox" data-bind="checked: selected, attr: {value: info.SiteId}" /></td>
-                                    <td data-bind="text: info.SiteId"></td>
-                                    <td data-bind="text: info.SiteType"></td>
+                                <tr data-bind="visible: $.inArray(SiteId, hiddenSites()) == -1">
+                                    <td><input type="checkbox" data-bind="checked: selectedSites, attr: { value: SiteId }" /></td>
+                                    <td data-bind="text: SiteId"></td>
+                                    <td data-bind="text: SiteType"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -59,9 +59,9 @@
                             </thead>
 
                             <tbody data-bind="foreach: analytes">
-                                <tr>
-                                    <td><input type="checkbox" data-bind="checked: selected, attr: {value: info.Id}"></td>
-                                    <td data-bind="text: info.AnalyteName"></td>
+                                <tr data-bind="visible: $.inArray(Id, hiddenAnalytes()) == -1">
+                                    <td><input type="checkbox" data-bind="checked: selectedAnalytes, attr: {value: Id}"></td>
+                                    <td data-bind="text: AnalyteName"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -82,9 +82,9 @@
                                 </tr>
                             </thead>
                             <tbody data-bind="foreach: guidelines">
-                                <tr>
-                                    <td><input type="checkbox" data-bind="visible: visible, checked: selected, attr: {value: info.GuidelineName}" /></td>
-                                    <td data-bind="text:info.GuidelineName"></td>
+                                <tr data-bind="visible: $.inArray(GuidelineName, hiddenGuidelines()) == -1">
+                                    <td><input type="checkbox" data-bind="checked: selectedGuidelines, attr: {value: GuidelineName}" /></td>
+                                    <td data-bind="text:GuidelineName"></td>
                                 </tr>
                             </tbody>
                         </table>

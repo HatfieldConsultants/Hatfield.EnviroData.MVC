@@ -7,13 +7,29 @@ var WQViewModel = function () {
     self.provisionalDatasets = ko.observable("");
     self.recentDatasets = ko.observable("");
 
+    self.selectedSites = ko.observableArray([]);
+    self.hiddenSites = ko.observableArray([]);
+    self.selectedAnalytes = ko.observableArray([]);
+    self.hiddenAnalytes = ko.observableArray([]);
+    self.selectedGuidelines = ko.observableArray([]);
+    self.hiddenGuidelines = ko.observableArray([]);
+
     self.sites = ko.observableArray([]);
     self.analytes = ko.observableArray([]);
     self.guidelines = ko.observableArray([]);
 
-    self.selections = ko.observableArray([]);
-
     self.savedMessage = ko.observable();
+
+    self.selectedSites.subscribe(function (newValue) {
+        FilterQueryForm("sites");
+    });
+    self.selectedAnalytes.subscribe(function (newValue) {
+        alert("Analyte selected!")
+    });
+    self.selectedGuidelines.subscribe(function (newValue) {
+        alert("Guideline selected!")
+    });
+
 
     function GetInitialQueryForm() {
         $.ajax({
@@ -23,15 +39,12 @@ var WQViewModel = function () {
             dataType: "json",
             success: function (data) {
                 data.sites.forEach(function (value, i) {
-                    value = ({ info: value, selected: 0, visible: true });
                     self.sites.push(value);
                 });
                 data.analytes.forEach(function (value, i) {
-                    value = ({ info: value, selected: 0, visible: true });
                     self.analytes.push(value);
                 });
                 data.guidelines.forEach(function (value, i) {
-                    value = ({ info: value, selected: 0, visible: true });
                     self.guidelines.push(value);
                 });
 
@@ -47,22 +60,22 @@ var WQViewModel = function () {
         $.ajax({
             type: "POST",
             url: "http://localhost:51683/WQ/QueryData",
-            data: { modifiedFormId: modifiedFormId, formSites: sites, formAnalytes: analytes, formGuidelines: guidelines },
+            data: { modifiedFormId: modifiedFormId, formSites: sites(), formAnalytes: analytes(), formGuidelines: guidelines() },
             success: function (data) {
-                data = JSON.parse(data);
                 savedMessage(data);
-                self.sites([]);
-                self.analytes([]);
-                self.guidelines([]);
+                data = JSON.parse(data);
+                self.hiddenSites([]);
+                self.hiddenAnalytes([]);
+                self.hiddenGuidelines([]);
 
-                data.formSites.forEach(function (value, i) {
-                    self.sites.push(value);
+                data.hiddenSites.forEach(function (value, i) {
+                    self.hiddenSites.push(value);
                 });
-                data.formAnalytes.forEach(function (value, i) {
-                    self.analytes.push(value);
+                data.hiddenAnalytes.forEach(function (value, i) {
+                    self.hiddenAnalytes.push(value);
                 });
-                data.formGuidelines.forEach(function (value, i) {
-                    self.guidelines.push(value);
+                data.hiddenGuidelines.forEach(function (value, i) {
+                    self.hiddenGuidelines.push(value);
                 });
             },
             error: function (error) {
@@ -127,6 +140,8 @@ var WQViewModel = function () {
     GetHomeInfo();
     GetProvisionalDatasets();
     GetMonitoringSites();
+
 }
 
 ko.applyBindings(WQViewModel);
+

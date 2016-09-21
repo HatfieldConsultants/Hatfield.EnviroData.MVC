@@ -82,9 +82,9 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
     public class QueryForm
     {
         public string modifiedFormId { get; set; }
-        public List<Site> formSites { get; set; }
-        public List<Analyte> formAnalytes { get; set; }
-        public List<Guideline> formGuidelines { get; set; }
+        public List<string> selectedSites { get; set; }
+        public List<string> selectedAnalytes { get; set; }
+        public List<string> selectedGuidelines { get; set; }
     }
 
     public class WQAPIController : ApiController
@@ -202,7 +202,9 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
             string standardText = System.IO.File.ReadAllText(standardPath);
             var standards = JsonConvert.DeserializeObject<List<Standard>>(standardText);
 
-            string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(queryParams);
+            var hiddenSites = new List<string>(new string[]{"WQ1"});
+
+            string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(new { hiddenSites = hiddenSites, hiddenAnalytes = new List<string>(), hiddenGuidelines = new List<string>() });
             response.Content = new StringContent(jsonResponse);
             return response;
         }

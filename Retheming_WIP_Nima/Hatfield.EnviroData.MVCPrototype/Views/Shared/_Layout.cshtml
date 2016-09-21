@@ -113,30 +113,6 @@
     ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <script>
-	$(document).ready(function(){
-		$('input[type=checkbox]').click(function(){
-				$(".panel-body").each(function(){
-					$("<div>Loading...<img src='http://www.ramp-alberta.org/data/images/ajaxLoading.gif' /></div>").css({
-						position: "absolute",
-						width: "100%",
-						height: "100%",
-						top: 0,
-						left: 0
-					}).appendTo($(this).css("position", "relative"));
-				});
-		});
-
-
-	});
-
-
-        </script>
-
-
-        
-
-
 
         @RenderSection("scripts", required: false)
         <script src="~/Scripts/scripts.js"></script>
