@@ -64,7 +64,7 @@ var WQViewModel = function () {
                 modifiedFormId: modifiedFormId,
                 selectedSites: selectedSites,
                 selectedAnalytes: selectedAnalytes,
-                selecteGuidelines: selectedGuidelines,
+                selectedGuidelines: selectedGuidelines,
                 hiddenSites: hiddenSites,
                 hiddenAnalytes: hiddenAnalytes,
                 hiddenGuidelines: hiddenGuidelines

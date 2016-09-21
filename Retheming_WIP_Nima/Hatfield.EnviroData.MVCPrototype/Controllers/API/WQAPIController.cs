@@ -86,101 +86,12 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
         public List<string> selectedAnalytes { get; set; }
         public List<string> selectedGuidelines { get; set; }
         public List<string> hiddenSites { get; set; }
-        public List<string> hiddenAnalytes { get; set; }
+        public List<int> hiddenAnalytes { get; set; }
         public List<string> hiddenGuidelines { get; set; }
     }
 
     public class WQAPIController : ApiController
     {
-        //An old and ugly version of the filtering mechanic. Incomplete.
-        /*[Route("WQ/QudasderyData")]
-        [HttpPost]
-        public HttpResponseMessage PostOld([FromBody] QueryForm queryParams)
-        {
-            var response = new HttpResponseMessage();
-
-            //Load all data which will then be queried
-            string sitePath = HttpContext.Current.Server.MapPath("~/assets/site.json");
-            string siteText = System.IO.File.ReadAllText(sitePath);
-            var sites = JsonConvert.DeserializeObject<List<Site>>(siteText);
-            string analytePath = HttpContext.Current.Server.MapPath("~/assets/analyte.json");
-            string analyteText = System.IO.File.ReadAllText(analytePath);
-            var analytes = JsonConvert.DeserializeObject<List<Analyte>>(analyteText);
-            string guidelinePath = HttpContext.Current.Server.MapPath("~/assets/guideline.json");
-            string guidelineText = System.IO.File.ReadAllText(guidelinePath);
-            var guidelines = JsonConvert.DeserializeObject<List<Guideline>>(guidelineText);
-            string dataPath = HttpContext.Current.Server.MapPath("~/assets/sampleData.json");
-            string dataText = System.IO.File.ReadAllText(dataPath);
-            var dataCollection = JsonConvert.DeserializeObject<List<DataCollection>>(dataText);
-            string standardPath = HttpContext.Current.Server.MapPath("~/assets/standard.json");
-            string standardText = System.IO.File.ReadAllText(standardPath);
-            var standards = JsonConvert.DeserializeObject<List<Standard>>(standardText);
-
-            // join everything into one big table
-            // bad performance, good for now though probably
-
-            var bigLookup = from datum in dataCollection
-                            join site in sites on datum.ClientSampleID equals site.SiteId
-                            join analyte in analytes on datum.WaterQualityLabAnalyteId equals analyte.Id
-                            join standard in standards on analyte.Id equals standard.WaterQualityLabAnalyteId
-                            join guideline in guidelines on standard.GuidelineId equals guideline.Id
-                            select new { SiteId = site.SiteId, SiteType = site.SiteType, AnalyteName = analyte.AnalyteName, Id = analyte.Id, GuidelineName = guideline.GuidelineName };
-
-            // every form has to be done manually right now. 
-
-            var returnAnalytes = new List<Analyte>();
-            var returnAnalytes_SiteFilter = new List<Analyte>();
-            var returnAnalytes_GuidelineFilter = new List<Analyte>();
-
-            // Parameter Filtering
-            // Filter by Site            
-            if (!String.IsNullOrEmpty(queryParams.selectedSites))
-            {
-                var siteArray = Regex.Split(queryParams.selectedSites, ",");
-                Debug.WriteLine(string.Join(",", siteArray));
-                var queryAnalytes = (from entry in bigLookup
-                                     where siteArray.Contains(entry.SiteId)
-                                     select new { AnalyteName = entry.AnalyteName, Id = entry.Id }).GroupBy(x => x.AnalyteName).Select(y => y.First());
-                foreach (var analyte in queryAnalytes)
-                {
-                    returnAnalytes_SiteFilter.Add(new Analyte { AnalyteName = analyte.AnalyteName, Id = analyte.Id });
-                }
-            }
-            // Filter by Guidelines
-            if (!String.IsNullOrEmpty(queryParams.selectedGuidelines))
-            {
-                var guidelineArray = Regex.Split(queryParams.selectedGuidelines, ",");
-                var queryAnalytes = (from entry in bigLookup
-                                     where guidelineArray.Contains(entry.GuidelineName)
-                                     select new { AnalyteName = entry.AnalyteName, Id = entry.Id }).GroupBy(x => x.AnalyteName).Select(y => y.First());
-                foreach (var analyte in queryAnalytes)
-                {
-                    returnAnalytes_GuidelineFilter.Add(new Analyte { AnalyteName = analyte.AnalyteName, Id = analyte.Id });
-                }
-
-                //Intersect the two lists
-
-                if (returnAnalytes_SiteFilter.Count > 0 && returnAnalytes_GuidelineFilter.Count > 0)
-                {
-                    returnAnalytes = returnAnalytes_SiteFilter.Intersect(returnAnalytes_GuidelineFilter).ToList();
-                }
-                else
-                {
-                    returnAnalytes = returnAnalytes_SiteFilter.Concat(returnAnalytes_GuidelineFilter).ToList();
-                };
-            }
-            else
-            {
-                returnAnalytes = analytes; //if no guidelines selected, retrn all analytes
-            };
-
-            string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(new { sites = sites, analytes = returnAnalytes, guidelines = guidelines, message = queryParams.modifiedFormId });
-            response.Content = new StringContent(jsonResponse);
-
-            return response;
-
-        } */
-
 
 
         [Route("WQ/QueryData")]
@@ -193,53 +104,54 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
             //In the real version, this function will instead make SQL queries to the database.
             //But for now I need the data somewhere.
             string sitePath = HttpContext.Current.Server.MapPath("~/assets/site.json");
-            var siteText = JsonConvert.DeserializeObject(System.IO.File.ReadAllText(sitePath));
+            var sites = JsonConvert.DeserializeObject<List<Site>>(System.IO.File.ReadAllText(sitePath));
             string analytePath = HttpContext.Current.Server.MapPath("~/assets/analyte.json");
-            var analyteText = JsonConvert.DeserializeObject(System.IO.File.ReadAllText(analytePath));
+            var analytes = JsonConvert.DeserializeObject<List<Analyte>>(System.IO.File.ReadAllText(analytePath));
             string guidelinePath = HttpContext.Current.Server.MapPath("~/assets/guideline.json");
-            var guidelineText = JsonConvert.DeserializeObject(System.IO.File.ReadAllText(guidelinePath));
+            var guidelines = JsonConvert.DeserializeObject<List<Guideline>>(System.IO.File.ReadAllText(guidelinePath));
             string dataPath = HttpContext.Current.Server.MapPath("~/assets/sampleData.json");
             string dataText = System.IO.File.ReadAllText(dataPath);
-            var dataCollection = JsonConvert.DeserializeObject<List<DataCollection>>(dataText);
+            var data = JsonConvert.DeserializeObject<List<DataCollection>>(dataText);
             string standardPath = HttpContext.Current.Server.MapPath("~/assets/standard.json");
             string standardText = System.IO.File.ReadAllText(standardPath);
             var standards = JsonConvert.DeserializeObject<List<Standard>>(standardText);
 
-            //FOR TESTING PURPOSES: SWITCH BLOCK, IF SELECTION WAS THROUGH ANALYTES, HIDE WQ1
-
-            if (queryParams.selectedSites[0] != null)
-            { 
-                foreach (string item in Regex.Split(queryParams.selectedSites[0], ","))
-                {
-                    Debug.WriteLine(item);
-                    Debug.WriteLine("heyo");
-                }
-            }
             var hiddenSites = new List<string>();
+            var hiddenAnalytes = new List<int>(); //queryParams.hiddenAnalytes;
+            var hiddenGuidelines = new List<string>();
+
+            //for some reason, analytes works without having to do this... but it adds a 0. So..... I need to figure out
+            //why that extra 0 is added, and 
             if (queryParams.hiddenSites[0] != null)
             {
                 hiddenSites = Regex.Split(queryParams.hiddenSites[0], ",").ToList<string>();
             }
-
-            var hiddenAnalytes = new List<int>();
-            var hiddenGuidelines = new List<string>();
-
-            switch (queryParams.modifiedFormId)
+            if (queryParams.hiddenGuidelines[0] != null)
             {
-                case "sites":
-                    {
-                        break;
-                    }
-                case "analytes":
-                    {
-                        hiddenSites.Add("WQ1");
-                        break;
-                    }
-                case "guidelines":
-                    {
-                        hiddenAnalytes.Add(3);
-                        break;
-                    }
+                hiddenGuidelines = Regex.Split(queryParams.hiddenGuidelines[0], ",").ToList<string>();
+            }
+            
+            var bigLookupQuery =
+                from datum in data
+                join site in sites on new { siteId = datum.ClientSampleID } equals new { siteId = site.SiteId }
+                join analyte in analytes on new { analyteId = datum.WaterQualityLabAnalyteId } equals new { analyteId = analyte.Id }
+                join standard in standards on new { analyteId = analyte.Id } equals new { analyteId = standard.WaterQualityLabAnalyteId }
+                join guideline in guidelines on new { guidelineId = standard.GuidelineId } equals new { guidelineId = guideline.Id }
+                select new { siteId = site.SiteId, analyteId = analyte.Id, guidelineName = guideline.GuidelineName };
+
+            if (queryParams.modifiedFormId != "sites")
+            {
+                var distinctSites =
+                    from row in bigLookupQuery
+                    where !Regex.Split(queryParams.selectedSites[0], ",").ToList<string>().Contains(row.siteId)
+                    group row by row.siteId
+                    into sortedRows
+                    select sortedRows.FirstOrDefault();
+
+                foreach (var site in distinctSites)
+                {
+                    hiddenSites.Add(site.siteId);
+                }
             }
 
             string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(new { hiddenSites = hiddenSites, hiddenAnalytes = hiddenAnalytes, hiddenGuidelines = hiddenGuidelines });
