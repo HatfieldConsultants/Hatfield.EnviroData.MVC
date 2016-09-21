@@ -60,7 +60,15 @@ var WQViewModel = function () {
         $.ajax({
             type: "POST",
             url: "http://localhost:51683/WQ/QueryData",
-            data: { modifiedFormId: modifiedFormId, formSites: sites(), formAnalytes: analytes(), formGuidelines: guidelines() },
+            data: {
+                modifiedFormId: modifiedFormId,
+                selectedSites: selectedSites,
+                selectedAnalytes: selectedAnalytes,
+                selecteGuidelines: selectedGuidelines,
+                hiddenSites: hiddenSites,
+                hiddenAnalytes: hiddenAnalytes,
+                hiddenGuidelines: hiddenGuidelines
+            },
             success: function (data) {
                 savedMessage(data);
                 data = JSON.parse(data);

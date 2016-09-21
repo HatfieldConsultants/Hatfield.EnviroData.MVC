@@ -85,6 +85,9 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
         public List<string> selectedSites { get; set; }
         public List<string> selectedAnalytes { get; set; }
         public List<string> selectedGuidelines { get; set; }
+        public List<string> hiddenSites { get; set; }
+        public List<string> hiddenAnalytes { get; set; }
+        public List<string> hiddenGuidelines { get; set; }
     }
 
     public class WQAPIController : ApiController
@@ -204,7 +207,22 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
 
             //FOR TESTING PURPOSES: SWITCH BLOCK, IF SELECTION WAS THROUGH ANALYTES, HIDE WQ1
 
+            if (queryParams.selectedSites[0] != null)
+            { 
+                foreach (string item in Regex.Split(queryParams.selectedSites[0], ","))
+                {
+                    Debug.WriteLine(item);
+                    Debug.WriteLine("heyo");
+                }
+            }
             var hiddenSites = new List<string>();
+            if (queryParams.hiddenSites[0] != null)
+            {
+                hiddenSites = Regex.Split(queryParams.hiddenSites[0], ",").ToList<string>();
+            }
+
+            var hiddenAnalytes = new List<int>();
+            var hiddenGuidelines = new List<string>();
 
             switch (queryParams.modifiedFormId)
             {
@@ -219,11 +237,12 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
                     }
                 case "guidelines":
                     {
+                        hiddenAnalytes.Add(3);
                         break;
                     }
             }
 
-            string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(new { hiddenSites = hiddenSites, hiddenAnalytes = new List<string>(), hiddenGuidelines = new List<string>() });
+            string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(new { hiddenSites = hiddenSites, hiddenAnalytes = hiddenAnalytes, hiddenGuidelines = hiddenGuidelines });
             response.Content = new StringContent(jsonResponse);
             return response;
         }
