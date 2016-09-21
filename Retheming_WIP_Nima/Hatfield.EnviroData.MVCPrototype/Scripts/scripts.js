@@ -24,10 +24,10 @@ var WQViewModel = function () {
         FilterQueryForm("sites");
     });
     self.selectedAnalytes.subscribe(function (newValue) {
-        alert("Analyte selected!")
+        FilterQueryForm("analytes");
     });
     self.selectedGuidelines.subscribe(function (newValue) {
-        alert("Guideline selected!")
+        FilterQueryForm("guidelines");
     });
 
 

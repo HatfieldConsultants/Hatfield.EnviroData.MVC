@@ -202,7 +202,26 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
             string standardText = System.IO.File.ReadAllText(standardPath);
             var standards = JsonConvert.DeserializeObject<List<Standard>>(standardText);
 
-            var hiddenSites = new List<string>(new string[]{"WQ1"});
+            //FOR TESTING PURPOSES: SWITCH BLOCK, IF SELECTION WAS THROUGH ANALYTES, HIDE WQ1
+
+            var hiddenSites = new List<string>();
+
+            switch (queryParams.modifiedFormId)
+            {
+                case "sites":
+                    {
+                        break;
+                    }
+                case "analytes":
+                    {
+                        hiddenSites.Add("WQ1");
+                        break;
+                    }
+                case "guidelines":
+                    {
+                        break;
+                    }
+            }
 
             string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(new { hiddenSites = hiddenSites, hiddenAnalytes = new List<string>(), hiddenGuidelines = new List<string>() });
             response.Content = new StringContent(jsonResponse);
