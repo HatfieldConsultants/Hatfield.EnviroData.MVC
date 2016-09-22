@@ -6,7 +6,9 @@ var WQViewModel = function () {
     var self = this;
     self.provisionalDatasets = ko.observable("");
     self.recentDatasets = ko.observable("");
-    
+
+    self.siteAnalyteLookupTable = ko.observable();
+
     self.selectedSites = ko.observableArray([]);
     self.hiddenSites = ko.observableArray([]);
     self.selectedAnalytes = ko.observableArray([]);
@@ -34,7 +36,7 @@ var WQViewModel = function () {
     function GetInitialQueryForm() {
         $.ajax({
             type: "GET",
-            url: "http://localhost:51683/WQ/LoadForm",
+            url: "http://localhost:51683/WQ/DataAvailableDictionary",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
@@ -47,6 +49,8 @@ var WQViewModel = function () {
                 data.guidelines.forEach(function (value, i) {
                     self.guidelines.push(value);
                 });
+
+                self.siteAnalyteLookupTable(data.siteAnalyteLookupTable);
 
             },
             error: function (error) {
@@ -70,7 +74,6 @@ var WQViewModel = function () {
                 hiddenGuidelines: hiddenGuidelines().toString()
             },
             success: function (data) {
-                savedMessage(data);
                 data = JSON.parse(data);
                 self.hiddenSites([]);
                 self.hiddenAnalytes([]);
