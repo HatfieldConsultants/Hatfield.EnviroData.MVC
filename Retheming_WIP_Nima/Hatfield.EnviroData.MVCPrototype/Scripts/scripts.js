@@ -6,7 +6,7 @@ var WQViewModel = function () {
     var self = this;
     self.provisionalDatasets = ko.observable("");
     self.recentDatasets = ko.observable("");
-
+    
     self.selectedSites = ko.observableArray([]);
     self.hiddenSites = ko.observableArray([]);
     self.selectedAnalytes = ko.observableArray([]);
@@ -62,12 +62,12 @@ var WQViewModel = function () {
             url: "http://localhost:51683/WQ/QueryData",
             data: {
                 modifiedFormId: modifiedFormId,
-                selectedSites: selectedSites,
-                selectedAnalytes: selectedAnalytes,
-                selectedGuidelines: selectedGuidelines,
-                hiddenSites: hiddenSites,
-                hiddenAnalytes: hiddenAnalytes,
-                hiddenGuidelines: hiddenGuidelines
+                selectedSites: selectedSites().toString(),
+                selectedAnalytes: selectedAnalytes().toString(),
+                selectedGuidelines: selectedGuidelines().toString(),
+                hiddenSites: hiddenSites().toString(),
+                hiddenAnalytes: hiddenAnalytes().toString(),
+                hiddenGuidelines: hiddenGuidelines().toString()
             },
             success: function (data) {
                 savedMessage(data);

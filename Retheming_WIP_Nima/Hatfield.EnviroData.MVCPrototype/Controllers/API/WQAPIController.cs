@@ -82,12 +82,12 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
     public class QueryForm
     {
         public string modifiedFormId { get; set; }
-        public List<string> selectedSites { get; set; }
-        public List<string> selectedAnalytes { get; set; }
-        public List<string> selectedGuidelines { get; set; }
-        public List<string> hiddenSites { get; set; }
-        public List<int> hiddenAnalytes { get; set; }
-        public List<string> hiddenGuidelines { get; set; }
+        public string selectedSites { get; set; }
+        public string selectedAnalytes { get; set; }
+        public string selectedGuidelines { get; set; }
+        public string hiddenSites { get; set; }
+        public string hiddenAnalytes { get; set; }
+        public string hiddenGuidelines { get; set; }
     }
 
     public class WQAPIController : ApiController
@@ -116,34 +116,73 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
             string standardText = System.IO.File.ReadAllText(standardPath);
             var standards = JsonConvert.DeserializeObject<List<Standard>>(standardText);
 
-            var hiddenSites = new List<string>();
-            var hiddenAnalytes = new List<int>(); //queryParams.hiddenAnalytes;
-            var hiddenGuidelines = new List<string>();
-
-            //for some reason, analytes works without having to do this... but it adds a 0. So..... I need to figure out
-            //why that extra 0 is added, and 
-            if (queryParams.hiddenSites[0] != null)
-            {
-                hiddenSites = Regex.Split(queryParams.hiddenSites[0], ",").ToList<string>();
-            }
-            if (queryParams.hiddenGuidelines[0] != null)
-            {
-                hiddenGuidelines = Regex.Split(queryParams.hiddenGuidelines[0], ",").ToList<string>();
-            }
-            
             var bigLookupQuery =
                 from datum in data
-                join site in sites on new { siteId = datum.ClientSampleID } equals new { siteId = site.SiteId }
+                join site in sites on new { siteId = datum.StationId } equals new { siteId = site.Id }
                 join analyte in analytes on new { analyteId = datum.WaterQualityLabAnalyteId } equals new { analyteId = analyte.Id }
-                join standard in standards on new { analyteId = analyte.Id } equals new { analyteId = standard.WaterQualityLabAnalyteId }
-                join guideline in guidelines on new { guidelineId = standard.GuidelineId } equals new { guidelineId = guideline.Id }
-                select new { siteId = site.SiteId, analyteId = analyte.Id, guidelineName = guideline.GuidelineName };
+               // join standard in standards on new { analyteId = analyte.Id } equals new { analyteId = standard.WaterQualityLabAnalyteId }
+               // join guideline in guidelines on new { guidelineId = standard.GuidelineId } equals new { guidelineId = guideline.Id }
+                select new
+                {
+
+                    siteId = datum.StationId,
+                    siteName = site.SiteId,
+                    siteType = site.SiteType,
+
+                    analyteId = analyte.Id,
+                    analyteName = analyte.AnalyteName,
+
+                   // guidelineID = guideline.Id,
+                  //  guidelineName = guideline.GuidelineName
+
+                };
+
+            var selectedSites = new string[0];
+            var selectedAnalytes = new string[0];
+            var selectedGuidelines = new string[0];
+            
+            Regex regex = new Regex(",");
+
+            if (queryParams.selectedSites != null)
+            {
+                Debug.WriteLine("SITES:");
+                selectedSites = regex.Split(queryParams.selectedSites);
+                foreach (var elem in selectedSites)
+                {
+                    Debug.WriteLine(elem);
+                }
+            }
+
+            if (queryParams.selectedAnalytes != null)
+            {
+                Debug.WriteLine("ANALYTES:");
+                selectedAnalytes = regex.Split(queryParams.selectedAnalytes);
+                foreach (var elem in selectedAnalytes)
+                {
+                    Debug.WriteLine(elem);
+                }
+            }
+
+            if (queryParams.selectedGuidelines != null)
+            {
+                Debug.WriteLine("GUIDELINES:");
+                selectedGuidelines = regex.Split(queryParams.selectedGuidelines);
+                foreach (var elem in selectedGuidelines) {
+                    Debug.WriteLine(elem);
+                }
+            }
+
+            var hiddenSites = new List<int>();
+            var hiddenAnalytes = new List<int>();
+            var hiddenGuidelines = new List<int>();
 
             if (queryParams.modifiedFormId != "sites")
             {
                 var distinctSites =
                     from row in bigLookupQuery
-                    where !Regex.Split(queryParams.selectedSites[0], ",").ToList<string>().Contains(row.siteId)
+                    where !selectedSites.Contains(row.siteId.ToString()) &&
+                          selectedAnalytes.Contains(row.analyteId.ToString())
+                          //(!selectedSites.Contains(row.siteId.ToString()) || ( selectedAnalytes.Contains(row.analyteId.ToString()) || selectedGuidelines.Contains(row.guidelineID.ToString()) ) )
                     group row by row.siteId
                     into sortedRows
                     select sortedRows.FirstOrDefault();
@@ -164,17 +203,84 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
         public HttpResponseMessage Get()
         {
             var response = new HttpResponseMessage();
+            Debug.WriteLine("GUIDELINES:");
 
             //Load all data which will then be queried
             string sitePath = HttpContext.Current.Server.MapPath("~/assets/site.json");
-            var siteText = JsonConvert.DeserializeObject(System.IO.File.ReadAllText(sitePath));
+            var sites = JsonConvert.DeserializeObject<List<Site>>(System.IO.File.ReadAllText(sitePath));
             string analytePath = HttpContext.Current.Server.MapPath("~/assets/analyte.json");
-            var analyteText = JsonConvert.DeserializeObject(System.IO.File.ReadAllText(analytePath));
+            var analytes = JsonConvert.DeserializeObject<List<Analyte>>(System.IO.File.ReadAllText(analytePath));
             string guidelinePath = HttpContext.Current.Server.MapPath("~/assets/guideline.json");
-            var guidelineText = JsonConvert.DeserializeObject(System.IO.File.ReadAllText(guidelinePath));
+            var guidelines = JsonConvert.DeserializeObject<List<Guideline>>(System.IO.File.ReadAllText(guidelinePath));
+            string dataPath = HttpContext.Current.Server.MapPath("~/assets/sampleData.json");
+            string dataText = System.IO.File.ReadAllText(dataPath);
+            var data = JsonConvert.DeserializeObject<List<DataCollection>>(dataText);
+            string standardPath = HttpContext.Current.Server.MapPath("~/assets/standard.json");
+            string standardText = System.IO.File.ReadAllText(standardPath);
+            var standards = JsonConvert.DeserializeObject<List<Standard>>(standardText);
+
+            var bigLookupQuery =
+                from datum in data
+                join site in sites on new { siteId = datum.StationId } equals new { siteId = site.Id }
+                join analyte in analytes on new { analyteId = datum.WaterQualityLabAnalyteId } equals new { analyteId = analyte.Id }
+                //join standard in standards on new { analyteId = analyte.Id } equals new { analyteId = standard.WaterQualityLabAnalyteId }
+                //join guideline in guidelines on new { guidelineId = standard.GuidelineId } equals new { guidelineId = guideline.Id }
+                select new { 
+
+                    siteId = datum.StationId,
+                    siteName = site.SiteId,
+                    siteType = site.SiteType,
+                    
+                    analyteId = analyte.Id, 
+                    analyteName = analyte.AnalyteName,
+
+                    //guidelineID = guideline.Id,
+                    //guidelineName = guideline.GuidelineName
+ 
+                };
+
+            var returnSites = new List<Site>();
+            var returnAnalytes = new List<Analyte>();
+            var returnGuidelines = new List<Guideline>();
+
+            var distinctSites =
+                from row in bigLookupQuery
+                group row by row.siteId
+                    into sortedRows
+                    select sortedRows.FirstOrDefault();
+
+            foreach (var row in distinctSites)
+            {
+                var site = new Site { Id = row.siteId, SiteId = row.siteName, SiteType = row.siteType };
+                returnSites.Add(site);
+            }
 
 
-            string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(new { sites = siteText, analytes = analyteText, guidelines = guidelineText });
+            var distinctAnalytes =
+                from row in bigLookupQuery
+                group row by row.analyteId
+                    into sortedRows
+                    select sortedRows.FirstOrDefault();
+
+            foreach (var row in distinctAnalytes)
+            {
+                var analyte = new Analyte { Id = row.analyteId,  AnalyteName = row.analyteName };
+                returnAnalytes.Add(analyte);
+            }
+
+            //var distinctGuidelines =
+            //    from row in bigLookupQuery
+            //    group row by row.guidelineID
+             //       into sortedRows
+             //       select sortedRows.FirstOrDefault();
+
+            //foreach (var row in distinctGuidelines)
+            //{
+           //     var guideline = new Guideline { Id = row.guidelineID, GuidelineName = row.guidelineName };
+           //     returnGuidelines.Add(guideline);
+           // }            
+            
+            string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(new { sites = returnSites, analytes = returnAnalytes, guidelines = returnGuidelines });
             response.Content = new StringContent(jsonResponse);
             return response;
         }

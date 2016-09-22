@@ -33,8 +33,8 @@
                             </thead>
 
                             <tbody data-bind="foreach: sites">
-                                <tr data-bind="visible: $.inArray(SiteId, hiddenSites()) == -1">
-                                    <td><input type="checkbox" data-bind="checked: selectedSites, attr: { value: SiteId }" /></td>
+                                <tr data-bind="visible: $.inArray(Id, hiddenSites()) == -1">
+                                    <td><input type="checkbox" data-bind="checked: selectedSites, attr: { value: Id }" /></td>
                                     <td data-bind="text: SiteId"></td>
                                     <td data-bind="text: SiteType"></td>
                                 </tr>
@@ -82,8 +82,8 @@
                                 </tr>
                             </thead>
                             <tbody data-bind="foreach: guidelines">
-                                <tr data-bind="visible: $.inArray(GuidelineName, hiddenGuidelines()) == -1">
-                                    <td><input type="checkbox" data-bind="checked: selectedGuidelines, attr: {value: GuidelineName}" /></td>
+                                <tr data-bind="visible: $.inArray(Id, hiddenGuidelines()) == -1">
+                                    <td><input type="checkbox" data-bind="checked: selectedGuidelines, attr: {value: Id}" /></td>
                                     <td data-bind="text:GuidelineName"></td>
                                 </tr>
                             </tbody>
