@@ -23,13 +23,13 @@ var WQViewModel = function () {
     self.savedMessage = ko.observable();
 
     self.selectedSites.subscribe(function (newValue) {
-        FilterQueryForm("sites");
+        ControlVisibility();
     });
     self.selectedAnalytes.subscribe(function (newValue) {
-        FilterQueryForm("analytes");
+        ControlVisibility();
     });
     self.selectedGuidelines.subscribe(function (newValue) {
-        FilterQueryForm("guidelines");
+        ControlVisibility();
     });
 
 
@@ -94,6 +94,46 @@ var WQViewModel = function () {
             }
         });
         //Ends Here
+    }
+
+    function ControlVisibility() {
+
+        selectedAnalytes().forEach(function (analyte) {
+            sites().forEach(function (site) {
+                var key = site.Id + "_" + analyte;
+                if (siteAnalyteLookupTable()[key] == true) {
+                    $("#site" + site.Id).show()
+                }
+                else {
+                    $("#site" + site.Id).hide()
+                }
+            });
+        });
+
+        if (selectedAnalytes().length == 0) {
+            sites().forEach(function (site) {
+                $("#site" + site.Id).show()
+            });
+        }
+
+        selectedSites().forEach(function (site) {
+            analytes().forEach(function (analyte) {
+                var key = site + "_" + analyte.Id;
+                if (siteAnalyteLookupTable()[key] == true) {
+                    $("#analyte" + analyte.Id).show()
+                }
+                else {
+                    $("#analyte" + analyte.Id).hide()
+                }
+            });
+        });
+
+        if (selectedSites().length == 0) {
+            analytes().forEach(function (analyte) {
+                $("#analyte" + analyte.Id).show()
+            });
+        }
+
     }
 
     function GetHomeInfo() { //Rename this function

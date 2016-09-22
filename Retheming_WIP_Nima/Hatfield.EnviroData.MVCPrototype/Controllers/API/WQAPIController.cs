@@ -162,7 +162,7 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
             var hiddenAnalytes = new List<int>();
             var hiddenGuidelines = new List<int>();
 
-            if (queryParams.modifiedFormId != "sites")
+            if (true)
             {
                 var distinctSites =
                     from row in bigLookupQuery
@@ -205,7 +205,7 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
                 }
             }
 
-            if (queryParams.modifiedFormId != "analytes")
+            if (true)
             {
                 var distinctAnalytes =
                     from row in bigLookupQuery
@@ -339,5 +339,62 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
             return response;
         }
 
+        [Route("WQ/DataAvailableDictionary")]
+        [HttpGet]
+        public HttpResponseMessage GetDataAvailableDictionary()
+        {
+            //RETURNS:
+            // - Sites, Analytes, Guidelines
+            // - 2D dictionary of relations between Sites and Analytes
+            var response = new HttpResponseMessage();
+
+            Dictionary<string, bool> SiteAnalyteLookup = new Dictionary<string, bool>();
+
+            //Load all data which will then be queried
+            string sitePath = HttpContext.Current.Server.MapPath("~/assets/site.json");
+            var sites = JsonConvert.DeserializeObject<List<Site>>(System.IO.File.ReadAllText(sitePath));
+            string analytePath = HttpContext.Current.Server.MapPath("~/assets/analyte.json");
+            var analytes = JsonConvert.DeserializeObject<List<Analyte>>(System.IO.File.ReadAllText(analytePath));
+            string guidelinePath = HttpContext.Current.Server.MapPath("~/assets/guideline.json");
+            var guidelines = JsonConvert.DeserializeObject<List<Guideline>>(System.IO.File.ReadAllText(guidelinePath));
+            string dataPath = HttpContext.Current.Server.MapPath("~/assets/sampleData.json");
+            string dataText = System.IO.File.ReadAllText(dataPath);
+            var data = JsonConvert.DeserializeObject<List<DataCollection>>(dataText);
+            string standardPath = HttpContext.Current.Server.MapPath("~/assets/standard.json");
+            string standardText = System.IO.File.ReadAllText(standardPath);
+            var standards = JsonConvert.DeserializeObject<List<Standard>>(standardText);
+
+            var bigLookupQuery =
+                from datum in data
+                join site in sites on new { siteId = datum.StationId } equals new { siteId = site.Id }
+                join analyte in analytes on new { analyteId = datum.WaterQualityLabAnalyteId } equals new { analyteId = analyte.Id }
+                //join standard in standards on new { analyteId = analyte.Id } equals new { analyteId = standard.WaterQualityLabAnalyteId }
+                //join guideline in guidelines on new { guidelineId = standard.GuidelineId } equals new { guidelineId = guideline.Id }
+                select new
+                {
+
+                    siteId = datum.StationId,
+                    siteName = site.SiteId,
+                    siteType = site.SiteType,
+
+                    analyteId = analyte.Id,
+                    analyteName = analyte.AnalyteName,
+
+                    //guidelineID = guideline.Id,
+                    //guidelineName = guideline.GuidelineName
+
+                };
+
+            foreach (var row in bigLookupQuery) {
+
+                var key = row.siteId.ToString() + "_" + row.analyteId.ToString();
+                SiteAnalyteLookup[key] = true;
+
+            }
+
+            string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(new { siteAnalyteLookupTable = SiteAnalyteLookup, sites = sites, analytes = analytes, guidelines = guidelines });
+            response.Content = new StringContent(jsonResponse);
+            return response;
+        }
     }
 }
