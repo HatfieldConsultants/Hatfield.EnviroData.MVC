@@ -145,31 +145,17 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
 
             if (queryParams.selectedSites != null)
             {
-                Debug.WriteLine("SITES:");
                 selectedSites = regex.Split(queryParams.selectedSites);
-                foreach (var elem in selectedSites)
-                {
-                    Debug.WriteLine(elem);
-                }
             }
 
             if (queryParams.selectedAnalytes != null)
             {
-                Debug.WriteLine("ANALYTES:");
                 selectedAnalytes = regex.Split(queryParams.selectedAnalytes);
-                foreach (var elem in selectedAnalytes)
-                {
-                    Debug.WriteLine(elem);
-                }
             }
 
             if (queryParams.selectedGuidelines != null)
             {
-                Debug.WriteLine("GUIDELINES:");
                 selectedGuidelines = regex.Split(queryParams.selectedGuidelines);
-                foreach (var elem in selectedGuidelines) {
-                    Debug.WriteLine(elem);
-                }
             }
 
             var hiddenSites = new List<int>();
@@ -180,16 +166,85 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
             {
                 var distinctSites =
                     from row in bigLookupQuery
-                    where !selectedSites.Contains(row.siteId.ToString()) &&
-                          selectedAnalytes.Contains(row.analyteId.ToString())
-                          //(!selectedSites.Contains(row.siteId.ToString()) || ( selectedAnalytes.Contains(row.analyteId.ToString()) || selectedGuidelines.Contains(row.guidelineID.ToString()) ) )
+                    group row by row.siteId
+                    into sortedRows 
+                    select sortedRows.FirstOrDefault();
+               
+                // all sites connected to selected analytes
+                var queryAnalyteSites =
+                    from row in bigLookupQuery
+                    where selectedAnalytes.Contains(row.analyteId.ToString())
                     group row by row.siteId
                     into sortedRows
                     select sortedRows.FirstOrDefault();
 
+                if (!selectedAnalytes.Any())
+                {
+                    queryAnalyteSites =
+                        from row in bigLookupQuery
+                        group row by row.siteId
+                        into sortedRows
+                        select sortedRows.FirstOrDefault();
+
+                }
+
+                //add all sites
                 foreach (var site in distinctSites)
                 {
                     hiddenSites.Add(site.siteId);
+                }
+                //remove selected sites
+                foreach (var site in selectedSites)
+                {
+                    hiddenSites.RemoveAll(item => item == Int32.Parse(site));
+                }
+                //remove analyte connected sites
+                foreach (var site in queryAnalyteSites)
+                {
+                    hiddenSites.RemoveAll(item => item == site.siteId);
+                }
+            }
+
+            if (queryParams.modifiedFormId != "analytes")
+            {
+                var distinctAnalytes =
+                    from row in bigLookupQuery
+                    group row by row.analyteId
+                        into sortedRows
+                        select sortedRows.FirstOrDefault();
+
+                // all sites connected to selected analytes
+                var querySiteAnalytes =
+                    from row in bigLookupQuery
+                    where selectedSites.Contains(row.siteId.ToString())
+                    group row by row.analyteId
+                        into sortedRows
+                        select sortedRows.FirstOrDefault();
+
+                if (!selectedSites.Any())
+                {
+                    querySiteAnalytes =
+                        from row in bigLookupQuery
+                        group row by row.analyteId
+                            into sortedRows
+                            select sortedRows.FirstOrDefault();
+
+                }
+
+                //add all analytes
+                foreach (var analyte in distinctAnalytes)
+                {
+                    hiddenAnalytes.Add(analyte.analyteId);
+                }
+                //remove selected analytes
+                foreach (var analyte in selectedAnalytes)
+                {
+                    hiddenAnalytes.RemoveAll(item => item == Int32.Parse(analyte));
+                }
+                //remove site connected analytes
+                foreach (var analyte in querySiteAnalytes)
+                {
+                    hiddenAnalytes.RemoveAll(item => item == analyte.analyteId);
                 }
             }
 
@@ -203,7 +258,6 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
         public HttpResponseMessage Get()
         {
             var response = new HttpResponseMessage();
-            Debug.WriteLine("GUIDELINES:");
 
             //Load all data which will then be queried
             string sitePath = HttpContext.Current.Server.MapPath("~/assets/site.json");
@@ -280,7 +334,7 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
            //     returnGuidelines.Add(guideline);
            // }            
             
-            string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(new { sites = returnSites, analytes = returnAnalytes, guidelines = returnGuidelines });
+            string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(new { sites = returnSites, analytes = returnAnalytes, guidelines = guidelines });
             response.Content = new StringContent(jsonResponse);
             return response;
         }
