@@ -20,15 +20,14 @@ var WQViewModel = function () {
     self.analytes = ko.observableArray([]);
     self.guidelines = ko.observableArray([]);
 
-    self.savedMessage = ko.observable();
+    self.selectedSites_ = ko.observableArray([]); //to be used in filtering
+    self.selectedAnalytes_ = ko.observableArray([]); // ''
 
-    self.selectedSites.subscribe(function (newValue) {
+    self.selectedSites.subscribe(function () {
         ControlVisibility();
     });
-    self.selectedAnalytes.subscribe(function (newValue) {
-        ControlVisibility();
-    });
-    self.selectedGuidelines.subscribe(function (newValue) {
+
+    self.selectedAnalytes.subscribe(function () {
         ControlVisibility();
     });
 
@@ -43,15 +42,17 @@ var WQViewModel = function () {
                 data.sites.forEach(function (value, i) {
                     self.sites.push(value);
                 });
+
                 data.analytes.forEach(function (value, i) {
                     self.analytes.push(value);
                 });
+
                 data.guidelines.forEach(function (value, i) {
                     self.guidelines.push(value);
                 });
 
                 self.siteAnalyteLookupTable(data.siteAnalyteLookupTable);
-
+                ControlVisibility();
             },
             error: function (error) {
                 alert(error.status + "<--and--> " + error.statusText);
@@ -60,7 +61,7 @@ var WQViewModel = function () {
         //Ends Here
     }
 
-    function FilterQueryForm(modifiedFormId) {
+    function FilterQueryForm(modifiedFormId) { //Deprecated
         $.ajax({
             type: "POST",
             url: "http://localhost:51683/WQ/QueryData",
@@ -97,43 +98,67 @@ var WQViewModel = function () {
     }
 
     function ControlVisibility() {
+        var anyAnalytesSelected = (selectedAnalytes().length != 0);
+        var anySitesSelected = (selectedSites().length != 0);
+        self.hiddenSites([]);
+        self.hiddenAnalytes([]);
 
-        selectedAnalytes().forEach(function (analyte) {
+        //remove all sites that have no corresponding data with analytes
+        sites().forEach(function (site) {
+            var dataCount = 0;
+            analytes().forEach(function (analyte) {
+                var key = site.Id + "_" + analyte.Id;
+                var index = siteAnalyteLookupTable().indexOf(key);
+                if (index != -1) {
+                    dataCount++;
+                }
+            });
+            if (dataCount == 0) {
+                hiddenSites.push(site.Id);
+            }
+        });
+        //remove all analytes that are not associated with any data from any sites
+        analytes().forEach(function (analyte) {
+            var dataCount = 0;
             sites().forEach(function (site) {
+                var key = site.Id + "_" + analyte.Id;
+                var index = siteAnalyteLookupTable().indexOf(key);
+                if (index != -1) {
+                    dataCount++;
+                }
+            });
+            if (dataCount == 0) {
+                hiddenAnalytes.push(analyte.Id);
+            }
+        });
+
+        sites().forEach(function (site) {
+            var dataCount = 0;
+            selectedAnalytes().forEach(function (analyte) {
                 var key = site.Id + "_" + analyte;
-                if (siteAnalyteLookupTable()[key] == true) {
-                    $("#site" + site.Id).show()
-                }
-                else {
-                    $("#site" + site.Id).hide()
+                var index = siteAnalyteLookupTable().indexOf(key);
+                if (index != -1) {
+                    dataCount++;
                 }
             });
+            if (dataCount == 0 && anyAnalytesSelected && hiddenSites().indexOf(site.Id) == -1 && selectedSites().indexOf(site.Id.toString()) == -1) {
+                hiddenSites.push(site.Id);
+            }
         });
 
-        if (selectedAnalytes().length == 0) {
-            sites().forEach(function (site) {
-                $("#site" + site.Id).show()
-            });
-        }
-
-        selectedSites().forEach(function (site) {
-            analytes().forEach(function (analyte) {
+        analytes().forEach(function (analyte) {
+            var dataCount = 0;
+            selectedSites().forEach(function (site) {
                 var key = site + "_" + analyte.Id;
-                if (siteAnalyteLookupTable()[key] == true) {
-                    $("#analyte" + analyte.Id).show()
-                }
-                else {
-                    $("#analyte" + analyte.Id).hide()
+                var index = siteAnalyteLookupTable().indexOf(key);
+                if (index != -1) {
+                    dataCount++;
                 }
             });
+            if (dataCount == 0 && anySitesSelected && hiddenAnalytes().indexOf(analyte.Id) == -1 && selectedAnalytes().indexOf(analyte.Id.toString()) == -1) {
+                hiddenAnalytes.push(analyte.Id);
+            }
         });
-
-        if (selectedSites().length == 0) {
-            analytes().forEach(function (analyte) {
-                $("#analyte" + analyte.Id).show()
-            });
-        }
-
     }
 
     function GetHomeInfo() { //Rename this function

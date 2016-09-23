@@ -348,7 +348,7 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
             // - 2D dictionary of relations between Sites and Analytes
             var response = new HttpResponseMessage();
 
-            Dictionary<string, bool> SiteAnalyteLookup = new Dictionary<string, bool>();
+            var SiteAnalyteLookup = new List<string>();
 
             //Load all data which will then be queried
             string sitePath = HttpContext.Current.Server.MapPath("~/assets/site.json");
@@ -365,7 +365,7 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
             var standards = JsonConvert.DeserializeObject<List<Standard>>(standardText);
 
             var bigLookupQuery =
-                from datum in data
+                (from datum in data
                 join site in sites on new { siteId = datum.StationId } equals new { siteId = site.Id }
                 join analyte in analytes on new { analyteId = datum.WaterQualityLabAnalyteId } equals new { analyteId = analyte.Id }
                 //join standard in standards on new { analyteId = analyte.Id } equals new { analyteId = standard.WaterQualityLabAnalyteId }
@@ -383,12 +383,12 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
                     //guidelineID = guideline.Id,
                     //guidelineName = guideline.GuidelineName
 
-                };
+                }).Distinct();
 
             foreach (var row in bigLookupQuery) {
 
                 var key = row.siteId.ToString() + "_" + row.analyteId.ToString();
-                SiteAnalyteLookup[key] = true;
+                SiteAnalyteLookup.Add(key);
 
             }
 
