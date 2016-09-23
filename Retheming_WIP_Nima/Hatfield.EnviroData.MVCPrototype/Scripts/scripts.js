@@ -23,12 +23,27 @@ var WQViewModel = function () {
     self.selectedSites_ = ko.observableArray([]); //to be used in filtering
     self.selectedAnalytes_ = ko.observableArray([]); // ''
 
+    self.sitesSearch = ko.observable("");
+    self.analytesSearch = ko.observable("");
+
+    self.sitesSearch.subscribe(function (newValue) {
+        ControlVisibilityOnSearch(newValue, "site");
+    });
+
+    self.analytesSearch.subscribe(function (newValue) {
+        ControlVisibilityOnSearch(newValue, "analyte");
+    });
+
     self.selectedSites.subscribe(function () {
-        ControlVisibility();
+        if (analytesSearch == "" && sitesSearch == "") {
+            ControlVisibilityOnSelection();
+        }
     });
 
     self.selectedAnalytes.subscribe(function () {
-        ControlVisibility();
+        if (analytesSearch == "" && sitesSearch == "") {
+            ControlVisibilityOnSelection();
+        }
     });
 
 
@@ -52,7 +67,7 @@ var WQViewModel = function () {
                 });
 
                 self.siteAnalyteLookupTable(data.siteAnalyteLookupTable);
-                ControlVisibility();
+                ControlVisibilityOnSelection();
             },
             error: function (error) {
                 alert(error.status + "<--and--> " + error.statusText);
@@ -97,7 +112,7 @@ var WQViewModel = function () {
         //Ends Here
     }
 
-    function ControlVisibility() {
+    function ControlVisibilityOnSelection() {
         var anyAnalytesSelected = (selectedAnalytes().length != 0);
         var anySitesSelected = (selectedSites().length != 0);
         self.hiddenSites([]);
@@ -161,6 +176,46 @@ var WQViewModel = function () {
         });
     }
 
+    function ControlVisibilityOnSearch(searchInput, formId) {
+        var resources;
+        var selections;
+        var hidden;
+        var names;
+        var distinctIds;
+
+        if (formId == "site") {
+            resources = self.sites;
+            selections = self.selectedSites;
+            hidden = self.hiddenSites;
+            names = resources().map(function (a) { return a.SiteId; });
+            distinctIds = resources().map(function (a) { return a.Id; });
+        }
+        else if (formId == "analyte") {
+            resources = self.analytes;
+            selections = self.selectedAnalytes;
+            hidden = self.hiddenAnalytes;
+            names = resources().map(function (a) { return a.AnalyteName; });
+            distinctIds = resources().map(function (a) { return a.Id; });
+        }
+
+        if (searchInput == "") {
+            ControlVisibilityOnSelection();
+            return;
+        }
+
+        var oldhidden = hidden().slice();
+        hidden([]);
+
+        var re = new RegExp(".*" + searchInput + ".*", "i");
+
+        names.forEach(function (name, index) {
+            if (!re.test(name)) {
+                hidden.push(distinctIds[index]);
+            }
+        });
+
+    }
+
     function GetHomeInfo() { //Rename this function
         $.ajax({
             type: "GET",
@@ -221,3 +276,22 @@ var WQViewModel = function () {
 
 ko.applyBindings(WQViewModel);
 
+$(function () {
+
+    $('input[name="datefilter"]').daterangepicker({
+        "alwaysShowCalendars": true,
+        "startDate": "09/17/2016",
+        "endDate": "09/23/2016"
+    }, function (start, end, label) {
+        console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+    });
+
+    $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
+        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+    });
+
+    $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
+        $(this).val('');
+    });
+
+});

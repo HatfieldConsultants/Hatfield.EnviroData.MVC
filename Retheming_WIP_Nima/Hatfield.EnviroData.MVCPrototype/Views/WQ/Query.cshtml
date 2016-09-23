@@ -19,7 +19,7 @@
             <div class="col-md-4">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h4>Stations <input class="right pull-right" placeholder="Search" /></h4>
+                        <h4>Stations <input data-bind="textInput: sitesSearch" class="right pull-right" placeholder="Search" /></h4>
 
                     </div>
                     <div class="panel-body panel-body-scroll">
@@ -33,7 +33,7 @@
                             </thead>
 
                             <tbody data-bind="foreach: sites">
-                                <tr data-bind="visible: $.inArray(Id, hiddenSites()) == -1">
+                                <tr data-bind="visible: $.inArray(Id, hiddenSites()) == -1, attr: {id: 'site' + Id}">
                                     <td><input type="checkbox" data-bind="checked: selectedSites, attr: { value: Id }" /></td>
                                     <td data-bind="text: SiteId"></td>
                                     <td data-bind="text: SiteType"></td>
@@ -46,7 +46,7 @@
             <div class="col-md-4">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h4>Parameters <input class="right pull-right" placeholder="Search" /></h4>
+                        <h4>Parameters <input data-bind="textInput: analytesSearch" class="right pull-right" placeholder="Search" /></h4>
 
                     </div>
                     <div class="panel-body  panel-body-scroll">
@@ -59,7 +59,7 @@
                             </thead>
 
                             <tbody data-bind="foreach: analytes">
-                                <tr data-bind="visible: $.inArray(Id, hiddenAnalytes()) == -1">
+                                <tr data-bind="visible: $.inArray(Id, hiddenAnalytes()) == -1, attr: {id: 'analyte' + Id}">
                                     <td><input type="checkbox" data-bind="checked: selectedAnalytes, attr: {value: Id}"></td>
                                     <td data-bind="text: AnalyteName"></td>
                                 </tr>
@@ -82,7 +82,7 @@
                                 </tr>
                             </thead>
                             <tbody data-bind="foreach: guidelines">
-                                <tr>
+                                <tr data-bind="attr: {id: 'guideline' + Id}">
                                     <td><input type="checkbox" data-bind="checked: selectedGuidelines, attr: {value: Id}" /></td>
                                     <td data-bind="text:GuidelineName"></td>
                                 </tr>
@@ -99,7 +99,7 @@
                         <h4>Time Range</h4>
                     </div>
                     <div class="panel-body">
-                        <img class="img-responsive" src="https://i-msdn.sec.s-msft.com/dynimg/IC286653.jpeg">
+                        <input type="text" name="datefilter" value="" />
                     </div>
                 </div>
             </div>
