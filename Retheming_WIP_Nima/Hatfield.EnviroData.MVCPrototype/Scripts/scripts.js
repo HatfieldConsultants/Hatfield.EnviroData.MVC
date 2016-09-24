@@ -35,15 +35,11 @@ var WQViewModel = function () {
     });
 
     self.selectedSites.subscribe(function () {
-        if (analytesSearch == "" && sitesSearch == "") {
-            ControlVisibilityOnSelection();
-        }
+        ControlVisibilityOnSelection();
     });
 
     self.selectedAnalytes.subscribe(function () {
-        if (analytesSearch == "" && sitesSearch == "") {
-            ControlVisibilityOnSelection();
-        }
+        ControlVisibilityOnSelection();
     });
 
 
@@ -68,42 +64,6 @@ var WQViewModel = function () {
 
                 self.siteAnalyteLookupTable(data.siteAnalyteLookupTable);
                 ControlVisibilityOnSelection();
-            },
-            error: function (error) {
-                alert(error.status + "<--and--> " + error.statusText);
-            }
-        });
-        //Ends Here
-    }
-
-    function FilterQueryForm(modifiedFormId) { //Deprecated
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:51683/WQ/QueryData",
-            data: {
-                modifiedFormId: modifiedFormId,
-                selectedSites: selectedSites().toString(),
-                selectedAnalytes: selectedAnalytes().toString(),
-                selectedGuidelines: selectedGuidelines().toString(),
-                hiddenSites: hiddenSites().toString(),
-                hiddenAnalytes: hiddenAnalytes().toString(),
-                hiddenGuidelines: hiddenGuidelines().toString()
-            },
-            success: function (data) {
-                data = JSON.parse(data);
-                self.hiddenSites([]);
-                self.hiddenAnalytes([]);
-                self.hiddenGuidelines([]);
-
-                data.hiddenSites.forEach(function (value, i) {
-                    self.hiddenSites.push(value);
-                });
-                data.hiddenAnalytes.forEach(function (value, i) {
-                    self.hiddenAnalytes.push(value);
-                });
-                data.hiddenGuidelines.forEach(function (value, i) {
-                    self.hiddenGuidelines.push(value);
-                });
             },
             error: function (error) {
                 alert(error.status + "<--and--> " + error.statusText);
@@ -266,6 +226,21 @@ var WQViewModel = function () {
         //Ends Here
     }
 
+    function GetDictionaryForDateTimeRange(startDateTime, endDateTime) {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:51683/WQ/DictionaryForDateTimeRange",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                
+            },
+            error: function (error) {
+
+            }
+        });
+    }
+
     //TODO: switch block so these only run on relevant pages
     GetInitialQueryForm();
     GetHomeInfo();
@@ -276,14 +251,17 @@ var WQViewModel = function () {
 
 ko.applyBindings(WQViewModel);
 
-$(function () {
+$(function () { // temporary for datepicker
 
     $('input[name="datefilter"]').daterangepicker({
+        "timePicker": true,
+        "timePicker24Hour": true,
         "alwaysShowCalendars": true,
         "startDate": "09/17/2016",
         "endDate": "09/23/2016"
     }, function (start, end, label) {
-        console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+        WQViewModel.GetDictionaryForDateTimeRange(start, end);
+        //console.log("New date range selected: " + start.format('YYYY-MM-DD h:mm') + " to " + end.format('YYYY-MM-DD') + " (predefined range: " + label + ")");
     });
 
     $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
