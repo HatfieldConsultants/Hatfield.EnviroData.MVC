@@ -4,8 +4,6 @@ var WQViewModel = function () {
 
     //Make the self as 'this' reference
     var self = this;
-    self.provisionalDatasets = ko.observable("");
-    self.recentDatasets = ko.observable("");
 
     self.siteAnalyteLookupTable = ko.observable();
 
@@ -19,9 +17,6 @@ var WQViewModel = function () {
     self.sites = ko.observableArray([]);
     self.analytes = ko.observableArray([]);
     self.guidelines = ko.observableArray([]);
-
-    self.selectedSites_ = ko.observableArray([]); //to be used in filtering
-    self.selectedAnalytes_ = ko.observableArray([]); // ''
 
     self.sitesSearch = ko.observable("");
     self.analytesSearch = ko.observable("");
@@ -83,7 +78,6 @@ var WQViewModel = function () {
                 alert(error.status + "<--and--> " + error.statusText);
             }
         });
-        //Ends Here
     }
 
     function ControlVisibilityOnSelection() {
@@ -190,77 +184,7 @@ var WQViewModel = function () {
 
     }
 
-    function GetHomeInfo() { //Rename this function
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:51683/Home/InfoRefresh",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                self.provisionalDatasets(JSON.parse(data.provisionalDatasets));
-                self.recentDatasets(JSON.parse(data.recentDatasets));
-
-            },
-            error: function (error) {
-                alert(error.status + "<--and--> " + error.statusText);
-            }
-        });
-        //Ends Here
-    }
-  
-    function GetProvisionalDatasets() { //Rename this function
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:51683/QC/ProvisionalDatasets",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                self.provisionalDatasets(JSON.parse(data.provisionalDatasets));
-            },
-            error: function (error) {
-                alert(error.status + "<--and--> " + error.statusText);
-            }
-        });
-    }      
-
-    function GetMonitoringSites() {
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:51683/CoreData/MonitoringSites",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                //self.sites(JSON.parse(data.sites));
-
-            },
-            error: function (error) {
-                alert(error.status + "<--and--> " + error.statusText);
-            }
-        });
-        //Ends Here
-    }
-
-    function GetDictionaryForDateTimeRange(startDateTime, endDateTime) {
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:51683/WQ/DictionaryForDateTimeRange",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                
-            },
-            error: function (error) {
-
-            }
-        });
-    }
-
-    //TODO: switch block so these only run on relevant pages
     GetInitialQueryForm("2010-11-30 00:00:00", "2020-11-30 00:00:00"); //just temporary default
-    GetHomeInfo();
-    GetProvisionalDatasets();
-    GetMonitoringSites();
-
 }
 
 ko.applyBindings(WQViewModel);
