@@ -45,6 +45,10 @@ var WQViewModel = function () {
         ControlVisibilityOnSelection();
     });
 
+    self.queryStartDateTime.subscribe(function () {
+        GetInitialQueryForm(self.queryStartDateTime, self.queryEndDateTime);
+    });
+
     self.queryEndDateTime.subscribe(function () {
         GetInitialQueryForm(self.queryStartDateTime, self.queryEndDateTime);
     });
@@ -57,6 +61,9 @@ var WQViewModel = function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
+                self.sites([]);
+                self.analytes([]);
+                self.guidelines([]);
                 data.sites.forEach(function (value, i) {
                     self.sites.push(value);
                 });
@@ -71,7 +78,7 @@ var WQViewModel = function () {
 
                 self.siteAnalyteLookupTable(data.siteAnalyteLookupTable);
                 ControlVisibilityOnSelection();
-                alert("ayo sup boi");
+                alert("Loaded!");
             },
             error: function (error) {
                 alert(error.status + "<--and--> " + error.statusText);

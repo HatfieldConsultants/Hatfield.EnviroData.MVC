@@ -371,6 +371,7 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
                 (from datum in data
                 join site in sites on new { siteId = datum.StationId } equals new { siteId = site.Id }
                 join analyte in analytes on new { analyteId = datum.WaterQualityLabAnalyteId } equals new { analyteId = analyte.Id }
+                where datum.SampleDateTime >= Convert.ToDateTime(queryStartDateTime) && datum.SampleDateTime <= Convert.ToDateTime(queryEndDateTime)
                 //join standard in standards on new { analyteId = analyte.Id } equals new { analyteId = standard.WaterQualityLabAnalyteId }
                 //join guideline in guidelines on new { guidelineId = standard.GuidelineId } equals new { guidelineId = guideline.Id }
                 select new
