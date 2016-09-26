@@ -78,7 +78,6 @@ var WQViewModel = function () {
 
                 self.siteAnalyteLookupTable(data.siteAnalyteLookupTable);
                 ControlVisibilityOnSelection();
-                alert("Loaded!");
             },
             error: function (error) {
                 alert(error.status + "<--and--> " + error.statusText);
