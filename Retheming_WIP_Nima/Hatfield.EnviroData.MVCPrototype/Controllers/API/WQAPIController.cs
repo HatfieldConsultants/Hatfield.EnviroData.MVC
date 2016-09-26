@@ -341,11 +341,14 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
 
         [Route("WQ/DataAvailableDictionary")]
         [HttpGet]
-        public HttpResponseMessage GetDataAvailableDictionary()
+        public HttpResponseMessage GetDataAvailableDictionary([FromUri] String queryStartDateTime, String queryEndDateTime)
         {
+            Debug.WriteLine(queryStartDateTime);
+            Debug.WriteLine(queryEndDateTime);
+
             //RETURNS:
             // - Sites, Analytes, Guidelines
-            // - 2D dictionary of relations between Sites and Analytes
+            // - 1D array of relations between Sites and Analytes with keys "siteId_analyteID"
             var response = new HttpResponseMessage();
 
             var SiteAnalyteLookup = new List<string>();

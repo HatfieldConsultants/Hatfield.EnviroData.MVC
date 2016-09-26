@@ -26,6 +26,9 @@ var WQViewModel = function () {
     self.sitesSearch = ko.observable("");
     self.analytesSearch = ko.observable("");
 
+    self.queryStartDateTime = ko.observable("");
+    self.queryEndDateTime = ko.observable("");
+
     self.sitesSearch.subscribe(function (newValue) {
         ControlVisibilityOnSearch(newValue, "site");
     });
@@ -42,11 +45,15 @@ var WQViewModel = function () {
         ControlVisibilityOnSelection();
     });
 
+    self.queryEndDateTime.subscribe(function () {
+        GetInitialQueryForm(self.queryStartDateTime, self.queryEndDateTime);
+    });
 
-    function GetInitialQueryForm() {
+    function GetInitialQueryForm(queryStartDateTime, queryEndDateTime) {
         $.ajax({
             type: "GET",
             url: "http://localhost:51683/WQ/DataAvailableDictionary",
+            data: { queryStartDateTime: queryStartDateTime, queryEndDateTime: queryEndDateTime },
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
@@ -64,6 +71,7 @@ var WQViewModel = function () {
 
                 self.siteAnalyteLookupTable(data.siteAnalyteLookupTable);
                 ControlVisibilityOnSelection();
+                alert("ayo sup boi");
             },
             error: function (error) {
                 alert(error.status + "<--and--> " + error.statusText);
@@ -242,7 +250,7 @@ var WQViewModel = function () {
     }
 
     //TODO: switch block so these only run on relevant pages
-    GetInitialQueryForm();
+    GetInitialQueryForm("2010-11-30 00:00:00", "2020-11-30 00:00:00"); //just temporary default
     GetHomeInfo();
     GetProvisionalDatasets();
     GetMonitoringSites();
@@ -251,25 +259,19 @@ var WQViewModel = function () {
 
 ko.applyBindings(WQViewModel);
 
-$(function () { // temporary for datepicker
-
-    $('input[name="datefilter"]').daterangepicker({
-        "timePicker": true,
+$(function () {
+    $('input[name="daterange"]').daterangepicker({
+        timePicker: true,
+        timePickerIncrement: 30,
         "timePicker24Hour": true,
-        "alwaysShowCalendars": true,
-        "startDate": "09/17/2016",
-        "endDate": "09/23/2016"
-    }, function (start, end, label) {
-        WQViewModel.GetDictionaryForDateTimeRange(start, end);
-        //console.log("New date range selected: " + start.format('YYYY-MM-DD h:mm') + " to " + end.format('YYYY-MM-DD') + " (predefined range: " + label + ")");
+        locale: {
+            format: 'MM/DD/YYYY h:mm A'
+        }
+    },
+    function (start, end, label) {
+        start = moment(start).format('YYYY-MM-DD HH:mm:ss');
+        end = moment(end).format('YYYY-MM-DD HH:mm:ss');
+        self.queryStartDateTime(start);
+        self.queryEndDateTime(end);
     });
-
-    $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
-        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-    });
-
-    $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
-        $(this).val('');
-    });
-
 });
