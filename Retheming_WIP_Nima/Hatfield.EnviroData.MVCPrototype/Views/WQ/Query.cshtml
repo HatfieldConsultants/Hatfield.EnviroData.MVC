@@ -22,8 +22,17 @@
                         <h4>Time Range</h4>
                     </div>
                     <div class="panel-body">
-                        <input type="text" name="daterange" />
-                    </div>
+                        <div style="display: inline-block">
+                            <label for="start">Start:</label>
+                            <br>
+                            <input type="text" id="start">
+                        </div>
+
+                        <div style="display: inline-block">
+                            <label for="end">End:</label>
+                            <br>
+                            <input type="text" id="end">
+                        </div>                    </div>
                 </div>
             </div>
         </div>
@@ -177,5 +186,8 @@
         </div>
     </div>
 </div>
-
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<script src="~/Scripts/WQ/pikaday.js"></script>
+<link rel="stylesheet" type="text/css" href="~/css/pikaday.css" />
 <script src="~/Scripts/WQ/waterqueryscripts.js"></script>

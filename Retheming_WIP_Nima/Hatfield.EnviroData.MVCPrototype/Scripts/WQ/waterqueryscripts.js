@@ -205,3 +205,46 @@ $(function () {
         self.queryEndDateTime(end);
     });
 });
+
+var startDate,
+    endDate,
+    updateStartDate = function () {
+        startPicker.setStartRange(startDate);
+        endPicker.setStartRange(startDate);
+        endPicker.setMinDate(startDate);
+        self.queryStartDateTime(moment(startDate).format('YYYY-MM-DD HH:mm:ss'));
+    },
+    updateEndDate = function () {
+        startPicker.setEndRange(endDate);
+        startPicker.setMaxDate(endDate);
+        endPicker.setEndRange(endDate);
+        self.queryEndDateTime(moment(endDate).format('YYYY-MM-DD HH:mm:ss'));
+    },
+    startPicker = new Pikaday({
+        field: document.getElementById('start'),
+        defaultDate: new Date(2010, 0, 1),
+        setDefaultDate: true,
+        onSelect: function () {
+            startDate = this.getDate();
+            updateStartDate();
+        }
+    }),
+    endPicker = new Pikaday({
+        field: document.getElementById('end'),
+        defaultDate: new Date(2018, 0, 1),
+        setDefaultDate: true,
+        onSelect: function () {
+            endDate = this.getDate();
+            updateEndDate();
+        }
+    }),
+    _startDate = startPicker.getDate(),
+    _endDate = endPicker.getDate();
+if (_startDate) {
+    startDate = _startDate;
+    updateStartDate();
+}
+if (_endDate) {
+    endDate = _endDate;
+    updateEndDate();
+}
