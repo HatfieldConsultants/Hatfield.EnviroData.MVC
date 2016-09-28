@@ -21,7 +21,7 @@
                     <div class="panel-heading">
                         <h4>Time Range</h4>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body timepanel">
                         <div style="display: inline-block">
                             <label for="start">Start:</label>
                             <br>
@@ -32,7 +32,11 @@
                             <label for="end">End:</label>
                             <br>
                             <input type="text" id="end">
-                        </div>                    </div>
+                        </div>                    
+                        <div id="loadingDiv" style="display: inline-block">
+                            <img class="loadingSpinner" src="http://localhost:51683/images/spin.gif" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

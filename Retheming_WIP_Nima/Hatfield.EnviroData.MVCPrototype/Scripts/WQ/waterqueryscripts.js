@@ -1,4 +1,12 @@
-﻿//Note: Should this script be split up into different scripts with relevant functions and viewmodels that load for different pages??
+﻿
+var $loading = $('#loadingDiv').hide();
+$(document)
+  .ajaxStart(function () {
+      $loading.show();
+  })
+  .ajaxStop(function () {
+      $loading.hide();
+  });
 
 var WQViewModel = function () {
 
@@ -81,6 +89,7 @@ var WQViewModel = function () {
     }
 
     function ControlVisibilityOnSelection() {
+        $loading.show();
         var anyAnalytesSelected = (selectedAnalytes().length != 0);
         var anySitesSelected = (selectedSites().length != 0);
         self.hiddenSites([]);
@@ -142,6 +151,8 @@ var WQViewModel = function () {
                 hiddenAnalytes.push(analyte.Id);
             }
         });
+        $loading.hide();
+
     }
 
     function ControlVisibilityOnSearch(searchInput, formId) {
@@ -150,6 +161,7 @@ var WQViewModel = function () {
         var hidden;
         var names;
         var distinctIds;
+        $loading.show();
 
         if (formId == "site") {
             resources = self.sites;
@@ -181,6 +193,7 @@ var WQViewModel = function () {
                 hidden.push(distinctIds[index]);
             }
         });
+        $loading.hide();
 
     }
 
@@ -248,3 +261,4 @@ if (_endDate) {
     endDate = _endDate;
     updateEndDate();
 }
+
