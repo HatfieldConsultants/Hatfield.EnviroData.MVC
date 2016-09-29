@@ -14,182 +14,188 @@
     </ol>
 }
 <div class="row">
-    <div class="col-md-12">
-        <div class="row-fluid">
-            <div class="col-md-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4>Time Range</h4>
-                    </div>
-                    <div class="panel-body timepanel">
-                        <div style="display: inline-block">
-                            <label for="start">Start:</label>
-                            <br>
-                            <input type="text" id="start">
-                        </div>
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4>Time Range</h4>
+            </div>
+            <div class="panel-body timepanel">
+                <div style="display: inline-block">
+                    <label for="start">Start:</label>
+                    <br>
+                    <input type="text" id="start">
+                </div>
 
-                        <div style="display: inline-block">
-                            <label for="end">End:</label>
-                            <br>
-                            <input type="text" id="end">
-                        </div>                    
-                        <div id="loadingDiv" style="display: inline-block">
-                            <img class="loadingSpinner" src="http://localhost:51683/images/spin.gif" />
-                        </div>
-                    </div>
+                <div style="display: inline-block">
+                    <label for="end">End:</label>
+                    <br>
+                    <input type="text" id="end">
+                </div>
+                <div id="loadingDiv" style="display: inline-block">
+                    <img class="loadingSpinner" src="http://localhost:51683/images/spin.gif" />
                 </div>
             </div>
         </div>
-
-        <div class="row-fluid">
-            <div class="col-md-4">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4>Stations <input data-bind="textInput: sitesSearch" class="right pull-right" placeholder="Search" /></h4>
-
-                    </div>
-                    <div class="panel-body panel-body-scroll">
-                        <table class=" datasettable table table-hover">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Station ID</th>
-                                    <th>Station Description</th>
-                                </tr>
-                            </thead>
-
-                            <tbody data-bind="foreach: sites">
-                                <tr data-bind="visible: $.inArray(Id, hiddenSites()) == -1, attr: {id: 'site' + Id}">
-                                    <td><input type="checkbox" data-bind="checked: selectedSites, attr: { value: Id }" /></td>
-                                    <td data-bind="text: SiteId"></td>
-                                    <td data-bind="text: SiteType"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4>Time Range</h4>
             </div>
-            <div class="col-md-4">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4>Parameters <input data-bind="textInput: analytesSearch" class="right pull-right" placeholder="Search" /></h4>
-
-                    </div>
-                    <div class="panel-body  panel-body-scroll">
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Anions and Nutrients</th>
-                                </tr>
-                            </thead>
-
-                            <tbody data-bind="foreach: analytes">
-                                <tr data-bind="visible: $.inArray(Id, hiddenAnalytes()) == -1, attr: {id: 'analyte' + Id}">
-                                    <td><input type="checkbox" data-bind="checked: selectedAnalytes, attr: {value: Id}"></td>
-                                    <td data-bind="text: AnalyteName"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            <div class="panel-body timepanel">
             </div>
-            <div class="col-md-4">
-                <div class="panel panel-info ">
-                    <div class="panel-heading">
-                        <h4>Guidelines</h4>
-                    </div>
-                    <div class="panel-body  panel-body-scroll">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Minimum BC WQG</th>
-                                </tr>
-                            </thead>
-                            <tbody data-bind="foreach: guidelines">
-                                <tr data-bind="attr: {id: 'guideline' + Id}">
-                                    <td><input type="checkbox" data-bind="checked: selectedGuidelines, attr: {value: Id}" /></td>
-                                    <td data-bind="text:GuidelineName"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4>Stations <input data-bind="textInput: sitesSearch" class="right pull-right" placeholder="Search" /></h4>
+
+                </div>
+                <div class="panel-body panel-body-scroll">
+                    <table class=" datasettable table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Station ID</th>
+                                <th>Station Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody data-bind="foreach: sites">
+                            <tr data-bind="visible: $.inArray(Id, hiddenSites()) == -1, attr: {id: 'site' + Id}">
+                                <td><input type="checkbox" data-bind="checked: selectedSites, attr: { value: Id }" /></td>
+                                <td data-bind="text: SiteId"></td>
+                                <td data-bind="text: SiteType"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4>Parameters <input data-bind="textInput: analytesSearch" class="right pull-right" placeholder="Search" /></h4>
 
-        <div class="row-fluid">
-            <div class="col-md-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4>Run Data Tools</h4>
-                    </div>
+                </div>
+                <div class="panel-body  panel-body-scroll">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Anions and Nutrients</th>
+                            </tr>
+                        </thead>
 
-                    <div class="panel-body">
-                        <div class="btn-group">
-                            <button type="submit" id="btnSubmit" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                <i class=" icon-picture icon-white"></i>Show as graph: <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="#" data-bind="click: function(){$root.GenerateGraph(); return false;}">
-                                        Show values as a single chart
-                                    </a>
-                                </li>
+                        <tbody data-bind="foreach: analytes">
+                            <tr data-bind="visible: $.inArray(Id, hiddenAnalytes()) == -1, attr: {id: 'analyte' + Id}">
+                                <td><input type="checkbox" data-bind="checked: selectedAnalytes, attr: {value: Id}"></td>
+                                <td data-bind="text: AnalyteName"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-info ">
+                <div class="panel-heading">
+                    <h4>Guidelines</h4>
+                </div>
+                <div class="panel-body  panel-body-scroll">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Minimum BC WQG</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: guidelines">
+                            <tr data-bind="attr: {id: 'guideline' + Id}">
+                                <td><input type="checkbox" data-bind="checked: selectedGuidelines, attr: {value: Id}" /></td>
+                                <td data-bind="text:GuidelineName"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4>Run Data Tools</h4>
+                </div>
+
+                <div class="panel-body">
+                    <div class="btn-group">
+                        <button type="submit" id="btnSubmit" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            <i class=" icon-picture icon-white"></i>Show as graph: <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
                                 <a href="#" data-bind="click: function(){$root.GenerateGraph(); return false;}">
+                                    Show values as a single chart
                                 </a>
-                                <li>
-                                    <a href="#" data-bind="click: function(){$root.GenerateGraph(); return false;}">
-                                    </a><a href="#" id="multipleChartBtn" data-bind="click: function(){$root.GenerateGraph('Multiple'); return false;}">
-                                        Display values in separate charts
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <p>
-                            <div class="btn-group">
-                                <button type="submit" id="btnSubmit" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                    <i class=" icon-download-alt icon-white"></i>View online as: <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">a simple Table</a></li>
-                                    <li><a href="#">Interactive Pivot Table</a></li>
-                                    <li><a href="#">Data availability visualization (see http://www.nytimes.com/interactive/2013/04/25/sports/football/picking-the-best-in-the-nfl-draft.html?_r=0)</a></li>
-
-                                </ul>
-                            </div>
-                        </p>
-                        <p>
-                            <div class="btn-group">
-                                <button type="submit" id="btnSubmit" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                    <i class=" icon-download-alt icon-white"></i>Download excel report: <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">Raw data</a></li>
-                                    <li><a href="#">Daily data</a></li>
-                                    <li><a href="#">One worksheet per-station</a></li>
-                                    <li><a href="#">One worksheet  with all stations</a></li>
-                                    <li><a href="#">One worksheet per-station type</a></li>
-
-                                </ul>
-                            </div>
-                        </p>
+                            </li>
+                            <a href="#" data-bind="click: function(){$root.GenerateGraph(); return false;}">
+                            </a>
+                            <li>
+                                <a href="#" data-bind="click: function(){$root.GenerateGraph(); return false;}">
+                                </a><a href="#" id="multipleChartBtn" data-bind="click: function(){$root.GenerateGraph('Multiple'); return false;}">
+                                    Display values in separate charts
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <p>
                         <div class="btn-group">
                             <button type="submit" id="btnSubmit" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                <i class=" icon-download-alt icon-white"></i>Quality Assurance: <span class="caret"></span>
+                                <i class=" icon-download-alt icon-white"></i>View online as: <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="@Url.Action("Run","QC")">Run a quality assurance procedure...</a></li>
+                                <li><a href="#">a simple Table</a></li>
+                                <li><a href="#">Interactive Pivot Table</a></li>
+                                <li><a href="#">Data availability visualization (see http://www.nytimes.com/interactive/2013/04/25/sports/football/picking-the-best-in-the-nfl-draft.html?_r=0)</a></li>
+
                             </ul>
                         </div>
+                    </p>
+                    <p>
+                        <div class="btn-group">
+                            <button type="submit" id="btnSubmit" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <i class=" icon-download-alt icon-white"></i>Download excel report: <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Raw data</a></li>
+                                <li><a href="#">Daily data</a></li>
+                                <li><a href="#">One worksheet per-station</a></li>
+                                <li><a href="#">One worksheet  with all stations</a></li>
+                                <li><a href="#">One worksheet per-station type</a></li>
 
+                            </ul>
+                        </div>
+                    </p>
+                    <div class="btn-group">
+                        <button type="submit" id="btnSubmit" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            <i class=" icon-download-alt icon-white"></i>Quality Assurance: <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="@Url.Action("Run","QC")">Run a quality assurance procedure...</a></li>
+                        </ul>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
 <script src="~/Scripts/WQ/pikaday.js"></script>

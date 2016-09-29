@@ -151,8 +151,11 @@ var WQViewModel = function () {
                 hiddenAnalytes.push(analyte.Id);
             }
         });
-        $loading.hide();
+        var timeOut = setTimeout(function () {
 
+            $loading.hide();
+
+        }, 1000);
     }
 
     function ControlVisibilityOnSearch(searchInput, formId) {
@@ -193,8 +196,11 @@ var WQViewModel = function () {
                 hidden.push(distinctIds[index]);
             }
         });
-        $loading.hide();
+        var timeOut = setTimeout(function () {
 
+            $loading.hide();
+
+        }, 1000);
     }
 
     GetInitialQueryForm("2010-11-30 00:00:00", "2020-11-30 00:00:00"); //just temporary default
