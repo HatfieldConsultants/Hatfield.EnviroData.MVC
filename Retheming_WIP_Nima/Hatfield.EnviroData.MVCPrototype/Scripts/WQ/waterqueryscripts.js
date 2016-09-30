@@ -22,6 +22,8 @@ var WQViewModel = function () {
     self.selectedGuidelines = ko.observableArray([]);
     self.hiddenGuidelines = ko.observableArray([]);
 
+    self.yearsAvailable = ko.observableArray([]);
+
     self.sites = ko.observableArray([]);
     self.analytes = ko.observableArray([]);
     self.guidelines = ko.observableArray([]);
@@ -78,7 +80,7 @@ var WQViewModel = function () {
                 data.guidelines.forEach(function (value, i) {
                     self.guidelines.push(value);
                 });
-
+                self.yearsAvailable(data.yearsAvailable);
                 self.siteAnalyteLookupTable(data.siteAnalyteLookupTable);
                 ControlVisibilityOnSelection();
             },
@@ -155,7 +157,7 @@ var WQViewModel = function () {
 
             $loading.hide();
 
-        }, 1000);
+        }, 500);
     }
 
     function ControlVisibilityOnSearch(searchInput, formId) {
@@ -200,30 +202,13 @@ var WQViewModel = function () {
 
             $loading.hide();
 
-        }, 1000);
+        }, 500);
     }
 
     GetInitialQueryForm("2010-11-30 00:00:00", "2020-11-30 00:00:00"); //just temporary default
 }
 
 ko.applyBindings(WQViewModel);
-
-$(function () {
-    $('input[name="daterange"]').daterangepicker({
-        timePicker: true,
-        timePickerIncrement: 30,
-        "timePicker24Hour": true,
-        locale: {
-            format: 'MM/DD/YYYY h:mm A'
-        }
-    },
-    function (start, end, label) {
-        start = moment(start).format('YYYY-MM-DD HH:mm:ss');
-        end = moment(end).format('YYYY-MM-DD HH:mm:ss');
-        self.queryStartDateTime(start);
-        self.queryEndDateTime(end);
-    });
-});
 
 var startDate,
     endDate,
@@ -243,6 +228,7 @@ var startDate,
         field: document.getElementById('start'),
         defaultDate: new Date(2010, 0, 1),
         setDefaultDate: true,
+        format: 'MMM. D, YYYY',
         onSelect: function () {
             startDate = this.getDate();
             updateStartDate();
@@ -252,6 +238,7 @@ var startDate,
         field: document.getElementById('end'),
         defaultDate: new Date(2018, 0, 1),
         setDefaultDate: true,
+        format: 'MMM. D, YYYY',
         onSelect: function () {
             endDate = this.getDate();
             updateEndDate();

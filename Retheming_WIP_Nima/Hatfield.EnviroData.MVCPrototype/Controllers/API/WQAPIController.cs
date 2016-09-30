@@ -386,6 +386,10 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
 
                 }).Distinct();
 
+            var yearsAvailable =
+                (from datum in data
+                select datum.SampleDateTime.Year).Distinct();
+
             foreach (var row in bigLookupQuery) {
 
                 var key = row.siteId.ToString() + "_" + row.analyteId.ToString();
@@ -393,7 +397,7 @@ namespace Hatfield.EnviroData.MVCPrototype.Controllers.API
 
             }
 
-            string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(new { siteAnalyteLookupTable = SiteAnalyteLookup, sites = sites, analytes = analytes, guidelines = guidelines });
+            string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(new { siteAnalyteLookupTable = SiteAnalyteLookup, sites = sites, analytes = analytes, guidelines = guidelines, yearsAvailable = yearsAvailable });
             response.Content = new StringContent(jsonResponse);
             return response;
         }

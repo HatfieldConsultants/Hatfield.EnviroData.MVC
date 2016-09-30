@@ -14,37 +14,100 @@
     </ol>
 }
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-2">
         <div class="panel panel-info">
             <div class="panel-heading">
                 <h4>Time Range</h4>
             </div>
             <div class="panel-body timepanel">
-                <div style="display: inline-block">
-                    <label for="start">Start:</label>
-                    <br>
-                    <input type="text" id="start">
-                </div>
+                <div style="display: inline-block; padding-top: 20px; margin: auto;">
+                    <div>
+                        <label for="start">Start:</label>
+                        <br>
+                        <input type="text" id="start">
+                    </div>
 
-                <div style="display: inline-block">
-                    <label for="end">End:</label>
-                    <br>
-                    <input type="text" id="end">
-                </div>
-                <div id="loadingDiv" style="display: inline-block">
-                    <img class="loadingSpinner" src="http://localhost:51683/images/spin.gif" />
+                    <div>
+                        <label for="end">End:</label>
+                        <br>
+                        <input type="text" id="end">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-2" style="text-align: center; padding-top: 50px;">
+        <div style="">
+            <img class="loadingSpinner" src="http://localhost:51683/images/OR.png" />
+        </div>
+
+        <div id="loadingDiv" style="">
+            <img class="loadingSpinner" src="http://localhost:51683/images/spin.gif" />
+        </div>
+    </div>
+    <div class="col-md-2">
         <div class="panel panel-info">
             <div class="panel-heading">
-                <h4>Time Range</h4>
+                <h4>Season</h4>
             </div>
-            <div class="panel-body timepanel">
+            <div class="panel-body panel-body-scroll">
+                <table class=" datasettable table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Season</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>Spring</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>Summer</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>Fall</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>Winter</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
+    </div>
+    <div class="col-md-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4>Year</h4>
+            </div>
+            <div class="panel-body panel-body-scroll">
+                <table class=" datasettable table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Year</th>
+                        </tr>
+                    </thead>
+
+                    <tbody data-bind="foreach: yearsAvailable">
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td data-bind="text: $data"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1">
     </div>
 </div>
 <div class="row">
