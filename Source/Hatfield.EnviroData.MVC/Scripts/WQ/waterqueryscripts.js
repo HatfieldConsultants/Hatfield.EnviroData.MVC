@@ -61,7 +61,7 @@ var WQViewModel = function () {
     function GetInitialQueryForm(queryStartDateTime, queryEndDateTime) {
         $.ajax({
             type: "GET",
-            url: "http://localhost:51683/WQ/DataAvailableDictionary",
+            url: App.RootURL + "WQ/DataAvailableDictionary",
             data: { queryStartDateTime: queryStartDateTime, queryEndDateTime: queryEndDateTime },
             contentType: "application/json; charset=utf-8",
             dataType: "json",

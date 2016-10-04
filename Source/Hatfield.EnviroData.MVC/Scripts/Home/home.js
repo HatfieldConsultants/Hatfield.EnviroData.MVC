@@ -10,7 +10,7 @@ var HomeViewModel = function () {
     function GetHomeInfo() { //Rename this function
         $.ajax({
             type: "GET",
-            url: "http://localhost:51683/Home/InfoRefresh",
+            url: App.RootURL + "Home/InfoRefresh",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
@@ -27,7 +27,7 @@ var HomeViewModel = function () {
     function GetProvisionalDatasets() { //Rename this function
         $.ajax({
             type: "GET",
-            url: "http://localhost:51683/QC/ProvisionalDatasets",
+            url: App.RootURL + "QC/ProvisionalDatasets",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
