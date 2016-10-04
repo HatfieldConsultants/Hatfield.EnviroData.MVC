@@ -1,0 +1,185 @@
+﻿@{
+    ViewBag.Title = "All Monitoring Sites";
+}
+@section PageTitleH1
+{
+    <h1><i class="glyphicon glyphicon-bookmark"></i> @ViewBag.Title</h1>
+}
+@section Breadcumb
+{
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")">Home</a></li>
+        <li><a href="@Url.Action("Index","ManageData")">Manage Data</a></li>
+        <li class="active">List Sampling Sites</li>        
+    </ol>
+}
+@helper RandomDate(Random randNum)
+{    
+    DateTime minDt = new DateTime(2012, 1, 1, 10, 0, 0);
+    DateTime maxDt = DateTime.Now;
+    int minutesDiff = Convert.ToInt32(maxDt.Subtract(minDt).TotalMinutes + 1);
+    DateTime randDate = minDt.AddMinutes(randNum.Next(1, minutesDiff));
+    <span>@randDate.ToString("MMM d, yyyy")</span>
+}
+@helper StationRow(Random randNum, string siteId, string desc, string project)
+{           
+    <tr>
+        <td><input type="checkbox" /></td>
+        <td><a href="@Url.Action("MonitoringSite_Details")">@siteId</a></td>
+        <td>@desc</td>
+        <td>@project</td>
+        <td>@RandomDate(randNum)</td>
+        <td>Water Quality</td>
+        <td>
+            <!-- Single button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Action <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="@Url.Action("SamplingSite_Details")">View Site Details</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+}
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Manage Sampling Sites</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="@Url.Action("MonitoringSites_List")"><i class="glyphicon glyphicon-list"></i> List All Monitoring Sites</a></li>
+                    <li><a href="@Url.Action("MonitoringSites_Map")"><i class="glyphicon glyphicon-map-marker"></i> Map Monitoring Sites</a></li>
+                    <li><a href="@Url.Action("MonitoringSites_WithMissingInfo")"><i class="glyphicon glyphicon-exclamation-sign red"></i> Locations with missing information</a></li>
+                </ul>
+            </div>            
+        </div>
+    </div>
+    <div class="col-md-9">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>All|None</th>
+                    <th>Site Id</th>
+                    <th>Description</th>
+                    <th>Project(s)</th>
+                    <th>Last Data Available Date</th>
+                    <th>Component Datasets</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    Random randNum = new Random();
+                }
+@StationRow(randNum, "ALD-1", "at the Alsands Drain", "AEM7111")
+@StationRow(randNum, "ARD-1", "Athabasca River Delta (composite)", "AEM7111")
+@StationRow(randNum, "ATR-DC-CC", "Athabasca River at Donald Creek - cross-channel", "AEM7111")
+@StationRow(randNum, "ATR-DC-E", "Athabasca River at Donald Creek - east bank", "AEM7111")
+@StationRow(randNum, "ATR-DC-M", "Athabasca River at Donald Creek - mid-channel", "AEM7111")
+@StationRow(randNum, "ATR-DC-W", "Athabasca River at Donald Creek - west bank", "AEM7111")
+@StationRow(randNum, "ATR-DD-C", "Athabasca River downstream of development â€“ centre channel", "AEM7111")
+@StationRow(randNum, "ATR-DD-CC", "Athabasca River downstream of development- cross-channel", "AEM7111")
+@StationRow(randNum, "ATR-DD-E", "Athabasca River downstream of development- east bank", "AEM7111")
+@StationRow(randNum, "ATR-DD-W", "Athabasca River downstream of development- west bank", "AEM7111")
+@StationRow(randNum, "ATR-ER", "Athabasca River upstream of the Embarras River", "AEM7111")
+@StationRow(randNum, "ATR-FC-CC-D", "Athabasca River upstream of Fort Creek - cross-channel", "AEM7111")
+@StationRow(randNum, "ATR-FC-E", "Athabasca River upstream of Fort Creek - east bank", "AEM7111")
+@StationRow(randNum, "ATR-FC-M", "Athabasca River upstream of Fort Creek -  mid-channel", "AEM7111")
+@StationRow(randNum, "ATR-FC-W", "Athabasca River upstream of Fort Creek - west bank", "AEM7111")
+@StationRow(randNum, "ATR-FR-CC", "Athabasca River upstream of the Firebag River - cross-channel", "AEM7111")
+@StationRow(randNum, "ATR-MR-E", "Athabasca River upstream of the Muskeg River- east bank", "AEM7111")
+@StationRow(randNum, "ATR-MR-M", "Athabasca River upstream of the Muskeg River- mid-channel", "AEM7111")
+@StationRow(randNum, "ATR-MR-W", "Athabasca River upstream of the Muskeg River- west bank", "AEM7111")
+@StationRow(randNum, "ATR-SR-E", "Athabasca River upstream of the Steepbank River- east bank", "AEM7111")
+@StationRow(randNum, "ATR-SR-M", "Athabasca River upstream of the Steepbank River- mid-channel", "AEM7111")
+@StationRow(randNum, "ATR-SR-W", "Athabasca River upstream of the Steepbank River- west bank", "AEM7111")
+@StationRow(randNum, "BER-1", "Beaver River (mouth)", "AEM7111")
+@StationRow(randNum, "BER-2", "Upper Beaver River", "AEM7111")
+@StationRow(randNum, "BIC-1", "Big Creek (mouth)", "AEM7111")
+@StationRow(randNum, "BRC-1", "Birch Creek", "AEM7111")
+@StationRow(randNum, "CAR-1", "Calumet River (mouth)", "AEM7111")
+@StationRow(randNum, "CAR-2", "Upper Calumet River", "AEM7111")
+@StationRow(randNum, "CHL-1", "Christina Lake", "AEM7111")
+@StationRow(randNum, "CHR-1", "Christina River upstream of Fort McMurray", "AEM7111")
+@StationRow(randNum, "CHR-2", "Christina River upstream of Janvier", "AEM7111")
+@StationRow(randNum, "CHR-2A", "Christina River-  mid-river", "AEM7111")
+@StationRow(randNum, "CHR-3", "Christina River upstream of Jackfish River", "AEM7111")
+@StationRow(randNum, "CHR-4", "upper Christina River", "AEM7111")
+@StationRow(randNum, "CLR-1", "Clearwater River upstream of Fort McMurray", "AEM7111")
+@StationRow(randNum, "CLR-2", "Clearwater River upstream of the Christina River", "AEM7111")
+@StationRow(randNum, "DUR-1", "Dunkirk River", "AEM7111")
+@StationRow(randNum, "ELR-1", "Ells River (mouth)", "AEM7111")
+@StationRow(randNum, "ELR-2", "Ells River upstream of the Canadian Natural Lease 7", "AEM7111")
+@StationRow(randNum, "ELR-2A", "Ells River upstream of the Fort MacKay water intake", "AEM7111")
+@StationRow(randNum, "ELR-3", "upper Ells River", "AEM7111")
+@StationRow(randNum, "EMR-1", "Embarras River at Park boundary", "AEM7111")
+@StationRow(randNum, "EYC-1", "Eymundson Creek (mouth)", "AEM7111")
+@StationRow(randNum, "FIR-1", "Mouth of the Firebag River", "AEM7111")
+@StationRow(randNum, "FIR-2", "Firebag upstream of Suncor Firebag", "AEM7111")
+@StationRow(randNum, "FOC-1", "Fort Creek (mouth)", "AEM7111")
+@StationRow(randNum, "GAL-1", "Gardiner Lake", "AEM7111")
+@StationRow(randNum, "GRL-1", "Gregoire Lake", "AEM7111")
+@StationRow(randNum, "GRR-1", "Gregoire River", "AEM7111")
+@StationRow(randNum, "HAR-1", "Hangingstone River upstream of Fort McMurray", "AEM7111")
+@StationRow(randNum, "HAR-1A", "Hangingstone River downstream of Fort McMurray", "AEM7111")
+@StationRow(randNum, "HHR-1", "High Hills River (mouth)", "AEM7111")
+@StationRow(randNum, "HOR-1", "Horse River", "AEM7111")
+@StationRow(randNum, "ISL-1", "Isadore's Lake", "AEM7111")
+@StationRow(randNum, "IYC-1", "Iyinimin Creek", "AEM7111")
+@StationRow(randNum, "JAC-1", "Jackpine Creek (mouth)", "AEM7111")
+@StationRow(randNum, "JAC-2", "Upper Jackpine Creek", "AEM7111")
+@StationRow(randNum, "JAR-1", "Jackfish River", "AEM7111")
+@StationRow(randNum, "JOL-1", "Johnson Lake", "AEM7111")
+@StationRow(randNum, "KEL-1", "Kearl Lake", "AEM7111")
+@StationRow(randNum, "MAR-2A", "MacKay River upstream of Suncor Dover", "AEM7111")
+@StationRow(randNum, "MAR_1", "MacKay River (mouth)", "AEM7111")
+@StationRow(randNum, "MAR_2", "MacKay River upstream of Suncor MacKay", "AEM7111")
+@StationRow(randNum, "MCC-1", "McLean Creek (mouth)", "AEM7111")
+@StationRow(randNum, "MCL-1", "McClelland Lake", "AEM7111")
+@StationRow(randNum, "MIC-1", "Mills Creek", "AEM7111")
+@StationRow(randNum, "MUC-1", "Muskeg Creek (mouth)", "AEM7111")
+@StationRow(randNum, "MUR-1", "Muskeg River  (mouth)", "AEM7111")
+@StationRow(randNum, "MUR-6", "Muskeg River upstream of Wapasu Creek", "AEM7111")
+@StationRow(randNum, "MUR-6A", "Muskeg River upstream of Wapasu Creek", "AEM7111")
+@StationRow(randNum, "NAL-1", "Namur Lake", "AEM7111")
+@StationRow(randNum, "NSR-1", "North Steepbank River upstream of Suncor Lewis", "AEM7111")
+@StationRow(randNum, "PIR-1", "Pierre River (mouth)", "AEM7111")
+@StationRow(randNum, "POC-1", "Poplar Creek (mouth)", "AEM7111")
+@StationRow(randNum, "RCC-1", "Red Clay Creek (mouth)", "AEM7111")
+@StationRow(randNum, "SAC-1", "Sawbones Creek", "AEM7111")
+@StationRow(randNum, "SHC-1", "Shelley Creek (mouth)", "AEM7111")
+@StationRow(randNum, "SHL-1", "Shipyard Lake", "AEM7111")
+@StationRow(randNum, "STC-1", "Stanley Creek (mouth)", "AEM7111")
+@StationRow(randNum, "STR-1", "Steepbank River (mouth)", "AEM7111")
+@StationRow(randNum, "STR-2", "Steepbank River upstream of Suncor Millennium", "AEM7111")
+@StationRow(randNum, "STR-3", "Steepbank River upstream of the North Steepbank River", "AEM7111")
+@StationRow(randNum, "SUC-1", "lower Sunday Creek", "AEM7111")
+@StationRow(randNum, "SUC-2", "upper Sunday Creek", "AEM7111")
+@StationRow(randNum, "TAR-1", "Tar River (mouth)", "AEM7111")
+@StationRow(randNum, "TAR-2", "Tar River upstream of Canadian Natural Horizon", "AEM7111")
+@StationRow(randNum, "UNC-1", "Unnammed Creek  (mouth), north of Fort Creek", "AEM7111")
+@StationRow(randNum, "UNC-2", "Unnamed Creek east of Christina Lake", "AEM7111")
+@StationRow(randNum, "UNC-3", "Unnamed Creek south of Christina Lake", "AEM7111")
+@StationRow(randNum, "WAC-1", "Wapasu Creek upstream of the Canterra Road Crossing", "AEM7111")
+
+
+
+
+
+            </tbody>
+        </table>
+        Select All|None. With selected: <a href="#" class="btn btn-primary btn-sm">Merge selected into a single site</a>. <a href="#" class="btn btn-primary btn-sm">Mark as virtual site(s) that only contains QA/QC data</a>
+    </div>
+</div> <!-- // row -->
+
+
+
+<p>&nbsp;</p>

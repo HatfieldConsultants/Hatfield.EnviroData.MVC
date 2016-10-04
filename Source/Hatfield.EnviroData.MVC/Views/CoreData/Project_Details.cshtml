@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "Project 'AEM7111-NV' Details";
+}
+@section PageTitleH1
+{
+    <h1><i class="glyphicon glyphicon-bookmark"></i> @ViewBag.Title</h1>
+}
+@section Breadcumb
+{
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+    <li><a href="@Url.Action("Index","ManageData")">Manage Data</a></li>
+    <li><a href="@Url.Action("Projects","ManageData")">Manage Projects</a></li>
+    <li class="active">@ViewBag.Title</li>
+</ol>
+}
+@helper RandomDate(Random randNum)
+{    
+    DateTime minDt = new DateTime(2012, 1, 1, 10, 0, 0);
+    DateTime maxDt = DateTime.Now;
+    int minutesDiff = Convert.ToInt32(maxDt.Subtract(minDt).TotalMinutes + 1);
+    DateTime randDate = minDt.AddMinutes(randNum.Next(1, minutesDiff));
+    <span>@randDate.ToString("MMM d, yyyy")</span>
+}
+@helper StationRow(Random randNum, string siteId, string desc, string project)
+{           
+    <tr>
+        <td><input type="checkbox" /></td>
+        <td>@siteId</td>
+        <td>@desc</td>
+        <td>@project</td>
+        <td>@RandomDate(randNum)</td>
+        <td>
+            <!-- Single button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Action <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">View Site Details</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+}
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Manage Projects</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="@Url.Action("Projects_List")">List All Projects</a></li>
+                    
+                </ul>
+            </div>            
+        </div>
+    </div>
+    <div class="col-md-9">
+        @{
+            Random randNum = new Random();
+        }
+        <table class="table table-striped table-bordered">
+            <tr>
+                <td>Project Id:</td>
+                <td>AEM7111-NV</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>2015 AEMERA Joint Oilsands monitoring program</td>                
+            </tr>
+            <tr>
+                <td>Programs:</td>
+                <td>AEMERA JOSM
+                <br />RAMP<br />[list]</td>
+            </tr>
+            <tr>
+                <td>Component Datasets:</td>
+                <td>Water Quality, [list]</td>
+            </tr>
+            <tr>
+                <td colspan="2"><a href="#" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i> Edit</a></td>
+            </tr>
+        </table>
+        <h2>Project Tools:</h2> 
+        <p>
+            Show sampling sites for Project 'AEM7111-NV'
+            <a href="@Url.Action("SamplingSites_List")" class="btn btn-primary btn-sm">Show</a>
+        </p>
+        <p>
+            Show recent water quality samples taken for Project 'AEM7111-NV'
+            <a href="@Url.Action("Samples_List","WQ")" class="btn btn-primary btn-sm">Show</a>            
+        </p>    
+        <p>
+            Things to add to this page:
+            <ul>
+                <li>Mark project as being a 'favourite'</li>
+                <li>Add a comment to this project</li>
+                <li>Add documents to a project, such as a formal project plan document</li>
+                <li>Show a timeline of actions done to this project</li>
+                <li>Create/List project/program specific environmental quality guidelines here?</li>
+            </ul>
+
+        </p>
+</div>
+</div> <!-- // row -->
+
+
+

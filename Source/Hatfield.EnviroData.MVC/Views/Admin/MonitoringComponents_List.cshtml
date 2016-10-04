@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Manage Monitoring Components";
+}
+@section PageTitleH1
+{
+    <h1><i class="glyphicon glyphicon-tree-deciduous"></i> @ViewBag.Title</h1>
+}
+@section Breadcumb
+{
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")">Home</a></li>
+        <li><a href="@Url.Action("Index","Admin")">Administration</a></li>
+        <li class="active">@ViewBag.Title</li>        
+    </ol>
+}
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Administration Tools</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li><a href="@Url.Action("Guidelines_List","Admin")"> Add/update/remove guidelines</a></li>
+                    <li><a href="@Url.Action("MonitoringComponents_List","Admin")"> Manage Monitoring Components</a></li>
+                    <li><a href="@Url.Action("MonitoringComponent_Create","Admin")"> Define a new Monitoring Component</a></li>            
+                    <li><a href="@Url.Action("Logs","Admin")"> View System Logs</a></li>            
+                    <li><a href="@Url.Action("Users_List", "Admin")"> User Access Permissions</a></li>     
+                </ul>
+            </div>            
+        </div>
+    </div>
+</div> <!-- // row -->
+
+

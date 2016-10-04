@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Manage Water Quality Analytes";
+}
+@section PageTitleH1
+{
+    <h1><i class="glyphicon glyphicon-bookmark"></i> @ViewBag.Title</h1>
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Manage Water Quality Analytes</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="@Url.Action("Analytes")"><i class="glyphicon glyphicon-list"></i> List Water Quality Analytes</a></li>
+                    <li><a href="@Url.Action("Analytes_WithMissingInfo")"><i class="glyphicon glyphicon-exclamation-sign red"></i> Analytes with missing information</a></li>
+                </ul>
+
+            </div>            
+        </div>
+    </div>
+    <div class="col-md-9">
+        <p>Things to add to this page:
+        <ul>
+            <li>Find similarly named analytes</li>
+            <li>Merge analytes together</li>
+            <li>Analytes should have a standard reporting unit?</li>
+            </ul>
+        </p>
+    </div>
+</div> <!-- // row -->

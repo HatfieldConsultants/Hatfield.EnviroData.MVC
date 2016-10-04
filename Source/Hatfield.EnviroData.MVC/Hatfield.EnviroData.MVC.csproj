@@ -7,13 +7,13 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F0372463-AAC7-4B31-97A7-87B8DD50F887}</ProjectGuid>
-    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectGuid>{56C282FF-A32D-4315-A05E-D38B8A3171A0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Hatfield.EnviroData.MVC</RootNamespace>
     <AssemblyName>Hatfield.EnviroData.MVC</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -41,134 +41,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac">
-      <HintPath>$(SolutionDir)\packages\Autofac.3.1.0\lib\net40\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="Autofac.Integration.Mvc">
-      <HintPath>$(SolutionDir)\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="Autofac.Integration.WebApi">
-      <HintPath>$(SolutionDir)\packages\Autofac.WebApi.3.1.0\lib\net40\Autofac.Integration.WebApi.dll</HintPath>
-    </Reference>
-    <Reference Include="AutoMapper">
-      <HintPath>$(SolutionDir)\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="AutoMapper.Net4">
-      <HintPath>$(SolutionDir)\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
-    </Reference>
-    <Reference Include="CsvHelper">
-      <HintPath>$(SolutionDir)\packages\CsvHelper.2.13.0.0\lib\net40-client\CsvHelper.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Hatfield.EnviroData.Core, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.Core.1.0.0.4\lib\net40\Hatfield.EnviroData.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Hatfield.EnviroData.CVUpdater">
-      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.CVUpdater.dll</HintPath>
-    </Reference>
-    <Reference Include="Hatfield.EnviroData.DataAcquisition, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.1.0.0.2\lib\net40\Hatfield.EnviroData.DataAcquisition.dll</HintPath>
-    </Reference>
-    <Reference Include="Hatfield.EnviroData.DataAcquisition.CSV, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.ESDAT.1.0.0.3\lib\net40\Hatfield.EnviroData.DataAcquisition.CSV.dll</HintPath>
-    </Reference>
-    <Reference Include="Hatfield.EnviroData.DataAcquisition.ESDAT, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.ESDAT.1.0.0.3\lib\net40\Hatfield.EnviroData.DataAcquisition.ESDAT.dll</HintPath>
-    </Reference>
-    <Reference Include="Hatfield.EnviroData.DataAcquisition.XML, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.DataAcquisition.ESDAT.1.0.0.3\lib\net40\Hatfield.EnviroData.DataAcquisition.XML.dll</HintPath>
-    </Reference>
-    <Reference Include="Hatfield.EnviroData.FileSystems, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.FileSystems.WindowsFileSystem.1.0.0\lib\net40\Hatfield.EnviroData.FileSystems.dll</HintPath>
-    </Reference>
-    <Reference Include="Hatfield.EnviroData.FileSystems.FTPFileSystem">
-      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.FTPFileSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Hatfield.EnviroData.FileSystems.HttpFileSystem">
-      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.HttpFileSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Hatfield.EnviroData.FileSystems.NetworkFileSystem">
-      <HintPath>..\..\ReferenceAssemblies\Hatfield.EnviroData.FileSystems.NetworkFileSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Hatfield.EnviroData.FileSystems.WindowsFileSystem, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.FileSystems.WindowsFileSystem.1.0.0\lib\net40\Hatfield.EnviroData.FileSystems.WindowsFileSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Hatfield.EnviroData.QualityAssurance, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.QualityAssurance.1.0.0.5\lib\net40\Hatfield.EnviroData.QualityAssurance.dll</HintPath>
-    </Reference>
-    <Reference Include="Hatfield.EnviroData.WQDataProfile, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.EnviroData.WQDataProfile.dll.1.0.0.10\lib\net40\Hatfield.EnviroData.WQDataProfile.dll</HintPath>
-    </Reference>
-    <Reference Include="Hatfield.WQDefaultValueProvider.JSON, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hatfield.WQDefaultValueProvider.JSON.1.0.0.10\lib\net40\Hatfield.WQDefaultValueProvider.JSON.dll</HintPath>
-    </Reference>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>$(SolutionDir)\packages\HtmlAgilityPack.1.4.9\lib\Net40\HtmlAgilityPack.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\packages\NPOI.2.1.3.1\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>$(SolutionDir)\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.Client, Version=1.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.SignalR.Client.1.2.2\lib\net40\Microsoft.AspNet.SignalR.Client.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=1.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.SignalR.Core.1.2.2\lib\net40\Microsoft.AspNet.SignalR.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.Owin, Version=1.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.SignalR.Owin.1.2.2\lib\net40\Microsoft.AspNet.SignalR.Owin.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=1.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.SignalR.SystemWeb.1.2.2\lib\net40\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)\packages\Microsoft.Owin.Host.SystemWeb.1.0.1\lib\net40\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(SolutionDir)\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI">
-      <HintPath>..\..\packages\NPOI.2.1.3.1\lib\net40\NPOI.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI.OOXML">
-      <HintPath>..\..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OOXML.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI.OpenXml4Net">
-      <HintPath>..\..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI.OpenXmlFormats">
-      <HintPath>..\..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
-    </Reference>
-    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -183,100 +56,139 @@
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>$(SolutionDir)\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(SolutionDir)\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
-      <Private>True</Private>
-      <HintPath>$(SolutionDir)\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    <Reference Include="System.Net.Http.Formatting, Version=__MvcPagesVersion__, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>$(SolutionDir)\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Http, Version=__MvcPagesVersion__, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=__MvcPagesVersion__, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=__MvcPagesVersion__, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Optimization">
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Providers">
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.Tracing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebApi.Tracing.4.0.30506\lib\net40\System.Web.Http.Tracing.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.OData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebApi.OData.4.0.30506\lib\net40\System.Web.Http.OData.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Edm, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>$(SolutionDir)\packages\Microsoft.Data.Edm.5.2.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.OData, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>$(SolutionDir)\packages\Microsoft.Data.OData.5.2.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Spatial, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>$(SolutionDir)\packages\System.Spatial.5.2.0\lib\net40\System.Spatial.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
-      <HintPath>$(SolutionDir)\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
     <Reference Include="Antlr3.Runtime">
       <Private>True</Private>
-      <HintPath>$(SolutionDir)\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>$(SolutionDir)\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>$(SolutionDir)\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.Identity.Owin.2.1.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>$(SolutionDir)\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>$(SolutionDir)\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>$(SolutionDir)\packages\Microsoft.Owin.Host.SystemWeb.3.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>$(SolutionDir)\packages\Microsoft.Owin.Security.3.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>$(SolutionDir)\packages\Microsoft.Owin.Security.Facebook.3.0.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>$(SolutionDir)\packages\Microsoft.Owin.Security.Cookies.3.0.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>$(SolutionDir)\packages\Microsoft.Owin.Security.OAuth.3.0.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>$(SolutionDir)\packages\Microsoft.Owin.Security.Google.3.0.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>$(SolutionDir)\packages\Microsoft.Owin.Security.Twitter.3.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>$(SolutionDir)\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin">
+      <HintPath>$(SolutionDir)\packages\Microsoft.AspNet.WebApi.Owin.5.2.2\lib\net45\System.Web.Http.Owin.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
     <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
     <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
     <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
@@ -286,594 +198,86 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="AutoMapper\AutoMapperConfiguration.cs" />
-    <Compile Include="AutoMapper\ChemistryFileDataResolver.cs" />
-    <Compile Include="AutoMapper\MappingHelper.cs" />
-    <Compile Include="AutoMapper\SampleFileDataResolver.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AddDataController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\API\QAQCDataAPIController.cs" />
-    <Compile Include="Controllers\API\QualityAssuranceAPIController.cs" />
-    <Compile Include="Controllers\API\QueryDataAPIController.cs" />
-    <Compile Include="Controllers\API\StationQueryAPIController.cs" />
-    <Compile Include="Controllers\ControlledVocabulariesController.cs" />
-    <Compile Include="Controllers\ESDATController.cs" />
-    <Compile Include="Controllers\FileDownloadController.cs" />
+    <Compile Include="Controllers\API\CoreDataAPIController.cs" />
+    <Compile Include="Controllers\API\HomeAPIController.cs" />
+    <Compile Include="Controllers\API\QCAPIController.cs" />
+    <Compile Include="Controllers\API\WQAPIController.cs" />
+    <Compile Include="Controllers\CoreDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\API\ESDATImportAPIController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\QualityAssuranceController.cs" />
-    <Compile Include="Controllers\ReportController.cs" />
-    <Compile Include="Controllers\StationController.cs" />
+    <Compile Include="Controllers\QCController.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\WQController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ESDATDataImportHelper.cs" />
-    <Compile Include="Helpers\ESDATViewModelMappingHelper.cs" />
-    <Compile Include="Helpers\ImportResultHelper.cs" />
-    <Compile Include="Helpers\SpreadsheetHelper.cs" />
-    <Compile Include="Hubs\CVHub.cs" />
-    <Compile Include="Infrastructure\Dependency.cs" />
-    <Compile Include="Infrastructure\DependencyConfigure.cs" />
-    <Compile Include="Models\AdminDefaultValuesDataViewModel.cs" />
-    <Compile Include="Models\ChemistryDataEditViewModel.cs" />
-    <Compile Include="Models\ChemistryQAQCDataEditViewModel.cs" />
-    <Compile Include="Models\ESDATDataDisplayViewModel.cs" />
-    <Compile Include="Models\FetchSiteAnalyteQueryViewModel.cs" />
-    <Compile Include="Models\FtpFileImportDataViewModel.cs" />
-    <Compile Include="Models\HttpFileImportDataViewModel.cs" />
-    <Compile Include="Models\QualityCheckingExecuteDataViewModel.cs" />
-    <Compile Include="Models\ResultMessageViewModel.cs" />
-    <Compile Include="Models\SampleListItemViewModel.cs" />
-    <Compile Include="Models\SiteViewModel.cs" />
-    <Compile Include="Models\StationAnalyteQueryViewModel.cs" />
-    <Compile Include="Models\VariableViewModel.cs" />
+    <Compile Include="Models\AccountBindingModels.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Content\themes\base\jquery-ui.css" />
-    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
-    <Content Include="Content\themes\base\jquery.ui.all.css" />
-    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
-    <Content Include="Content\themes\base\jquery.ui.base.css" />
-    <Content Include="Content\themes\base\jquery.ui.button.css" />
-    <Content Include="Content\themes\base\jquery.ui.core.css" />
-    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
-    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
-    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
-    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
-    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
-    <Content Include="Content\themes\base\jquery.ui.slider.css" />
-    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
-    <Content Include="Content\themes\base\jquery.ui.theme.css" />
-    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
-    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
-    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
-    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\pikaday.css" />
+    <Content Include="css\Site.css" />
+    <Content Include="css\yamm\yamm.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\OR.png" />
+    <Content Include="images\spin.gif" />
+    <Content Include="images\theme\clouds.png" />
+    <Content Include="images\theme\land_footer_l_v2.png" />
+    <Content Include="images\theme\land_footer_r_v2.png" />
+    <Content Include="images\theme\waves.png" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="log4net.config" />
-    <None Include="Properties\PublishProfiles\Hatfield.EnviroData Build Server Deploy Profile.pubxml" />
-    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
-    <Content Include="Scripts\EditableGrid\editablegrid.css" />
-    <Content Include="Scripts\EditableGrid\editablegrid.js" />
-    <Content Include="Scripts\EditableGrid\editablegrid_charts.js" />
-    <Content Include="Scripts\EditableGrid\editablegrid_charts_ofc.js" />
-    <Content Include="Scripts\EditableGrid\editablegrid_editors.js" />
-    <Content Include="Scripts\EditableGrid\editablegrid_renderers.js" />
-    <Content Include="Scripts\EditableGrid\editablegrid_utils.js" />
-    <Content Include="Scripts\EditableGrid\editablegrid_validators.js" />
-    <Content Include="Scripts\jquery-2.1.4.js" />
-    <Content Include="Scripts\jquery-2.1.4.min.js" />
-    <Content Include="Scripts\jquery-2.1.4.min.map" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-ui-1.8.24.js" />
-    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
-    <Content Include="Scripts\jquery.signalR-1.2.2.js" />
-    <Content Include="Scripts\jquery.signalR-1.2.2.min.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\knockout-3.3.0.debug.js" />
-    <Content Include="Scripts\knockout-3.3.0.js" />
-    <Content Include="Scripts\knockout.mapping-latest.js" />
-    <Content Include="Scripts\Knockout\ESDAT\EDATDataDetail.js" />
-    <Content Include="Scripts\Knockout\ESDAT\EditSampleData.js" />
-    <Content Include="Scripts\Knockout\FTPFileImport.js" />
-    <Content Include="Scripts\Knockout\Home.js" />
-    <Content Include="Scripts\Knockout\LocalFileImport.js" />
-    <Content Include="Scripts\Knockout\HttpFileImport.js" />
-    <Content Include="Scripts\Knockout\Locations\LocationList.js" />
-    <Content Include="Scripts\Knockout\QualityAssuranceExecute.js" />
-    <Content Include="Scripts\Knockout\ESDAT\SampleCollectionActionDisplay.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap-social\.gitignore" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap-social\bootstrap-social.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\dist\css\bootstrap.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\dist\css\bootstrap.min.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\dist\js\bootstrap.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\dist\js\bootstrap.min.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\dist\js\npm.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\Gruntfile.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\grunt\bs-commonjs-generator.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\grunt\bs-glyphicons-data-generator.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\grunt\bs-lessdoc-parser.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\grunt\bs-raw-files-generator.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\js\affix.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\js\alert.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\js\button.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\js\carousel.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\js\collapse.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\js\dropdown.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\js\modal.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\js\popover.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\js\scrollspy.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\js\tab.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\js\tooltip.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\js\transition.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\package.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\average%28%29.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\column%28%29.title%28%29.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\columns%28%29.order%28%29.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnAddDataAndDisplay.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnAddTr.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnColumnIndexToVisible.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnDataUpdate.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnDisplayRow.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnDisplayStart.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnFakeRowspan.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnFilterAll.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnFilterClear.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnFilterOnReturn.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnFindCellRowIndexes.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnFindCellRowNodes.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnGetAdjacentTr.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnGetColumnData.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnGetColumnIndex.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnGetHiddenNodes.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnGetTd.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnGetTds.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnLengthChange.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnMultiFilter.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnPagingInfo.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnProcessingIndicator.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnReloadAjax.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnSetFilteringDelay.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnSortNeutral.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnStandingRedraw.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\fnVisibleToColumnIndex.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\page.jumpToData%28%29.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\api\sum%28%29.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\features\alphabetSearch\dataTables.alphabetSearch.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\features\alphabetSearch\dataTables.alphabetSearch.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\features\alphabetSearch\dataTables.alphabetSearch.min.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\features\lengthLinks\dataTables.lengthLinks.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\features\lengthLinks\dataTables.lengthLinks.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\features\lengthLinks\dataTables.lengthLinks.min.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\features\searchHighlight\dataTables.searchHighlight.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\features\searchHighlight\dataTables.searchHighlight.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\features\searchHighlight\dataTables.searchHighlight.min.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\filtering\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\filtering\row-based\range_dates.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\filtering\row-based\range_numbers.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\filtering\row-based\TableTools.ShowSelectedOnly.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\filtering\type-based\accent-neutralise.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\filtering\type-based\html.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\filtering\type-based\phoneNumber.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\bootstrap\1\dataTables.bootstrap.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\bootstrap\1\dataTables.bootstrap.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\bootstrap\2\dataTables.bootstrap.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\bootstrap\2\dataTables.bootstrap.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\bootstrap\2\dataTables.bootstrap.min.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\bootstrap\2\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\bootstrap\3\dataTables.bootstrap.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\bootstrap\3\dataTables.bootstrap.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\bootstrap\3\dataTables.bootstrap.min.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\bootstrap\3\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\bootstrap\images\sort_asc.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\bootstrap\images\sort_asc_disabled.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\bootstrap\images\sort_both.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\bootstrap\images\sort_desc.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\bootstrap\images\sort_desc_disabled.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\font-awesome\bootstrap.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\font-awesome\dataTables.fontAwesome.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\font-awesome\datatables.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\font-awesome\foundation.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\foundation\dataTables.foundation.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\foundation\dataTables.foundation.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\foundation\dataTables.foundation.min.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\foundation\images\sort_asc.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\foundation\images\sort_asc_disabled.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\foundation\images\sort_both.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\foundation\images\sort_desc.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\foundation\images\sort_desc_disabled.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\foundation\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\jqueryui\dataTables.jqueryui.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\jqueryui\dataTables.jqueryui.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\jqueryui\dataTables.jqueryui.min.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\jqueryui\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\pagination\ellipses.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\pagination\extjs.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\pagination\four_button.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\pagination\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\pagination\input.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\pagination\jPaginator\dataTables.jPaginator.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\pagination\scrolling.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\pagination\select.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\alt-string.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\anti-the.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\chinese-string.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\currency.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\custom-data-source\dom-checkbox.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\custom-data-source\dom-select.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\custom-data-source\dom-text.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\date-dd-MMM-yyyy.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\date-de.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\date-eu.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\date-euro.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\date-uk.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\datetime-moment.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\datetime-us.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\enum.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\file-size.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\formatted-numbers.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\ip-address.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\monthYear.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\natural.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\num-html.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\numeric-comma.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\percent.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\persian.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\scientific.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\signed-num.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\stringMonthYear.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\time.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\title-numeric.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\title-string.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\turkish-string.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\type-detection\currency.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\type-detection\date-uk.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\type-detection\file-size.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\type-detection\formatted-num.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\type-detection\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\type-detection\ip-address.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\type-detection\num-html.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\type-detection\numeric-comma.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\.gitignore" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\css\dataTables.responsive.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\docs\api\responsive.index%28%29.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\docs\api\responsive.rebuild%28%29.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\docs\api\responsive.recalc%28%29.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\docs\option\responsive.breakpoints.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\docs\option\responsive.details.renderer.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\docs\option\responsive.details.target.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\docs\option\responsive.details.type.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\docs\option\responsive.details.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\docs\option\responsive.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\child-rows\column-control.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\child-rows\custom-renderer.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\child-rows\disable-child-rows.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\child-rows\index.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\child-rows\right-column.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\child-rows\whole-row-control.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\display-control\auto.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\display-control\classes.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\display-control\fixedHeader.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\display-control\index.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\display-control\init-classes.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\index.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\initialisation\ajax.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\initialisation\className.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\initialisation\default.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\initialisation\index.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\initialisation\new.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\initialisation\option.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\styling\bootstrap.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\styling\compact.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\styling\foundation.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\styling\index.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\styling\scrolling.xml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\js\dataTables.responsive.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\License.txt" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\license.txt" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\media\css\jquery.dataTables.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\media\css\jquery.dataTables.min.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\media\css\jquery.dataTables_themeroller.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\media\images\favicon.ico" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\media\images\sort_asc.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\media\images\sort_asc_disabled.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\media\images\sort_both.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\media\images\sort_desc.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\media\images\sort_desc_disabled.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\media\js\jquery.dataTables.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\media\js\jquery.dataTables.min.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\media\js\jquery.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot.tooltip\js\excanvas.min.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot.tooltip\js\jquery.flot.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot.tooltip\js\jquery.flot.tooltip.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot.tooltip\js\jquery.flot.tooltip.min.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot.tooltip\js\jquery.flot.tooltip.source.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\.gitignore" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\ajax\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\annotating\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-interacting\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-multiple\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\date.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\background.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\basic-options\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\basic-usage\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\canvas\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\categories\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\examples.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\image\hs-2004-27-a-large-web.jpg" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\image\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\interacting\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\navigate\arrow-down.gif" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\navigate\arrow-left.gif" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\navigate\arrow-right.gif" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\navigate\arrow-up.gif" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\navigate\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\percentiles\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\realtime\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\resize\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\selection\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\series-errorbars\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\series-pie\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\series-toggle\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\series-types\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\shared\jquery-ui\jquery-ui.min.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\stacking\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\symbols\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\threshold\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\tracking\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\visitors\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\zooming\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\excanvas.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\excanvas.min.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\jquery.colorhelpers.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\jquery.flot.canvas.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\jquery.flot.categories.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\jquery.flot.crosshair.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\jquery.flot.errorbars.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\jquery.flot.fillbetween.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\jquery.flot.image.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\jquery.flot.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\jquery.flot.navigate.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\jquery.flot.pie.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\jquery.flot.resize.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\jquery.flot.selection.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\jquery.flot.stack.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\jquery.flot.symbol.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\jquery.flot.threshold.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\jquery.flot.time.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\jquery.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\LICENSE.txt" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\.gitignore" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\css\font-awesome.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\css\font-awesome.min.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\holderjs\.gitattributes" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\holderjs\.gitignore" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\holderjs\gulpfile.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\holderjs\holder.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\holderjs\src\augment.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\holderjs\src\holder.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\holderjs\src\ondomready.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\holderjs\src\polyfills.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\holderjs\test\.gitignore" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\holderjs\test\image.jpg" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\holderjs\test\index.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\dist\jquery.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\dist\jquery.min.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\MIT-LICENSE.txt" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\ajax.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\ajax\jsonp.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\ajax\load.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\ajax\parseJSON.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\ajax\parseXML.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\ajax\script.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\ajax\var\nonce.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\ajax\var\rquery.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\ajax\xhr.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\attributes.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\attributes\attr.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\attributes\classes.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\attributes\prop.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\attributes\support.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\attributes\val.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\callbacks.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\core.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\core\access.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\core\init.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\core\parseHTML.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\core\ready.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\core\var\rsingleTag.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\css.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\css\addGetHookIf.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\css\curCSS.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\css\defaultDisplay.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\css\hiddenVisibleSelectors.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\css\support.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\css\swap.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\css\var\cssExpand.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\css\var\getStyles.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\css\var\isHidden.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\css\var\rmargin.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\css\var\rnumnonpx.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\data.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\data\accepts.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\data\Data.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\data\var\data_priv.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\data\var\data_user.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\deferred.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\deprecated.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\dimensions.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\effects.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\effects\animatedSelector.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\effects\Tween.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\event.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\event\ajax.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\event\alias.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\event\support.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\exports\amd.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\exports\global.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\intro.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\jquery.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\manipulation.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\manipulation\support.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\manipulation\var\rcheckableType.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\manipulation\_evalUrl.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\offset.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\outro.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\queue.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\queue\delay.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\selector-native.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\selector-sizzle.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\selector.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\serialize.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\sizzle\dist\sizzle.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\sizzle\dist\sizzle.min.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\traversing.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\traversing\findFilter.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\traversing\var\rneedsContext.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\var\arr.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\var\class2type.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\var\concat.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\var\hasOwn.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\var\indexOf.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\var\pnum.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\var\push.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\var\rnotwhite.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\var\slice.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\var\strundefined.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\var\support.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\var\toString.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\wrap.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\metisMenu\dist\metisMenu.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\metisMenu\dist\metisMenu.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\metisMenu\dist\metisMenu.min.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\metisMenu\dist\metisMenu.min.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\metisMenu\Gruntfile.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\metisMenu\src\metisMenu.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\metisMenu\src\metisMenu.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\mocha\media\logo.svg" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\mocha\mocha.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\mocha\mocha.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\.gitignore" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\area-as-line.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\area.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\bar-colors.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\bar-no-axes.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\bar.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\days.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\decimal-custom-hover.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\diagonal-xlabels-bar.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\diagonal-xlabels.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\donut-colors.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\donut-formatter.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\donut.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\dst.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\events.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\goals.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\lib\example.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\lib\example.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\months-no-smooth.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\negative.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\no-grid.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\non-continuous.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\non-date.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\quarters.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\resize.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\stacked_bars.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\timestamps.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\updating.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\weeks.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\years.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\examples\_template.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\Gruntfile.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\morris.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\morris.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\morris.min.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\specs.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\viz\examples.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\viz\exemplary\area0.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\viz\exemplary\bar0.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\viz\exemplary\line0.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\viz\exemplary\stacked_bar0.png" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\viz\test.html" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\viz\visual_specs.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\raphael\dev\amdDev.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\raphael\dev\index.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\raphael\dev\require.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\raphael\license.txt" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\raphael\raphael-min.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\raphael\raphael.js" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\css\sb-admin-2.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\css\timeline.css" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\js\sb-admin-2.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="assets\analyte.json" />
+    <Content Include="assets\guideline.json" />
+    <Content Include="assets\sampleData.json" />
+    <Content Include="assets\sampleDatasets.json" />
+    <Content Include="assets\site.json" />
+    <Content Include="assets\standard.json" />
+    <Content Include="assets\station.json" />
+    <Content Include="css\yamm\yamm.less" />
+    <Content Include="css\yamm\yamm.styl" />
+    <Content Include="css\yamm\_yamm.scss" />
+    <Content Include="Scripts\Home\home.js" />
+    <None Include="Scripts\jquery-3.1.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.0.js" />
+    <Content Include="Scripts\jquery-3.1.0.min.js" />
+    <Content Include="Scripts\jquery-3.1.0.slim.js" />
+    <Content Include="Scripts\jquery-3.1.0.slim.min.js" />
+    <Content Include="Scripts\knockout-3.4.0.debug.js" />
+    <Content Include="Scripts\knockout-3.4.0.js" />
+    <Content Include="Scripts\WQ\pikaday.js" />
+    <Content Include="Scripts\WQ\waterqueryscripts.js" />
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -882,355 +286,49 @@
     </Content>
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\accent.png" />
-    <Content Include="Images\bullet.png" />
-    <Content Include="Images\heroAccent.png" />
-    <Content Include="Images\orderedList0.png" />
-    <Content Include="Images\orderedList1.png" />
-    <Content Include="Images\orderedList2.png" />
-    <Content Include="Images\orderedList3.png" />
-    <Content Include="Images\orderedList4.png" />
-    <Content Include="Images\orderedList5.png" />
-    <Content Include="Images\orderedList6.png" />
-    <Content Include="Images\orderedList7.png" />
-    <Content Include="Images\orderedList8.png" />
-    <Content Include="Images\orderedList9.png" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\ESDAT\Index.cshtml" />
-    <Content Include="Views\ESDAT\ViewImportedData.cshtml" />
+    <Content Include="Views\Shared\_TopNavigation.cshtml" />
+    <Content Include="Views\AddData\Add_WQ.cshtml" />
+    <Content Include="Views\AddData\Index.cshtml" />
+    <Content Include="Views\Admin\Guidelines_List.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Station\Index.cshtml" />
-    <Content Include="Views\QualityAssurance\Index.cshtml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap-social\.bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap-social\.editorconfig" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap-social\bootstrap-social.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap-social\bootstrap-social.scss" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap-social\bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap-social\README.md" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\.bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\dist\css\bootstrap-theme.css.map" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\dist\css\bootstrap.css.map" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\grunt\.jshintrc" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\grunt\configBridge.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\grunt\sauce_browsers.yml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\js\.jscsrc" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\js\.jshintrc" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\.csscomb.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\.csslintrc" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\alerts.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\badges.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\bootstrap.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\breadcrumbs.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\button-groups.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\buttons.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\carousel.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\close.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\code.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\component-animations.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\dropdowns.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\forms.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\glyphicons.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\grid.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\input-groups.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\jumbotron.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\labels.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\list-group.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\media.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\alerts.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\background-variant.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\border-radius.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\buttons.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\center-block.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\clearfix.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\forms.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\gradients.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\grid-framework.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\grid.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\hide-text.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\image.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\labels.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\list-group.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\nav-divider.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\nav-vertical-align.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\opacity.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\pagination.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\panels.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\progress-bar.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\reset-filter.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\resize.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\responsive-visibility.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\size.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\tab-focus.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\table-row.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\text-emphasis.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\text-overflow.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\mixins\vendor-prefixes.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\modals.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\navbar.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\navs.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\normalize.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\pager.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\pagination.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\panels.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\popovers.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\print.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\progress-bars.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\responsive-embed.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\responsive-utilities.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\scaffolding.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\tables.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\theme.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\thumbnails.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\tooltip.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\type.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\utilities.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\variables.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\less\wells.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\LICENSE" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\package.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\bootstrap\README.md" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\.bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Afrikaans.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Albanian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Arabic.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Azerbaijan.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Bangla.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Belarusian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Bulgarian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Catalan.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Chinese-traditional.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Chinese.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Croatian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Czech.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Danish.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Dutch.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\English.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Estonian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Filipino.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Finnish.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\French.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Galician.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Georgian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\German.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Greek.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Gujarati.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Hebrew.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Hindi.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Hungarian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Icelandic.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Indonesian-Alternative.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Indonesian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Irish.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Italian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Japanese.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Korean.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Latvian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Lithuanian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Macedonian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Malay.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Norwegian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Persian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Polish.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Portuguese-Brasil.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Portuguese.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Romanian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Russian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Serbian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Slovak.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Slovenian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Spanish.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Swahili.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Swedish.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Tamil.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Thai.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Turkish.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Ukranian.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Urdu.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Uzbek.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\i18n\Vietnamese.lang" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\integration\jqueryui\dataTables.jqueryui.scss" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\make.sh" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\README.md" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-plugins\sorting\.DS_Store" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\.bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\css\dataTables.responsive.scss" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\.DS_Store" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\examples\initialisation\.DS_Store" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\make.sh" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables-responsive\Readme.md" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\.bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\Contributing.md" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\media\images\Sorting icons.psd" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\datatables\Readme.md" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot.tooltip\.bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot.tooltip\bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\.bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\.travis.yml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\API.md" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\component.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\CONTRIBUTING.md" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\ajax\data-eu-gdp-growth-1.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\ajax\data-eu-gdp-growth-2.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\ajax\data-eu-gdp-growth-3.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\ajax\data-eu-gdp-growth-4.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\ajax\data-eu-gdp-growth-5.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\ajax\data-eu-gdp-growth.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\ajax\data-japan-gdp-growth.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\ajax\data-usa-gdp-growth.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\africa" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\antarctica" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\asia" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\australasia" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\backward" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\etcetera" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\europe" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\factory" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\iso3166.tab" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\leapseconds" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\northamerica" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\pacificnew" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\solar87" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\solar88" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\solar89" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\southamerica" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\systemv" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\yearistype.sh" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\examples\axes-time-zones\tz\zone.tab" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\FAQ.md" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\flot.jquery.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\Makefile" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\NEWS.md" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\package.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\PLUGINS.md" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\flot\README.md" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\.bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\.npmignore" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\fonts\fontawesome-webfont.eot" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\less\bordered-pulled.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\less\core.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\less\extras.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\less\fixed-width.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\less\font-awesome.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\less\icons.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\less\larger.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\less\list.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\less\mixins.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\less\path.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\less\rotated-flipped.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\less\spinning.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\less\stacked.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\less\variables.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\scss\font-awesome.scss" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\scss\_bordered-pulled.scss" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\scss\_core.scss" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\scss\_extras.scss" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\scss\_fixed-width.scss" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\scss\_icons.scss" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\scss\_larger.scss" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\scss\_list.scss" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\scss\_mixins.scss" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\scss\_path.scss" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\scss\_rotated-flipped.scss" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\scss\_spinning.scss" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\scss\_stacked.scss" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\font-awesome\scss\_variables.scss" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\holderjs\.bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\holderjs\.jshintrc" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\holderjs\bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\holderjs\composer.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\holderjs\package.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\holderjs\README.md" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\.bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\dist\jquery.min.map" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\jquery\src\sizzle\dist\sizzle.min.map" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\metisMenu\.bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\metisMenu\bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\metisMenu\LICENSE" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\metisMenu\package.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\metisMenu\README.md" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\mocha\.bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\mocha\bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\mocha\History.md" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\mocha\LICENSE" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\mocha\Readme.md" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\.bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\.travis.yml" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\bower.travis.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\less\morris.core.less" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\lib\morris.area.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\lib\morris.bar.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\lib\morris.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\lib\morris.donut.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\lib\morris.grid.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\lib\morris.hover.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\lib\morris.line.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\package.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\README.md" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\lib\area\area_spec.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\lib\bar\bar_spec.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\lib\bar\colours.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\lib\commas_spec.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\lib\donut\donut_spec.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\lib\grid\auto_grid_lines_spec.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\lib\grid\set_data_spec.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\lib\grid\y_label_format_spec.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\lib\hover_spec.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\lib\label_series_spec.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\lib\line\line_spec.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\lib\pad_spec.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\lib\parse_time_spec.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\support\placeholder.coffee" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\morrisjs\spec\viz\run.sh" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\raphael\.bower.json" />
-    <Content Include="Scripts\startbootstrap-sb-admin-2-1.0.7\bower_components\raphael\bower.json" />
-    <Content Include="Views\Shared\_NavPartial.cshtml" />
-    <Content Include="Views\ControlledVocabularies\Index.cshtml" />
-    <Content Include="Views\Shared\_TopRightNavPartial.cshtml" />
-    <Content Include="Views\ESDAT\ViewDataDetail.cshtml" />
-    <Content Include="Views\QualityAssurance\Detail.cshtml" />
-    <Content Include="Views\Admin\AdminDefaultValues.cshtml" />
-    <Content Include="Views\ESDAT\ImportFromLocal.cshtml" />
-    <Content Include="Views\ESDAT\ImportFromHttp.cshtml" />
-    <Content Include="Views\ESDAT\ImportFromFtp.cshtml" />
-    <Content Include="Views\Report\Index.cshtml" />
-    <Content Include="Views\ESDAT\EditSampleData.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\Sites.cshtml" />
-    <Content Include="Views\Manage\Projects.cshtml" />
-    <Content Include="Views\Manage\OrganizationsAndPeople.cshtml" />
-    <Content Include="Views\Manage\Equipment.cshtml" />
-    <Content Include="Views\Manage\Simulations.cshtml" />
-    <Content Include="Views\Manage\ReferenceMaterialsAndCitations.cshtml" />
-    <Content Include="Views\Manage\CVs.cshtml" />
+    <Content Include="Views\Admin\Logs.cshtml" />
+    <Content Include="Views\Admin\MonitoringComponents_List.cshtml" />
+    <Content Include="Views\Admin\MonitoringComponent_Create.cshtml" />
+    <Content Include="Views\Admin\Users_List.cshtml" />
+    <Content Include="Views\Analysis\Index.cshtml" />
+    <Content Include="Views\CoreData\Analytes_List.cshtml" />
+    <Content Include="Views\CoreData\MonitoringSites_List.cshtml" />
+    <Content Include="Views\CoreData\MonitoringSites_Map.cshtml" />
+    <Content Include="Views\CoreData\MonitoringSite_Details.cshtml" />
+    <Content Include="Views\CoreData\Projects_List.cshtml" />
+    <Content Include="Views\CoreData\Project_Details.cshtml" />
+    <Content Include="Views\ManageData\Index.cshtml" />
+    <Content Include="Views\QC\Add.cshtml" />
+    <Content Include="Views\QC\Index.cshtml" />
+    <Content Include="Views\QC\List.cshtml" />
+    <Content Include="Views\QC\Run.cshtml" />
+    <Content Include="Views\WQ\CustomReport.cshtml" />
+    <Content Include="Views\WQ\Query.cshtml" />
+    <Content Include="Views\WQ\Samples_List.cshtml" />
+    <Content Include="Views\WQ\Sample_Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-3.1.0.min.map" />
+    <Content Include="Scripts\jquery-3.1.0.slim.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -1248,9 +346,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>60602</DevelopmentServerPort>
+          <DevelopmentServerPort>63382</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:60602/</IISUrl>
+          <IISUrl>http://localhost:63382/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -1267,7 +365,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

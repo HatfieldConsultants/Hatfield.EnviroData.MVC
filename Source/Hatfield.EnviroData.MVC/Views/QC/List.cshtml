@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "List Quality Checking Processes";
+}
+@section PageTitleH1
+{
+    <h1><i class="glyphicon glyphicon-check"></i> @ViewBag.Title</h1>
+}
+@section Breadcumb
+{
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")">Home</a></li>
+        <li><a href="@Url.Action("Index","QC")">Quality Checking</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+}
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Data Quality Checking Tools</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="@Url.Action("Index","QC")">Provisional datasets that need review</a></li>
+                    <li class="active"><a href="@Url.Action("List","QC")"><i class="glyphicon glyphicon-list"></i> List Quality Checking Processes</a></li>
+                    <li><a href="@Url.Action("Run","QC")"><i class="glyphicon glyphicon-play"></i> Run a quality checking process</a></li>
+                    <li><a href="@Url.Action("Add","QC")"><i class="glyphicon glyphicon-plus-sign"></i> Add a new quality checking process</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Process Name</th>
+                    <th>Component dataset</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+
+        </table>
+
+      
+
+    </div>
+</div> <!-- // row -->

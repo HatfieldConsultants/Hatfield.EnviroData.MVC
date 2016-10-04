@@ -1,181 +1,307 @@
-﻿
-<div id="page-wrapper">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">@ViewBag.Title</h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section PageTitleH1
+{
+    <h1><i class="glyphicon glyphicon-dashboard"></i> Dashboard</h1>
+}
+@section Breadcumb
+{
+ 
+}
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-danger">
+            <div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-exclamation-sign"></span> Problems to fix</h3></div>
+            <div class="panel-body">
+                <div class="alertx alert-dangerx">The following items need immediate action:</div>
+            </div>
+            <table class="table table-bordered">
+                <tr>
+                    <td>abc</td>
+                    <td>abc</td>
+                    <td><a class="btn btn-primary btn-xs">fix site problems <i class="glyphicon glyphicon-arrow-right"></i></a></td>
+                </tr>
+                <tr>
+                    <td>abc</td>
+                    <td>abc</td>
+                    <td><a class="btn btn-primary btn-xs">fix analyte problems <i class="glyphicon glyphicon-arrow-right"></i></a></td>
+                </tr>
+            </table>
+        </div> <!-- // panel -->
 
-    <!-- /.row -->
-    <div class="row">
-        <div class="col-lg-6 col-md-6">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-cubes fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge" data-bind="html: SampleCollectionCount">0</div>
-                            <div>Sampling data in the database</div>
-                        </div>
-                    </div>
-                </div>
-                <a href="@Url.Action("ViewImportedData", "ESDAT")">
-                    <div class="panel-footer">
-                        <span class="pull-left">View sampling data</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-6 col-md-6">
-            <div class="panel panel-green">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-flask fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge" data-bind="html: ChemistryAnalyteCount">0</div>
-                            <div>Chemistry analyte results in the database</div>
-                        </div>
-                    </div>
-                </div>
-                <a href="@Url.Action("Index", "Station")">
-                    <div class="panel-footer">
-                        <span class="pull-left">Query Water Quality data</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        
-    </div>
-    <!-- /.row -->
+    </div><!-- // col -->
+    <!--
+          </div>
 
-    <div class="row">
-        <div class="col-lg-6 col-md-6">
-            <div class="panel panel-red">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-upload fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge"></div>
-                            <div>Data Acquisition</div>
-                        </div>
-                    </div>
-                </div>
-                <a href="@Url.Action("Index", "ESDAT")">
-                    <div class="panel-footer">
-                        <span class="pull-left">Import Data</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
+          <div class="row">
+    -->
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading"><h3 class="panel-title">Provisional datasets that need review:</h3></div>
+            
+            <table class="table table-bordered">
+                <tbody data-bind="foreach: provisionalDatasets">
+                    <tr>
+                        <td data-bind="text: Name"></td>
+                        <td data-bind="text: Description"></td>
+                        <td>
+                            <!-- Single button -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Action <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Quality Assure this dataset</a></li>
+                                    <li><a href="#">View this dataset</a></li>
+                                    <li><a href="#">Report on this dataset</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> <!-- // panel -->
 
-        <div class="col-lg-6 col-md-6">
-            <div class="panel panel-yellow">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-flag-checkered fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge"></div>
-                            <div>Quality Assurance!</div>
-                        </div>
-                    </div>
-                </div>
-                <a href="@Url.Action("Index", "QualityAssurance")">
-                    <div class="panel-footer">
-                        <span class="pull-left">Run Quality Assurance Chain</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
+        <div class="panel panel-info">
+            <div class="panel-heading"><h3 class="panel-title">My most recent datasets:</h3></div>
+            <div class="panel-body">
+                The following datasets were received in the last <div class="dropdown" style="display: inline-block">
+                    <button class="btn btn-default dropdown-toggle btn-sm" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        14 days
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">7 days</a></li>
+                        <li><a href="#">1 month</a></li>
+                        <li><a href="#">6 months</a></li>
+                        <li><a href="#">12 months</a></li>
+                    </ul>
+                </div>:
             </div>
-        </div>
-    </div>
-    <!-- /.row -->
+            <table class="table table-bordered">
+                <tbody data-bind="foreach: recentDatasets">
+                    <tr>
+                        <td data-bind="text: Name"></td>
+                        <td data-bind="text: Description"></td>
+                        <td>
+                            <!-- Single button -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Action <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Quality Assure this dataset</a></li>
+                                    <li><a href="#">View this dataset</a></li>
+                                    <li><a href="#">Report on this dataset</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> <!-- // panel -->
 
-    <div class="row">
-        <div class="col-lg-6 col-md-6">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-bar-chart-o fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge"></div>
-                            <div>Report</div>
-                        </div>
-                    </div>
-                </div>
-                <a href="@Url.Action("Index", "Report")">
-                    <div class="panel-footer">
-                        <span class="pull-left">Click here to view report</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-6 col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-wrench fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge"></div>
-                            <div>Administration</div>
-                        </div>
-                    </div>
-                </div>
-                <a href="@Url.Action("Index", "Admin")">
-                    <div class="panel-footer">
-                        <span class="pull-left">Admin</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-6 col-md-6">
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-cogs fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge"></div>
-                            <div>Management tools</div>
-                        </div>
-                    </div>
-                </div>
-                <a href="@Url.Action("Index", "Manage")">
-                    <div class="panel-footer">
-                        <span class="pull-left">Manage data</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
 
-    </div>
-    <!-- /.row -->
-</div>
+    </div><!-- // col -->
+</div><!--// row -->
 
-<script type="text/javascript" src="@Url.Content("~/Scripts/Knockout/Home.js")"></script>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-danger">
+            <div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-exclamation-sign"></span> EnviroData ToDo</h3></div>
+            <div class="panel-body">
+                <div class="alertx alert-dangerx">EnviroData to do:</div>
+                <ul>
+                    <li>View history of dataset and data point modifications (modification/audit log)</li>
+                    <li>Output everything to Excel</li>
+                    <li>Disable "Projects" altogether.</li>
+                    <li>Allow "Projects" to change into "Facilities".</li>
+                    <li>File system (SMB/WebDav) access to data as if they were files.</li>
+                    <li>Key reference for implementation: <a href="https://www.epa.gov/sites/production/files/2015-08/documents/g9s-final.pdf">https://www.epa.gov/sites/production/files/2015-08/documents/g9s-final.pdf</a></li>
+                    <li>
+                        QA sub-modules:
+                        <ul>
+                            <li>Manage incomplete data (unspecified sample sites, field crew info, records such as COC, etc)</li>
+                            <li>Find and manage duplicate values</li>
+                            <li>Confirm standardized units (eg mg/L vs ug/L) and MDLs</li>
+                            <li>Find records with potentially incorrect/inconsistent timezone information</li>
+                            <li>Find Impossible numbers (values that are outside of a set range of values per-parameter)</li>
+                            <li>Flag values that have relative values too far off of field/trip blanks</li>
+                             <li>Flag data associated with high field/travel blanks</li>                            
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+           
+        </div> <!-- // panel -->
+
+    </div><!-- // col -->
+    <!--
+          </div>
+
+          <div class="row">
+    -->
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading"><h3 class="panel-title">Integrations:</h3></div>
+            <div class="panel-body">
+                Integrations to aim for: <ul>
+
+                    <li>Aquarius (via WRD)</li>
+                    <li>Document management systems: Alfresco/SharePoint/Dropbox/Box (CMIS)</li>
+                    <li>FlexiCadastre</li>
+                    <li>CMIC Construction software – www.cmic.ca</li>
+                    <li>ERP systems. Note comment at bottom of http://info.erims.com/solution/#Mine that questions if an API is available to integrate with ERP solutions.</li>
+                    <li>OpenMI (http://www.openmi.org/) for model integration; QA/QC system could be an OpenMI model engine?</li>
+                    <li>OGC WPS for data processing</li>
+                    <li>OpenCPU to tie into R processing: https://www.opencpu.org/</li>
+                    <li>Microsoft's R-host for R processing https://github.com/Microsoft/R-Host</li>
+                    <li>Registration of samples: http://www.geosamples.org/interop </li>
+                </ul>
+               
+            </div>
+        </div> <!-- // panel -->
+
+    </div><!-- // col -->
+</div><!--// row -->
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-danger">
+            <div class="panel-heading"><h3 class="panel-title"><span class="glyphicon glyphicon-exclamation-sign"></span> Quality Assurance Tools to Assist with Prelimiary Review</h3></div>
+            <div class="panel-body">
+                
+                <ul>
+                    <li>
+                        22 STATISTICAL QUANTITIES
+                        <ul>
+                            <li> 221 Measures of Relative Standing</li>
+                            <li>222 Measures of Central Tendency</li>
+                            <li>223 Measures of Dispersion</li>
+                            <li>
+                                224 Measures of Association
+                                <ul>
+                                    <li>2241 Pearson’s Correlation Coefficient</li>
+                                    <li>2242 Spearman’s Rank Correlation</li>
+                                    <li>2243 Serial Correlation</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                        <li>23 GRAPHICAL REPRESENTATIONS
+                            <ul>
+                        <li>231 Histogram</li>
+                        <li>232 Stem-and-Leaf Plot</li>
+                        <li>233 Box-and-Whiskers Plot</li>
+                        <li>234 Quantile Plot and Ranked Data Plots</li>
+                        <li>235 Quantile-Quantile Plots and Probability Plots</li>
+                        <li>236 Plots for Two or More Variables
+                            <ul>
+                        <li>2361 Scatterplot</li>
+                        <li>2362 Extensions of the Scatterplot</li>
+                        <li>2363 Empirical Quantile-Quantile Plot</li>
+                            </ul></li>
+                        <li>237 Plots for Temporal Data
+                            <ul>
+                                <li>2371 Time Plot</li>
+                                <li>2372 Lag Plot</li>
+                                <li>2373 Plot of the Autocorrelation Function (Correlogram)</li>
+                                <li>2374 Multiple Observations in a Time Period</li>
+                                <li>2375 Four-Plot</li>
+                            </ul></li>
+                        <li>238 Plots for Spatial Data
+                            <ul>
+                        <li> 2381 Posting Plots</li>
+                        <li>2382 Symbol Plots and Bubble Plots</li>
+                        <li>2383 Other Spatial Graphical Representations </li>
+                            </ul></li>
+                    </ul></li>
+                        
+                    
+                </ul>
+            </div>
+
+        </div> <!-- // panel -->
+
+    </div><!-- // col -->
+    <!--
+          </div>
+
+          <div class="row">
+    -->
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading"><h3 class="panel-title">Statistical Analysis:</h3></div>
+            <div class="panel-body">
+             <ul>
+                 <li>3.2 METHODS FOR A SINGLE POPULATION .
+                     <ul>
+                         <li>
+                             3.2.1 Parametric Methods
+                             <ul>
+                                 <li>3.2.1.1 The One-Sample t-test and Confidence Interval or Limit</li>
+                                 <li>3.2.1.2 The One-Sample Tolerance Interval or Limit.</li>
+                                 <li>3.2.1.3 Stratified Random Sampling.</li>
+                                 <li>3.2.1.4 The Chen Test</li>
+                                 <li>3.2.1.5 Land’s Method for Lognormally Distributed Data.</li>
+                                 <li>3.2.1.6 The One-Sample Proportion Test and Confidence Interval.</li>
+                             </ul>
+                         </li>
+                         <li>
+                             3.2.2 Nonparametric Methods
+                             <ul>
+                                 <li>3.2.2.1 The Sign Test .</li>
+                                 <li>3.2.2.2 The Wilcoxon Signed Rank Test .</li>
+                             </ul>
+                         </li>
+                         </ul></li>
+                 <li>
+                     3.3 COMPARING TWO POPULATIONS
+                     <ul>
+                         <li>
+                             3.3.1 Parametric Methods<ul>
+                                 <li>3.3.1.1 Independent Samples .</li>
+                                 <li>3.3.1.2 Paired Samples.</li>
+                             </ul>
+                         </li>
+                         <li>
+                             3.3.2 Nonparametric Methods<ul>
+                                 <li>3.3.2.1 Independent Samples .</li>
+                                 <li>3.3.2.2 Paired Samples.</li>
+                             </ul>
+                         </li>
+                     </ul>
+                 </li>
+                 <li>
+                     3.4 COMPARING SEVERAL POPULATIONS SIMULTANEOUSLY.
+                     <ul>
+                         <li>
+                             3.4.1 Parametric Methods<ul>
+                                 <li>3.4.1.1 Dunnett’s Test.</li>
+                             </ul>
+                         </li>
+                         <li>
+                             3.4.2 Nonparametric Methods<ul>
+                                 <li>3.4.2.1 The Fligner-Wolfe Test.</li>
+                             </ul>
+                         </li>
+                     </ul>
+                 </li>
+
+             </ul>  
+            </div>
+        </div> <!-- // panel -->
+
+    </div><!-- // col -->
+</div><!--// row -->
+
+<script src="~/Scripts/Home/home.js"></script>
