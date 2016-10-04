@@ -49,7 +49,7 @@ var ParentViewModel = function (locationData, analyteData) {
                 var sortedData = GetAnalytesAndValuesForDate(data);
                 ko.mapping.fromJS(sortedData.header, {}, self.queryResultsDateHeader);
                 ko.mapping.fromJS(sortedData.dataRows, {}, self.queryResultsValues);
-                DrawTable(data);
+                DrawTable();
                 //create table
             },
             error: function (data) {
@@ -58,44 +58,6 @@ var ParentViewModel = function (locationData, analyteData) {
             }
         });//end of ajax
     };//end of GenerateWaterTable
-
-    self.DownloadQueryData = function () {
-        var startDate = selectedStartDate.format('MMM-DD-YYYY');
-        var endDate = selectedEndDate.format('MMM-DD-YYYY');
-        //The bootstrap table does not update the underly chekckbox automatically
-        //so the knockout binding does not work here
-        //need to filter the selected analytes manually
-        //all selected analyte
-
-        var e = document.getElementById("selectSite");
-        var selectedSite = e.options[e.selectedIndex].value;
-        var selectedAnalytes = [];
-        var selectedAnalytesNames = [];
-        $('input[class=analyte]:checked').each(function () {
-            selectedAnalytes.push($(this).val());
-            selectedAnalytesNames.push({ name: $(this).attr('name') });
-        });
-        ko.mapping.fromJS(selectedAnalytesNames, {}, self.selectedAnalytes);
-        var requestViewModel = new WaterQualityRequestViewModel(startDate, endDate, selectedSite, selectedAnalytes);
-
-        $.ajax({
-            url: Hatfield.RootURL + 'api/StationQueryAPI/DownloadQueryData',
-            type: 'POST',
-            dataType: 'json',
-            async: true,
-            data: ko.mapping.toJSON(requestViewModel),
-            contentType: 'application/json',
-            success: function (data) {
-                $('#divImage').hide(); //hide the mask
-                var fileDownloadURL = Hatfield.RootURL + 'FileDownload/DownloadQueryData?fileName=' + data;
-                document.getElementById('fileDownloadFrame').src = fileDownloadURL;
-            },
-            error: function (data) {
-                $('#divImage').hide(); //hide the mask
-                alert('Data download fail');
-            }
-        });//end of ajax
-    };//end of DownloadQueryData
 
 
 function GetAnalytesAndValuesForDate(data)
@@ -107,6 +69,7 @@ function GetAnalytesAndValuesForDate(data)
 
     for (var item, i = 0; item = items[i++];) {
         var date = item.ResultDateTime;
+
         if (!(date in lookup)) {
             lookup[date] = 1;
             uniqueDates.push(date);
@@ -137,21 +100,10 @@ function GetAnalytesAndValuesForDate(data)
         for(var j = 0; j < arrangedArray.length; j++)
         {
             var allValuesOfThisDay = arrangedArray[j].items;
-            var matches = findMatchedAnalyteValue(arrangedArray[j].items, self.selectedAnalytes()[i]);
-            if (matches != null) {
-
-                cells[j*3 + 1] = (matches.dataValue == null ? '-' : matches.dataValue);
-                cells[j*3 + 2] = (matches.prefix == null ? '-' : matches.prefix);
-                cells[j*3 + 3] = (matches.methodDetectionLimit == null ? '-' : matches.methodDetectionLimit);
-            }
-            else
-            {
-                cells[j * 3 + 1] = '-';
-                cells[j * 3 + 2] = '-';
-                cells[j * 3 + 3] = '-';
-            }
+            var matchedAnaylteValue = findMatchedAnalyteValue(arrangedArray[j].items, self.selectedAnalytes()[i]);
+            cells[j + 1] = matchedAnaylteValue == null ? '-' : matchedAnaylteValue;
         }
-        rows.push(cells);1
+        rows.push(cells);
     }
 
     return tableObject;
@@ -164,7 +116,7 @@ function findMatchedAnalyteValue(itemsOfADay, analyteName)
     {
         if(itemsOfADay[i].Variable == analyteName.name())
         {
-            return {dataValue: itemsOfADay[i].DataValue, prefix:itemsOfADay[i].Prefix,  methodDetectionLimit: itemsOfADay[i].MethodDetectionLimit};
+            return itemsOfADay[i].DataValue;
         }
     }
 
@@ -176,17 +128,7 @@ function findMatchedAnalyteValue(itemsOfADay, analyteName)
 
 function DrawTable(tableData)
 {
-    if (tableData.length > 0) {
-
-        $('#fail').hide();
-        $("#warning").hide();
-        $('#queryResults').show();
-    }
-    else {
-        $('#fail').show();
-        $("#warning").hide();
-        $('#queryResults').hide();
-    }
+    $('#results').show();
 }
 
 var WaterQualityRequestViewModel = function (startDate, endDate, site, selectedVariables) {

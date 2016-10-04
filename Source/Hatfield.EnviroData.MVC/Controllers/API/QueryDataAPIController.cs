@@ -36,7 +36,7 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
             return items.ToList();
         }
 
-        [HttpGet]
+        [HttpGet]        
         [ActionName("GetTotalSampleCollectionCount")]
         public int GetTotalSampleCollectionCount()
         {
