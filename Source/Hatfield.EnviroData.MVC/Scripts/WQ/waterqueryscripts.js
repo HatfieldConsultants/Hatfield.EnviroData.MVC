@@ -59,10 +59,11 @@ var WQViewModel = function () {
     });
 
     function GetInitialQueryForm(queryStartDateTime, queryEndDateTime) {
+        var dateRangeArray = [{ startDateTime: queryStartDateTime, endDateTime: queryEndDateTime }];
         $.ajax({
             type: "GET",
             url: App.RootURL + "WQ/DataAvailableDictionary",
-            data: { queryStartDateTime: queryStartDateTime, queryEndDateTime: queryEndDateTime },
+            data: { dateRangeArray: dateRangeArray },
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
@@ -255,3 +256,21 @@ if (_endDate) {
     updateEndDate();
 }
 
+var testArray = [
+    {
+        startDateTime: moment("1995-12-29").format("YYYY-MM-DD HH:mm:ss"),
+        endDateTime: moment("2010-12-29").format("YYYY-MM-DD HH:mm:ss")
+    },
+    {
+        startDateTime: moment("1995-12-29").format("YYYY-MM-DD HH:mm:ss"),
+        endDateTime: moment("2010-12-29").format("YYYY-MM-DD HH:mm:ss")
+    },
+    {
+        startDateTime: moment("1995-12-29").format("YYYY-MM-DD HH:mm:ss"),
+        endDateTime: moment("2010-12-29").format("YYYY-MM-DD HH:mm:ss")
+    },
+    {
+        startDateTime: moment("1995-12-29").format("YYYY-MM-DD HH:mm:ss"),
+        endDateTime: moment("2010-12-29").format("YYYY-MM-DD HH:mm:ss")
+    }
+];

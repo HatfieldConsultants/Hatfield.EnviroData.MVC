@@ -339,10 +339,18 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
             return response;
         }
 
+        public class dateTimeRange
+        {
+            public string startDateTime { get; set; }
+            public string endDateTime { get; set; }
+        }
+
         [Route("WQ/DataAvailableDictionary")]
         [HttpGet]
-        public HttpResponseMessage GetDataAvailableDictionary([FromUri] String queryStartDateTime, String queryEndDateTime)
+        public HttpResponseMessage GetDataAvailableDictionary([FromUri] dateTimeRange[] dateRangeArray)
         {
+            String queryStartDateTime = dateRangeArray[0].startDateTime;
+            String queryEndDateTime = dateRangeArray[0].endDateTime;
             //RETURNS:
             // - Sites, Analytes, Guidelines
             // - 1D array of relations between Sites and Analytes with keys "siteId_analyteID"
