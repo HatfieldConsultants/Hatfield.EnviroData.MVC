@@ -39,13 +39,9 @@ var WQViewModel = function () {
     self.selectedYears = ko.observableArray([]);
 
     self.selectedSeasons.subscribe(function (newValue) {
-        $(".season-panel").removeClass("panel-danger").addClass("panel-success");
-        $(".time-panel").removeClass("panel-success").addClass("panel-danger");
         generateDateRangeArrayFromSeasons();
     });
     self.selectedYears.subscribe(function (newValue) {
-        $(".season-panel").removeClass("panel-danger").addClass("panel-success");
-        $(".time-panel").removeClass("panel-success").addClass("panel-danger");
         generateDateRangeArrayFromSeasons();
     });
 
@@ -114,8 +110,6 @@ var WQViewModel = function () {
     });
 
     self.queryStartDateTime.subscribe(function () {
-        $(".time-panel").removeClass("panel-danger").addClass("panel-success");
-        $(".season-panel").removeClass("panel-success").addClass("panel-danger");
         dateRangeArray = [{ startDateTime: queryStartDateTime, endDateTime: queryEndDateTime }]
         GetInitialQueryForm(dateRangeArray);
     });

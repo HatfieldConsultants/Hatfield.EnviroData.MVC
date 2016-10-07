@@ -13,92 +13,113 @@
         <li class="active">@ViewBag.Title</li>
     </ol>
 }
-<div class="row">
-    <div class="col-md-3">
-    </div>
-    <div class="col-md-2">
-        <div class="panel panel-success time-panel">
-            <div class="panel-heading">
-                <h4>Time Range</h4>
-            </div>
-            <div class="panel-body timepanel">
-                <div style="display: inline-block; padding-top: 20px; margin: auto;">
-                    <div>
-                        <label for="start">Start:</label>
-                        <br>
-                        <input type="text" id="start">
-                    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info time-panel">
+                <div class="panel-heading">
+                    <h4>Select Time Ranges</h4>
+                </div>
+                <div class="panel-body timepanel">
+                    <ul class="nav nav-pills nav-stacked col-md-3">
+                        <li class="active"><a data-toggle="pill" href="#timerange">Time Range</a></li>
+                        <li><a data-toggle="pill" href="#multipleranges">Multiple Ranges</a></li>
+                        <li><a data-toggle="pill" href="#seasons">Seasons and Years</a></li>
+                        <li><a data-toggle="pill" href="#advanced">Advanced Options</a></li>
+                        <li>
+                            <div id="loadingDiv" style="">
+                                <img class="loadingSpinner" src="/images/spin.gif" />
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="tab-content col-md-9">
+                        <div id="timerange" class="tab-pane active">
+                            <div class="col-md-4">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading">
+                                        <h4>Start Date</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div>
+                                            <label for="start">Start:</label>
+                                            <input type="text" id="start">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading">
+                                        <h4>End Date</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div>
+                                            <label for="end">End:</label>
+                                            <input type="text" id="end">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="multipleranges" class="tab-pane ">
+                        </div>
+                        <div id="seasons" class="tab-pane ">
+                            <div class="col-md-4">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h4>Season</h4>
+                                    </div>
+                                    <div class="panel-body panel-body-scroll">
+                                        <table class=" datasettable table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Season</th>
+                                                </tr>
+                                            </thead>
 
-                    <div>
-                        <label for="end">End:</label>
-                        <br>
-                        <input type="text" id="end">
+                                            <tbody data-bind="foreach: seasons">
+                                                <tr>
+                                                    <td><input data-bind="checked: selectedSeasons, attr: { value: name }" type="checkbox" /></td>
+                                                    <td data-bind="text: name + ' (' + moment(seasonStartDateTime,'MM-DD HH:mm:ss').format('MMM. D') + ' - ' + moment(seasonEndDateTime,'MM-DD HH:mm:ss').format('MMM. D') + ')'"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading">
+                                        <h4>Year</h4>
+                                    </div>
+                                    <div class="panel-body panel-body-scroll">
+                                        <table class=" datasettable table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Year</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody data-bind="foreach: yearsAvailable">
+                                                <tr>
+                                                    <td><input data-bind="checked: selectedYears, attr: { value: $data }" type="checkbox" /></td>
+                                                    <td data-bind="text: $data"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="advanced" class="tab-pane ">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-2" style="text-align: center; padding-top: 50px;">
-        <div style="">
-            <img class="loadingSpinner" src="/images/OR.png" />
-        </div>
-
-        <div id="loadingDiv" style="">
-            <img class="loadingSpinner" src="/images/spin.gif" />
-        </div>
-    </div>
-    <div class="col-md-2">
-        <div class="panel panel-danger season-panel">
-            <div class="panel-heading">
-                <h4>Season</h4>
-            </div>
-            <div class="panel-body panel-body-scroll">
-                <table class=" datasettable table table-hover">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Season</th>
-                        </tr>
-                    </thead>
-
-                    <tbody data-bind="foreach: seasons">
-                        <tr>
-                            <td><input data-bind="checked: selectedSeasons, attr: { value: name }" type="checkbox" /></td>
-                            <td data-bind="text: name + ' (' + moment(seasonStartDateTime,'MM-DD HH:mm:ss').format('MMM. D') + ' - ' + moment(seasonEndDateTime,'MM-DD HH:mm:ss').format('MMM. D') + ')'"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-2">
-        <div class="panel panel-danger season-panel">
-            <div class="panel-heading">
-                <h4>Year</h4>
-            </div>
-            <div class="panel-body panel-body-scroll">
-                <table class=" datasettable table table-hover">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Year</th>
-                        </tr>
-                    </thead>
-
-                    <tbody data-bind="foreach: yearsAvailable">
-                        <tr>
-                            <td><input data-bind="checked: selectedYears, attr: { value: $data }" type="checkbox" /></td>
-                            <td data-bind="text: $data"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-1">
-    </div>
-</div>
-<div class="row">
+    <div class="row">
         <div class="col-md-4">
             <div class="panel panel-info">
                 <div class="panel-heading">
@@ -245,7 +266,6 @@
             </div>
         </div>
     </div>
-</div>
 
 <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
