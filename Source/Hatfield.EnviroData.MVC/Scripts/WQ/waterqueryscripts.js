@@ -109,14 +109,16 @@ var WQViewModel = function () {
     });
 
     self.queryStartDateTime.subscribe(function () {
-        GetInitialQueryForm(self.queryStartDateTime, self.queryEndDateTime);
+        dateRangeArray = [{ startDateTime: queryStartDateTime, endDateTime: queryEndDateTime }]
+        GetInitialQueryForm(dateRangeArray);
     });
 
     self.queryEndDateTime.subscribe(function () {
-        GetInitialQueryForm(self.queryStartDateTime, self.queryEndDateTime);
+        dateRangeArray = [{ startDateTime: queryStartDateTime, endDateTime: queryEndDateTime }]
+        GetInitialQueryForm(dateRangeArray);
     });
 
-    function GetInitialQueryForm(queryStartDateTime, queryEndDateTime) {
+    function GetInitialQueryForm(dateRangeArray) {
         var dateRangeArray = [{ startDateTime: queryStartDateTime, endDateTime: queryEndDateTime }];
         $.ajax({
             type: "GET",
@@ -263,8 +265,6 @@ var WQViewModel = function () {
 
         }, 500);
     }
-
-    GetInitialQueryForm("2010-11-30 00:00:00", "2020-11-30 00:00:00"); //just temporary default
 }
 
 ko.applyBindings(WQViewModel);
