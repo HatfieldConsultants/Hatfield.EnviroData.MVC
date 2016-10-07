@@ -12,7 +12,28 @@ var WQViewModel = function () {
 
     //Make the self as 'this' reference
     var self = this;
-
+    self.seasons = ko.observableArray([
+        {
+            name: 'Winter',
+            seasonStartDateTime: moment('1-1 00:00:00', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss'),
+            seasonEndDateTime: moment('3-31 23:59:59', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss')
+},
+        {
+            name: 'Spring',
+            seasonStartDateTime: moment('4-1 00:00:00', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss'),
+            seasonEndDateTime: moment('6-30 23:59:59', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss')
+        },
+        {
+            name: 'Summer',
+            seasonStartDateTime: moment('7-1 00:00:00', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss'),
+            seasonEndDateTime: moment('8-31 23:59:59', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss')
+        },
+        {
+            name: 'Fall',
+            seasonStartDateTime: moment('9-1 00:00:00', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss'),
+            seasonEndDateTime: moment('12-31 23:59:59', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss')
+        }
+    ]);
     self.siteAnalyteLookupTable = ko.observable();
 
     self.selectedSites = ko.observableArray([]);

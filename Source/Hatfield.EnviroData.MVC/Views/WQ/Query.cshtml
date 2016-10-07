@@ -61,22 +61,10 @@
                         </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody data-bind="foreach: seasons">
                         <tr>
                             <td><input type="checkbox" /></td>
-                            <td>Spring</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>Summer</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>Fall</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" /></td>
-                            <td>Winter</td>
+                            <td data-bind="text: name + ' (' + moment(seasonStartDateTime,'MM-DD HH:mm:ss').format('MMM. D') + ' - ' + moment(seasonEndDateTime,'MM-DD HH:mm:ss').format('MMM. D') + ')'"></td>
                         </tr>
                     </tbody>
                 </table>
