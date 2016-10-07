@@ -12,7 +12,7 @@ var WQViewModel = function () {
 
     //Make the self as 'this' reference
     var self = this;
-    self.seasons = ko.observableArray([
+    self.seasons = ko.observableArray([ //this can eventually be populated from the server with other options
         {
             name: 'Winter',
             seasonStartDateTime: moment('1-1 00:00:00', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss'),
@@ -34,6 +34,43 @@ var WQViewModel = function () {
             seasonEndDateTime: moment('12-31 23:59:59', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss')
         }
     ]);
+
+    self.selectedSeasons = ko.observableArray([]);
+    self.selectedYears = ko.observableArray([]);
+
+    self.selectedSeasons.subscribe(function (newValue) {
+        generateDateRangeArrayFromSeasons();
+    });
+    self.selectedYears.subscribe(function (newValue) {
+        generateDateRangeArrayFromSeasons();
+    });
+
+    self.dateRangeArray = ko.observableArray([]);
+
+    function generateDateRangeArrayFromSeasons() {
+        dateRangeArray = [];
+        var querySeasons = selectedSeasons();
+        var queryYears = selectedYears();
+
+        //these two if statements make sure that 0 selected seasons or years counts as selecting ALL seasons or years, respectively
+        if (selectedSeasons().length == 0) {
+            querySeasons = seasons().map(function (a) { return a.name; });;
+        }
+        if (selectedYears().length == 0) {
+            queryYears = yearsAvailable().map(function (a) { return a.toString(); });
+        }
+        queryYears.forEach(function (year) {
+            querySeasons.forEach(function (season) {
+                dateRangeArray.push(
+                    {
+                        startDateTime: year + '-' + seasons().find(function (seasonOption) { return seasonOption.name == season; }).seasonStartDateTime,
+                        endDateTime: year + '-' + seasons().find(function (seasonOption) { return seasonOption.name == season; }).seasonEndDateTime
+                    }
+                );
+            });
+        });
+    }
+
     self.siteAnalyteLookupTable = ko.observable();
 
     self.selectedSites = ko.observableArray([]);

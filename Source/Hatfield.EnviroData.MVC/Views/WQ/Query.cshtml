@@ -63,7 +63,7 @@
 
                     <tbody data-bind="foreach: seasons">
                         <tr>
-                            <td><input type="checkbox" /></td>
+                            <td><input data-bind="checked: selectedSeasons, attr: { value: name }" type="checkbox" /></td>
                             <td data-bind="text: name + ' (' + moment(seasonStartDateTime,'MM-DD HH:mm:ss').format('MMM. D') + ' - ' + moment(seasonEndDateTime,'MM-DD HH:mm:ss').format('MMM. D') + ')'"></td>
                         </tr>
                     </tbody>
@@ -87,7 +87,7 @@
 
                     <tbody data-bind="foreach: yearsAvailable">
                         <tr>
-                            <td><input type="checkbox" /></td>
+                            <td><input data-bind="checked: selectedYears, attr: { value: $data }" type="checkbox" /></td>
                             <td data-bind="text: $data"></td>
                         </tr>
                     </tbody>
