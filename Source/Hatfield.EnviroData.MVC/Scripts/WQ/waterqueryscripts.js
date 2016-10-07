@@ -69,6 +69,7 @@ var WQViewModel = function () {
                 );
             });
         });
+        GetInitialQueryForm(dateRangeArray);
     }
 
     self.siteAnalyteLookupTable = ko.observable();
@@ -119,7 +120,6 @@ var WQViewModel = function () {
     });
 
     function GetInitialQueryForm(dateRangeArray) {
-        var dateRangeArray = [{ startDateTime: queryStartDateTime, endDateTime: queryEndDateTime }];
         $.ajax({
             type: "GET",
             url: App.RootURL + "WQ/DataAvailableDictionary",
