@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -12,28 +10,6 @@ using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 
 using System.Diagnostics;
-
-public static class PredicateBuilder
-{
-    public static Expression<Func<T, bool>> True<T>() { return f => true; }
-    public static Expression<Func<T, bool>> False<T>() { return f => false; }
-
-    public static Expression<Func<T, bool>> Or<T>(this Expression<Func<T, bool>> expr1,
-                                                        Expression<Func<T, bool>> expr2)
-    {
-        var invokedExpr = Expression.Invoke(expr2, expr1.Parameters.Cast<Expression>());
-        return Expression.Lambda<Func<T, bool>>
-              (Expression.OrElse(expr1.Body, invokedExpr), expr1.Parameters);
-    }
-
-    public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> expr1,
-                                                         Expression<Func<T, bool>> expr2)
-    {
-        var invokedExpr = Expression.Invoke(expr2, expr1.Parameters.Cast<Expression>());
-        return Expression.Lambda<Func<T, bool>>
-              (Expression.AndAlso(expr1.Body, invokedExpr), expr1.Parameters);
-    }
-}
 
 namespace Hatfield.EnviroData.MVC.Controllers.API
 {
@@ -369,14 +345,22 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
             public string endDateTime { get; set; }
         }
 
+        public static bool IsInDateRanges(DateTime dataSampleDateTime, dateTimeRange[] dateRangeArray)
+        {
+            foreach (var dateRangeOption in dateRangeArray)
+            {
+                if (dataSampleDateTime >= Convert.ToDateTime(dateRangeOption.startDateTime) && dataSampleDateTime <= Convert.ToDateTime(dateRangeOption.endDateTime))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         [Route("WQ/DataAvailableDictionary")]
         [HttpGet]
         public HttpResponseMessage GetDataAvailableDictionary([FromUri] dateTimeRange[] dateRangeArray)
         {
-            String queryStartDateTime = dateRangeArray[0].startDateTime;
-            String queryEndDateTime = dateRangeArray[0].endDateTime;
-            Debug.WriteLine(queryStartDateTime);
-            Debug.WriteLine(queryEndDateTime);
             //RETURNS:
             // - Sites, Analytes, Guidelines
             // - 1D array of relations between Sites and Analytes with keys "siteId_analyteID"
@@ -402,9 +386,9 @@ namespace Hatfield.EnviroData.MVC.Controllers.API
                 (from datum in data
                 join site in sites on new { siteId = datum.StationId } equals new { siteId = site.Id }
                 join analyte in analytes on new { analyteId = datum.WaterQualityLabAnalyteId } equals new { analyteId = analyte.Id }
-                where datum.SampleDateTime >= Convert.ToDateTime(queryStartDateTime) && datum.SampleDateTime <= Convert.ToDateTime(queryEndDateTime)
                 //join standard in standards on new { analyteId = analyte.Id } equals new { analyteId = standard.WaterQualityLabAnalyteId }
                 //join guideline in guidelines on new { guidelineId = standard.GuidelineId } equals new { guidelineId = guideline.Id }
+                where IsInDateRanges(datum.SampleDateTime, dateRangeArray)
                 select new
                 {
 
