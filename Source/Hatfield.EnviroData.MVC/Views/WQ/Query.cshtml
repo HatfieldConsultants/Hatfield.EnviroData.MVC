@@ -61,6 +61,59 @@
                             </div>
                         </div>
                         <div id="multipleranges" class="tab-pane ">
+                            <div class="col-md-4">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading">
+                                        <h4>Start Date</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div>
+                                            <label for="multiple_start">Start:</label>
+                                            <input type="text" id="multiple_start">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading">
+                                        <h4>End Date</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div>
+                                            <label for="multiple_end">End:</label>
+                                            <input type="text" id="multiple_end">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading">
+                                        <h4>Date Range List</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <table class=" datasettable table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date Range Start</th>
+                                                    <th>Date Range End</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody data-bind="foreach: multipleDateRangeList">
+                                                <tr>
+                                                    <td data-bind="text: moment(startDateTime).format('MMM. D, Y')"></td>
+                                                    <td data-bind="text: moment(endDateTime).format('MMM. D, Y')"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" data-bind="click: pushToMultipleRangeArray" class="btn btn-primary">Add Date Range</button>
+                            </div>
                         </div>
                         <div id="seasons" class="tab-pane ">
                             <div class="col-md-4">

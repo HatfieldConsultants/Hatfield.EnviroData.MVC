@@ -72,6 +72,18 @@ var WQViewModel = function () {
         GetInitialQueryForm(dateRangeArray);
     }
 
+    self.tempStartDate = ko.observable(new Date(2010, 0, 1));
+    self.tempEndDate = ko.observable(new Date(2018, 0, 1));
+    self.multipleDateRangeList = ko.observableArray([]);
+
+    self.pushToMultipleRangeArray = function () {
+        multipleDateRangeList.push({
+            startDateTime: moment(tempStartDate()).format('YYYY-MM-DD HH:mm:ss'),
+            endDateTime: moment(tempEndDate()).format('YYYY-MM-DD HH:mm:ss')
+        })
+    }
+
+
     self.siteAnalyteLookupTable = ko.observable();
 
     self.selectedSites = ko.observableArray([]);
@@ -115,8 +127,6 @@ var WQViewModel = function () {
     });
 
     self.queryEndDateTime.subscribe(function () {
-        $(".time-panel").removeClass("panel-danger").addClass("panel-success");
-        $(".season-panel").removeClass("panel-success").addClass("panel-danger");
         dateRangeArray = [{ startDateTime: queryStartDateTime, endDateTime: queryEndDateTime }]
         GetInitialQueryForm(dateRangeArray);
     });
@@ -303,6 +313,24 @@ var startDate,
         onSelect: function () {
             endDate = this.getDate();
             updateEndDate();
+        }
+    }),
+    startPicker2 = new Pikaday({
+        field: document.getElementById('multiple_start'),
+        defaultDate: new Date(2010, 0, 1),
+        setDefaultDate: true,
+        format: 'MMM. D, YYYY',
+        onSelect: function () {
+            tempStartDate(this.getDate());
+        }
+    }),
+    endPicker2 = new Pikaday({
+        field: document.getElementById('multiple_end'),
+        defaultDate: new Date(2018, 0, 1),
+        setDefaultDate: true,
+        format: 'MMM. D, YYYY',
+        onSelect: function () {
+            tempEndDate(this.getDate());
         }
     }),
     _startDate = startPicker.getDate(),
