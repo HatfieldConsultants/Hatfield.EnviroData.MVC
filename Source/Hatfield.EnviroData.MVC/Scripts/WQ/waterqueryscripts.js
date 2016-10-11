@@ -45,7 +45,7 @@ var WQViewModel = function () {
         generateDateRangeArrayFromSeasons();
     });
 
-    self.dateRangeArray = ko.observableArray([]);
+    var dateRangeArray;
 
     function generateDateRangeArrayFromSeasons() {
         dateRangeArray = [];
@@ -77,12 +77,29 @@ var WQViewModel = function () {
     self.multipleDateRangeList = ko.observableArray([]);
 
     self.pushToMultipleRangeArray = function () {
+        dateRangeArray = [];
         multipleDateRangeList.push({
             startDateTime: moment(tempStartDate()).format('YYYY-MM-DD HH:mm:ss'),
             endDateTime: moment(tempEndDate()).format('YYYY-MM-DD HH:mm:ss')
         })
+        dateRangeArray = multipleDateRangeList();
+        GetInitialQueryForm(dateRangeArray);
     }
-
+    
+    self.removeFromMultipleRangeArray = function (index) {
+        multipleDateRangeList.splice(index, 1);
+        dateRangeArray = [];
+        if (multipleDateRangeList().length == 0) { // if no more dates remaining the the multiple date range list, just treat as default infinite time range
+            dateRangeArray.push({
+                startDateTime: moment(new Date(2010, 0, 1)).format('YYYY-MM-DD HH:mm:ss'),
+                endDateTime: moment(new Date(2018, 0, 1)).format('YYYY-MM-DD HH:mm:ss')
+            })
+        }
+        else {
+            dateRangeArray = multipleDateRangeList();
+        }
+        GetInitialQueryForm(dateRangeArray);
+    }
 
     self.siteAnalyteLookupTable = ko.observable();
 

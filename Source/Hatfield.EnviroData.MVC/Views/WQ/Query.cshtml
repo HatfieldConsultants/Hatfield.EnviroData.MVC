@@ -90,9 +90,10 @@
                             <div class="col-md-4">
                                 <div class="panel panel-info ">
                                     <div class="panel-heading">
+                                        <span></span>
                                         <h4>Date Range List</h4>
                                     </div>
-                                    <div class="panel-body">
+                                    <div class="panel-body panel-body-scroll">
                                         <table class=" datasettable table table-hover">
                                             <thead>
                                                 <tr>
@@ -105,15 +106,14 @@
                                                 <tr>
                                                     <td data-bind="text: moment(startDateTime).format('MMM. D, Y')"></td>
                                                     <td data-bind="text: moment(endDateTime).format('MMM. D, Y')"></td>
+                                                    <td><a data-bind="click: removeFromMultipleRangeArray.bind($data, $index())" class="btn btn-danger" href="#"><i class="glyphicon glyphicon-trash"></i> Delete</a></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <button type="button" data-bind="click: pushToMultipleRangeArray" class="btn btn-primary">Add Date Range</button>
-                            </div>
+                            <button type="button" data-bind="click: pushToMultipleRangeArray" class="btn btn-primary">Add Date Range</button>
                         </div>
                         <div id="seasons" class="tab-pane ">
                             <div class="col-md-4">
