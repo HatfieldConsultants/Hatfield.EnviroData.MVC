@@ -1,5 +1,4 @@
-﻿
-var $loading = $('#loadingDiv').hide();
+﻿var $loading = $('#loadingDiv').hide();
 $(document)
   .ajaxStart(function () {
       $loading.show();
@@ -8,10 +7,73 @@ $(document)
       $loading.hide();
   });
 
+
 var WQViewModel = function () {
 
     //Make the self as 'this' reference
     var self = this;
+
+    function dateRangeMenu() {
+        var self = this;
+        self.save_context = true; // control whether selections are reset when switching tabs
+
+        self.modes = {
+            timeRange: {
+                modeName: 'time_range',
+                startDate: ko.observable(),
+                endDate: ko.observable(),
+            },
+            multipleRanges: {
+                modeName: 'multiple_ranges',
+                dateRangeList: [],
+                startDate: null,
+                endDate: null,
+                addRangeToList: function () {
+                    self.modes.multipleRanges.dateRangeList.push({
+                        startDate: startDate,
+                        endDate: endDate,
+                    });
+                },
+                removeRangeFromList: function (index) {
+                    alert(index);
+                },
+            },
+            seasonsYears: {
+                modeName: 'seasons_years',
+                seasons: [ //this can eventually be populated from the server with other options
+                    {
+                        name: 'Winter',
+                        seasonStartDateTime: moment('1-1 00:00:00', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss'),
+                        seasonEndDateTime: moment('3-31 23:59:59', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss')
+                    },
+                    {
+                        name: 'Spring',
+                        seasonStartDateTime: moment('4-1 00:00:00', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss'),
+                        seasonEndDateTime: moment('6-30 23:59:59', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss')
+                    },
+                    {
+                        name: 'Summer',
+                        seasonStartDateTime: moment('7-1 00:00:00', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss'),
+                        seasonEndDateTime: moment('8-31 23:59:59', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss')
+                    },
+                    {
+                        name: 'Fall',
+                        seasonStartDateTime: moment('9-1 00:00:00', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss'),
+                        seasonEndDateTime: moment('12-31 23:59:59', 'MM-DD HH:mm:ss').format('MM-DD HH:mm:ss')
+                    }
+                ],
+                years: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018], // this needs to be generated, not hardcoded...
+                startDate: 'start date',
+                endDate: 'end date',
+            },
+            advancedOptions: {
+                modeName: 'advanced_options',
+            },
+        }
+    }
+
+    self.WQDateSelectorMenu = new dateRangeMenu();
+
     self.seasons = ko.observableArray([ //this can eventually be populated from the server with other options
         {
             name: 'Winter',
@@ -361,21 +423,81 @@ if (_endDate) {
     updateEndDate();
 }
 
-var testArray = [
-    {
-        startDateTime: moment("1995-12-29").format("YYYY-MM-DD HH:mm:ss"),
-        endDateTime: moment("2010-12-29").format("YYYY-MM-DD HH:mm:ss")
+// date pickers for date range menu
+
+// Mode: Time Range
+var timerange_startDate,
+    timerange_endDate,
+    updateTimeRangeStartDate = function () {
+        self.WQDateSelectorMenu.modes.timeRange.startDate(moment(timerange_startDate).format('YYYY-MM-DD HH:mm:ss'));
+        timerangeStartDatePicker.setStartRange(timerange_startDate);
+        timerangeEndDatePicker.setStartRange(timerange_startDate);
+        timerangeEndDatePicker.setMinDate(timerange_startDate);
     },
-    {
-        startDateTime: moment("1995-12-29").format("YYYY-MM-DD HH:mm:ss"),
-        endDateTime: moment("2010-12-29").format("YYYY-MM-DD HH:mm:ss")
+    updateTimeRangeEndDate = function () {
+        self.WQDateSelectorMenu.modes.timeRange.endDate(moment(timerange_endDate).format('YYYY-MM-DD HH:mm:ss'));
+        timerangeStartDatePicker.setEndRange(timerange_endDate);
+        timerangeStartDatePicker.setMaxDate(timerange_endDate);
+        timerangeEndDatePicker.setEndRange(timerange_endDate);
     },
-    {
-        startDateTime: moment("1995-12-29").format("YYYY-MM-DD HH:mm:ss"),
-        endDateTime: moment("2010-12-29").format("YYYY-MM-DD HH:mm:ss")
-    },
-    {
-        startDateTime: moment("1995-12-29").format("YYYY-MM-DD HH:mm:ss"),
-        endDateTime: moment("2010-12-29").format("YYYY-MM-DD HH:mm:ss")
-    }
-];
+
+    timerangeStartDatePicker = new Pikaday({
+        field: document.getElementById('timerange_start'),
+        defaultDate: new Date(2010, 0, 1),
+        setDefaultDate: true,
+        format: 'MMM. D, YYYY',
+        onSelect: function () {
+            timerange_startDate = this.getDate();
+            updateTimeRangeStartDate();
+        }
+    }),
+    timerangeEndDatePicker = new Pikaday({
+        field: document.getElementById('timerange_end'),
+        defaultDate: new Date(2018, 0, 1),
+        setDefaultDate: true,
+        format: 'MMM. D, YYYY',
+        onSelect: function () {
+            timerange_endDate = this.getDate();
+            updateTimeRangeEndDate();
+        }
+    }),
+    _timerange_startDate = timerangeStartDatePicker.getDate(),
+    _timerange_endDate = timerangeEndDatePicker.getDate();
+if (_timerange_startDate) {
+    timerange_startDate = _timerange_startDate;
+    updateTimeRangeStartDate();
+}
+if (_timerange_endDate) {
+    timerange_endDate = _timerange_endDate;
+    updateTimeRangeEndDate();
+}
+
+// Mode: Multiple Ranges
+var multipleranges_startDate,
+    multipleranges_endDate,
+    multiplerangesStartDatePicker = new Pikaday({
+        field: document.getElementById('multipleranges_start'),
+        defaultDate: new Date(2010, 0, 1),
+        setDefaultDate: true,
+        format: 'MMM. D, YYYY',
+        onSelect: function () {
+            multipleranges_startDate = this.getDate();
+        }
+    }),
+    multiplerangesEndDatePicker = new Pikaday({
+        field: document.getElementById('multipleranges_end'),
+        defaultDate: new Date(2018, 0, 1),
+        setDefaultDate: true,
+        format: 'MMM. D, YYYY',
+        onSelect: function () {
+            multipleranges_endDate = this.getDate();
+        }
+    }),
+    _multipleranges_startDate = multiplerangesStartDatePicker.getDate(),
+    _multipleranges_endDate = multiplerangesEndDatePicker.getDate();
+if (_multipleranges_startDate) {
+    multipleranges_startDate = _multipleranges_startDate;
+}
+if (_multipleranges_endDate) {
+    multipleranges_endDate = _multipleranges_endDate;
+}

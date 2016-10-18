@@ -21,15 +21,118 @@
                 </div>
                 <div class="panel-body timepanel">
                     <ul class="nav nav-pills nav-stacked col-md-3">
-                        <li class="active"><a data-toggle="pill" href="#timerange">Time Range</a></li>
-                        <li><a data-toggle="pill" href="#multipleranges">Multiple Ranges</a></li>
-                        <li><a data-toggle="pill" href="#seasons">Seasons and Years</a></li>
-                        <li><a data-toggle="pill" href="#advanced">Advanced Options</a></li>
+                        <li class="active"><a data-toggle="pill" href="#dateselect_timerange">Time Range</a></li>
+                        <li><a data-toggle="pill" href="#dateselect_multipleranges">Multiple Ranges</a></li>
+                        <li><a data-toggle="pill" href="#dateselect_seasons">Seasons and Years</a></li>
+                        <li><a data-toggle="pill" href="#dateselect_advanced">Advanced Options</a></li>
                         <li>
                             <div id="loadingDiv" style="">
                                 <img class="loadingSpinner" src="/images/spin.gif" />
                             </div>
                         </li>
+                    </ul>
+                    <div class="tab-content col-md-9">
+                        <div id="dateselect_timerange" class="tab-pane active">
+                            <div class="col-md-4">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading">
+                                        <h4>Start Date</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div>
+                                            <label for="timerange_start">Start:</label>
+                                            <input type="text" id="timerange_start">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading">
+                                        <h4>End Date</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div>
+                                            <label for="timerange_end">End:</label>
+                                            <input type="text" id="timerange_end">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="dateselect_multipleranges" class="tab-pane ">
+                            <div class="col-md-4">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading">
+                                        <h4>Start Date</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div>
+                                            <label for="multipleranges_start">Start:</label>
+                                            <input type="text" id="multipleranges_start">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading">
+                                        <h4>End Date</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div>
+                                            <label for="multipleranges_end">End:</label>
+                                            <input type="text" id="multipleranges_end">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading">
+                                        <span></span>
+                                        <h4>Date Range List</h4>
+                                    </div>
+                                    <div class="panel-body panel-body-scroll">
+                                        <table class=" datasettable table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date Range Start</th>
+                                                    <th>Date Range End</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody data-bind="foreach: WQDateSelectorMenu.modes.multipleRanges.dateRangeList">
+                                                <tr>
+                                                    <td data-bind="text: moment(startDate).format('MMM. D, Y')"></td>
+                                                    <td data-bind="text: moment(endDate).format('MMM. D, Y')"></td>
+                                                    <td><a data-bind="click: WQDateSelectorMenu.modes.multipleRanges.removeRangeFromList.bind($data, $index())" class="btn btn-danger" href="#"><i class="glyphicon glyphicon-trash"></i> Delete</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" data-bind="click: WQDateSelectorMenu.modes.multipleRanges.addRangeToList.bind($data)" class="btn btn-primary">Add Date Range</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info time-panel">
+                <div class="panel-heading">
+                    <h4>Select Time Ranges</h4>
+                </div>
+                <div class="panel-body timepanel">
+                    <ul class="nav nav-pills nav-stacked col-md-3">
+                        <li class="active"><a data-toggle="pill" href="#timerange">Time Range</a></li>
+                        <li><a data-toggle="pill" href="#multipleranges">Multiple Ranges</a></li>
+                        <li><a data-toggle="pill" href="#seasons">Seasons and Years</a></li>
+                        <li><a data-toggle="pill" href="#advanced">Advanced Options</a></li>
                     </ul>
                     <div class="tab-content col-md-9">
                         <div id="timerange" class="tab-pane active">
@@ -130,7 +233,7 @@
                                                 </tr>
                                             </thead>
 
-                                            <tbody data-bind="foreach: seasons">
+                                            <tbody data-bind="foreach: WQDateSelectorMenu.modes.seasonsYears.seasons">
                                                 <tr>
                                                     <td><input data-bind="checked: selectedSeasons, attr: { value: name }" type="checkbox" /></td>
                                                     <td data-bind="text: name + ' (' + moment(seasonStartDateTime,'MM-DD HH:mm:ss').format('MMM. D') + ' - ' + moment(seasonEndDateTime,'MM-DD HH:mm:ss').format('MMM. D') + ')'"></td>
@@ -154,7 +257,7 @@
                                                 </tr>
                                             </thead>
 
-                                            <tbody data-bind="foreach: yearsAvailable">
+                                            <tbody data-bind="foreach: WQDateSelectorMenu.modes.seasonsYears.years">
                                                 <tr>
                                                     <td><input data-bind="checked: selectedYears, attr: { value: $data }" type="checkbox" /></td>
                                                     <td data-bind="text: $data"></td>
