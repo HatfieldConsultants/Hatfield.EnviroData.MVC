@@ -15,27 +15,32 @@ var WQViewModel = function () {
 
     function dateRangeMenu() {
         var self = this;
-        self.save_context = true; // control whether selections are reset when switching tabs
 
         self.modes = {
             timeRange: {
                 modeName: 'time_range',
                 startDate: ko.observable(),
                 endDate: ko.observable(),
+                dateRangeList: function () {
+                    return [{
+                        startDate: self.modes.timeRange.startDate(),
+                        endDate: self.modes.timeRange.endDate()
+                    }];
+                },
             },
             multipleRanges: {
                 modeName: 'multiple_ranges',
-                dateRangeList: [],
-                startDate: null,
-                endDate: null,
+                dateRangeList: ko.observableArray(),
+                startDate: ko.observable(),
+                endDate: ko.observable(),
                 addRangeToList: function () {
                     self.modes.multipleRanges.dateRangeList.push({
-                        startDate: startDate,
-                        endDate: endDate,
+                        startDate: self.modes.multipleRanges.startDate(),
+                        endDate: self.modes.multipleRanges.endDate(),
                     });
                 },
                 removeRangeFromList: function (index) {
-                    alert(index);
+                    self.modes.multipleRanges.dateRangeList.splice(index, 1);
                 },
             },
             seasonsYears: {
@@ -63,8 +68,10 @@ var WQViewModel = function () {
                     }
                 ],
                 years: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018], // this needs to be generated, not hardcoded...
-                startDate: 'start date',
-                endDate: 'end date',
+
+                selectedSeasons: ko.observableArray([]),
+                selectedYears: ko.observableArray([]),
+
             },
             advancedOptions: {
                 modeName: 'advanced_options',
@@ -72,7 +79,14 @@ var WQViewModel = function () {
         }
     }
 
+    // I could rewrite all the filtering functions into this bigger function, just like the date menu handling
+    function parameterFilter() {
+        var self = this;
+    }
+
     self.WQDateSelectorMenu = new dateRangeMenu();
+    self.WQParameterFilter = new parameterFilter(); //currently not used for anything
+
 
     self.seasons = ko.observableArray([ //this can eventually be populated from the server with other options
         {
@@ -475,6 +489,18 @@ if (_timerange_endDate) {
 // Mode: Multiple Ranges
 var multipleranges_startDate,
     multipleranges_endDate,
+    updateMultipleRangesStartDate = function () {
+        self.WQDateSelectorMenu.modes.multipleRanges.startDate(moment(multipleranges_startDate).format('YYYY-MM-DD HH:mm:ss'));
+        multiplerangesStartDatePicker.setStartRange(multipleranges_startDate);
+        multiplerangesEndDatePicker.setStartRange(multipleranges_startDate);
+        multiplerangesEndDatePicker.setMinDate(multipleranges_startDate);
+    },
+    updateMultipleRangesEndDate = function () {
+        self.WQDateSelectorMenu.modes.multipleRanges.endDate(moment(multipleranges_endDate).format('YYYY-MM-DD HH:mm:ss'));
+        multiplerangesStartDatePicker.setEndRange(multipleranges_endDate);
+        multiplerangesStartDatePicker.setMaxDate(multipleranges_endDate);
+        multiplerangesEndDatePicker.setEndRange(multipleranges_endDate);
+    },
     multiplerangesStartDatePicker = new Pikaday({
         field: document.getElementById('multipleranges_start'),
         defaultDate: new Date(2010, 0, 1),
@@ -482,6 +508,7 @@ var multipleranges_startDate,
         format: 'MMM. D, YYYY',
         onSelect: function () {
             multipleranges_startDate = this.getDate();
+            updateMultipleRangesStartDate();
         }
     }),
     multiplerangesEndDatePicker = new Pikaday({
@@ -491,13 +518,16 @@ var multipleranges_startDate,
         format: 'MMM. D, YYYY',
         onSelect: function () {
             multipleranges_endDate = this.getDate();
+            updateMultipleRangesEndDate();
         }
     }),
     _multipleranges_startDate = multiplerangesStartDatePicker.getDate(),
     _multipleranges_endDate = multiplerangesEndDatePicker.getDate();
 if (_multipleranges_startDate) {
     multipleranges_startDate = _multipleranges_startDate;
+    updateMultipleRangesStartDate();
 }
 if (_multipleranges_endDate) {
     multipleranges_endDate = _multipleranges_endDate;
+    updateMultipleRangesEndDate();
 }

@@ -115,6 +115,56 @@
                             </div>
                             <button type="button" data-bind="click: WQDateSelectorMenu.modes.multipleRanges.addRangeToList.bind($data)" class="btn btn-primary">Add Date Range</button>
                         </div>
+                        <div id="dateselect_seasons" class="tab-pane ">
+                            <div class="col-md-4">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h4>Season</h4>
+                                    </div>
+                                    <div class="panel-body panel-body-scroll">
+                                        <table class=" datasettable table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Season</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody data-bind="foreach: WQDateSelectorMenu.modes.seasonsYears.seasons">
+                                                <tr>
+                                                    <td><input data-bind="checked: WQDateSelectorMenu.modes.seasonsYears.selectedSeasons, attr: { value: name }" type="checkbox" /></td>
+                                                    <td data-bind="text: name + ' (' + moment(seasonStartDateTime,'MM-DD HH:mm:ss').format('MMM. D') + ' - ' + moment(seasonEndDateTime,'MM-DD HH:mm:ss').format('MMM. D') + ')'"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-info ">
+                                    <div class="panel-heading">
+                                        <h4>Year</h4>
+                                    </div>
+                                    <div class="panel-body panel-body-scroll">
+                                        <table class=" datasettable table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Year</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody data-bind="foreach: WQDateSelectorMenu.modes.seasonsYears.years">
+                                                <tr>
+                                                    <td><input data-bind="checked: WQDateSelectorMenu.modes.seasonsYears.selectedYears, attr: { value: $data }" type="checkbox" /></td>
+                                                    <td data-bind="text: $data"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
