@@ -165,6 +165,8 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="dateselect_advanced" class="tab-pane ">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -342,7 +344,7 @@
                             </tr>
                         </thead>
 
-                        <tbody data-bind="foreach: sites">
+                        <tbody data-bind="foreach: WQParameters.parameters.stations">
                             <tr data-bind="visible: $.inArray(Id, hiddenSites()) == -1, attr: {id: 'site' + Id}">
                                 <td><input type="checkbox" data-bind="checked: selectedSites, attr: { value: Id }" /></td>
                                 <td data-bind="text: SiteId"></td>
@@ -368,7 +370,7 @@
                             </tr>
                         </thead>
 
-                        <tbody data-bind="foreach: analytes">
+                        <tbody data-bind="foreach: WQParameters.parameters.analytes">
                             <tr data-bind="visible: $.inArray(Id, hiddenAnalytes()) == -1, attr: {id: 'analyte' + Id}">
                                 <td><input type="checkbox" data-bind="checked: selectedAnalytes, attr: {value: Id}"></td>
                                 <td data-bind="text: AnalyteName"></td>
@@ -391,7 +393,7 @@
                                 <th>Minimum BC WQG</th>
                             </tr>
                         </thead>
-                        <tbody data-bind="foreach: guidelines">
+                        <tbody data-bind="foreach: WQParameters.parameters.guidelines">
                             <tr data-bind="attr: {id: 'guideline' + Id}">
                                 <td><input type="checkbox" data-bind="checked: selectedGuidelines, attr: {value: Id}" /></td>
                                 <td data-bind="text:GuidelineName"></td>

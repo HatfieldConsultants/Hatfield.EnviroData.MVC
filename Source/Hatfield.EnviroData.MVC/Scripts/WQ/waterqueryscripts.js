@@ -73,7 +73,7 @@ var WQViewModel = function () {
                 selectedYears: ko.observableArray([]),
                 dateRangeList: function () {
                     // calculate date ranges based on selected seasons and years
-                    dateRangeArray = [];
+                    var dateRangeArray = [];
                     var querySeasons = self.modes.seasonsYears.selectedSeasons();
                     var queryYears = self.modes.seasonsYears.selectedYears();
 
@@ -106,12 +106,61 @@ var WQViewModel = function () {
         }
     }
 
+    function parameters() {
+        var self = this;
+        self.stationAnalyteLookupTable = ko.observableArray([]);
+        self.parameters = { //fill parameters, hardcoded or ajax etc...
+            populateParameters: function() {
+                // fill up parameters with info loaded from server
+                $.ajax({
+                    type: "GET",
+                    url: App.RootURL + "WQ/DataAvailableDictionary",
+                    data: { dateRangeArray: dateRangeArray },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        self.parameters.stations(data.sites);
+                        self.parameters.analytes(data.analytes);
+                        self.parameters.guidelines(data.guidelines);
+                        //self.parameters.yearsAvailable(data.yearsAvailable);
+                        self.stationAnalyteLookupTable(data.siteAnalyteLookupTable);
+                    },
+                    error: function (error) {
+                        alert(error.status + "<--and--> " + error.statusText);
+                    }
+                });
+            },
+
+            timeRanges: ko.observableArray([]), // not sure if this is necessary??
+            stations: ko.observableArray([]),
+            analytes: ko.observableArray([]),
+            guidelines: ko.observableArray([]),
+        }
+    }
+
     // I could rewrite all the filtering functions into this bigger function, just like the date menu handling
     function parameterFilter() {
         var self = this;
+        self.parameters = { //insert rules for filtering
+            timeRanges: {
+
+            },
+
+            stations: {
+            },
+
+            analytes: {
+            },
+
+            guidelines: {
+
+            },
+        }
+
     }
 
     self.WQDateSelectorMenu = new dateRangeMenu();
+    self.WQParameters = new parameters();
     self.WQParameterFilter = new parameterFilter(); //currently not used for anything
 
 
