@@ -110,12 +110,12 @@ var WQViewModel = function () {
         var self = this;
         self.stationAnalyteLookupTable = ko.observableArray([]);
         self.parameters = { //fill parameters, hardcoded or ajax etc...
-            populateParameters: function() {
+            populateParameters: function(parameterStartDate, parameterEndDate) {
                 // fill up parameters with info loaded from server
                 $.ajax({
                     type: "GET",
                     url: App.RootURL + "WQ/DataAvailableDictionary",
-                    data: { dateRangeArray: dateRangeArray },
+                    data: { dateRangeArray: [{startDateTime: parameterStartDate, endDateTime: parameterEndDate}] },
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (data) {
@@ -124,6 +124,7 @@ var WQViewModel = function () {
                         self.parameters.guidelines(data.guidelines);
                         //self.parameters.yearsAvailable(data.yearsAvailable);
                         self.stationAnalyteLookupTable(data.siteAnalyteLookupTable);
+                        console.log(data.siteAnalyteLookupTable);
                     },
                     error: function (error) {
                         alert(error.status + "<--and--> " + error.statusText);
@@ -142,27 +143,125 @@ var WQViewModel = function () {
     function parameterFilter() {
         var self = this;
         self.parameters = { //insert rules for filtering
-            timeRanges: {
 
+            timeRanges: {
+                selected: ko.observableArray([]),
+                hidden: ko.observableArray([]),
+                generateHidden: function () {
+
+                },
             },
 
             stations: {
+                selected: ko.observableArray([]),
+                hidden: ko.observableArray([]),
+                generateHidden: function () {
+
+                },
             },
 
             analytes: {
+                selected: ko.observableArray([]),
+                hidden: ko.observableArray([]),
+                generateHidden: function () {
+
+                },
             },
 
             guidelines: {
+                selected: ko.observableArray([]),
+                hidden: ko.observableArray([]),
+                generateHidden: function () {
 
+                },
             },
+
         }
+
+        self.computeHiddenOnSelect = ko.computed(function () {
+            //triggered when any of these is modified
+            // self.parameters.timeRanges.selected();
+            self.parameters.stations.selected();
+            self.parameters.analytes.selected();
+            // self.parameters.guidelines.selected();
+
+            // compute all the hidden elements...
+            var anyAnalytesSelected = (self.parameters.analytes.selected().length != 0);
+            var anySitesSelected = (self.parameters.stations.selected().length != 0);
+            self.parameters.stations.hidden([]);
+            self.parameters.analytes.hidden([]);
+            //remove all sites that have no corresponding data with analytes
+            WQParameters.parameters.stations().forEach(function (site) {
+                var dataCount = 0;
+                WQParameters.parameters.analytes().forEach(function (analyte) {
+                    var key = site.Id + "_" + analyte.Id;
+                    var index = WQParameters.stationAnalyteLookupTable().indexOf(key);
+                    if (index != -1) {
+                        dataCount++;
+                    }
+                });
+                if (dataCount == 0) {
+                    self.parameters.stations.hidden.push(site.Id);
+                }
+            });
+            //remove all analytes that are not associated with any data from any sites
+            WQParameters.parameters.analytes().forEach(function (analyte) {
+                var dataCount = 0;
+                WQParameters.parameters.stations().forEach(function (site) {
+                    var key = site.Id + "_" + analyte.Id;
+                    var index = WQParameters.stationAnalyteLookupTable().indexOf(key);
+                    if (index != -1) {
+                        dataCount++;
+                    }
+                });
+                if (dataCount == 0) {
+                    self.parameters.analytes.hidden.push(analyte.Id);
+                }
+            });
+
+            WQParameters.parameters.stations().forEach(function (site) {
+                var dataCount = 0;
+                self.parameters.analytes.selected().forEach(function (analyte) {
+                    var key = site.Id + "_" + analyte;
+                    var index = WQParameters.stationAnalyteLookupTable().indexOf(key);
+                    if (index != -1) {
+                        dataCount++;
+                    }
+                });
+                if (dataCount == 0 && anyAnalytesSelected && self.parameters.stations.hidden().indexOf(site.Id) == -1 && self.parameters.stations.selected().indexOf(site.Id.toString()) == -1) {
+                    self.parameters.stations.hidden.push(site.Id);
+                }
+            });
+
+            WQParameters.parameters.analytes().forEach(function (analyte) {
+                var dataCount = 0;
+                self.parameters.stations.selected().forEach(function (site) {
+                    var key = site + "_" + analyte.Id;
+                    var index = WQParameters.stationAnalyteLookupTable().indexOf(key);
+                    if (index != -1) {
+                        dataCount++;
+                    }
+                });
+                if (dataCount == 0 && anySitesSelected && self.parameters.analytes.hidden().indexOf(analyte.Id) == -1 && self.parameters.analytes.selected().indexOf(analyte.Id.toString()) == -1) {
+                    self.parameters.analytes.hidden.push(analyte.Id);
+                }
+            });
+
+        });
+
+        self.computeHiddenOnSearch = ko.computed(function () {
+            // triggered whenever text box is being used
+
+            // compute hidden elements based on current text
+        });
+
 
     }
 
     self.WQDateSelectorMenu = new dateRangeMenu();
     self.WQParameters = new parameters();
+    self.WQParameters.parameters.populateParameters('2010-01-01 00:00:00', '2018-01-01 00:00:00');
     self.WQParameterFilter = new parameterFilter(); //currently not used for anything
-
 
     self.seasons = ko.observableArray([ //this can eventually be populated from the server with other options
         {

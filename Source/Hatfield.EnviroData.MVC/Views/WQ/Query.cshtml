@@ -345,8 +345,8 @@
                         </thead>
 
                         <tbody data-bind="foreach: WQParameters.parameters.stations">
-                            <tr data-bind="visible: $.inArray(Id, hiddenSites()) == -1, attr: {id: 'site' + Id}">
-                                <td><input type="checkbox" data-bind="checked: selectedSites, attr: { value: Id }" /></td>
+                            <tr data-bind="visible: $.inArray(Id, WQParameterFilter.parameters.stations.hidden()) == -1, attr: {id: 'site' + Id}">
+                                <td><input type="checkbox" data-bind="checked: WQParameterFilter.parameters.stations.selected, attr: { value: Id }" /></td>
                                 <td data-bind="text: SiteId"></td>
                                 <td data-bind="text: SiteType"></td>
                             </tr>
@@ -371,8 +371,8 @@
                         </thead>
 
                         <tbody data-bind="foreach: WQParameters.parameters.analytes">
-                            <tr data-bind="visible: $.inArray(Id, hiddenAnalytes()) == -1, attr: {id: 'analyte' + Id}">
-                                <td><input type="checkbox" data-bind="checked: selectedAnalytes, attr: {value: Id}"></td>
+                            <tr data-bind="visible: $.inArray(Id, WQParameterFilter.parameters.analytes.hidden()) == -1, attr: {id: 'analyte' + Id}">
+                                <td><input type="checkbox" data-bind="checked: WQParameterFilter.parameters.analytes.selected, attr: {value: Id}"></td>
                                 <td data-bind="text: AnalyteName"></td>
                             </tr>
                         </tbody>
@@ -395,7 +395,7 @@
                         </thead>
                         <tbody data-bind="foreach: WQParameters.parameters.guidelines">
                             <tr data-bind="attr: {id: 'guideline' + Id}">
-                                <td><input type="checkbox" data-bind="checked: selectedGuidelines, attr: {value: Id}" /></td>
+                                <td><input type="checkbox" data-bind="checked: WQParameterFilter.parameters.guidelines.selected, attr: {value: Id}" /></td>
                                 <td data-bind="text:GuidelineName"></td>
                             </tr>
                         </tbody>
