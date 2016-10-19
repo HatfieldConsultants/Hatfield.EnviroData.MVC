@@ -71,6 +71,33 @@ var WQViewModel = function () {
 
                 selectedSeasons: ko.observableArray([]),
                 selectedYears: ko.observableArray([]),
+                dateRangeList: function () {
+                    // calculate date ranges based on selected seasons and years
+                    dateRangeArray = [];
+                    var querySeasons = self.modes.seasonsYears.selectedSeasons();
+                    var queryYears = self.modes.seasonsYears.selectedYears();
+
+                    //these two if statements make sure that 0 selected seasons or years counts as selecting ALL seasons or years, respectively
+                    if (self.modes.seasonsYears.selectedSeasons().length == 0) {
+                        querySeasons = self.modes.seasonsYears.seasons.map(function (a) { return a.name; });
+                    }
+                    if (self.modes.seasonsYears.selectedYears().length == 0) {
+                        queryYears = self.modes.seasonsYears.years.map(function (a) { return a.toString(); });
+                    }
+
+                    queryYears.forEach(function (year) {
+                        querySeasons.forEach(function (season) {
+                            dateRangeArray.push(
+                                {
+                                    startDateTime: year + '-' + self.modes.seasonsYears.seasons.find(function (seasonOption) { return seasonOption.name == season; }).seasonStartDateTime,
+                                    endDateTime: year + '-' + self.modes.seasonsYears.seasons.find(function (seasonOption) { return seasonOption.name == season; }).seasonEndDateTime
+                                }
+                            );
+                        });
+                    });
+
+                    return dateRangeArray;
+                },
 
             },
             advancedOptions: {
